@@ -18,9 +18,12 @@
   
 package casmi.graphics.font;
 
+import com.sun.opengl.util.GLUT;
+
 import casmi.Applet;
 import casmi.AppletRunner;
 import casmi.graphics.Graphics;
+import casmi.graphics.Graphics.MatrixMode;
 import casmi.graphics.color.Color;
 import casmi.graphics.color.ColorSet;
 import casmi.graphics.element.Line;
@@ -53,7 +56,9 @@ public class FontExample extends Applet {
 
     @Override
     public void draw(Graphics g) {
-        g.render(t);
+    	
+    	//g.rotateZ(20);
+    	g.render(t);
         g.render(l);
     }
 

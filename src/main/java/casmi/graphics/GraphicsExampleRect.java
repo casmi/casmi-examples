@@ -32,8 +32,8 @@ import static casmi.graphics.color.ColorMode.*;
  */
 public class GraphicsExampleRect extends Applet {
     
-    Rect r1 = new Rect(500, 700, 500, 200);
-    Rect r2 = new Rect(200, 700, 200, 400);
+    Rect r1 = new Rect(500, 200);
+    Rect r2 = new Rect(200, 400);
     Color c = new Color(20,100,100);
         
     public void setup(){
@@ -50,8 +50,15 @@ public class GraphicsExampleRect extends Applet {
     
     @Override
     public void draw(Graphics g) {
+    	g.pushMatrix();
+    	g.translate(500, 300);
         g.render(r1);
+        g.popMatrix();
+        
+        g.pushMatrix();
+        g.translate(200, 300);
         g.render(r2);
+        g.popMatrix();
     }
     
     public static void main(String args[]) {

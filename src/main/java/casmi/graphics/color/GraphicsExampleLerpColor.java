@@ -46,7 +46,7 @@ public class GraphicsExampleLerpColor extends Applet {
         
     public void setup(){
         for(int i=0;i<num;i++){
-            r[i] = new Rect(200+100*i, 700, 100, 300);
+            r[i] = new Rect(100, 300);
             r[i].setStrokeWidth(5);
             r[i].setStrokeColor(Color.color(ColorSet.WHITE));
         }
@@ -64,9 +64,13 @@ public class GraphicsExampleLerpColor extends Applet {
     
     @Override
     public void draw(Graphics g) {
-        for(int i=0;i<num;i++)
+        for(int i=0;i<num;i++) {
+        	g.pushMatrix();
+        	g.translate(200+100*i, 350);
             g.render(r[i]);
+            g.popMatrix();
         }
+    }
     
     public static void main(String args[]) {
         AppletRunner.run( "casmi.graphics.GraphicsExampleLerpColor", "Example");

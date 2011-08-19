@@ -33,9 +33,11 @@ import casmi.util.SystemUtil;
 public class GraphicsExampleImage extends Applet {
 
     Image image = null;
-        
-    String imagePath = ".." + SystemUtil.FILE_SEPARATOR + "rsrc" + SystemUtil.FILE_SEPARATOR + "logo.png";  // TODO can not work when running as Java Application
-   // String imagePath = "rsrc" + SystemProperty.FILE_SEPARATOR + "logo.png";
+
+    /* this imagePath is for Windows */
+    //String imagePath = ".." + SystemUtil.FILE_SEPARATOR + "rsrc" + SystemUtil.FILE_SEPARATOR + "logo.png";  // TODO can not work when running as Java Application
+    /* this imagePath is for Mac OS X */
+    String imagePath = "rsrc" + SystemUtil.FILE_SEPARATOR + "logo.png";
     
     double rot = 0.0;
     

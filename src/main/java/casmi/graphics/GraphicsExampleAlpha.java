@@ -18,12 +18,11 @@
   
 package casmi.graphics;
 
+import static casmi.graphics.color.ColorMode.HSB;
 import casmi.Applet;
 import casmi.AppletRunner;
 import casmi.graphics.color.Color;
 import casmi.graphics.element.Rect;
-import static casmi.graphics.color.ColorMode.*;
-import static casmi.graphics.element.Rect.ShapeMode.*;
 /**
  * Example of Graphics.
  * 
@@ -32,8 +31,8 @@ import static casmi.graphics.element.Rect.ShapeMode.*;
  */
 public class GraphicsExampleAlpha extends Applet {
     
-    Rect r1 = new Rect(500, 400, 300, 300);
-    Rect r2 = new Rect(500, 400, 300, 300);
+    Rect r1 = new Rect(300, 300);
+    Rect r2 = new Rect(300, 300);
     Color c = new Color(20,100,100);
     int alpha = 250;
         
@@ -45,7 +44,7 @@ public class GraphicsExampleAlpha extends Applet {
         
         r2.setStroke(false);
         r2.setFillColor(new Color(180, 20, 20, 150));
-        r2.rectMode(CENTER);
+//        r2.rectMode(CENTER);
     }
     
     @Override
@@ -56,8 +55,15 @@ public class GraphicsExampleAlpha extends Applet {
         if(getKey()=='A')
             alpha-=1;
         
+        g.pushMatrix();
+        g.translate(500, 400);
         g.render(r1);
+        g.popMatrix();
+        
+        g.pushMatrix();
+        g.translate(600, 500);
         g.render(r2);
+        g.popMatrix();
     }
     
     public static void main(String args[]) {

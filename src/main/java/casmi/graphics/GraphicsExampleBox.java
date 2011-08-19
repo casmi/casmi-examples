@@ -42,9 +42,10 @@ public class GraphicsExampleBox extends Applet {
         b1.setStrokeWidth(3);
         b1.setFillColor(new Color(100, 100, 100));
         b1.setStrokeColor(new Color(255, 255, 255));
+     //   b1.setFill(false);
         
         b2.setStrokeWidth(3);
-        b2.setFillColor(new Color(0, 0, 100));
+        b2.setFillColor(new Color(0, 0, 100, 120));
         b2.setStrokeColor(new Color(0, 0, 255));
     }
     
@@ -63,6 +64,10 @@ public class GraphicsExampleBox extends Applet {
     	g.translate(500, 500, 1000);
         g.rotate(-rot, 1f, 3f, 5f);
         g.render(b2);
+        b2.setFill(false);
+        g.scale(1.2);
+        g.render(b2);
+        b2.setFill(true);
         
         g.popMatrix();
         
