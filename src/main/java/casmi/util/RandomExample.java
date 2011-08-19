@@ -58,6 +58,6 @@ public class RandomExample extends Applet {
     }
     
     public static void main(String args[]) {
-        AppletRunner.run( "casmi.graphics.RandomExample", "Example");
+        AppletRunner.run( "casmi.util.RandomExample", "Example");
     }
 }

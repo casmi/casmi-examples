@@ -49,6 +49,6 @@ public class GraphicsExampleMouse extends Applet {
     }
     
     public static void main(String args[]) {
-        AppletRunner.run( "casmi.graphics.GraphicsExampleMouse", "Example");
+        AppletRunner.run( "casmi.GraphicsExampleMouse", "Example");
     }
 }

@@ -73,6 +73,6 @@ public class GraphicsExampleLerpColor extends Applet {
     }
     
     public static void main(String args[]) {
-        AppletRunner.run( "casmi.graphics.GraphicsExampleLerpColor", "Example");
+        AppletRunner.run( "casmi.graphics.color.GraphicsExampleLerpColor", "Example");
     }
 }

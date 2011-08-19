@@ -60,6 +60,6 @@ public class NoiseExample extends Applet {
 	}
 
 	public static void main(String args[]) {
-		AppletRunner.run("casmi.graphics.NoiseExample", "Example");
+		AppletRunner.run("casmi.util.NoiseExample", "Example");
 	}
 }

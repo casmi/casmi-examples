@@ -74,6 +74,6 @@ public class GraphicsExampleColorSet extends Applet {
     }
     
     public static void main(String args[]) {
-        AppletRunner.run( "casmi.graphics.GraphicsExampleColorSet", "Example");
+        AppletRunner.run( "casmi.graphics.color.GraphicsExampleColorSet", "Example");
     }
 }

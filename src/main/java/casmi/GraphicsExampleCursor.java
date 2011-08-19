@@ -68,6 +68,6 @@ public class GraphicsExampleCursor extends Applet {
 	}
 
 	public static void main(String args[]) {
-		AppletRunner.run("casmi.graphics.GraphicsExampleCursor", "Example");
+		AppletRunner.run("casmi.GraphicsExampleCursor", "Example");
 	}
 }
