@@ -18,64 +18,40 @@
   
 package casmi.graphics;
 
-import javax.media.opengl.GL;
-
 import casmi.Applet;
 import casmi.AppletRunner;
 import casmi.graphics.color.Color;
-import casmi.graphics.element.Box;
+import casmi.graphics.element.Cone;
+import casmi.graphics.element.Sphere;
 
 /**
  * Example of Graphics.
  * 
- * @author Y. BAN
+ * @author Y. Ban
  * 
  */
-public class GraphicsExampleBox extends Applet {
-
-    Box b1 = new Box(1);
-    Box b2 = new Box(1);
+public class GraphicsExampleCone extends Applet {
     
-    double rot = 0.0;
+    Cone s = new Cone(300.0,300);
+    
+    double rot = 90.0;
     
     public void setup(){
         setSize(1024, 768);
-        
-        b1.setStrokeWidth(1);
-        b1.setFillColor(new Color(100, 100, 100));
-        b1.setStrokeColor(new Color(255, 255, 255));
-     //   b1.setFill(false);
-        
-        b2.setStrokeWidth(1);
-        b2.setFillColor(new Color(0, 0, 100, 120));
-        b2.setStrokeColor(new Color(0, 0, 255));
+        s.setFill(false);
+        s.setStrokeColor(new Color(100, 100, 200));
+        s.setStrokeWidth(4);
     }
     
     @Override
     public void draw(Graphics g) {
-    	g.perspective(30,(double)width/(double)height,1.0,100);
-    	g.camera(3.0, 4.0, 5.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
-    	
-        g.pushMatrix();
-    	
-    	g.rotate(rot, 1f, 3f, 5f);
-        g.render(b1);
-        
-        g.popMatrix();
-        g.pushMatrix();
-
-    	g.translate(0, -1, -8);
-       // g.rotate(-rot, 1f, 3f, 5f);
-        g.render(b2);
-        
-        g.popMatrix();
-        
-
+    	g.translate(512.0,430.0, 100.0);
+        g.render(s);
         
         rot += 0.1;
     }
     
     public static void main(String args[]) {
-        AppletRunner.run( "casmi.graphics.GraphicsExampleBox", "Example");
+        AppletRunner.run( "casmi.graphics.GraphicsExampleCone", "Example");
     }
 }

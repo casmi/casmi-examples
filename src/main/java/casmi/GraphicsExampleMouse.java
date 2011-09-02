@@ -43,6 +43,7 @@ public class GraphicsExampleMouse extends Applet {
     @Override
     public void draw(Graphics g) {
         t =  new Triangle(100, 500, getMouseX(), getMouseY(), 1000, 500);
+        System.out.println();
         t.setFillColor(new Color(230, 70, 70, 180));
         t.setStrokeColor(new Color(230, 70, 70, 255));
         g.render(t);

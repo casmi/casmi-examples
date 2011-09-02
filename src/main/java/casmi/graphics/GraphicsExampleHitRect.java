@@ -21,7 +21,9 @@ package casmi.graphics;
 import casmi.Applet;
 import casmi.AppletRunner;
 import casmi.graphics.color.Color;
+import casmi.graphics.color.ColorSet;
 import casmi.graphics.element.Rect;
+import casmi.hit.HitRect;
 import static casmi.graphics.color.ColorMode.*;
 
 /**
@@ -30,9 +32,9 @@ import static casmi.graphics.color.ColorMode.*;
  * @author K. Nishimura
  * 
  */
-public class GraphicsExampleRect extends Applet {
-    
+public class GraphicsExampleHitRect extends Applet {
     Rect r1 = new Rect(500, 200);
+    HitRect h1 = new HitRect(500, 200);
     Rect r2 = new Rect(200, 400);
     Color c = new Color(20,100,100);
         
@@ -42,6 +44,9 @@ public class GraphicsExampleRect extends Applet {
         r1.setFillColor(c);
         r1.setStrokeColor(new Color(100, 240, 100));
         r1.setStrokeWidth(3);
+        h1.setFillColor(new Color(50, 50, 255));
+        h1.setStrokeColor(new Color(50,50,250));
+    	h1.setPosition(500, 300);
         
         r2.setFill(false);
         r2.setStrokeWidth(5);
@@ -50,18 +55,31 @@ public class GraphicsExampleRect extends Applet {
     
     @Override
     public void draw(Graphics g) {
+
     	g.pushMatrix();
     	g.translate(500, 300);
-        g.render(r1);
+    	if(h1.hit(getMouseX(), getMouseY())){	
+    		r1.setFillColor(Color.color(ColorSet.LAWNGREEN));
+    	} else {
+    		r1.setFillColor(c);
+    	}
+    	g.render(r1);
         g.popMatrix();
         
+        /*
+    	if(h1.hit(getMouseX(), getMouseY())){
+    		g.render(h1);
+    	}
+    	*/
+    	
         g.pushMatrix();
         g.translate(200, 300);
         g.render(r2);
         g.popMatrix();
     }
+ 
     
     public static void main(String args[]) {
-        AppletRunner.run( "casmi.graphics.GraphicsExampleRect", "Example");
+        AppletRunner.run( "casmi.graphics.GraphicsExampleHitRect", "Example");
     }
 }
