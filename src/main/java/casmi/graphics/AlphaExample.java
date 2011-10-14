@@ -16,48 +16,57 @@
  * limitations under the License.
  */
   
-package casmi.util;
+package casmi.graphics;
 
-
+import static casmi.graphics.color.ColorMode.HSB;
 import casmi.Applet;
 import casmi.AppletRunner;
-import casmi.graphics.Graphics;
 import casmi.graphics.color.Color;
-import casmi.graphics.element.Line;
-import casmi.util.Random;
-
-
+import casmi.graphics.element.Rect;
 /**
  * Example of Graphics.
  * 
- * @author Y.Ban
+ * @author Y. Ban
  * 
  */
-public class RandomExample extends Applet {
+public class AlphaExample extends Applet {
     
-   Line l[];
-   Color c = new Color(0);
-
-    
+    Rect r1 = new Rect(300, 300);
+    Rect r2 = new Rect(300, 300);
+    Color c = new Color(20,100,100);
+    int alpha = 250;
+        
     public void setup(){
         setSize(1024, 768);
-        l = new Line[getHeight()];
-        for(int i=0; i<getHeight(); i++)
-            l[i]= new Line();
+        c.colorMode(HSB);
+        r1.setStroke(false);
+        r1.setFillColor(new Color(100, 240, 100, 150));
+        
+        r2.setStroke(false);
+        r2.setFillColor(new Color(180, 20, 20, 150));
+//        r2.rectMode(CENTER);
     }
     
     @Override
     public void draw(Graphics g) {
-        for(int i=0; i<getHeight(); i++){
-            float r = Random.random(-getWidth()/2, getWidth()/2);
-            c.setGray((int)(Math.abs(r*5)));
-            l[i].setStrokeColor(c);
-            l[i].set(getWidth()/2,i,getWidth()/2+r,i);
-            g.render(l[i]);
-        }
+        g.background(240);
+        if(getKey()=='a')
+            alpha+=1;
+        if(getKey()=='A')
+            alpha-=1;
+        
+        g.pushMatrix();
+        g.translate(500, 400);
+        g.render(r1);
+        g.popMatrix();
+        
+        g.pushMatrix();
+        g.translate(600, 500);
+        g.render(r2);
+        g.popMatrix();
     }
     
     public static void main(String args[]) {
-        AppletRunner.run( "casmi.util.RandomExample", "Example");
+        AppletRunner.run( "casmi.graphics.AlphaExample", "Example");
     }
 }

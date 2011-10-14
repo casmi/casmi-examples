@@ -16,16 +16,13 @@
  * limitations under the License.
  */
   
-package casmi.util;
-
+package casmi.graphics;
 
 import casmi.Applet;
 import casmi.AppletRunner;
-import casmi.graphics.Graphics;
 import casmi.graphics.color.Color;
-import casmi.graphics.element.Line;
-import casmi.util.Random;
-
+import casmi.graphics.color.ColorSet;
+import casmi.graphics.element.Circle;
 
 /**
  * Example of Graphics.
@@ -33,31 +30,25 @@ import casmi.util.Random;
  * @author Y.Ban
  * 
  */
-public class RandomExample extends Applet {
+public class CircleExample extends Applet {
     
-   Line l[];
-   Color c = new Color(0);
-
-    
+    Circle cl = new Circle(100);
+        
     public void setup(){
         setSize(1024, 768);
-        l = new Line[getHeight()];
-        for(int i=0; i<getHeight(); i++)
-            l[i]= new Line();
+
+        cl.setFillColor(new Color(80, 180, 80));
+        cl.setStrokeColor(ColorSet.LIGHTCORAL);
+        cl.setStrokeWidth(3);
     }
     
     @Override
     public void draw(Graphics g) {
-        for(int i=0; i<getHeight(); i++){
-            float r = Random.random(-getWidth()/2, getWidth()/2);
-            c.setGray((int)(Math.abs(r*5)));
-            l[i].setStrokeColor(c);
-            l[i].set(getWidth()/2,i,getWidth()/2+r,i);
-            g.render(l[i]);
-        }
+    	g.translate(200,300);
+        g.render(cl);
     }
     
     public static void main(String args[]) {
-        AppletRunner.run( "casmi.util.RandomExample", "Example");
+        AppletRunner.run( "casmi.graphics.CircleExample", "Example");
     }
 }

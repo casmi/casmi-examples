@@ -16,50 +16,46 @@
  * limitations under the License.
  */
 
-package casmi.graphics.font;
+package casmi.graphics;
 
 import casmi.Applet;
 import casmi.AppletRunner;
-import casmi.graphics.Graphics;
+import casmi.graphics.color.Color;
 import casmi.graphics.color.ColorSet;
 import casmi.graphics.element.Text;
+import casmi.graphics.element.TextBox;
 
-public class FontExample extends Applet {
+/**
+ * TextBox example.
+ * 
+ * @author T. Takeuchi
+ */
+public class TextBoxExample extends Applet {
 
-    private Text text;
-    private String[] fontnames;
+    private static final String SAMPLE_TEXT = "casmi is free software: you can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.";
+    
+    private TextBox textBox;
     
     @Override
     public void setup() {
+
+        setSize(800, 600);
         
-        setSize(300, 500);
-        
-        text = new Text();
-        text.setStrokeColor(ColorSet.WHITE);
-        text.setX(5);
-        fontnames = Font.getAvailableFontFamilyNames();
+        Text text = new Text(SAMPLE_TEXT);
+        text.setStrokeColor(Color.color(ColorSet.WHITE));
+        textBox = new TextBox(text, 400, 300, 350, 150);
+        textBox.setFillColor(Color.color(ColorSet.BLUE));
+        textBox.setStrokeColor(Color.color(ColorSet.AQUA));
     }
 
     @Override
     public void draw(Graphics g) {
 
-        int i = 0;
-        for (int y = getHeight(); 0 < y; y -= 16, i++) {
-            Font f = new Font(fontnames[i], FontStyle.PLAIN, 14);
-            text.setFont(f);
-            text.setText(fontnames[i]);
-            text.setY(y);
-            
-            try {
-                g.render(text);
-            } catch (ArrayIndexOutOfBoundsException e) {
-                // ignore
-            }
-        }
+        g.render(textBox);
     }
-    
+
     public static void main(String[] args) {
         
-        AppletRunner.run("casmi.graphics.font.FontExample", "Font Example");
+        AppletRunner.run("casmi.graphics.TextBoxExample", "TextBox Example");
     }
 }

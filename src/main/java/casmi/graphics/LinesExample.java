@@ -16,48 +16,56 @@
  * limitations under the License.
  */
   
-package casmi.util;
-
+package casmi.graphics;
 
 import casmi.Applet;
 import casmi.AppletRunner;
-import casmi.graphics.Graphics;
 import casmi.graphics.color.Color;
-import casmi.graphics.element.Line;
-import casmi.util.Random;
+import casmi.graphics.element.Lines;
 
+import static casmi.graphics.color.ColorMode.*;
 
 /**
  * Example of Graphics.
  * 
- * @author Y.Ban
+ * @author Y. Ban
  * 
  */
-public class RandomExample extends Applet {
-    
-   Line l[];
-   Color c = new Color(0);
+public class LinesExample extends Applet {
 
-    
+    Lines l, l2;
+    Color c = new Color(20,250,200);
+        
     public void setup(){
         setSize(1024, 768);
-        l = new Line[getHeight()];
-        for(int i=0; i<getHeight(); i++)
-            l[i]= new Line();
+        l = new Lines();
+        l.vertex(210, 120);
+        l.vertex(280, 115);
+        l.vertex(495, 390);
+        l.vertex(240, 345);
+        l.vertex(200, 445);
+        l.setStrokeColor(new Color(100,255,100));
+        
+
+        c.colorMode(HSB);
+        l2 = new Lines();
+        l2.vertex(310, 20);
+        l2.vertex(380, 115);
+        l2.vertex(695, 290);
+        l2.vertex(440, 345);
+        l2.vertex(200, 445);
+        l2.setStrokeColor(c);
+        l2.setStrokeWidth(5);
     }
     
     @Override
     public void draw(Graphics g) {
-        for(int i=0; i<getHeight(); i++){
-            float r = Random.random(-getWidth()/2, getWidth()/2);
-            c.setGray((int)(Math.abs(r*5)));
-            l[i].setStrokeColor(c);
-            l[i].set(getWidth()/2,i,getWidth()/2+r,i);
-            g.render(l[i]);
-        }
+        
+        g.render(l);
+        g.render(l2);
     }
     
     public static void main(String args[]) {
-        AppletRunner.run( "casmi.util.RandomExample", "Example");
+        AppletRunner.run( "casmi.graphics.LinesExample", "Example");
     }
 }

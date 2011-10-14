@@ -16,48 +16,42 @@
  * limitations under the License.
  */
   
-package casmi.util;
+package casmi.graphics;
 
 
 import casmi.Applet;
 import casmi.AppletRunner;
-import casmi.graphics.Graphics;
-import casmi.graphics.color.Color;
-import casmi.graphics.element.Line;
-import casmi.util.Random;
-
+import casmi.image.Image;
+import static casmi.image.Image.ImageMode.*;
+import casmi.util.SystemUtil;
 
 /**
  * Example of Graphics.
  * 
- * @author Y.Ban
+ * @author Y. BAN
  * 
  */
-public class RandomExample extends Applet {
-    
-   Line l[];
-   Color c = new Color(0);
+public class ImageModeExample extends Applet {
 
+    Image image = null;
+    
+    double rot = 0.0;
     
     public void setup(){
         setSize(1024, 768);
-        l = new Line[getHeight()];
-        for(int i=0; i<getHeight(); i++)
-            l[i]= new Line();
+        System.out.println(SystemUtil.USER_DIR);
+        image = new Image( getClass().getResource("/logo.png") );
     }
     
     @Override
     public void draw(Graphics g) {
-        for(int i=0; i<getHeight(); i++){
-            float r = Random.random(-getWidth()/2, getWidth()/2);
-            c.setGray((int)(Math.abs(r*5)));
-            l[i].setStrokeColor(c);
-            l[i].set(getWidth()/2,i,getWidth()/2+r,i);
-            g.render(l[i]);
-        }
+        image.imageMode(CORNER);
+        g.image(image, 300, 300);
+        image.imageMode(CENTER);
+        g.image(image, 300, 300);
     }
     
     public static void main(String args[]) {
-        AppletRunner.run( "casmi.util.RandomExample", "Example");
+        AppletRunner.run( "casmi.graphics.ImageModeExample", "Example");
     }
 }

@@ -16,14 +16,14 @@
  * limitations under the License.
  */
 
-package casmi.util;
+package casmi.graphics;
 
 import casmi.Applet;
 import casmi.AppletRunner;
-import casmi.graphics.Graphics;
 import casmi.graphics.color.Color;
-import casmi.graphics.element.Line;
-import casmi.util.Noise;
+import casmi.graphics.color.ColorMode;
+import casmi.graphics.element.Sphere;
+import casmi.matrix.Vertex;
 
 /**
  * Example of Graphics.
@@ -31,35 +31,49 @@ import casmi.util.Noise;
  * @author Y.Ban
  * 
  */
-public class NoiseExample extends Applet {
+public class LightExample extends Applet {
 
-	Line l[];
-	float noiseScale;
-	Color c = new Color(0);
-	float noiseVal = 0f;
+	Sphere s = new Sphere(70.0);
+	Color c;
+	Vertex v = new Vertex(100, 100, 100);
+	int h = 0, t = 0;
 
 	public void setup() {
 		setSize(1024, 768);
-		l = new Line[getWidth()];
-		for (int i = 0; i < getWidth(); i++)
-			l[i] = new Line();
+
+		c = new Color(h, 200, 150);
+		s.setStroke(true);
+		s.setStrokeColor(new Color(100, 100, 200));
+		c.colorMode(ColorMode.HSB);
 	}
 
 	@Override
 	public void draw(Graphics g) {
-		noiseScale = 0.02f;
-		for (int x = 0; x < getWidth(); x++) {
-			noiseVal = Noise.noise((getMouseX() + x) * noiseScale, 
-									getMouseY() * noiseScale);
-					
-			c.setGray((int) (noiseVal * 255));
-			l[x].setStrokeColor(c);
-			l[x].set(x, getMouseY() + noiseVal * 80, x, getHeight());
-			g.render(l[x]);
+		g.pushMatrix();
+		
+		g.translate(512.0, 430.0, 100.0);
+		
+		// setup ambient light
+		g.ambientLight(1, 1, 1, v);
+		
+		// setup directional light
+		c.setR(h);
+		g.directionalLight(1, c, 1.0f, 0.0f, 1.0f);
+		
+		// render
+		g.render(s);
+		
+		g.popMatrix();
+		
+		t++;
+		if (t % 3 == 0)
+			h += 1;
+		if (h >= 360) {
+			t = h = 0;
 		}
 	}
 
 	public static void main(String args[]) {
-		AppletRunner.run("casmi.util.NoiseExample", "Example");
+		AppletRunner.run("casmi.graphics.LightExample", "Example");
 	}
 }

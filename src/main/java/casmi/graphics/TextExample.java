@@ -16,50 +16,47 @@
  * limitations under the License.
  */
 
-package casmi.graphics.font;
+package casmi.graphics;
 
 import casmi.Applet;
 import casmi.AppletRunner;
-import casmi.graphics.Graphics;
+import casmi.graphics.color.Color;
 import casmi.graphics.color.ColorSet;
+import casmi.graphics.element.Line;
 import casmi.graphics.element.Text;
+import casmi.graphics.font.Font;
+import casmi.graphics.font.FontStyle;
 
-public class FontExample extends Applet {
+public class TextExample extends Applet {
 
+    private static final String SAMPLE_TEXT = "This is a test for Text element.";
+    
     private Text text;
-    private String[] fontnames;
+    private Line line;
     
     @Override
     public void setup() {
+
+        setSize(800, 600);
         
-        setSize(300, 500);
+        Font font = new Font("San-Serif", FontStyle.BOLD_ITALIC, 20);
+        text = new Text(SAMPLE_TEXT, font, 200, 300);
+        text.setStrokeColor(Color.color(ColorSet.WHITE));
         
-        text = new Text();
-        text.setStrokeColor(ColorSet.WHITE);
-        text.setX(5);
-        fontnames = Font.getAvailableFontFamilyNames();
+        line = new Line(200, 300 - text.getDescent(),
+                        200 + text.getWidth(), 300 - text.getDescent());
+        line.setStrokeColor(Color.color(ColorSet.LIGHTBLUE));
     }
 
     @Override
     public void draw(Graphics g) {
 
-        int i = 0;
-        for (int y = getHeight(); 0 < y; y -= 16, i++) {
-            Font f = new Font(fontnames[i], FontStyle.PLAIN, 14);
-            text.setFont(f);
-            text.setText(fontnames[i]);
-            text.setY(y);
-            
-            try {
-                g.render(text);
-            } catch (ArrayIndexOutOfBoundsException e) {
-                // ignore
-            }
-        }
+        g.render(text);
+        g.render(line);
     }
-    
+
     public static void main(String[] args) {
         
-        AppletRunner.run("casmi.graphics.font.FontExample", "Font Example");
+        AppletRunner.run("casmi.graphics.TextExample", "Text Example");
     }
 }

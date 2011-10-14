@@ -15,49 +15,42 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-  
-package casmi.util;
 
+package casmi.graphics;
 
 import casmi.Applet;
 import casmi.AppletRunner;
-import casmi.graphics.Graphics;
-import casmi.graphics.color.Color;
-import casmi.graphics.element.Line;
-import casmi.util.Random;
-
+import casmi.graphics.element.Texture;
+import casmi.util.SystemUtil;
 
 /**
  * Example of Graphics.
  * 
- * @author Y.Ban
+ * @author Y. BAN
  * 
  */
-public class RandomExample extends Applet {
-    
-   Line l[];
-   Color c = new Color(0);
+public class TextureExample extends Applet {
 
+    Texture tex = null;
+    double rot = 0.0;
     
     public void setup(){
         setSize(1024, 768);
-        l = new Line[getHeight()];
-        for(int i=0; i<getHeight(); i++)
-            l[i]= new Line();
+        System.out.println(SystemUtil.USER_DIR);
+       tex = new Texture( getClass().getResource("/logo.png"));
+       
+       tex.setX(500);
+       tex.setY(600);
+
+       tex.setWidth(tex.getWidth()/2);
     }
     
     @Override
     public void draw(Graphics g) {
-        for(int i=0; i<getHeight(); i++){
-            float r = Random.random(-getWidth()/2, getWidth()/2);
-            c.setGray((int)(Math.abs(r*5)));
-            l[i].setStrokeColor(c);
-            l[i].set(getWidth()/2,i,getWidth()/2+r,i);
-            g.render(l[i]);
-        }
+        g.render(tex);
     }
     
     public static void main(String args[]) {
-        AppletRunner.run( "casmi.util.RandomExample", "Example");
+        AppletRunner.run( "casmi.graphics.TextureExample", "Example");
     }
 }
