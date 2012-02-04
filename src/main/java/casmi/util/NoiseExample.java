@@ -20,46 +20,54 @@ package casmi.util;
 
 import casmi.Applet;
 import casmi.AppletRunner;
-import casmi.graphics.Graphics;
+import casmi.KeyEvent;
+import casmi.MouseButton;
+import casmi.MouseEvent;
 import casmi.graphics.color.Color;
 import casmi.graphics.element.Line;
-import casmi.util.Noise;
 
 /**
- * Example of Graphics.
+ * Example of Noise.
  * 
  * @author Y.Ban
- * 
  */
 public class NoiseExample extends Applet {
 
-	Line l[];
+	Line[] lines;
 	float noiseScale;
 	Color c = new Color(0);
-	float noiseVal = 0f;
-
-	public void setup() {
-		setSize(1024, 768);
-		l = new Line[getWidth()];
-		for (int i = 0; i < getWidth(); i++)
-			l[i] = new Line();
-	}
+	float noiseValue = 0;
 
 	@Override
-	public void draw(Graphics g) {
+	public void setup() {
+		setSize(1024, 768);
+		lines = new Line[getWidth()];
+		for (int i = 0; i < getWidth(); i++) {
+			lines[i] = new Line();
+			addObject(lines[i]);
+		}
 		noiseScale = 0.02f;
+	}
+	
+	@Override
+	public void update() {
 		for (int x = 0; x < getWidth(); x++) {
-			noiseVal = Noise.noise((getMouseX() + x) * noiseScale, 
+			noiseValue = Noise.noise((getMouseX() + x) * noiseScale, 
 									getMouseY() * noiseScale);
 					
-			c.setGray((int) (noiseVal * 255));
-			l[x].setStrokeColor(c);
-			l[x].set(x, getMouseY() + noiseVal * 80, x, getHeight());
-			g.render(l[x]);
+			c.setGray((int) (noiseValue * 255));
+			lines[x].setStrokeColor(c);
+			lines[x].set(x, getMouseY() + noiseValue * 80, x, getHeight());
 		}
 	}
 
-	public static void main(String args[]) {
-		AppletRunner.run("casmi.util.NoiseExample", "Example");
+	@Override
+    public void mouseEvent(MouseEvent e, MouseButton b) {}
+
+    @Override
+    public void keyEvent(KeyEvent e) {}
+	
+	public static void main(String[] args) {
+		AppletRunner.run("casmi.util.NoiseExample", "Noise Example");
 	}
 }

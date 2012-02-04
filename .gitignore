@@ -1,7 +1,5 @@
-bin/**
-target/**
-/bin
-/target
+bin/
+target/
 rsrc/*.sqlite3
 rsrc/write_example.xml
 rsrc/write_example.csv

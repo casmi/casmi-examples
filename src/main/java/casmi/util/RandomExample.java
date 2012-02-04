@@ -15,49 +15,54 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-  
-package casmi.util;
 
+package casmi.util;
 
 import casmi.Applet;
 import casmi.AppletRunner;
-import casmi.graphics.Graphics;
+import casmi.KeyEvent;
+import casmi.MouseButton;
+import casmi.MouseEvent;
 import casmi.graphics.color.Color;
 import casmi.graphics.element.Line;
-import casmi.util.Random;
-
 
 /**
- * Example of Graphics.
+ * Random example.
  * 
  * @author Y.Ban
- * 
  */
 public class RandomExample extends Applet {
-    
-   Line l[];
-   Color c = new Color(0);
 
-    
-    public void setup(){
+    Line l[];
+    Color c = new Color(0);
+
+    @Override
+    public void setup() {
         setSize(1024, 768);
         l = new Line[getHeight()];
-        for(int i=0; i<getHeight(); i++)
-            l[i]= new Line();
-    }
-    
-    @Override
-    public void draw(Graphics g) {
-        for(int i=0; i<getHeight(); i++){
-            float r = Random.random(-getWidth()/2, getWidth()/2);
-            c.setGray((int)(Math.abs(r*5)));
-            l[i].setStrokeColor(c);
-            l[i].set(getWidth()/2,i,getWidth()/2+r,i);
-            g.render(l[i]);
+        for (int i = 0; i < getHeight(); i++) {
+            l[i] = new Line();
+            addObject(l[i]);
         }
     }
+
+    @Override
+    public void update() {
+        for (int i = 0; i < getHeight(); i++) {
+            float r = Random.random(-getWidth() / 2, getWidth() / 2);
+            c.setGray((int)(Math.abs(r * 5)));
+            l[i].setStrokeColor(c);
+            l[i].set(getWidth() / 2, i, getWidth() / 2 + r, i);
+        }
+    }    
+
+    @Override
+    public void mouseEvent(MouseEvent e, MouseButton b) {}
+
+    @Override
+    public void keyEvent(KeyEvent e) {}
     
-    public static void main(String args[]) {
-        AppletRunner.run( "casmi.util.RandomExample", "Example");
+    public static void main(String[] args) {
+        AppletRunner.run("casmi.util.RandomExample", "Random Example");
     }
 }

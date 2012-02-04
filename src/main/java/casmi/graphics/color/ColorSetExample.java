@@ -23,9 +23,9 @@ import java.util.List;
 
 import casmi.Applet;
 import casmi.AppletRunner;
-import casmi.graphics.Graphics;
-import casmi.graphics.color.Color;
-import casmi.graphics.color.ColorSet;
+import casmi.KeyEvent;
+import casmi.MouseButton;
+import casmi.MouseEvent;
 import casmi.graphics.element.RoundRect;
 
 /**
@@ -40,40 +40,51 @@ public class ColorSetExample extends Applet {
     
     public void setup(){
         setSize(1024, 768);
-
-        for (ColorSet set : ColorSet.values() ) {
-            RoundRect rr = new RoundRect(6, 0, 0, 52, 52);
-            rr.setFillColor( Color.color(set) );
-            rr.setStroke(false);
-            
-            rrList.add(rr);
-        }
-    }
-    
-    @Override
-    public void draw(Graphics g) {
         final float w = 65.0f; 
         final float h = 65.0f;
         
         int numRows = 14;
-        
         int index = 0;
         
-        g.translate(100, 70);
-                
+        for (ColorSet set : ColorSet.values() ) {
+            RoundRect rr = new RoundRect(6, 0, 0, 52, 52);
+            rr.setFillColor( Color.color(set) );
+            rr.setStroke(false);
+            rr.setXY(w*(index%numRows), h*(index/numRows)); 
+            rrList.add(rr);
+            index++;
+        }
+       
+        
+        setPosition(100, 70);
         for ( RoundRect rr : rrList ) {
-            g.pushMatrix();
-            
-            g.translate(w*(index%numRows), h*(index/numRows));            
-            g.render(rr);
-            
-            g.popMatrix();
-            
-            index ++;
+        	addObject(rr);
         }
     }
     
+   
     public static void main(String args[]) {
         AppletRunner.run( "casmi.graphics.color.ColorSetExample", "Example");
     }
+
+
+	@Override
+	public void mouseEvent(MouseEvent e, MouseButton b) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void keyEvent(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
 }

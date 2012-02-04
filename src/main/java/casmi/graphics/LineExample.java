@@ -15,40 +15,63 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-  
+
 package casmi.graphics;
 
 import casmi.Applet;
 import casmi.AppletRunner;
-import casmi.graphics.color.Color;
+import casmi.KeyEvent;
+import casmi.MouseButton;
+import casmi.MouseEvent;
+import casmi.graphics.color.ColorSet;
 import casmi.graphics.element.Line;
 
 /**
- * Example of Graphics.
+ * Line example.
+ * 
+ * @see casmi.graphics.element.Line
  * 
  * @author K. Nishimura
  * 
  */
 public class LineExample extends Applet {
-    
-    Line l1 = new Line(300, 200, 600, 600);
-    Line l2 = new Line(300, 600, 600, 200);
-    
-    public void setup(){
-        setSize(1024, 768);
-        l1.setStrokeColor(new Color(255, 255, 255));
-        l2.setStrokeColor(new Color(255, 255, 255));
+
+    Line l1 = new Line(200, 200, 600, 400);
+    Line l2 = new Line(200, 400, 600, 200);
+
+    @Override
+    public void setup() {
+        setSize(800, 600);
+        
+        l1.setStrokeColor(ColorSet.WHITE);
+        l2.setStrokeColor(ColorSet.WHITE);
+        
         l1.setStrokeWidth(25);
         l2.setStrokeWidth(25);
+       // l1.setPosition(100,100);
+        addObject(l1);
+        addObject(l2);
     }
-    
-    @Override
-    public void draw(Graphics g) {
-        g.render(l1);
-        g.render(l2);
-    }
-    
+
     public static void main(String args[]) {
-        AppletRunner.run( "casmi.graphics.LineExample", "Example");
+        AppletRunner.run("casmi.graphics.LineExample", "Line Example");
     }
+
+	@Override
+	public void mouseEvent(MouseEvent e, MouseButton b) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyEvent(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
 }

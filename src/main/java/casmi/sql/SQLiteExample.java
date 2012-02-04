@@ -19,35 +19,59 @@
 package casmi.sql;
 
 import casmi.sql.SQLite;
+import casmi.util.FileUtil;
+import casmi.util.SystemUtil;
 
 /**
  * Example of SQLite.
  * 
  * @author T. Takeuchi
- * 
  */
 public class SQLiteExample {
 
-	public static final void main(String[] args) {
-		SQLite sqlite = new SQLite("casmi.sqlite3");
+    static final String DATABASE_PATH = SystemUtil.JAVA_TMP_PATH + "casmi_example.sqlite3";
 
-		try {
-			sqlite.connect();
+    public static void main(String[] args) {
+        SQLite sqlite = null;
+        
+        try {
+            // create a new database file if it is not exist. 
+            if (!FileUtil.exist(DATABASE_PATH)) {
+                SQLite.createDatabase(DATABASE_PATH);
+            }
 
-			sqlite.execute("SELECT * FROM example");
-			while (sqlite.next()) {
-				int id = sqlite.getInt(1);
-				String text = sqlite.getString("text");
-				java.util.Date date = sqlite.getDate(3);
-				float value = sqlite.getFloat("float");
+            // create instance
+            sqlite = new SQLite(DATABASE_PATH);
 
-				System.out.println(id + " | " + text + " | " + date + " | "
-						+ value);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			sqlite.close();
-		}
-	}
+            // connect database
+            sqlite.connect();
+
+            // insert
+            Liquor l1 = sqlite.entity(Liquor.class);
+            l1.setName("Urakasumi");
+            l1.setAbv(15);
+            l1.origin = "Miyagi";
+            l1.save();
+            
+            Liquor l2 = sqlite.entity(Liquor.class);
+            l2.setName("Houhai");
+            l2.setAbv(16);
+            l2.origin = "Aomori";
+            l2.save();
+            
+            // select all
+            Liquor[] ls = sqlite.all(Liquor.class);
+            for (Liquor l : ls) {
+                System.out.println(l);
+            }
+            
+            // delete all
+            sqlite.truncate(Liquor.class);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (sqlite != null)
+                sqlite.close();
+        }
+    }
 }

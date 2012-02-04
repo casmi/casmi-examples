@@ -20,6 +20,9 @@ package casmi.graphics;
 
 import casmi.Applet;
 import casmi.AppletRunner;
+import casmi.KeyEvent;
+import casmi.MouseButton;
+import casmi.MouseEvent;
 import casmi.graphics.color.Color;
 import casmi.graphics.element.Quad;
 
@@ -42,15 +45,34 @@ public class QuadExample extends Applet {
         q2.setFill(false);
         q2.setStrokeWidth(5);
         q2.setStrokeColor(new Color(180, 80, 80));
+        
+        addObject(q1);
+        addObject(q2);
     }
     
-    @Override
-    public void draw(Graphics g) {
-        g.render(q1);
-        g.render(q2);
-    }
     
     public static void main(String args[]) {
         AppletRunner.run( "casmi.graphics.QuadExample", "Example");
     }
+
+
+	@Override
+	public void mouseEvent(MouseEvent e, MouseButton b) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void keyEvent(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
 }

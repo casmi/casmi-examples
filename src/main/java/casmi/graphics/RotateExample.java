@@ -15,50 +15,69 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-  
+
 package casmi.graphics;
 
 import casmi.Applet;
 import casmi.AppletRunner;
+import casmi.KeyEvent;
+import casmi.MouseButton;
+import casmi.MouseEvent;
 import casmi.graphics.color.Color;
+import casmi.graphics.color.ColorMode;
 import casmi.graphics.element.Bezier;
+import casmi.util.SystemUtil;
 
 /**
- * Example of Graphics.
+ * Example of rotation.
  * 
- * @author K. Nishimura
+ * @author K. Nishimura Y. Ban
  * 
  */
 public class RotateExample extends Applet {
 
-    Bezier b1 = new Bezier(0.0,0.0,0.0, 400.0,400.0,-30.0,
-                           500.0,600.0,-10.0, 400.0,100.0,-20.0);
-    
-    public void setup(){
+    Bezier b1 = new Bezier(0.0, 0.0, 0.0, 400.0, 400.0, -30.0,
+        500.0, 600.0, -10.0, 400.0, 100.0, -20.0);
+    Color c = new Color(0, 240, 200);
+    int r = 0;
+
+    @Override
+    public void setup() {
+        c.setColorMode(ColorMode.HSB);
         setSize(1024, 768);
         b1.setFill(false);
-        b1.setStrokeColor(new Color(200, 80, 80));
+        b1.setStrokeColor(c);
         b1.setStrokeWidth(3);
-    }
-    
-    @Override
-    public void draw(Graphics g) {
-
-        g.pushMatrix();
-        
-        g.translate(700, 200, 0);
-        
-        for(int i=0; i<36; i++){
-            g.render(b1);
-            g.rotateZ(5);
-            g.render(b1);
+        setPosition(getWidth() / 2, 100);
+        for (int i = 0; i < 37; i++) {
+        	Bezier b = (Bezier) b1.clone();
+            addObject(b);
+            b.setRotation(5 * i);
         }
-        
-        g.popMatrix();
+    }
+
+    @Override
+    public void update() {
+        c.setR(r);
+        r++;
+        if (r >= 360)
+            r = 0;
+
+        b1.setNode(1, 400 + 200 * Math.sin(r / 180.0 * Math.PI), 400 - 200 * Math.sin(r / 180.0 * Math.PI), -30);
+        b1.setNode(3, 400.0 - 100 * Math.cos(r / 180.0 * Math.PI), 100.0 + 100 * Math.cos(r / 180.0 * Math.PI), -20.0);
 
     }
+
+    @Override
+    public void mouseEvent(MouseEvent e, MouseButton b) {
+        if (e == MouseEvent.PRESSED)
+            capture("rsrc" + SystemUtil.FILE_SEPARATOR + "save.png", false);
+    }
+
+    @Override
+    public void keyEvent(KeyEvent e) {}
     
-    public static void main(String args[]) {
-        AppletRunner.run( "casmi.graphics.RotateExample", "Example");
+    public static void main(String[] args) {
+        AppletRunner.run("casmi.graphics.RotateExample", "Rotation Example");
     }
 }

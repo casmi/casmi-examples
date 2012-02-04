@@ -18,14 +18,13 @@
 
 package casmi;
 
-import casmi.Applet;
-import casmi.AppletRunner;
-import casmi.graphics.Graphics;
 import casmi.graphics.color.Color;
 import casmi.graphics.element.Triangle;
 
 /**
  * Mouse example.
+ * 
+ * @see casmi.Applet
  * 
  * @author K. Nishimura
  */
@@ -33,19 +32,55 @@ public class MouseExample extends Applet {
 
     Triangle t = new Triangle(100, 300, 400, 400, 700, 300);
 
+    @Override
     public void setup() {
+        setFPS(60);
         setSize(800, 600);
         t.setFillColor(new Color(230, 70, 70, 180));
         t.setStrokeColor(new Color(230, 70, 70, 255));
+        addObject(t);
     }
 
     @Override
-    public void draw(Graphics g) {
+    public void update() {
         t.set(100, 300, getMouseX(), getMouseY(), 700, 300);
-        g.render(t);
     }
 
-    public static void main(String args[]) {
+    @Override
+    public void mouseEvent(MouseEvent e, MouseButton b) {
+        boolean mouseFlag = false;
+     
+        switch (e) {
+        case CLICKED:
+            System.out.println("Clicked!!");
+            mouseFlag = true;
+            break;
+        case PRESSED:
+            System.out.println("Pressed!!");
+            mouseFlag = true;
+            break;
+        case RELEASED:
+            System.out.println("Released!!");
+            mouseFlag = true;
+            break;
+        }
+        
+        if (mouseFlag) {
+            switch (b) {
+            case LEFT:
+                System.out.println(": Left");
+                break;
+            case RIGHT:
+                System.out.println(": Right");
+                break;
+            }
+        }
+    }
+
+    @Override
+    public void keyEvent(KeyEvent e) {}
+    
+    public static void main(String[] args) {
         AppletRunner.run("casmi.MouseExample", "Mouse Example");
     }
 }

@@ -18,7 +18,6 @@
   
 package casmi.sql;
 
-import casmi.sql.MySQL;
 
 /**
  * Example of MySQL.
@@ -28,40 +27,49 @@ import casmi.sql.MySQL;
  */
 public class MySQLExample {
 
-    static final String HOST = "localhost";
+    // change information for your environment
+    static final String HOST     = "localhost";
     static final String DATABASE = "casmi";
-    static final String USER = "hoge";
-    static final String PASSWORD = "hoge";
-    
+    static final String USER     = "test";
+    static final String PASSWORD = "test";
 
-    public static final void main(String[] args) {
-        MySQL mysql = new MySQL(HOST, DATABASE, USER, PASSWORD);
-
+    public static void main(String[] args) {
+        MySQL mysql = null;
+        
         try {
+            // create instance
+            mysql = new MySQL(HOST, DATABASE, USER, PASSWORD);
+            // mysql = new MySQL(HOST, DATABASE);
+
+            // connect database
             mysql.connect();
 
-            //mysql.execute("CREATE TABLE example (id integer, text text, date datetime, value double)");
-            mysql.execute("INSERT INTO example VALUES (0, 'Test 1', '2011-07-15', 0.1)");
-            mysql.execute("INSERT INTO example VALUES (1, 'Test 2', '2011-07-15 13:24', 0.2)");
-            mysql.execute("INSERT INTO example VALUES (2, 'Test 3', '2011-07-15 13:25:36', 0.3)");
-
-            //mysql.execute("CREATE TABLE example2 (id integer, value double)");
+            // insert
+            Liquor l1 = mysql.entity(Liquor.class);
+            l1.setName("Urakasumi");
+            l1.setAbv(15);
+            l1.origin = "Miyagi";
+            l1.save();
             
-            mysql.execute("SELECT * FROM example");
-
-            while (mysql.next()) {
-                int id = mysql.getInt(1);
-                String text = mysql.getString("text");
-                java.util.Date date = mysql.getDate(3);
-                float value = mysql.getFloat("value");
-                System.out.println(id + " | " + text + " | " + date + " | " + value);
+            Liquor l2 = mysql.entity(Liquor.class);
+            l2.setName("Houhai");
+            l2.setAbv(16);
+            l2.origin = "Aomori";
+            l2.save();
+            
+            // select all
+            Liquor[] ls = mysql.all(Liquor.class);
+            for (Liquor l : ls) {
+                System.out.println(l);
             }
-        
+            
+            // delete all
+            mysql.truncate(Liquor.class);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            mysql.close();
+            if (mysql != null)
+                mysql.close();
         }
-    }
-    
+    }    
 }

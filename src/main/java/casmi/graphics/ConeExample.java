@@ -15,42 +15,58 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-  
+
 package casmi.graphics;
 
 import casmi.Applet;
 import casmi.AppletRunner;
+import casmi.KeyEvent;
+import casmi.MouseButton;
+import casmi.MouseEvent;
 import casmi.graphics.color.Color;
 import casmi.graphics.element.Cone;
 
 /**
- * Example of Graphics.
+ * Cone example.
+ * 
+ * @see casmi.graphics.element.Cone
  * 
  * @author Y. Ban
- * 
  */
 public class ConeExample extends Applet {
-    
-    Cone s = new Cone(300.0,300);
-    
-    double rot = 90.0;
-    
-    public void setup(){
-        setSize(1024, 768);
-        s.setFill(false);
-        s.setStrokeColor(new Color(100, 100, 200));
-        s.setStrokeWidth(4);
-    }
-    
+
+    Cone cone = new Cone(300, 300);
+  
     @Override
-    public void draw(Graphics g) {
-    	g.translate(512.0,430.0, 100.0);
-        g.render(s);
+    public void setup() {
+        setSize(800, 600);
         
-        rot += 0.1;
+        cone.setFill(false);
+        cone.setStrokeColor(new Color(100, 100, 200));
+        cone.setStrokeWidth(4);
+        cone.setPosition(400, 230, 100);
+        addObject(cone);
     }
-    
-    public static void main(String args[]) {
-        AppletRunner.run( "casmi.graphics.ConeExample", "Example");
+
+    public static void main(String[] args) {
+        AppletRunner.run("casmi.graphics.ConeExample", "Cone Example");
     }
+
+	@Override
+	public void mouseEvent(MouseEvent e, MouseButton b) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyEvent(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -20,34 +20,57 @@ package casmi.graphics;
 
 import casmi.Applet;
 import casmi.AppletRunner;
+import casmi.KeyEvent;
+import casmi.MouseButton;
+import casmi.MouseEvent;
 import casmi.graphics.color.Color;
 import casmi.graphics.color.ColorSet;
 import casmi.graphics.element.Ellipse;
 
 /**
- * Example of Graphics.
+ * Ellipse example.
+ * 
+ * @see casmi.graphics.element.Ellipse
  * 
  * @author K. Nishimura
- * 
  */
 public class EllipseExample extends Applet {
     
-    Ellipse el = new Ellipse(500.0, 400.0, 400.0, 160.0);
+    Ellipse el = new Ellipse(500, 400, 400, 160);
         
-    public void setup(){
-        setSize(1024, 768);
+    @Override
+    public void setup() {
+        setSize(800, 600);
 
         el.setFillColor(new Color(80, 180, 80));
-        el.setStrokeColor(ColorSet.LIGHTCORAL);
+        el.setStrokeColor(ColorSet.LIGHT_CORAL);
         el.setStrokeWidth(3);
+        addObject(el);
     }
     
-    @Override
-    public void draw(Graphics g) {
-        g.render(el);
-    }
     
     public static void main(String args[]) {
-        AppletRunner.run( "casmi.graphics.EllipseExample", "Example");
+        AppletRunner.run("casmi.graphics.EllipseExample", "Ellipse Example");
     }
+
+
+	@Override
+	public void mouseEvent(MouseEvent e, MouseButton b) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void keyEvent(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
 }

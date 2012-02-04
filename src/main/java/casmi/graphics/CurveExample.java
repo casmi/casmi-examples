@@ -15,36 +15,61 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-  
+
 package casmi.graphics;
 
 import casmi.Applet;
 import casmi.AppletRunner;
+import casmi.KeyEvent;
+import casmi.MouseButton;
+import casmi.MouseEvent;
 import casmi.graphics.color.Color;
 import casmi.graphics.element.Curve;
 
 /**
- * Example of Graphics.
+ * Curve example.
+ * 
+ * @see casmi.graphics.element.Curve
  * 
  * @author K. Nishimura
  * 
  */
 public class CurveExample extends Applet {
-    
-    Curve curve = new Curve(200.0, 100.0, 300.0, 400.0, 600.0, 200.0, 400.0, 0.0);
-        
-    public void setup(){
-        setSize(1024, 768);
+
+    Curve curve = new Curve(200, 100, 300, 400, 600, 200, 400, 0);
+
+    @Override
+    public void setup() {
+        setSize(800, 600);
+
         curve.setFill(false);
         curve.setStrokeColor(new Color(255, 80, 80));
+        addObject(curve);
     }
-    
-    @Override
-    public void draw(Graphics g) {
-        g.render(curve);
-    }
-    
+
+
     public static void main(String args[]) {
-        AppletRunner.run( "casmi.graphics.CurveExample", "Example");
+        AppletRunner.run("casmi.graphics.CurveExample", "Curve Example");
     }
+
+
+	@Override
+	public void mouseEvent(MouseEvent e, MouseButton b) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void keyEvent(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
 }

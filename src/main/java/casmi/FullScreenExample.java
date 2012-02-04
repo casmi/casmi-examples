@@ -18,52 +18,67 @@
 
 package casmi;
 
-import casmi.graphics.Graphics;
 import casmi.graphics.color.ColorSet;
 import casmi.graphics.element.Ellipse;
 import casmi.graphics.element.Text;
 import casmi.graphics.element.TextAlign;
 
 /**
- * Full screen sample.
+ * Full screen example.
+ * 
+ * @see casmi.Applet
  * 
  * @author T. Takeuchi
  */
 public class FullScreenExample extends Applet {
-
-    Ellipse ellipse = new Ellipse(30);
+    
+	Ellipse ellipse = new Ellipse(30);
     Text text = new Text("Click or type ESC key to exit.");
     
     @Override
     public void setup() {
-        setFullScreen(true);
-        
+        // setFullScreen(boolean) must be used in setup().
+        setFullScreen(true);    
+
         ellipse.setFillColor(ColorSet.WHITE);
         
         text.setStrokeColor(ColorSet.RED);
         text.setAlign(TextAlign.CENTER);
-    }
-
-    @Override
-    public void draw(Graphics g) {
-        if (isMouseClicked() || isKeyPressed() && getKeycode() == 27) {
-            System.exit(0);
-        }
         
         for (int x = 30; x < getWidth(); x += 80) {
             for (int y = getHeight() - 30; 0 < y; y -= 80) {
-                ellipse.setX(x);
-                ellipse.setY(y);
-                g.render(ellipse);
+            	Ellipse el = (Ellipse) ellipse.clone();
+            	el.setPosition(x, y);
+                addObject(el);
             }
         }
         
+        Text text = new Text("Click or type ESC key to exit.");
+        text.setStrokeColor(ColorSet.RED);
+        text.setAlign(TextAlign.CENTER);
         text.setX(getWidth()  / 2);
         text.setY(getHeight() / 2);
-        g.render(text);
+        addObject(text);
     }
     
+    @Override
+    public void update() {}
+    
+    @Override
+    public void mouseEvent(MouseEvent e, MouseButton b) {
+        if (e == MouseEvent.PRESSED) {
+            System.exit(0);
+        }
+    }
+
+    @Override
+    public void keyEvent(KeyEvent e) {
+        if (e == KeyEvent.TYPED && getKeycode() == 27) {
+            System.exit(0);
+        }
+    }
+
     public static void main(String[] args) {
         AppletRunner.run("casmi.FullScreenExample", "Full Screen Example");
-    }
+    }	
 }

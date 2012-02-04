@@ -2,16 +2,23 @@ package casmi.graphics;
 
 import casmi.Applet;
 import casmi.AppletRunner;
-import casmi.graphics.Graphics.MatrixMode;
+import casmi.KeyEvent;
+import casmi.MouseButton;
+import casmi.MouseEvent;
 import casmi.graphics.element.Sphere;
 import casmi.graphics.element.Texture;
+import casmi.graphics.object.Camera;
+import casmi.graphics.object.Perspective;
 import casmi.matrix.Vertex;
+import casmi.util.SystemUtil;
 
 
 public class SphereTextureExample  extends Applet {
     Sphere s;
     Texture earth;
     Vertex v;
+    Perspective perspective;
+    Camera camera;
 
    
     private int cx, cy;
@@ -28,53 +35,31 @@ public class SphereTextureExample  extends Applet {
 		s = new Sphere(1);
         setSize(1024, 768);
         s.setStroke(false);
-        earth = new Texture( getClass().getResource("/earthDiffuse.png") );
+        earth = new Texture(Applet.class.getResource("earthDiffuse.png"));
         v = new Vertex(0, 0, 10);
         rt[ 0] = rt[ 5] = rt[ 10] = rt[ 15] = 1.0;
         
           
         mousepoint = new Vertex(0,0);
+        perspective = new Perspective(30,(double)getWidth()/(double)getHeight(),1.0,100);
+        camera = new Camera(2.4, 3.2, 4.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
+        setPerspective(perspective);
+        setCamera(camera);
+        applyMatix(rt);
+        sx = 1.0 / (double)getWidth();
+    	sy = 1.0 / (double)getHeight();
+    	s.setTexture(earth);
+    	addObject(s);
 
 	}
 	
-	
 	@Override
-	public void draw(Graphics g) {
+	public void update(){
 		if(isMousePressed()==true){
 			mousepoint.x=getMouseX();mousepoint.y=getMouseY();
-//			System.out.println(mousepoint.x+" "+mousepoint.y);
 		}
+		trackball();
 		
-    	g.perspective(30,(double)getWidth()/(double)getHeight(),1.0,100);
-    	sx = 1.0 / (double)getWidth();
-    	sy = 1.0 / (double)getHeight();
-    	g.camera(2.4, 3.2, 4.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
-    	
-    	g.matrixMode(MatrixMode.MODELVIEW);
-    	g.pushMatrix();
-    	{
-    		trackball();
-    		g.applyMatrix(rt);
-    		
-    		g.pushMatrix();
-    		{
-    			earth.enableTexture();
-    			
-    			g.pushMatrix();
-    			{
-    				g.rotateX(90);
-    					g.render(s);
-    			}
-    			g.popMatrix();
-    			
-    			earth.disableTexture();
-
-    		}
-    		g.popMatrix();
-    	}
-    	g.matrixMode(MatrixMode.MODELVIEW);
-    	g.popMatrix();
-    	
 	}
 	
 	
@@ -188,6 +173,18 @@ public class SphereTextureExample  extends Applet {
 	
 	public static void main(String args[]) {
 AppletRunner.run( "casmi.graphics.SphereTextureExample", "Example");
+	}
+
+	@Override
+	public void mouseEvent(MouseEvent e, MouseButton b) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyEvent(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

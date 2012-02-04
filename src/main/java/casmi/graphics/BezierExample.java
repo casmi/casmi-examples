@@ -15,49 +15,73 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-  
+
 package casmi.graphics;
 
 import casmi.Applet;
 import casmi.AppletRunner;
+import casmi.KeyEvent;
+import casmi.MouseButton;
+import casmi.MouseEvent;
 import casmi.graphics.color.Color;
 import casmi.graphics.element.Bezier;
 
 /**
- * Example of Graphics.
+ * Bezier example.
+ * 
+ * @see casmi.graphics.element.Bezier
  * 
  * @author K. Nishimura
- * 
  */
 public class BezierExample extends Applet {
-    
-    Bezier b1 = new Bezier(100,200,200,400,300,300,400,200);
-    Bezier b2 = new Bezier(400,200,500,100,700,300,800,600);
-    Bezier b3 = new Bezier(300.0,300.0,-20.0, 800.0,800.0,-100.0,
-                           300.0,600.0,-50.0, 700.0,500.0,-70.0);
 
-    public void setup(){
-        setSize(1024, 768);
-        
+    Bezier b1 = new Bezier(100, 200, 200, 400, 300, 300, 400, 200);
+    Bezier b2 = new Bezier(400, 200, 500, 100, 700, 300, 700, 500);
+    Bezier b3 = new Bezier(100, 200, -20, 700, 400, -100, 300, 600, -50, 700, 500, -70);
+
+    public void setup() {
+        setSize(800, 600);
+
         b1.setFill(false);
         b2.setFill(false);
         b3.setFill(false);
+        
         b1.setStrokeColor(new Color(200, 80, 80));
-        b2.setStrokeColor(new Color(200, 80, 80));
+        b2.setStrokeColor(new Color(80, 200, 80));
         b3.setStrokeColor(new Color(80, 80, 200));
-        b1.setStrokeWidth(3);
-        b2.setStrokeWidth(3);
-        b3.setStrokeWidth(3);
+        
+        b1.setStrokeWidth(5);
+        b2.setStrokeWidth(5);
+        b3.setStrokeWidth(5);
+        
+        addObject(b1);
+        addObject(b2);
+        addObject(b3);
     }
-    
-    @Override
-    public void draw(Graphics g) {
-        g.render(b1);
-        g.render(b2);
-        g.render(b3);
-    }
-    
+
+
     public static void main(String args[]) {
-        AppletRunner.run( "casmi.graphics.BezierExample", "Example");
+        AppletRunner.run("casmi.graphics.BezierExample", "Bezier Example");
     }
+
+
+	@Override
+	public void mouseEvent(MouseEvent e, MouseButton b) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void keyEvent(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
 }

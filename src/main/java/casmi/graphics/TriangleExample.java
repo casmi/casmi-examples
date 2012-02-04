@@ -20,6 +20,9 @@ package casmi.graphics;
 
 import casmi.Applet;
 import casmi.AppletRunner;
+import casmi.KeyEvent;
+import casmi.MouseButton;
+import casmi.MouseEvent;
 import casmi.graphics.color.Color;
 import casmi.graphics.element.Triangle;
 
@@ -43,15 +46,30 @@ public class TriangleExample extends Applet {
         t2.setFillColor(new Color(120, 200, 100));
         t2.setStrokeColor(new Color(0, 100, 200));
         t2.setStrokeWidth(5);
-    }
-
-    @Override
-    public void draw(Graphics g) {
-        g.render(t1);
-        g.render(t2);
+        
+        addObject(t1);
+        addObject(t2);
     }
 
     public static void main(String args[]) {
         AppletRunner.run("casmi.graphics.TriangleExample", "Example");
     }
+
+	@Override
+	public void mouseEvent(MouseEvent e, MouseButton b) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyEvent(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
 }

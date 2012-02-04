@@ -24,6 +24,9 @@ import java.util.Random;
 
 import casmi.Applet;
 import casmi.AppletRunner;
+import casmi.KeyEvent;
+import casmi.MouseButton;
+import casmi.MouseEvent;
 import casmi.graphics.color.Color;
 import casmi.graphics.element.Point;
 
@@ -50,17 +53,33 @@ public class PointExample extends Applet {
             p.setStrokeColor(new Color(255, 255, 255));
             
             points.add(p);
+            addObject(p);
         }
     }
 
-    @Override
-    public void draw(Graphics g) {
-        for (Point p : points ){
-            g.render(p);
-        }
-    }
 
     public static void main(String args[]) {
         AppletRunner.run("casmi.graphics.PointExample", "Example");
     }
+
+
+	@Override
+	public void mouseEvent(MouseEvent e, MouseButton b) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void keyEvent(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -23,94 +23,132 @@ import java.util.List;
 
 import casmi.Applet;
 import casmi.AppletRunner;
-import casmi.graphics.Graphics;
+import casmi.KeyEvent;
+import casmi.MouseButton;
+import casmi.MouseEvent;
 import casmi.graphics.color.ColorSet;
-import casmi.graphics.element.MouseOver;
+import casmi.graphics.element.Element;
+import casmi.graphics.element.MouseOverCallback;
 import casmi.graphics.element.RoundRect;
 import casmi.graphics.element.Text;
 import casmi.graphics.element.TextAlign;
 import casmi.graphics.font.Font;
+import casmi.graphics.font.FontStyle;
 
-
+/**
+ * Example of MouseOver.
+ * 
+ * @author Y. Ban
+ * 
+ */
 public class MouseOverColorSetExample extends Applet {
     
     List<RoundRect> rrList = new ArrayList<RoundRect>();
-    List<MouseOver> moList = new ArrayList<MouseOver>();
-    Font f;
-    Text t;
-    
-    class ColorRoundrect {
-        String colorname;
-        RoundRect roundrect;
-        MouseOver mouseover;
-        ColorSet cset;
-
-        ColorRoundrect(ColorSet set) {
-        	cset = set;
-            roundrect = new RoundRect(6, 0, 0, 52, 52);
-            colorname = set.toString();
-            roundrect.setFillColor(set);
-            roundrect.setStrokeColor(ColorSet.WHITE);
-            roundrect.setStrokeWidth(2.0f);
-            roundrect.setStroke(false);
-            mouseover = new MouseOver(roundrect);
-        }
-    }
-    
     List<ColorRoundrect> crList = new ArrayList<ColorRoundrect>();
+    Font f;
+    Text t,backt;
+    MouseOverCallback callback;
+      int index;
+      
+      class ColorRoundrect {
+          String colorname;
+          RoundRect roundrect;
+          ColorSet cset;
+          int index;
+
+          ColorRoundrect(ColorSet set) {
+          	cset = set;
+              roundrect = new RoundRect(6, 0, 0, 52, 52);
+              colorname = set.toString();
+              roundrect.setFillColor(set);
+              roundrect.setStrokeColor(ColorSet.WHITE);
+              roundrect.setStrokeWidth(2.0f);
+              roundrect.setStroke(false);
+          }
+      }
+      
+      
     
     public void setup(){
         setSize(1024, 768);
-
+        final float w = 65.0f; 
+        final float h = 65.0f;
+        
+        int numRows = 14;
+        index = 0;
+        
         for (ColorSet set : ColorSet.values() ) {
             ColorRoundrect cr = new ColorRoundrect(set);
             
             crList.add(cr);
         }
-        
-        f = new Font();
-        f.setSize(35);
-        t = new Text(null, f, 750, 710);
+        f = new Font("San-Serif", FontStyle.BOLD_ITALIC, 43);
+        t = new Text(" ",f);
+        backt = new Text(" ",f);
         t.setAlign(TextAlign.CENTER);
         t.setStrokeColor(ColorSet.WHITE);
-    }
-    
-    @Override
-    public void draw(Graphics g) {
-        final float w = 65.0f; 
-        final float h = 65.0f;
+        t.setPosition(770, 710);
+        backt.setAlign(TextAlign.CENTER);
+        backt.setStrokeColor(ColorSet.WHITE);
+        backt.setPosition(770, 710);
         
-        int numRows = 14;
-        
-        int index = 0;
-                  
-        for ( ColorRoundrect cr : crList ) {
-            g.pushMatrix();
-            
-            cr.roundrect.setXY(w*(index%numRows)+100, h*(index/numRows)+70);   
-            if(cr.mouseover.isMouseOver(getMouseX(), getMouseY())){
-            	cr.roundrect.setStroke(true);
-            	t.setText(cr.colorname);
-            	t.setStrokeColor(cr.cset);
-                if(cr.colorname=="BLACK"){
-                	t.setStrokeColor(ColorSet.WHITE);
-                	g.render(t);
-                	t.setStrokeColor(cr.cset);
-                }
-            	}
-            else{
-            	cr.roundrect.setStroke(false);
-            	t.setText(" ");
-            	}	
-            g.render(cr.mouseover);
-            
-            g.popMatrix();
-            g.render(t);
-            index ++;
+        index = 0;
+        for(final ColorRoundrect cr : crList ){
+        	callback = new MouseOverCallback(){
+
+				@Override
+				public void run(MouseOverTypes eventtype,
+						Element element) {
+
+            		if(eventtype == MouseOverTypes.ENTERED){
+            			element.setStroke(true);
+            			t.setText(cr.colorname);
+            			backt.setText(cr.colorname);
+                    	t.setStrokeColor(cr.cset);
+            		}
+            		if(eventtype == MouseOverTypes.EXITED){
+            			t.setText(" ");
+            			backt.setText(" ");
+            			element.setStroke(false);
+            		}
+					
+				}
+
+				
+            };
+        	cr.roundrect.setPosition(w*(index%numRows)+100, h*(index/numRows)+70); 
+        	cr.roundrect.addMouseEventCallback(callback);
+        	cr.index = index;
+        	addObject(cr.roundrect);
+        	index ++;
         }
+        addObject(backt);
+        addObject(t);
     }
     
+   
     public static void main(String args[]) {
         AppletRunner.run( "casmi.graphics.mouseover.MouseOverColorSetExample", "Example");
     }
+
+
+	@Override
+	public void mouseEvent(MouseEvent e, MouseButton b) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void keyEvent(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -21,8 +21,12 @@ package casmi.graphics;
 
 import casmi.Applet;
 import casmi.AppletRunner;
-import casmi.image.Image;
-import static casmi.image.Image.ImageMode.*;
+import casmi.KeyEvent;
+import casmi.MouseButton;
+import casmi.MouseEvent;
+import casmi.graphics.element.Rect;
+import casmi.graphics.element.Texture;
+import casmi.image.ImageMode;
 import casmi.util.SystemUtil;
 
 /**
@@ -33,25 +37,46 @@ import casmi.util.SystemUtil;
  */
 public class ImageModeExample extends Applet {
 
-    Image image = null;
+   Texture tex = null;
+    Rect r1 = new Rect(100,100);
     
-    double rot = 0.0;
+   // String imagePath = ".." + SystemUtil.FILE_SEPARATOR + "rsrc" + SystemUtil.FILE_SEPARATOR + "logo.png";  // TODO can not work when running as Java Application
+   // String imagePath = "rsrc" + SystemProperty.FILE_SEPARATOR + "logo.png";
+    String imagePath = "rsrc" + SystemUtil.FILE_SEPARATOR + "logo.png";
+    
     
     public void setup(){
         setSize(1024, 768);
         System.out.println(SystemUtil.USER_DIR);
-        image = new Image( getClass().getResource("/logo.png") );
-    }
-    
-    @Override
-    public void draw(Graphics g) {
-        image.imageMode(CORNER);
-        g.image(image, 300, 300);
-        image.imageMode(CENTER);
-        g.image(image, 300, 300);
+        tex = new Texture(imagePath);
+        tex.setMode(ImageMode.CORNER);
+        tex.setPosition(300, 300);
+        addObject(tex);
+        addObject(r1);
+        tex.setMode(ImageMode.CENTER);
+        tex.setPosition(600, 600);
+        addObject(tex);
     }
     
     public static void main(String args[]) {
         AppletRunner.run( "casmi.graphics.ImageModeExample", "Example");
     }
+
+	@Override
+	public void mouseEvent(MouseEvent e, MouseButton b) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyEvent(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
 }

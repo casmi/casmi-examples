@@ -18,56 +18,51 @@
 
 package casmi;
 
-import static casmi.Applet.CursorMode.DEFAULT;
-import static casmi.Applet.CursorMode.HAND;
-import casmi.graphics.Graphics;
 import casmi.graphics.color.Color;
-import casmi.graphics.color.ColorSet;
-import casmi.graphics.element.Line;
-import casmi.graphics.element.MouseOver;
-import casmi.graphics.element.Rect;
+import casmi.graphics.element.Circle;
+import casmi.graphics.element.Element;
+import casmi.graphics.element.MouseOverCallback;
 
 /**
- * Example of cursor.
+ * Cursor example.
+ * 
+ * @see casmi.Applet
+ * @see casmi.Applet.CursorMode
  * 
  * @author Y. Ban
  */
 public class CursorExample extends Applet {
 
-	Line l1 = new Line(200, 150, 600, 450);
-	Line l2 = new Line(200, 450, 600, 150);
-	Rect r  = new Rect(400, 300, 360, 270);
-	MouseOver mo;
+	Circle circle = new Circle(400, 300, 50);
 
 	@Override
 	public void setup() {
 		setSize(800, 600);
 		
-		l1.setStrokeColor(ColorSet.WHITE);
-		l1.setStrokeWidth(25);
-		
-		l2.setStrokeColor(ColorSet.WHITE);
-		l2.setStrokeWidth(25);
-
-		r.setFillColor(new Color(100, 100));
-		r.setStroke(false);
-		mo = new MouseOver(r);
+		circle.setFillColor(new Color(100, 100));
+		circle.addMouseEventCallback(new MouseOverCallback() {
+            @Override
+            public void run(MouseOverTypes eventtype, Element element) {
+                if (eventtype == MouseOverTypes.EXISTED) {
+                    cursor(CursorMode.HAND);
+                } else {
+                    cursor(CursorMode.DEFAULT);
+                }
+            }
+        });
+		addObject(circle);
 	}
-
+	
 	@Override
-	public void draw(Graphics g) {
-		g.render(l1);
-		g.render(l2);
-		g.render(r);
+	public void update() {}
+	
+	@Override
+    public void mouseEvent(MouseEvent e, MouseButton b) {}
 
-		if (mo.isMouseOver(getMouseX(), getMouseY())) {
-			cursor(HAND);
-		} else {
-			cursor(DEFAULT);
-		}
-	}
+    @Override
+    public void keyEvent(KeyEvent e) {}
 
-	public static void main(String args[]) {
+	public static void main(String[] args) {
 		AppletRunner.run("casmi.CursorExample", "Cursor Example");
 	}
 }

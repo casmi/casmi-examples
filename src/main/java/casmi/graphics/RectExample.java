@@ -20,9 +20,12 @@ package casmi.graphics;
 
 import casmi.Applet;
 import casmi.AppletRunner;
+import casmi.KeyEvent;
+import casmi.MouseButton;
+import casmi.MouseEvent;
 import casmi.graphics.color.Color;
+import casmi.graphics.color.ColorMode;
 import casmi.graphics.element.Rect;
-import static casmi.graphics.color.ColorMode.*;
 
 /**
  * Example of Graphics.
@@ -36,32 +39,33 @@ public class RectExample extends Applet {
     Rect r2 = new Rect(200, 400);
     Color c = new Color(20,100,100);
         
-    public void setup(){
+    public void setup() {
         setSize(1024, 768);
-        c.colorMode(HSB);
+        c.setColorMode(ColorMode.HSB);
         r1.setFillColor(c);
         r1.setStrokeColor(new Color(100, 240, 100));
         r1.setStrokeWidth(3);
+        r1.setPosition(500, 300);
         
         r2.setFill(false);
         r2.setStrokeWidth(5);
         r2.setStrokeColor(new Color(180, 80, 80));
+        r2.setPosition(200, 300);
+        
+        addObject(r1);
+        addObject(r2);
     }
     
     @Override
-    public void draw(Graphics g) {
-    	g.pushMatrix();
-    	g.translate(500, 300);
-        g.render(r1);
-        g.popMatrix();
-        
-        g.pushMatrix();
-        g.translate(200, 300);
-        g.render(r2);
-        g.popMatrix();
-    }
-    
-    public static void main(String args[]) {
-        AppletRunner.run( "casmi.graphics.RectExample", "Example");
+    public void update() {}
+
+	@Override
+	public void mouseEvent(MouseEvent e, MouseButton b) {}
+
+	@Override
+	public void keyEvent(KeyEvent e) {}
+	
+	public static void main(String[] args) {
+        AppletRunner.run("casmi.graphics.RectExample", "Example");
     }
 }

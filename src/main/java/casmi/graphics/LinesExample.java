@@ -15,39 +15,44 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-  
+
 package casmi.graphics;
 
 import casmi.Applet;
 import casmi.AppletRunner;
+import casmi.KeyEvent;
+import casmi.MouseButton;
+import casmi.MouseEvent;
 import casmi.graphics.color.Color;
+import casmi.graphics.color.ColorMode;
 import casmi.graphics.element.Lines;
 
-import static casmi.graphics.color.ColorMode.*;
-
 /**
- * Example of Graphics.
+ * Multiple lines example.
+ * 
+ * @see casmi.graphics.element.Lines
  * 
  * @author Y. Ban
- * 
  */
 public class LinesExample extends Applet {
 
-    Lines l, l2;
-    Color c = new Color(20,250,200);
-        
-    public void setup(){
-        setSize(1024, 768);
-        l = new Lines();
-        l.vertex(210, 120);
-        l.vertex(280, 115);
-        l.vertex(495, 390);
-        l.vertex(240, 345);
-        l.vertex(200, 445);
-        l.setStrokeColor(new Color(100,255,100));
-        
+    Lines l1, l2;
+    Color c = new Color(20, 250, 200);
 
-        c.colorMode(HSB);
+    @Override
+    public void setup() {
+        setSize(800, 600);
+        
+        l1 = new Lines();
+        l1.vertex(210, 120);
+        l1.vertex(280, 115);
+        l1.vertex(495, 390);
+        l1.vertex(240, 345);
+        l1.vertex(200, 445);
+        l1.setStrokeColor(new Color(100, 255, 100));
+
+        c.setColorMode(ColorMode.HSB);
+        
         l2 = new Lines();
         l2.vertex(310, 20);
         l2.vertex(380, 115);
@@ -56,16 +61,30 @@ public class LinesExample extends Applet {
         l2.vertex(200, 445);
         l2.setStrokeColor(c);
         l2.setStrokeWidth(5);
-    }
-    
-    @Override
-    public void draw(Graphics g) {
         
-        g.render(l);
-        g.render(l2);
+        addObject(l1);
+        addObject(l2);
     }
-    
+
     public static void main(String args[]) {
-        AppletRunner.run( "casmi.graphics.LinesExample", "Example");
+        AppletRunner.run("casmi.graphics.LinesExample", "Lines Example");
     }
+
+	@Override
+	public void mouseEvent(MouseEvent e, MouseButton b) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyEvent(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
 }

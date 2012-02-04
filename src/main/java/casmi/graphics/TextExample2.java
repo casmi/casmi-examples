@@ -20,12 +20,16 @@ package casmi.graphics;
 
 import casmi.Applet;
 import casmi.AppletRunner;
+import casmi.KeyEvent;
+import casmi.MouseButton;
+import casmi.MouseEvent;
 import casmi.graphics.color.Color;
 import casmi.graphics.color.ColorSet;
 import casmi.graphics.element.Line;
 import casmi.graphics.element.Text;
 import casmi.graphics.element.TextAlign;
 import casmi.graphics.font.Font;
+import casmi.graphics.object.GraphicsObject;
 
 /**
  * Example of casmi Font
@@ -38,6 +42,7 @@ public class TextExample2 extends Applet {
     Font f = null;
     Line l;
     Text t,t2,t3;
+    GraphicsObject group;
 
     public void setup() {
         String s = "casmi is free software: \n you can redistribute it and/or modify it \n" +
@@ -54,11 +59,11 @@ public class TextExample2 extends Applet {
         f = new Font("San-Serif");
         f.setSize(15);
         t = new Text("This is test for font rendering", f, 200, 300);
-        t.setStrokeColor(Color.color(ColorSet.LIGHTBLUE));
+        t.setStrokeColor(Color.color(ColorSet.LIGHT_BLUE));
         
-        t2 = new Text(s, f, 500, 600);
-        t2.setAlign(TextAlign.CENTER);
-        t2.setStrokeColor(Color.color(ColorSet.INDIANRED));
+	        t2 = new Text(s, f, 500, 600);
+	        t2.setAlign(TextAlign.CENTER);
+        t2.setStrokeColor(Color.color(ColorSet.INDIAN_RED));
         
         f.setStyle("ITALIC");
         t3 = new Text(s2, f, 450, 250);
@@ -67,20 +72,38 @@ public class TextExample2 extends Applet {
         t3.setLeading(t3.getLeading()+2);
         
         l = new Line(200,300-t.getDescent(),200+t.getWidth(),300-t.getDescent());
-        l.setStrokeColor(Color.color(ColorSet.LIGHTBLUE));
+        l.setStrokeColor(Color.color(ColorSet.LIGHT_BLUE));
+       // t.setRotation(30);
+       // l.setRotation(30);
+        group = new GraphicsObject();
+        group.add(t);
+        group.add(l);
+        group.setRotation(30);
+        addObject(t2);
+        addObject(t3);
+        addObject(group);
        
-    }
-
-    @Override
-    public void draw(Graphics g) {
-        g.render(t2);
-        g.render(t3);
-        g.rotateZ(20);
-        g.render(t);
-        g.render(l);
     }
 
     public static void main(String args[]) {
         AppletRunner.run("casmi.graphics.TextExample2", "Example");
     }
+
+	@Override
+	public void mouseEvent(MouseEvent e, MouseButton b) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyEvent(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
 }

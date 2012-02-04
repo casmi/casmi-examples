@@ -18,9 +18,6 @@
 
 package casmi;
 
-import java.awt.event.KeyEvent;
-
-import casmi.graphics.Graphics;
 import casmi.graphics.color.Color;
 import casmi.graphics.color.ColorSet;
 import casmi.graphics.element.Line;
@@ -33,31 +30,34 @@ import casmi.graphics.font.FontStyle;
 /**
  * Keyboard example.
  * 
+ * @see casmi.Applet
+ * 
  * @author Y.Ban
  */
 public class KeyboardExample extends Applet {
 
     private static final int LINE_NUM = 9;
 
-    Rect r = new Rect(640, 480);
-    Line l = new Line();
-    Line c = new Line();
+    Rect r    = new Rect(640, 480);
+    Line line = new Line();
+    Line c    = new Line();
     Font f, ft;
     Text df_text, text;
 
     String content = "";
 
+    @Override
     public void setup() {
         setSize(800, 600);
         
-        r.setFillColor(ColorSet.WHITE);
+        r.setFill(false);
         r.setStrokeColor(ColorSet.GRAY);
-        r.setXY(getWidth() / 2, getHeight() / 2);
+        r.setPosition(getWidth() / 2, getHeight() / 2);
         
-        l.setStrokeColor(ColorSet.GRAY);
-        l.setStrokeWidth(1.1);
+        line.setStrokeColor(ColorSet.GRAY);
+        line.setStrokeWidth(1.1);
         
-        c.setStrokeColor(ColorSet.LIGHTCORAL);
+        c.setStrokeColor(ColorSet.LIGHT_CORAL);
 
         f = new Font("Times New Roman");
         f.setSize(40);
@@ -65,49 +65,53 @@ public class KeyboardExample extends Applet {
                            getWidth()  / 2,
                            getHeight() / 2 + r.getHeight() / 2 - r.getHeight() / (LINE_NUM + 1));
         df_text.setAlign(TextAlign.CENTER);
-        df_text.setStrokeColor(ColorSet.LIGHTCORAL);
+        df_text.setStrokeColor(ColorSet.LIGHT_CORAL);
         df_text.setY((int)(df_text.getY() + df_text.getDescent() + 3));
 
         ft = new Font("Times New Roman", FontStyle.ITALIC, 40);
         text = new Text(content, ft,
                         getWidth()  / 2 - (r.getWidth() / 2 - 20),
                         getHeight() / 2 + r.getHeight() / 2 - 2 * r.getHeight() / (LINE_NUM + 1) + 5);
-        text.setStrokeColor(Color.color(ColorSet.LIGHTBLUE));
+        text.setStrokeColor(Color.color(ColorSet.LIGHT_BLUE));
         text.setLeading(r.getHeight() / (LINE_NUM + 1));
-    }
-
-    @Override
-    public void draw(Graphics g) {
-        g.render(r);
         
+        addObject(r);
         for (int i = 0; i < LINE_NUM; i++) {
+        	Line l = (Line) line.clone();
             l.set(getWidth() / 2 - (r.getWidth() / 2 - 20), getHeight() / 2 + r.getHeight() / 2 - ((i + 1) * r.getHeight() / (LINE_NUM + 1)),
                   getWidth() / 2 + (r.getWidth() / 2 - 20), getHeight() / 2 + r.getHeight() / 2 - ((i + 1) * r.getHeight() / 10));
-            g.render(l);
+            addObject(l);
         }
-        
-        g.render(df_text);
-        
-        if (isKeyPressed()) {
+        addObject(df_text);
+        addObject(text);
+        addObject(c);
+    }
+    
+    @Override
+    public void update() {}
+    
+    @Override 
+    public void keyEvent(KeyEvent e){
+    	if (e == KeyEvent.PRESSED) {
             if (44 <= getKeycode() || getKeycode() == 32) {
                 content += getKey();
-            } else if (getKeycode() == KeyEvent.VK_ENTER) {
+            } else if (getKeycode() == java.awt.event.KeyEvent.VK_ENTER) {
                 content += "\n";
-            } else if (getKeycode() == 8) {
+            } else if (getKeycode() == 8&&content.length()>0) {
                 content = content.substring(0, content.length() - 1);
             }
             text.setText(content);
         }
-        g.render(text);
-        
-        c.set(text.getX() + text.getWidth(text.getLine()  - 1) + 2,
-              text.getY() - text.getLeading() * (text.getLine() - 2) - 10,
-              text.getX() + text.getWidth(text.getLine()  - 1) + 2,
-              text.getY() - text.getLeading() * (text.getLine() - 1) - 1);
-        g.render(c);
+    	c.set(text.getX() + text.getWidth(text.getLine()  - 1) + 2,
+                text.getY() - text.getLeading() * (text.getLine() - 2) - 10,
+                text.getX() + text.getWidth(text.getLine()  - 1) + 2,
+                text.getY() - text.getLeading() * (text.getLine() - 1) - 1);
     }
 
-    public static void main(String args[]) {
+    @Override
+    public void mouseEvent(MouseEvent e, MouseButton b) {}    
+
+    public static void main(String[] args) {
         AppletRunner.run("casmi.KeyboardExample", "Keyboard Example");
     }
 }

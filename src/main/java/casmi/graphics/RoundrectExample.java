@@ -20,6 +20,9 @@ package casmi.graphics;
 
 import casmi.Applet;
 import casmi.AppletRunner;
+import casmi.KeyEvent;
+import casmi.MouseButton;
+import casmi.MouseEvent;
 import casmi.graphics.color.Color;
 import casmi.graphics.element.RoundRect;
 
@@ -48,16 +51,31 @@ public class RoundrectExample extends Applet {
         
         r3.setFillColor(new Color(80, 80, 180));
         r3.setStrokeColor(new Color(120, 120, 240));
-    }
-    
-    @Override
-    public void draw(Graphics g) {
-        g.render(r1);
-        g.render(r2);
-        g.render(r3);
+        
+        addObject(r1);
+        addObject(r2);
+        addObject(r3);
     }
     
     public static void main(String args[]) {
         AppletRunner.run( "casmi.graphics.RoundrectExample", "Example");
     }
+
+	@Override
+	public void mouseEvent(MouseEvent e, MouseButton b) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyEvent(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
 }

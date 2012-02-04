@@ -15,38 +15,65 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-  
+
 package casmi.graphics;
 
 import casmi.Applet;
 import casmi.AppletRunner;
+import casmi.KeyEvent;
+import casmi.MouseButton;
+import casmi.MouseEvent;
 import casmi.graphics.color.Color;
 import casmi.graphics.element.Arc;
 
 /**
- * Example of Graphics.
+ * Arc example
+ * 
+ * @see casmi.graphics.element.Arc
  * 
  * @author K. Nishimura
- * 
  */
 public class ArcExample extends Applet {
 
-    Arc a = new Arc(500.0, 200.0, 400.0, 0.0, 90.0, 20);
-    
+    Arc a = new Arc(400, 200, 300, 0, 90, 20);
+
+    @Override
     public void setup() {
-        setSize(1024, 768);
+        setSize(800, 600);
 
         a.setFillColor(new Color(70, 180, 70));
         a.setStrokeColor(new Color(120, 240, 120));
         a.setStrokeWidth(3);
+        addObject(a);
     }
 
-    @Override
-    public void draw(Graphics g) {
-        g.render(a);
-    }
-        
+
+
     public static void main(String args[]) {
-        AppletRunner.run( "casmi.graphics.ArcExample", "Example");
+        AppletRunner.run("casmi.graphics.ArcExample", "Arc Example");
     }
+
+
+
+	@Override
+	public void mouseEvent(MouseEvent e, MouseButton b) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	public void keyEvent(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -20,7 +20,9 @@ package casmi.graphics;
 
 import casmi.Applet;
 import casmi.AppletRunner;
-import casmi.graphics.Graphics;
+import casmi.KeyEvent;
+import casmi.MouseButton;
+import casmi.MouseEvent;
 import casmi.graphics.color.Color;
 import casmi.graphics.element.Polygon;
 
@@ -53,16 +55,34 @@ public class PolygonExample extends Applet {
         poly2.setFill(false);
         poly2.setStrokeColor(new Color(200,0,100));
         poly2.setStrokeWidth(7);
+        
+        addObject(poly);
+        addObject(poly2);
     }
     
-    @Override
-    public void draw(Graphics g) {
-        
-        g.render(poly);
-        g.render(poly2);
-    }
     
     public static void main(String args[]) {
         AppletRunner.run( "casmi.graphics.PolygonExample", "Example");
     }
+
+
+	@Override
+	public void mouseEvent(MouseEvent e, MouseButton b) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void keyEvent(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
 }

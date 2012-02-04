@@ -15,40 +15,58 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-  
+
 package casmi.graphics;
 
 import casmi.Applet;
 import casmi.AppletRunner;
+import casmi.KeyEvent;
+import casmi.MouseButton;
+import casmi.MouseEvent;
 import casmi.graphics.color.Color;
 import casmi.graphics.color.ColorSet;
 import casmi.graphics.element.Circle;
 
 /**
- * Example of Graphics.
+ * Circle example.
+ * 
+ * @see casmi.graphics.element.Circle
  * 
  * @author Y.Ban
- * 
  */
 public class CircleExample extends Applet {
-    
-    Circle cl = new Circle(100);
-        
-    public void setup(){
-        setSize(1024, 768);
 
-        cl.setFillColor(new Color(80, 180, 80));
-        cl.setStrokeColor(ColorSet.LIGHTCORAL);
-        cl.setStrokeWidth(3);
+    Circle circle = new Circle(80);
+
+    public void setup() {
+        setSize(800, 600);
+
+        circle.setFillColor(new Color(80, 180, 80));
+        circle.setStrokeColor(ColorSet.LIGHT_CORAL);
+        circle.setStrokeWidth(3);
+        circle.setPosition(400,300);
+        addObject(circle);
     }
-    
-    @Override
-    public void draw(Graphics g) {
-    	g.translate(200,300);
-        g.render(cl);
-    }
-    
+
     public static void main(String args[]) {
-        AppletRunner.run( "casmi.graphics.CircleExample", "Example");
+        AppletRunner.run("casmi.graphics.CircleExample", "Circle Example");
     }
+
+	@Override
+	public void mouseEvent(MouseEvent e, MouseButton b) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyEvent(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
 }

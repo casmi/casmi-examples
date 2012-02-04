@@ -20,6 +20,9 @@ package casmi.graphics;
 
 import casmi.Applet;
 import casmi.AppletRunner;
+import casmi.KeyEvent;
+import casmi.MouseButton;
+import casmi.MouseEvent;
 import casmi.graphics.color.Color;
 import casmi.graphics.element.Sphere;
 
@@ -35,23 +38,29 @@ public class SphereExample extends Applet {
     
     double rot = 90.0;
     
-    public void setup(){
+    @Override
+    public void setup() {
         setSize(1024, 768);
         s.setFill(false);
         s.setStrokeColor(new Color(100, 100, 200));
         s.setStrokeWidth(4);
+        setPosition(512.0, 430.0, 100.0);
+        addObject(s);
     }
     
     @Override
-    public void draw(Graphics g) {
-    	g.translate(512.0,430.0, 100.0);
-        g.rotate(rot, 1f, 3f, 5f);
-        g.render(s);
-        
-        rot += 0.1;
+    public void update() {
+    	rot += 0.1;
+    	s.setRotation(rot,rot*3,rot*5);
     }
     
-    public static void main(String args[]) {
-        AppletRunner.run( "casmi.graphics.SphereExample", "Example");
+	@Override
+	public void mouseEvent(MouseEvent e, MouseButton b) {}
+
+	@Override
+	public void keyEvent(KeyEvent e) {}
+	
+	public static void main(String[] args) {
+        AppletRunner.run( "casmi.graphics.SphereExample", "Sphere Example");
     }
 }

@@ -20,9 +20,14 @@ package casmi.graphics;
 
 import casmi.Applet;
 import casmi.AppletRunner;
+import casmi.KeyEvent;
+import casmi.MouseButton;
+import casmi.MouseEvent;
 import casmi.graphics.color.Color;
 import casmi.graphics.element.Sphere;
 import casmi.graphics.material.Material;
+import casmi.graphics.object.Light;
+import casmi.graphics.object.Light.LightMode;
 import casmi.matrix.Vertex;
 
 /**
@@ -40,6 +45,8 @@ public class MaterialExample extends Applet {
 	Material m2 = new Material();
 	Material m3 = new Material();
 
+	Light l = new Light(LightMode.SPOT);
+	
 	Color c = new Color(250, 250, 250);
 	
 	Vertex v1 = new Vertex(1000, 1000, 1000);
@@ -73,29 +80,39 @@ public class MaterialExample extends Applet {
 		m3.diffuse((float) (255 * 0.9), (float) (255 * 0.6), (float) (255 * 0.6));
 		m3.specular(200);
 		s3.setMaterial(m3);
-	}
-
-	@Override
-	public void draw(Graphics g) {
-		g.pushMatrix();
 		
-		g.spotLight(1, c, v2, 1.0f, 0.0f, 1.0f, 30);
-		g.lightSpecular(1, c);
-		g.lightDiffuse(1, c);
-		
-		g.translate(300.0,430.0, 100.0);
-		g.render(s1);
-		
-		g.translate(200.0,0,0);
-		g.render(s2);
-
-		g.translate(200.0,0,0);
-		g.render(s3);
-		
-		g.popMatrix();
+		s1.setPosition(300,430,100);
+		s2.setPosition(500,430,100);
+		s3.setPosition(700,430,100);
+		addObject(s1);
+		addObject(s2);
+		addObject(s3);
+		addLight(l);
+		l.setAngle(30);
+		l.setPosition(v2);
+		l.setDirection(1, 0, 1);
+		l.setColor(c);
 	}
 
 	public static void main(String args[]) {
 		AppletRunner.run("casmi.graphics.MaterialExample", "Example");
+	}
+
+	@Override
+	public void mouseEvent(MouseEvent e, MouseButton b) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyEvent(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
 	}
 }

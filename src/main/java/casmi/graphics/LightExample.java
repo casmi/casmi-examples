@@ -20,60 +20,79 @@ package casmi.graphics;
 
 import casmi.Applet;
 import casmi.AppletRunner;
+import casmi.KeyEvent;
+import casmi.MouseButton;
+import casmi.MouseEvent;
 import casmi.graphics.color.Color;
 import casmi.graphics.color.ColorMode;
 import casmi.graphics.element.Sphere;
+import casmi.graphics.object.Light;
+import casmi.graphics.object.Light.LightMode;
 import casmi.matrix.Vertex;
 
 /**
- * Example of Graphics.
+ * Lighting example.
+ * 
+ * @see casmi.graphics.Graphics#ambientLight(float, float, float, Vertex)
+ * @see casmi.graphics.Graphics#directionalLight(int, Color, float, float, float)
  * 
  * @author Y.Ban
- * 
  */
 public class LightExample extends Applet {
 
-	Sphere s = new Sphere(70.0);
-	Color c;
-	Vertex v = new Vertex(100, 100, 100);
-	int h = 0, t = 0;
+    Sphere s = new Sphere(70);
+    Color  c;
+    Vertex v = new Vertex(100, 100, 100);
+    Light l1,l2;
+    int r=0;
 
-	public void setup() {
-		setSize(1024, 768);
+    @Override
+    public void setup() {
+        setSize(800, 600);
 
-		c = new Color(h, 200, 150);
-		s.setStroke(true);
-		s.setStrokeColor(new Color(100, 100, 200));
-		c.colorMode(ColorMode.HSB);
+        s.setStroke(true);
+        s.setStrokeColor(new Color(100, 100, 200));
+        
+        c = new Color(0, 200, 150);
+        c.setColorMode(ColorMode.HSB);
+        
+        l1 = new Light(LightMode.AMBIENT);
+        l1.setColor(1, 1, 1);
+        l1.setPosition(v);
+        addLight(l1);
+        
+        l2 = new Light(LightMode.DIRECTION);
+        l2.setColor(c);
+        l2.setDirection(1, 0, 1);
+        addLight(l2);
+        
+        setPosition(400, 300, 100);
+        addObject(s);     
+    }
+    
+    @Override
+    public void update(){
+    	c.setR(r);
+    	r++;
+    	if(r>=360)
+    		r=0;
+    }
+
+
+
+    public static void main(String args[]) {
+        AppletRunner.run("casmi.graphics.LightExample", "Light Example");
+    }
+
+	@Override
+	public void mouseEvent(MouseEvent e, MouseButton b) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
-	public void draw(Graphics g) {
-		g.pushMatrix();
+	public void keyEvent(KeyEvent e) {
+		// TODO Auto-generated method stub
 		
-		g.translate(512.0, 430.0, 100.0);
-		
-		// setup ambient light
-		g.ambientLight(1, 1, 1, v);
-		
-		// setup directional light
-		c.setR(h);
-		g.directionalLight(1, c, 1.0f, 0.0f, 1.0f);
-		
-		// render
-		g.render(s);
-		
-		g.popMatrix();
-		
-		t++;
-		if (t % 3 == 0)
-			h += 1;
-		if (h >= 360) {
-			t = h = 0;
-		}
-	}
-
-	public static void main(String args[]) {
-		AppletRunner.run("casmi.graphics.LightExample", "Example");
 	}
 }

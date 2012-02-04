@@ -20,7 +20,9 @@ package casmi.graphics.color;
 
 import casmi.Applet;
 import casmi.AppletRunner;
-import casmi.graphics.Graphics;
+import casmi.KeyEvent;
+import casmi.MouseButton;
+import casmi.MouseEvent;
 import casmi.graphics.element.Rect;
 
 /**
@@ -56,19 +58,34 @@ public class LerpColorExample extends Applet {
         r[2].setFillColor(fromto2);
         r[3].setFillColor(fromto3);
         r[4].setFillColor(to);
-    }
-    
-    @Override
-    public void draw(Graphics g) {
-        for(int i=0;i<num;i++) {
-        	g.pushMatrix();
-        	g.translate(200+100*i, 350);
-            g.render(r[i]);
-            g.popMatrix();
+        
+        int index = 0;
+        for ( Rect rr : r ){
+        	rr.setPosition(200+100*index, 350);
+        	addObject(rr);
+        	index++;
         }
     }
     
     public static void main(String args[]) {
         AppletRunner.run( "casmi.graphics.color.LerpColorExample", "Example");
     }
+
+	@Override
+	public void mouseEvent(MouseEvent e, MouseButton b) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyEvent(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
 }
