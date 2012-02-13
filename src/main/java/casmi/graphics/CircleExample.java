@@ -23,8 +23,8 @@ import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseEvent;
-import casmi.graphics.color.Color;
 import casmi.graphics.color.ColorSet;
+import casmi.graphics.color.RGBColor;
 import casmi.graphics.element.Circle;
 
 /**
@@ -38,35 +38,27 @@ public class CircleExample extends Applet {
 
     Circle circle = new Circle(80);
 
+    @Override
     public void setup() {
         setSize(800, 600);
 
-        circle.setFillColor(new Color(80, 180, 80));
+        circle.setFillColor(new RGBColor(0.3, 0.7, 0.3));
         circle.setStrokeColor(ColorSet.LIGHT_CORAL);
         circle.setStrokeWidth(3);
         circle.setPosition(400,300);
         addObject(circle);
     }
 
-    public static void main(String args[]) {
+    @Override
+    public void update() {}
+
+	@Override
+	public void mouseEvent(MouseEvent e, MouseButton b) {}
+
+	@Override
+	public void keyEvent(KeyEvent e) {}
+	
+	public static void main(String args[]) {
         AppletRunner.run("casmi.graphics.CircleExample", "Circle Example");
     }
-
-	@Override
-	public void mouseEvent(MouseEvent e, MouseButton b) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void keyEvent(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
-	}
 }

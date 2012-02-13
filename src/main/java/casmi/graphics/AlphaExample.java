@@ -23,7 +23,7 @@ import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseEvent;
-import casmi.graphics.color.Color;
+import casmi.graphics.color.RGBColor;
 import casmi.graphics.element.Rect;
 
 /**
@@ -43,36 +43,27 @@ public class AlphaExample extends Applet {
         setSize(800, 600);
         
         r1.setStroke(false);
-        r1.setFillColor(new Color(100, 240, 100, 150));
+        r1.setFillColor(new RGBColor(0.4, 0.95, 0.4, 0.6));
         r1.setPosition(350, 250);
 
         r2.setStroke(false);
-        r2.setFillColor(new Color(180, 20, 20, 150));
+        r2.setFillColor(new RGBColor(0.7, 0.1, 0.1, 0.6));
         r2.setPosition(450, 350);
         
         addObject(r1);
         addObject(r2);
     }
 
-    public static void main(String args[]) {
+    @Override
+    public void update() {}
+
+	@Override
+	public void mouseEvent(MouseEvent e, MouseButton b) {}
+
+	@Override
+	public void keyEvent(KeyEvent e) {}
+	
+	public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.AlphaExample", "Alpha Example");
     }
-
-	@Override
-	public void mouseEvent(MouseEvent e, MouseButton b) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void keyEvent(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
-	}
 }

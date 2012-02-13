@@ -24,7 +24,8 @@ import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseEvent;
 import casmi.graphics.color.Color;
-import casmi.graphics.color.ColorMode;
+import casmi.graphics.color.HSBColor;
+import casmi.graphics.color.RGBColor;
 import casmi.graphics.element.Lines;
 
 /**
@@ -37,22 +38,20 @@ import casmi.graphics.element.Lines;
 public class LinesExample extends Applet {
 
     Lines l1, l2;
-    Color c = new Color(20, 250, 200);
+    Color c = new HSBColor(0.1, 1.0, 0.8);
 
     @Override
     public void setup() {
         setSize(800, 600);
-        
+
         l1 = new Lines();
         l1.vertex(210, 120);
         l1.vertex(280, 115);
         l1.vertex(495, 390);
         l1.vertex(240, 345);
         l1.vertex(200, 445);
-        l1.setStrokeColor(new Color(100, 255, 100));
+        l1.setStrokeColor(new RGBColor(0.4, 1.0, 0.4));
 
-        c.setColorMode(ColorMode.HSB);
-        
         l2 = new Lines();
         l2.vertex(310, 20);
         l2.vertex(380, 115);
@@ -61,30 +60,21 @@ public class LinesExample extends Applet {
         l2.vertex(200, 445);
         l2.setStrokeColor(c);
         l2.setStrokeWidth(5);
-        
+
         addObject(l1);
         addObject(l2);
     }
 
-    public static void main(String args[]) {
+    @Override
+    public void update() {}
+
+    @Override
+    public void mouseEvent(MouseEvent e, MouseButton b) {}
+
+    @Override
+    public void keyEvent(KeyEvent e) {}
+
+    public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.LinesExample", "Lines Example");
     }
-
-	@Override
-	public void mouseEvent(MouseEvent e, MouseButton b) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void keyEvent(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
-	}
 }

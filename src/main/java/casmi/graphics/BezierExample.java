@@ -23,7 +23,7 @@ import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseEvent;
-import casmi.graphics.color.Color;
+import casmi.graphics.color.RGBColor;
 import casmi.graphics.element.Bezier;
 
 /**
@@ -39,49 +39,37 @@ public class BezierExample extends Applet {
     Bezier b2 = new Bezier(400, 200, 500, 100, 700, 300, 700, 500);
     Bezier b3 = new Bezier(100, 200, -20, 700, 400, -100, 300, 600, -50, 700, 500, -70);
 
+    @Override
     public void setup() {
         setSize(800, 600);
 
         b1.setFill(false);
         b2.setFill(false);
         b3.setFill(false);
-        
-        b1.setStrokeColor(new Color(200, 80, 80));
-        b2.setStrokeColor(new Color(80, 200, 80));
-        b3.setStrokeColor(new Color(80, 80, 200));
-        
+
+        b1.setStrokeColor(new RGBColor(0.8, 0.3, 0.3));
+        b2.setStrokeColor(new RGBColor(0.3, 0.8, 0.3));
+        b3.setStrokeColor(new RGBColor(0.3, 0.3, 0.8));
+
         b1.setStrokeWidth(5);
         b2.setStrokeWidth(5);
         b3.setStrokeWidth(5);
-        
+
         addObject(b1);
         addObject(b2);
         addObject(b3);
     }
 
+    @Override
+    public void update() {}
 
-    public static void main(String args[]) {
+    @Override
+    public void mouseEvent(MouseEvent e, MouseButton b) {}
+
+    @Override
+    public void keyEvent(KeyEvent e) {}
+    
+    public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.BezierExample", "Bezier Example");
     }
-
-
-	@Override
-	public void mouseEvent(MouseEvent e, MouseButton b) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void keyEvent(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
-	}
 }

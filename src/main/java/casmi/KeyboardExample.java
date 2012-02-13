@@ -18,7 +18,6 @@
 
 package casmi;
 
-import casmi.graphics.color.Color;
 import casmi.graphics.color.ColorSet;
 import casmi.graphics.element.Line;
 import casmi.graphics.element.Rect;
@@ -72,7 +71,7 @@ public class KeyboardExample extends Applet {
         text = new Text(content, ft,
                         getWidth()  / 2 - (r.getWidth() / 2 - 20),
                         getHeight() / 2 + r.getHeight() / 2 - 2 * r.getHeight() / (LINE_NUM + 1) + 5);
-        text.setStrokeColor(Color.color(ColorSet.LIGHT_BLUE));
+        text.setStrokeColor(ColorSet.LIGHT_BLUE);
         text.setLeading(r.getHeight() / (LINE_NUM + 1));
         
         addObject(r);

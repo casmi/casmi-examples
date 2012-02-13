@@ -23,7 +23,7 @@ import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseEvent;
-import casmi.graphics.color.Color;
+import casmi.graphics.color.RGBColor;
 import casmi.graphics.element.Cone;
 
 /**
@@ -36,37 +36,28 @@ import casmi.graphics.element.Cone;
 public class ConeExample extends Applet {
 
     Cone cone = new Cone(300, 300);
-  
+
     @Override
     public void setup() {
         setSize(800, 600);
-        
+
         cone.setFill(false);
-        cone.setStrokeColor(new Color(100, 100, 200));
+        cone.setStrokeColor(new RGBColor(0.4, 0.4, 0.8));
         cone.setStrokeWidth(4);
         cone.setPosition(400, 230, 100);
         addObject(cone);
     }
+    
+    @Override
+    public void update() {}
+
+    @Override
+    public void mouseEvent(MouseEvent e, MouseButton b) {}
+
+    @Override
+    public void keyEvent(KeyEvent e) {}
 
     public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.ConeExample", "Cone Example");
     }
-
-	@Override
-	public void mouseEvent(MouseEvent e, MouseButton b) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void keyEvent(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
-	}
 }

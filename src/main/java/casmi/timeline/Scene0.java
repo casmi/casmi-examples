@@ -19,9 +19,7 @@
 
 package casmi.timeline;
 
-import casmi.graphics.Graphics;
 import casmi.graphics.element.Texture;
-import casmi.image.Image;
 import casmi.util.SystemUtil;
 
 /**

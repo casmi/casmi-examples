@@ -17,12 +17,10 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
 package casmi.timeline;
 
-import casmi.graphics.Graphics;
-import casmi.graphics.color.Color;
 import casmi.graphics.color.ColorSet;
+import casmi.graphics.color.RGBColor;
 import casmi.graphics.element.Text;
 import casmi.graphics.element.Triangle;
 import casmi.graphics.font.Font;
@@ -33,38 +31,36 @@ import casmi.graphics.font.Font;
  * @author Y. Ban
  * 
  */
-
-public class Scene2 extends Scene{
-
+public class Scene2 extends Scene {
 
     Triangle t1 = new Triangle(200, 200, 400, 400, 600, 200);
     Triangle t2 = new Triangle(400, 600, 700, 300, 900, 600);
-    
+
     Font f = null;
     Text t;
-	
-	public Scene2(int id,double time){
-		setId(id);
-		setTime(time);
-		setup();
-	}
-	
-	public void setup(){
-        t1.setFillColor(new Color(255, 255, 255));
+
+    public Scene2(int id, double time) {
+        setId(id);
+        setTime(time);
+        setup();
+    }
+
+    @Override
+    public void setup() {
+        t1.setFillColor(new RGBColor(1.0, 1.0, 1.0));
         t1.setStroke(false);
 
-        t2.setFillColor(new Color(120, 200, 100));
-        t2.setStrokeColor(new Color(0, 100, 200));
+        t2.setFillColor(new RGBColor(0.5, 0.8, 0.5));
+        t2.setStrokeColor(new RGBColor(0.0, 0.5, 0.8));
         t2.setStrokeWidth(5);
-        
+
         f = new Font("San-Serif");
         f.setSize(70);
         t = new Text("Triangle", f, 80, 520);
-        t.setStrokeColor(Color.color(ColorSet.WHITE));
-        
+        t.setStrokeColor(ColorSet.WHITE);
+
         addObject(t1);
         addObject(t2);
         addObject(t);
-	}
-	
+    }
 }

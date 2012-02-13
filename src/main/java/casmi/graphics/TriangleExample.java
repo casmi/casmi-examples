@@ -23,7 +23,7 @@ import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseEvent;
-import casmi.graphics.color.Color;
+import casmi.graphics.color.RGBColor;
 import casmi.graphics.element.Triangle;
 
 /**
@@ -37,39 +37,31 @@ public class TriangleExample extends Applet {
     Triangle t1 = new Triangle(200, 200, 400, 400, 600, 200);
     Triangle t2 = new Triangle(400, 600, 700, 300, 900, 600);
 
+    @Override
     public void setup() {
         setSize(1024, 768);
 
-        t1.setFillColor(new Color(255, 255, 255));
+        t1.setFillColor(new RGBColor(1.0, 1.0, 1.0));
         t1.setStroke(false);
 
-        t2.setFillColor(new Color(120, 200, 100));
-        t2.setStrokeColor(new Color(0, 100, 200));
+        t2.setFillColor(new RGBColor(0.5, 0.8, 0.4));
+        t2.setStrokeColor(new RGBColor(0.0, 0.4, 0.8));
         t2.setStrokeWidth(5);
         
         addObject(t1);
         addObject(t2);
     }
 
-    public static void main(String args[]) {
+	@Override
+	public void mouseEvent(MouseEvent e, MouseButton b) {}
+
+	@Override
+	public void keyEvent(KeyEvent e) {}
+
+	@Override
+	public void update() {}
+	
+	public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.TriangleExample", "Example");
     }
-
-	@Override
-	public void mouseEvent(MouseEvent e, MouseButton b) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void keyEvent(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
-	}
 }

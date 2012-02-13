@@ -23,7 +23,7 @@ import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseEvent;
-import casmi.graphics.color.Color;
+import casmi.graphics.color.RGBColor;
 import casmi.graphics.element.Arc;
 
 /**
@@ -35,45 +35,28 @@ import casmi.graphics.element.Arc;
  */
 public class ArcExample extends Applet {
 
-    Arc a = new Arc(400, 200, 300, 0, 90, 20);
+    Arc arc = new Arc(400, 200, 300, 0, 90, 20);
 
     @Override
     public void setup() {
         setSize(800, 600);
 
-        a.setFillColor(new Color(70, 180, 70));
-        a.setStrokeColor(new Color(120, 240, 120));
-        a.setStrokeWidth(3);
-        addObject(a);
+        arc.setFillColor(new RGBColor(0.3, 0.7, 0.3));
+        arc.setStrokeColor(new RGBColor(0.5, 0.9, 0.5));
+        arc.setStrokeWidth(3);
+        addObject(arc);
     }
 
+    @Override
+    public void update() {}
 
+    @Override
+    public void mouseEvent(MouseEvent e, MouseButton b) {}
 
-    public static void main(String args[]) {
+    @Override
+    public void keyEvent(KeyEvent e) {}
+
+    public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.ArcExample", "Arc Example");
     }
-
-
-
-	@Override
-	public void mouseEvent(MouseEvent e, MouseButton b) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-
-	@Override
-	public void keyEvent(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
-	}
 }

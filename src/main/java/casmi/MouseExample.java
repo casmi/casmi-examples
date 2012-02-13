@@ -18,7 +18,7 @@
 
 package casmi;
 
-import casmi.graphics.color.Color;
+import casmi.graphics.color.RGBColor;
 import casmi.graphics.element.Triangle;
 
 /**
@@ -36,8 +36,8 @@ public class MouseExample extends Applet {
     public void setup() {
         setFPS(60);
         setSize(800, 600);
-        t.setFillColor(new Color(230, 70, 70, 180));
-        t.setStrokeColor(new Color(230, 70, 70, 255));
+        t.setFillColor(new RGBColor(0.9, 0.25, 0.25, 0.7));
+        t.setStrokeColor(new RGBColor(0.9, 0.25, 0.25, 1.0));
         addObject(t);
     }
 
