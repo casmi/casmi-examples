@@ -18,7 +18,7 @@
 
 package casmi;
 
-import casmi.graphics.color.Color;
+import casmi.graphics.color.RGBColor;
 import casmi.graphics.element.Circle;
 import casmi.graphics.element.Element;
 import casmi.graphics.element.MouseOverCallback;
@@ -33,13 +33,13 @@ import casmi.graphics.element.MouseOverCallback;
  */
 public class CursorExample extends Applet {
 
-	Circle circle = new Circle(400, 300, 50);
+	Circle circle = new Circle(400.0, 300.0, 50.0);
 
 	@Override
 	public void setup() {
 		setSize(800, 600);
 		
-		circle.setFillColor(new Color(100, 100));
+		circle.setFillColor(new RGBColor(0.4, 0.4));
 		circle.addMouseEventCallback(new MouseOverCallback() {
             @Override
             public void run(MouseOverTypes eventtype, Element element) {

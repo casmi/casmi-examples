@@ -18,12 +18,18 @@
 
 package casmi;
 
-import casmi.graphics.color.Color;
-import casmi.graphics.color.ColorMode;
+import casmi.graphics.color.HSBColor;
 import casmi.graphics.element.Text;
 import casmi.graphics.font.Font;
 import casmi.util.Random;
 
+/**
+ * Simple keyboard example.
+ * <p>
+ * Press any key and show.
+ * 
+ * @author Y. Ban
+ */
 public class KeyboardSimpleExample extends Applet {
 
     Font f;
@@ -51,9 +57,8 @@ public class KeyboardSimpleExample extends Applet {
             f.setSize(Random.random(10, 40));
             s += getKey();
             t = new Text(s, f);
-            Color c = new Color(150, 180, 180);
-            c.setColorMode(ColorMode.HSB);
-            c.setR((int)Random.random(0, 255));
+            HSBColor c = new HSBColor(0.7, 0.8, 0.8);
+            c.setHue((int)Random.random(0, 255) / 255.0);
             t.setStrokeColor(c);
             t.setPosition(Random.random(0, 400), Random.random(0, 400));
             addObject(t);

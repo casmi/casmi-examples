@@ -17,13 +17,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
 package casmi.timeline;
 
-import static casmi.graphics.color.ColorMode.HSB;
-import casmi.graphics.Graphics;
 import casmi.graphics.color.Color;
 import casmi.graphics.color.ColorSet;
+import casmi.graphics.color.RGBColor;
 import casmi.graphics.element.Rect;
 import casmi.graphics.element.Text;
 import casmi.graphics.font.Font;
@@ -32,32 +30,31 @@ import casmi.graphics.font.Font;
  * Example of Timeline.
  * 
  * @author Y. Ban
- * 
  */
-
-public class Scene1 extends Scene{
+public class Scene1 extends Scene {
 
     Rect r1 = new Rect(500, 200);
     Rect r2 = new Rect(200, 400);
-    Color c = new Color(20,100,100);
+    Color c = new RGBColor(0.1, 0.4, 0.4);
     Font f = null;
     Text t;
 	
-	public Scene1(int id,double time){
+	public Scene1(int id,double time) {
 		setId(id);
 		setTime(time);
 		setup();
 	}
 	
-	public void setup(){
+	@Override
+	public void setup() {
 			r1.setFillColor(c);
-	        r1.setStrokeColor(new Color(100, 240, 100));
+	        r1.setStrokeColor(new RGBColor(0.4, 0.9, 0.4));
 	        r1.setStrokeWidth(3);
 	        r1.setPosition(500, 300);
 	        
 	        r2.setFill(false);
 	        r2.setStrokeWidth(5);
-	        r2.setStrokeColor(new Color(180, 80, 80));
+	        r2.setStrokeColor(new RGBColor(0.7, 0.3, 0.3));
 	        r2.setPosition(200, 300);
 	        
 	        addObject(r1);
@@ -66,10 +63,8 @@ public class Scene1 extends Scene{
 	        f = new Font("San-Serif");
 	        f.setSize(70);
 	        t = new Text("Rect", f, 700, 600);
-	        t.setStrokeColor(Color.color(ColorSet.WHITE));
+	        t.setStrokeColor(ColorSet.WHITE);
 	        
 	        addObject(t);
 	}
-	
-
 }

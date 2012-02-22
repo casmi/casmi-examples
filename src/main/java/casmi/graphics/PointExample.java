@@ -27,7 +27,7 @@ import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseEvent;
-import casmi.graphics.color.Color;
+import casmi.graphics.color.RGBColor;
 import casmi.graphics.element.Point;
 
 /**
@@ -37,49 +37,34 @@ import casmi.graphics.element.Point;
  * 
  */
 public class PointExample extends Applet {
-    
+
     int numpoint = 1000;
-
     List<Point> points = new ArrayList<Point>();
-
     Random rnd = new Random();
 
+    @Override
     public void setup() {
-        setSize(1024, 768);
-        
+        setSize(800, 600);
+
         for (int i = 0; i < numpoint; i++) {
-            Point p = new Point(200.0 + rnd.nextInt(500),
-                                150.0 + rnd.nextInt(500));
-            p.setStrokeColor(new Color(255, 255, 255));
-            
+            Point p = new Point(150.0 + rnd.nextInt(500), 50.0 + rnd.nextInt(500));
+            p.setStrokeColor(new RGBColor(1.0, 1.0, 1.0));
+
             points.add(p);
             addObject(p);
         }
     }
 
+    @Override
+    public void update() {}
 
-    public static void main(String args[]) {
-        AppletRunner.run("casmi.graphics.PointExample", "Example");
+    @Override
+    public void mouseEvent(MouseEvent e, MouseButton b) {}
+
+    @Override
+    public void keyEvent(KeyEvent e) {}
+
+    public static void main(String[] args) {
+        AppletRunner.run("casmi.graphics.PointExample", "PointExample");
     }
-
-
-	@Override
-	public void mouseEvent(MouseEvent e, MouseButton b) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void keyEvent(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
-	}
 }

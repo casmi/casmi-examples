@@ -34,7 +34,7 @@ import casmi.tween.equations.Linear;
 import casmi.tween.equations.Quint;
 import casmi.tween.simpletweenables.TweenFloat;
 
-public class Object1 extends Group{
+public class Object1 extends Group {
 	
 	Rect r1,r2;
 	Triangle t1;
@@ -85,11 +85,11 @@ public class Object1 extends Group{
 	}
 	
 	@Override
-	public void update(){
+	public void update() {
 		if(isTweenstart()){
 			tf.setValue(280);
 			setTweenstart(false);
-			text.getStrokeColor().setA(0);
+			text.getStrokeColor().setAlpha(0.0);
 			te = null;
 			te = new TweenElement(text);
     		manager = null;
@@ -114,5 +114,4 @@ public class Object1 extends Group{
 	public void setTweenstart(boolean tweenstart) {
 		this.tweenstart = tweenstart;
 	}
-
 }

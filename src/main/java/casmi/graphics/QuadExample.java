@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-  
+
 package casmi.graphics;
 
 import casmi.Applet;
@@ -23,7 +23,7 @@ import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseEvent;
-import casmi.graphics.color.Color;
+import casmi.graphics.color.RGBColor;
 import casmi.graphics.element.Quad;
 
 /**
@@ -33,46 +33,34 @@ import casmi.graphics.element.Quad;
  * 
  */
 public class QuadExample extends Applet {
-    
+
     Quad q1 = new Quad(500, 200, 600, 200, 700, 800, 300, 500);
     Quad q2 = new Quad(200, 300, 300, 300, 200, 500, 300, 400);
-        
-    public void setup(){
-        setSize(1024, 768);
 
-        q1.setFillColor(new Color(80, 180, 80));
-        q1.setStrokeColor(new Color(100, 220, 100));
+    @Override
+    public void setup() {
+        setSize(800, 600);
+
+        q1.setFillColor(new RGBColor(0.3, 0.7, 0.3));
+        q1.setStrokeColor(new RGBColor(0.4, 0.9, 0.4));
         q2.setFill(false);
         q2.setStrokeWidth(5);
-        q2.setStrokeColor(new Color(180, 80, 80));
-        
+        q2.setStrokeColor(new RGBColor(0.7, 0.3, 0.3));
+
         addObject(q1);
         addObject(q2);
     }
-    
-    
-    public static void main(String args[]) {
-        AppletRunner.run( "casmi.graphics.QuadExample", "Example");
+
+    @Override
+    public void update() {}
+
+    @Override
+    public void mouseEvent(MouseEvent e, MouseButton b) {}
+
+    @Override
+    public void keyEvent(KeyEvent e) {}
+
+    public static void main(String[] args) {
+        AppletRunner.run("casmi.graphics.QuadExample", "QuadExample");
     }
-
-
-	@Override
-	public void mouseEvent(MouseEvent e, MouseButton b) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void keyEvent(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
-	}
 }

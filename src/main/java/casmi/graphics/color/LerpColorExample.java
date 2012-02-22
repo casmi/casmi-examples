@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-  
+
 package casmi.graphics.color;
 
 import casmi.Applet;
@@ -26,66 +26,56 @@ import casmi.MouseEvent;
 import casmi.graphics.element.Rect;
 
 /**
- * Example of Graphics.
+ * Example for lerp of colors.
  * 
  * @author Y.Ban
  * 
+ * @see casmi.graphics.color.RGBColor#lerpColor(Color, Color, double)
  */
 public class LerpColorExample extends Applet {
-    
-    //Rect r1 = new Rect(300, 700, 100, 300);
-    //Rect r2 = new Rect(400, 700, 100, 300);
-    //Rect r3 = new Rect(500, 700, 100, 300);
-    //Rect r4 = new Rect(600, 700, 100, 300);
-    int num = 5;
-    Rect r[] = new Rect[num];
-    Color from = new Color(204,152,0);
-    Color to   = new Color(0,102,183);
-        
-    public void setup(){
-        for(int i=0;i<num;i++){
-            r[i] = new Rect(100, 300);
-            r[i].setStrokeWidth(5);
-            r[i].setStrokeColor(Color.color(ColorSet.WHITE));
+
+    Rect  rects[] = new Rect[5];
+    Color from = new RGBColor(0.8, 0.6, 0.0);
+    Color to   = new RGBColor(0.0, 0.4, 0.7);
+
+    @Override
+    public void setup() {
+        setSize(800, 600);
+
+        for (int i = 0; i < rects.length; i++) {
+            rects[i] = new Rect(100, 300);
+            rects[i].setStrokeWidth(5);
+            rects[i].setStrokeColor(ColorSet.WHITE);
         }
-        setSize(1024, 768);
-        Color fromto1 = Color.lerpColor(from, to, 0.25f);
-        Color fromto2 = Color.lerpColor(from, to, 0.5f);
-        Color fromto3 = Color.lerpColor(from, to, 0.75f); 
-        
-        r[0].setFillColor(from);
-        r[1].setFillColor(fromto1);
-        r[2].setFillColor(fromto2);
-        r[3].setFillColor(fromto3);
-        r[4].setFillColor(to);
-        
+
+        Color lerpColor1 = RGBColor.lerpColor(from, to, 0.25);
+        Color lerpColor2 = RGBColor.lerpColor(from, to, 0.5);
+        Color lerpColor3 = RGBColor.lerpColor(from, to, 0.75);
+
+        rects[0].setFillColor(from);
+        rects[1].setFillColor(lerpColor1);
+        rects[2].setFillColor(lerpColor2);
+        rects[3].setFillColor(lerpColor3);
+        rects[4].setFillColor(to);
+
         int index = 0;
-        for ( Rect rr : r ){
-        	rr.setPosition(200+100*index, 350);
-        	addObject(rr);
-        	index++;
+        for (Rect rr : rects) {
+            rr.setPosition(200 + 100 * index, 300);
+            addObject(rr);
+            index++;
         }
     }
+
+    @Override
+    public void update() {}
     
-    public static void main(String args[]) {
-        AppletRunner.run( "casmi.graphics.color.LerpColorExample", "Example");
+    @Override
+    public void mouseEvent(MouseEvent e, MouseButton b) {}
+
+    @Override
+    public void keyEvent(KeyEvent e) {}
+    
+    public static void main(String[] args) {
+        AppletRunner.run("casmi.graphics.color.LerpColorExample", "LerpColorExample");
     }
-
-	@Override
-	public void mouseEvent(MouseEvent e, MouseButton b) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void keyEvent(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
-	}
 }

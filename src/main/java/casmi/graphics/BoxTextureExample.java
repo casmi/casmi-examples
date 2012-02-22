@@ -25,7 +25,7 @@ import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseEvent;
-import casmi.graphics.color.Color;
+import casmi.graphics.color.RGBColor;
 import casmi.graphics.element.Box;
 import casmi.graphics.element.Texture;
 import casmi.graphics.object.Camera;
@@ -55,11 +55,12 @@ public class BoxTextureExample extends Applet {
 	private Perspective p;
 	private Camera c;
 
+	@Override
 	public void setup() {
 		setSize(800, 600);
 		
 		b.setStrokeWidth(1);
-		b.setFillColor(new Color(255, 255, 255));
+		b.setFillColor(new RGBColor(1.0, 1.0, 1.0));
 		b.setFill(true);
 		b.setStroke(false);
 		b.setRotation(rot, 1, 3, 5);
@@ -78,24 +79,20 @@ public class BoxTextureExample extends Applet {
 
 		addObject(b);
 	}
-
-	public static void main(String args[]) {
-		AppletRunner.run("casmi.graphics.BoxTextureExample", "Example");
-	}
+	
+	@Override
+    public void update() {
+        rot += 0.1;
+        b.setRotation(rot, 1, 3, 5);
+    }
 
 	@Override
-	public void mouseEvent(MouseEvent e, MouseButton b) {
-		// TODO Auto-generated method stub
-	}
+	public void mouseEvent(MouseEvent e, MouseButton b) {}
 
 	@Override
-	public void keyEvent(KeyEvent e) {
-		// TODO Auto-generated method stub
-	}
+	public void keyEvent(KeyEvent e) {}
 
-	@Override
-	public void update() {
-		rot += 0.1;
-		b.setRotation(rot, 1, 3, 5);
-	}
+	public static void main(String[] args) {
+        AppletRunner.run("casmi.graphics.BoxTextureExample", "BoxTextureExample");
+    }	
 }

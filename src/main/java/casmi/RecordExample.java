@@ -19,6 +19,7 @@ package casmi;
 
 import casmi.graphics.color.Color;
 import casmi.graphics.color.ColorSet;
+import casmi.graphics.color.RGBColor;
 import casmi.graphics.element.Circle;
 import casmi.graphics.element.Element;
 import casmi.graphics.element.MouseClickCallback;
@@ -54,10 +55,10 @@ public class RecordExample extends Applet {
         setSize(640, 480);
         
         circle.setCenterColor(ColorSet.YELLOW);
-        circle.setEdgeColor(new Color(0, 0));
+        circle.setEdgeColor(new RGBColor(0.0, 0.0));
         addObject(circle);
         
-        Color c = new Color(ColorSet.RED, 128);
+        Color c = new RGBColor(ColorSet.RED, 0.5);
         recordCircle.setFillColor(c);
         recordCircle.addMouseEventCallback(new MouseOverCallback() {
             @Override
@@ -81,12 +82,12 @@ public class RecordExample extends Applet {
                     if (!isRecording) {
                         record(RECORD_FILE);
                         isRecording = true;
-                        recordCircle.setFillColor(new Color(ColorSet.RED));
+                        recordCircle.setFillColor(new RGBColor(ColorSet.RED));
                         System.out.println("start recording");
                     } else {
                         stopRecord();
                         isRecording = false;
-                        recordCircle.setFillColor(new Color(ColorSet.RED, 128));
+                        recordCircle.setFillColor(new RGBColor(ColorSet.RED, 0.5));
                         System.out.println("stop recording");
                         System.out.println("file: " + RECORD_FILE);
                     }
@@ -94,8 +95,6 @@ public class RecordExample extends Applet {
             }
         });
         addObject(recordCircle);
-        
-    //    addTweenManager(manager);
     }
 
     @Override
@@ -105,7 +104,6 @@ public class RecordExample extends Applet {
     public void mouseEvent(MouseEvent e, MouseButton b) {
         if (e == MouseEvent.MOVED) {
         	addTween(Tween.to(te, TweenType.POSITION, 500, Sine.OUT).target(getMouseX(), getMouseY()));
-         //   manager.add();
         }
     }
     
@@ -115,6 +113,4 @@ public class RecordExample extends Applet {
     public static void main(String[] args) {
         AppletRunner.run("casmi.RecordExample", "Screen Recording Example");
     }
-
-    
 }

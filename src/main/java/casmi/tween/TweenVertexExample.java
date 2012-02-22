@@ -15,9 +15,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-  
-package casmi.tween;
 
+package casmi.tween;
 
 import casmi.Applet;
 import casmi.AppletRunner;
@@ -26,6 +25,7 @@ import casmi.MouseButton;
 import casmi.MouseEvent;
 import casmi.graphics.color.Color;
 import casmi.graphics.color.ColorSet;
+import casmi.graphics.color.RGBColor;
 import casmi.graphics.element.Line;
 import casmi.graphics.element.Rect;
 import casmi.tween.equations.Bounce;
@@ -37,70 +37,59 @@ import casmi.tween.equations.Bounce;
  * 
  */
 public class TweenVertexExample extends Applet {
-    
-	Line l1 = new Line(100,600,500,600);
-	TweenVertex v1,v2;
+
+    Line l1 = new Line(100, 600, 500, 600);
+    TweenVertex v1, v2;
     Rect r1 = new Rect(500, 200);
     Rect r2 = new Rect(150, 150);
-    Color c = new Color(20,100,100);
-    TweenElement te,te2;  
-    private boolean tmstart =false;
-    private boolean tmfinish =false;
+    Color c = new RGBColor(0.1, 0.4, 0.4);
+    TweenElement te, te2;
+    private boolean tmfinish = false;
     TweenCallback tc;
-          
-    public void setup(){
+
+    @Override
+    public void setup() {
         setSize(1024, 768);
+        
         l1.setStrokeColor(ColorSet.ALICE_BLUE);
         v1 = new TweenVertex(100, 600);
-        v2 = new TweenVertex(500,500);
+        v2 = new TweenVertex(500, 500);
         tc = new TweenCallback() {
-			@Override
-			public void run(TweenCallbackTypes eventType, Tween tween) {
-				tmfinish = true;
-				
-			}
-		};
-		addObject(l1);
-		
+
+            @Override
+            public void run(TweenCallbackTypes eventType, Tween tween) {
+                tmfinish = true;
+            }
+        };
+        addObject(l1);
     }
-    
 
     @Override
-    public void mouseEvent(MouseEvent e, MouseButton b){
-    	if(e == MouseEvent.PRESSED)
-    		tmfinish = true;
-    }
-    
-    @Override
-    public void update(){
-    	if(tmfinish){
-    		tmfinish =false;
-    		v1 = v2 = null;
+    public void update() {
+        if (tmfinish) {
+            tmfinish = false;
+            v1 = v2 = null;
             v1 = new TweenVertex(100, 600);
-            v2 = new TweenVertex(500,500);
-//           manager = null;
-//    		manager = new TweenManager();
-//    		addTweenManager(manager);
-    		
-    		addTween(TweenParallelGroup.create(
-        			Tween.to(v1, TweenType.POSITION, 3000, Bounce.OUT).target(200, 100),
-        			Tween.to(v2, TweenType.POSITION, 2000, Bounce.OUT).target(650, 110).addDelay(1500).addCompleteCallback(tc)
-        		));
-    		tmstart = true;
-    	}
-    	l1.set(v1, v2);
+            v2 = new TweenVertex(500, 500);
+
+            addTween(TweenParallelGroup.create(
+                Tween.to(v1, TweenType.POSITION, 3000, Bounce.OUT).target(200, 100),
+                Tween.to(v2, TweenType.POSITION, 2000, Bounce.OUT).target(650, 110).addDelay(1500).addCompleteCallback(tc)
+                ));
+        }
+        l1.set(v1, v2);
     }
     
-    public static void main(String args[]) {
-        AppletRunner.run( "casmi.tween.TweenVertexExample", "Example");
+    @Override
+    public void mouseEvent(MouseEvent e, MouseButton b) {
+        if (e == MouseEvent.PRESSED)
+            tmfinish = true;
     }
 
+    @Override
+    public void keyEvent(KeyEvent e) {}
 
-	@Override
-	public void keyEvent(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
+    public static void main(String[] args) {
+        AppletRunner.run("casmi.tween.TweenVertexExample", "TweenVertexExample");
+    }
 }

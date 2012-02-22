@@ -23,7 +23,7 @@ import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseEvent;
-import casmi.graphics.color.Color;
+import casmi.graphics.color.RGBColor;
 import casmi.graphics.element.Line;
 
 /**
@@ -34,7 +34,7 @@ import casmi.graphics.element.Line;
 public class RandomExample extends Applet {
 
     Line l[];
-    Color c = new Color(0);
+    RGBColor c = new RGBColor(0.0);
 
     @Override
     public void setup() {
@@ -50,7 +50,7 @@ public class RandomExample extends Applet {
     public void update() {
         for (int i = 0; i < getHeight(); i++) {
             float r = Random.random(-getWidth() / 2, getWidth() / 2);
-            c.setGray((int)(Math.abs(r * 5)));
+            c.setGray(Math.abs(r * 5) / getWidth());
             l[i].setStrokeColor(c);
             l[i].set(getWidth() / 2, i, getWidth() / 2 + r, i);
         }

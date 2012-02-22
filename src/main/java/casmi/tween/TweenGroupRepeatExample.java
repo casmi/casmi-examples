@@ -23,11 +23,11 @@ import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseEvent;
-import casmi.graphics.color.Color;
 import casmi.graphics.color.ColorSet;
 import casmi.graphics.element.Rect;
 import casmi.tween.equations.Bounce;
 
+<<<<<<< HEAD
 
 /**
  * Example of TweenRepeat for TweenGroup.
@@ -78,5 +78,43 @@ public class TweenGroupRepeatExample extends Applet{
 	public static void main(String args[]) {
 		AppletRunner.run("casmi.tween.TweenGroupRepeatExample", "Example");
 	}
+=======
+/**
+ * @author Y. Ban
+ */
+public class TweenGroupRepeatExample extends Applet {
 
+    Rect r1 = new Rect(200, 200);
+    TweenElement te;
+
+    @Override
+    public void setup() {
+        setSize(800, 600);
+        r1.setFillColor(ColorSet.AQUA);
+        addObject(r1);
+        r1.setPosition(150, 150);
+        te = new TweenElement(r1);
+        TweenSerialGroup ts = (TweenSerialGroup)TweenSerialGroup.create(
+            Tween.to(te, TweenType.POSITION, 1000, Bounce.OUT).target(550, 150),
+            Tween.to(te, TweenType.POSITION, 1000, Bounce.OUT).target(550, 550),
+            Tween.to(te, TweenType.POSITION, 1000, Bounce.OUT).target(150, 550),
+            Tween.to(te, TweenType.POSITION, 1000, Bounce.OUT).target(150, 150)
+            ).addDelay(1000).repeat(10, 300);
+        addTween(ts);
+
+    }
+
+    @Override
+    public void update() {}
+
+    @Override
+    public void mouseEvent(MouseEvent e, MouseButton b) {}
+
+    @Override
+    public void keyEvent(KeyEvent e) {}
+>>>>>>> e4cd2efc5bb81fc95a0f2243a280e7337d6eb0a0
+
+    public static void main(String[] args) {
+        AppletRunner.run("casmi.tween.TweenGroupRepeatExample", "TweenGroupRepeatExample");
+    }
 }

@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-  
+
 package casmi.graphics;
 
 import casmi.Applet;
@@ -25,9 +25,7 @@ import casmi.MouseButton;
 import casmi.MouseEvent;
 import casmi.graphics.element.Quad;
 import casmi.graphics.element.Texture;
-import casmi.graphics.element.Texture.TextureFlipMode;
 import casmi.graphics.element.Texture.TextureRotationMode;
-import casmi.util.SystemUtil;
 
 /**
  * Example of Graphics.
@@ -36,45 +34,34 @@ import casmi.util.SystemUtil;
  * 
  */
 public class QuadTextureExample extends Applet {
-    
-	String imagePath = Applet.class.getResource("logo.png").getPath();
-	Texture tex = null;
-    Quad q1 = new Quad(500, 300, 400, 500, 600, 500, 700, 300 );
-        
-    public void setup(){
+
+    String imagePath = Applet.class.getResource("logo.png").getPath();
+    Texture tex = null;
+    Quad q1 = new Quad(500, 300, 400, 500, 600, 500, 700, 300);
+
+    @Override
+    public void setup() {
         setSize(1024, 768);
-         tex = new Texture(imagePath);
+        tex = new Texture(imagePath);
         q1.setStroke(false);
         q1.setTexture(tex);
-          
+
         addObject(q1);
     }
-    
-    
-    public static void main(String args[]) {
-        AppletRunner.run( "casmi.graphics.QuadTextureExample", "Example");
+
+    @Override
+    public void update() {}
+
+    @Override
+    public void mouseEvent(MouseEvent e, MouseButton b) {
+        if (e == MouseEvent.PRESSED)
+            tex.rotation(TextureRotationMode.FrontRight);
     }
 
+    @Override
+    public void keyEvent(KeyEvent e) {}
 
-	@Override
-	public void mouseEvent(MouseEvent e, MouseButton b) {
-		// TODO Auto-generated method stub
-		if(e==MouseEvent.PRESSED)
-			tex.rotation(TextureRotationMode.FrontRight);
-		
-	}
-
-
-	@Override
-	public void keyEvent(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
-	}
+    public static void main(String[] args) {
+        AppletRunner.run("casmi.graphics.QuadTextureExample", "Example");
+    }
 }
