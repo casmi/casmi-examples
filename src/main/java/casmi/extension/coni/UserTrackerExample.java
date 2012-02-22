@@ -263,4 +263,10 @@ implements UserListener, SkeletonListener, PoseDetectionListener {
     public static void main(String[] args) {
         AppletRunner.run("casmi.extension.coni.UserTrackerExample", "CONI (casmi-OpenNI): user tracking example");
     }
+
+	@Override
+	public void mouseWheelEvent() {
+		// TODO Auto-generated method stub
+		
+	}
 }

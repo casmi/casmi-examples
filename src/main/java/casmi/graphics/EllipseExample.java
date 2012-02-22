@@ -60,4 +60,10 @@ public class EllipseExample extends Applet {
 	public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.EllipseExample", "Ellipse Example");
     }
+
+	@Override
+	public void mouseWheelEvent() {
+		// TODO Auto-generated method stub
+		
+	}
 }

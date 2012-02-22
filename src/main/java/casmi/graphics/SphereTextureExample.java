@@ -192,4 +192,10 @@ public class SphereTextureExample extends Applet {
         AppletRunner.run("casmi.graphics.SphereTextureExample", "SphereTextureExample");
     }
 
+	@Override
+	public void mouseWheelEvent() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

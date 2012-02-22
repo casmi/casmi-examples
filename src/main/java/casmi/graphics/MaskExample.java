@@ -52,4 +52,10 @@ public class MaskExample extends Applet{
 	        AppletRunner.run("casmi.graphics.MaskExample", "Mask Example");
 	    }
 
+	@Override
+	public void mouseWheelEvent() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

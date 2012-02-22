@@ -36,4 +36,10 @@ public class Tweentest extends Applet{
         AppletRunner.run("casmi.graphics.Tweentest", "Line Example");
     }
 
+	@Override
+	public void mouseWheelEvent() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

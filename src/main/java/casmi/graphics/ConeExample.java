@@ -60,4 +60,10 @@ public class ConeExample extends Applet {
     public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.ConeExample", "Cone Example");
     }
+
+	@Override
+	public void mouseWheelEvent() {
+		// TODO Auto-generated method stub
+		
+	}
 }

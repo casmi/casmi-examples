@@ -85,4 +85,10 @@ public class GroupExample extends Applet {
     public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.group.GroupExample", "GroupExample");
     }
+
+	@Override
+	public void mouseWheelEvent() {
+		// TODO Auto-generated method stub
+		
+	}
 }

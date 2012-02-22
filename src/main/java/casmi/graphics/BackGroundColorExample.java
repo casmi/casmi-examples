@@ -39,5 +39,11 @@ public class BackGroundColorExample extends Applet{
         AppletRunner.run("casmi.graphics.BackGroundColorExample", "BackGroundColor Example");
     }
 
+	@Override
+	public void mouseWheelEvent() {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

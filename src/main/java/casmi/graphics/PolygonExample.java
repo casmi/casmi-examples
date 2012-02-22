@@ -73,4 +73,10 @@ public class PolygonExample extends Applet {
     public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.PolygonExample", "Example");
     }
+
+	@Override
+	public void mouseWheelEvent() {
+		// TODO Auto-generated method stub
+		
+	}
 }

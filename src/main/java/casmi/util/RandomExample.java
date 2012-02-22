@@ -65,4 +65,10 @@ public class RandomExample extends Applet {
     public static void main(String[] args) {
         AppletRunner.run("casmi.util.RandomExample", "Random Example");
     }
+
+	@Override
+	public void mouseWheelEvent() {
+		// TODO Auto-generated method stub
+		
+	}
 }

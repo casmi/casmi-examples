@@ -141,4 +141,10 @@ public class HandControlExample extends Applet implements GestureListener, HandL
     public static void main(String[] args) {
         AppletRunner.run("casmi.extension.coni.HandControlExample", "CONI (casmi OpenNI): Hand Control Example");
     }
+
+	@Override
+	public void mouseWheelEvent() {
+		// TODO Auto-generated method stub
+		
+	}
 }

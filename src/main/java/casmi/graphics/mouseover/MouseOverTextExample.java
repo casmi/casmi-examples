@@ -72,4 +72,10 @@ public class MouseOverTextExample extends Applet {
     public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.mouseover.MouseOverTextExample", "MouseOverTextExample");
     }
+
+	@Override
+	public void mouseWheelEvent() {
+		// TODO Auto-generated method stub
+		
+	}
 }

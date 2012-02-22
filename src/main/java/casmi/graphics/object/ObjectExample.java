@@ -52,4 +52,11 @@ public class ObjectExample extends Applet {
 		// TODO Auto-generated method stub
 		
 	}
+
+
+	@Override
+	public void mouseWheelEvent() {
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -113,4 +113,10 @@ public class RecordExample extends Applet {
     public static void main(String[] args) {
         AppletRunner.run("casmi.RecordExample", "Screen Recording Example");
     }
+
+	@Override
+	public void mouseWheelEvent() {
+		// TODO Auto-generated method stub
+		
+	}
 }

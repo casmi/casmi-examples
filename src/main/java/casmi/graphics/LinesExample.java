@@ -77,4 +77,10 @@ public class LinesExample extends Applet {
     public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.LinesExample", "Lines Example");
     }
+
+	@Override
+	public void mouseWheelEvent() {
+		// TODO Auto-generated method stub
+		
+	}
 }

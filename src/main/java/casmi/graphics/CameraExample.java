@@ -61,4 +61,10 @@ public class CameraExample extends Applet{
         AppletRunner.run( "casmi.graphics.CameraExample", "Example");
     }
 
+	@Override
+	public void mouseWheelEvent() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

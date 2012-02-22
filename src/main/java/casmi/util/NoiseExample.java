@@ -70,4 +70,10 @@ public class NoiseExample extends Applet {
 	public static void main(String[] args) {
 		AppletRunner.run("casmi.util.NoiseExample", "Noise Example");
 	}
+
+	@Override
+	public void mouseWheelEvent() {
+		// TODO Auto-generated method stub
+		
+	}
 }

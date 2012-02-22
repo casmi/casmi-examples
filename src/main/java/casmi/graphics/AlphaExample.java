@@ -66,4 +66,10 @@ public class AlphaExample extends Applet {
 	public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.AlphaExample", "Alpha Example");
     }
+
+	@Override
+	public void mouseWheelEvent() {
+		// TODO Auto-generated method stub
+		
+	}
 }

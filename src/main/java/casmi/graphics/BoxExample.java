@@ -88,4 +88,10 @@ public class BoxExample extends Applet {
     public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.BoxExample", "Box Example");
     }
+
+	@Override
+	public void mouseWheelEvent() {
+		System.out.println(getMouseWheelRotation());
+		
+	}
 }

@@ -78,4 +78,10 @@ public class LerpColorExample extends Applet {
     public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.color.LerpColorExample", "LerpColorExample");
     }
+
+	@Override
+	public void mouseWheelEvent() {
+		// TODO Auto-generated method stub
+		
+	}
 }

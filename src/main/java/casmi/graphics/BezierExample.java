@@ -72,4 +72,10 @@ public class BezierExample extends Applet {
     public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.BezierExample", "Bezier Example");
     }
+
+	@Override
+	public void mouseWheelEvent() {
+		// TODO Auto-generated method stub
+		
+	}
 }

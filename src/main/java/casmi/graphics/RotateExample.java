@@ -77,4 +77,10 @@ public class RotateExample extends Applet {
     public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.RotateExample", "Rotation Example");
     }
+
+	@Override
+	public void mouseWheelEvent() {
+		// TODO Auto-generated method stub
+		
+	}
 }

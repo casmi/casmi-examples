@@ -444,4 +444,10 @@ public class TweenEquationsExample extends Applet {
     public static void main(String[] args) {
         AppletRunner.run("casmi.tween.TweenEquationsExample", "TweenEquationExample");
     }
+
+	@Override
+	public void mouseWheelEvent() {
+		// TODO Auto-generated method stub
+		
+	}
 }

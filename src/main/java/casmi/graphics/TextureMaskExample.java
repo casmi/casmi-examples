@@ -120,4 +120,10 @@ public class TextureMaskExample extends Applet {
     public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.TextureMaskExample", "Texture Mask Example");
     }
+
+	@Override
+	public void mouseWheelEvent() {
+		// TODO Auto-generated method stub
+		
+	}
 }

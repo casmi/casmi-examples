@@ -93,4 +93,10 @@ public class TweenExample extends Applet {
 	public static void main(String[] args) {
         AppletRunner.run("casmi.tween.TweenExample", "TweenExample");
     }
+
+	@Override
+	public void mouseWheelEvent() {
+		// TODO Auto-generated method stub
+		
+	}
 }

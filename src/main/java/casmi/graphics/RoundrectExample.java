@@ -69,4 +69,10 @@ public class RoundrectExample extends Applet {
     public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.RoundrectExample", "Example");
     }
+
+	@Override
+	public void mouseWheelEvent() {
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -79,4 +79,10 @@ public class TimelineExample extends Applet  {
 			
 		}
 
+		@Override
+		public void mouseWheelEvent() {
+			// TODO Auto-generated method stub
+			
+		}
+
 }

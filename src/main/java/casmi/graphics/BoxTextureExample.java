@@ -94,5 +94,11 @@ public class BoxTextureExample extends Applet {
 
 	public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.BoxTextureExample", "BoxTextureExample");
-    }	
+    }
+
+	@Override
+	public void mouseWheelEvent() {
+		// TODO Auto-generated method stub
+		
+	}	
 }

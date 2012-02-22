@@ -217,5 +217,11 @@ public class MouseOverGroup extends Applet{
         AppletRunner.run("casmi.graphics.mouseover.MouseOverGroup", "Example");
     }
 
+	@Override
+	public void mouseWheelEvent() {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 }

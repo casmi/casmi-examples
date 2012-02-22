@@ -59,4 +59,10 @@ public class CurveExample extends Applet {
     public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.CurveExample", "Curve Example");
     }
+
+	@Override
+	public void mouseWheelEvent() {
+		// TODO Auto-generated method stub
+		
+	}
 }
