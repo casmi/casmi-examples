@@ -24,65 +24,51 @@ import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseEvent;
-import casmi.timeline.Timeline.DisolveMode;
 
 /**
  * Example of Timeline.
  * 
  * @author Y. Ban
- * 
  */
+public class TimelineExample extends Applet {
 
-public class TimelineExample extends Applet  {
-	
-	  Timeline tl = new Timeline();
-	  Scene0 s0 = new Scene0(0,8);
-	  Scene1 s1 = new Scene1(1,6);
-	  Scene2 s2 = new Scene2(2,6);
-	  Scene3 s3 = new Scene3(3,6);
-	    
-	    public void setup(){
-	        setSize(1024, 768);
-	        tl.appendScene(s0);
-	        tl.appendDisolve(3,DisolveMode.NORMAL);
-	        tl.appendScene(s1);
-	        tl.appendDisolve(2);
-	        tl.appendScene(s2);
-	        tl.appendDisolve(2);
-	        tl.appendScene(s3);
-	        tl.appendDisolve(2,DisolveMode.NORMAL);
-	        
-	        tl.startTimer();
-	        
-	        addObject(tl);
-	    }
-	    
-	    public static void main(String args[]) {
-	        AppletRunner.run( "casmi.timeline.TimelineExample", "Example");
-	    }
+    Timeline tl = new Timeline();
+    Scene0 s0 = new Scene0(0, 8);
+    Scene1 s1 = new Scene1(1, 6);
+    Scene2 s2 = new Scene2(2, 6);
+    Scene3 s3 = new Scene3(3, 6);
 
-		@Override
-		public void mouseEvent(MouseEvent e, MouseButton b) {
-			// TODO Auto-generated method stub
-			
-		}
+    @Override
+    public void setup() {
+        setSize(1024, 768);
+        
+        tl.appendScene(s0);
+        tl.appendDisolve(3, DissolveMode.NORMAL);
+        tl.appendScene(s1);
+        tl.appendDissolve(2);
+        tl.appendScene(s2);
+        tl.appendDissolve(2);
+        tl.appendScene(s3);
+        tl.appendDisolve(2, DissolveMode.NORMAL);
 
-		@Override
-		public void keyEvent(KeyEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
+        tl.startTimer();
 
-		@Override
-		public void update() {
-			// TODO Auto-generated method stub
-			
-		}
+        addObject(tl);
+    }
 
-		@Override
-		public void mouseWheelEvent() {
-			// TODO Auto-generated method stub
-			
-		}
+    @Override
+    public void update() {}
+    
+    @Override
+    public void mouseEvent(MouseEvent e, MouseButton b) {}
 
+    @Override
+    public void keyEvent(KeyEvent e) {}
+
+    @Override
+    public void mouseWheelEvent() {}
+
+    public static void main(String[] args) {
+        AppletRunner.run("casmi.timeline.TimelineExample", "Timeline Example");
+    }
 }
