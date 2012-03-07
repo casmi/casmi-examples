@@ -16,7 +16,6 @@
  * limitations under the License.
  */
 
-
 package casmi.graphics;
 
 import casmi.Applet;
@@ -30,6 +29,9 @@ import casmi.graphics.object.Camera;
 import casmi.graphics.object.Perspective;
 import casmi.matrix.Vertex;
 
+/**
+ * @author Y. Ban
+ */
 public class SphereTextureExample extends Applet {
 
     Sphere s;
@@ -70,8 +72,8 @@ public class SphereTextureExample extends Applet {
     @Override
     public void update() {
         if (isMousePressed() == true) {
-            mousepoint.x = getMouseX();
-            mousepoint.y = getMouseY();
+            mousepoint.setX(getMouseX());
+            mousepoint.setY(getMouseY());
         }
         trackball();
     }
