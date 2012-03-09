@@ -47,7 +47,7 @@ public class TimelineExample extends Applet {
         tl.appendScene(s1);
         tl.appendDissolve(2);
         tl.appendScene(s2);
-        tl.appendDissolve(2);
+        tl.appendDisolve(2, DissolveMode.NORMAL);
         tl.appendScene(s3);
         tl.appendDisolve(2, DissolveMode.NORMAL);
 
