@@ -30,23 +30,27 @@ import casmi.util.SystemUtil;
 /**
  * Example of rotation.
  * 
- * @author K. Nishimura Y. Ban
- * 
+ * @author K. Nishimura, Y. Ban
  */
 public class RotateExample extends Applet {
 
-    Bezier b1 = new Bezier(0.0, 0.0, 0.0, 400.0, 400.0, -30.0,
-        500.0, 600.0, -10.0, 400.0, 100.0, -20.0);
+    Bezier b1 = new Bezier(0.0,   0.0,   0.0,
+                           400.0, 400.0, -30.0,
+                           500.0, 600.0, -10.0,
+                           400.0, 100.0, -20.0);
     HSBColor c = new HSBColor(0.0, 0.9, 0.8);
     int r = 0;
 
     @Override
     public void setup() {
         setSize(1024, 768);
+        
         b1.setFill(false);
         b1.setStrokeColor(c);
         b1.setStrokeWidth(3);
+        
         setPosition(getWidth() / 2, 100);
+        
         for (int i = 0; i < 37; i++) {
         	Bezier b = (Bezier) b1.clone();
             addObject(b);
@@ -74,13 +78,10 @@ public class RotateExample extends Applet {
     @Override
     public void keyEvent(KeyEvent e) {}
     
+    @Override
+	public void mouseWheelEvent() {}
+    
     public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.RotateExample", "Rotation Example");
     }
-
-	@Override
-	public void mouseWheelEvent() {
-		// TODO Auto-generated method stub
-		
-	}
 }
