@@ -31,17 +31,23 @@ import casmi.graphics.element.Text;
 import casmi.graphics.font.Font;
 import casmi.graphics.font.FontStyle;
 
+/**
+ * An example of Mouseover of Text.
+ * 
+ * @author Y. Ban
+ */
 public class MouseOverTextExample extends Applet {
 
-    private static final String SAMPLE_TEXT = "This is a test for Text element.";
-    private Text text;
+    static final String SAMPLE_TEXT = "Move your mouse cursor on this text.";
+
+    Text text;
 
     @Override
     public void setup() {
         setSize(800, 600);
 
         Font font = new Font("San-Serif", FontStyle.BOLD_ITALIC, 20);
-        text = new Text(SAMPLE_TEXT, font, 200, 300);
+        text = new Text(SAMPLE_TEXT, font, 220, 300);
         text.setStrokeColor(ColorSet.WHITE);
         text.addMouseEventCallback(new MouseOverCallback() {
 
@@ -49,10 +55,10 @@ public class MouseOverTextExample extends Applet {
             public void run(MouseOverTypes eventtype, Element element) {
                 switch (eventtype) {
                 case ENTERED:
-                    cursor(CursorMode.HAND);
+                    setCursor(CursorMode.HAND);
                     break;
                 case EXITED:
-                    cursor(CursorMode.DEFAULT);
+                    setCursor(CursorMode.DEFAULT);
                     break;
                 }
             }
@@ -69,13 +75,10 @@ public class MouseOverTextExample extends Applet {
     @Override
     public void keyEvent(KeyEvent e) {}
 
+    @Override
+    public void mouseWheelEvent() {}
+
     public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.mouseover.MouseOverTextExample", "MouseOverTextExample");
     }
-
-	@Override
-	public void mouseWheelEvent() {
-		// TODO Auto-generated method stub
-		
-	}
 }

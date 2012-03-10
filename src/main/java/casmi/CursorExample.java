@@ -18,7 +18,7 @@
 
 package casmi;
 
-import casmi.graphics.color.RGBColor;
+import casmi.graphics.color.GrayColor;
 import casmi.graphics.element.Circle;
 import casmi.graphics.element.Element;
 import casmi.graphics.element.MouseOverCallback;
@@ -26,7 +26,6 @@ import casmi.graphics.element.MouseOverCallback;
 /**
  * Cursor example.
  * 
- * @see casmi.Applet
  * @see casmi.Applet.CursorMode
  * 
  * @author Y. Ban
@@ -39,17 +38,24 @@ public class CursorExample extends Applet {
 	public void setup() {
 		setSize(800, 600);
 		
-		circle.setFillColor(new RGBColor(0.4, 0.4));
+		circle.setFillColor(new GrayColor(0.4));
+		
 		circle.addMouseEventCallback(new MouseOverCallback() {
+		    
             @Override
             public void run(MouseOverTypes eventtype, Element element) {
-                if (eventtype == MouseOverTypes.EXISTED) {
-                    cursor(CursorMode.HAND);
-                } else {
-                    cursor(CursorMode.DEFAULT);
+                switch (eventtype) {
+                case ENTERED:
+                case EXISTED:
+                    setCursor(CursorMode.HAND);
+                    break;
+                case EXITED:
+                    setCursor(CursorMode.DEFAULT);
+                    break;
                 }
             }
         });
+		
 		addObject(circle);
 	}
 	
@@ -61,14 +67,11 @@ public class CursorExample extends Applet {
 
     @Override
     public void keyEvent(KeyEvent e) {}
+    
+    @Override
+	public void mouseWheelEvent() {}
 
 	public static void main(String[] args) {
-		AppletRunner.run("casmi.CursorExample", "Cursor Example");
-	}
-
-	@Override
-	public void mouseWheelEvent() {
-		// TODO Auto-generated method stub
-		
+		AppletRunner.run("casmi.CursorExample", "CursorExample");
 	}
 }

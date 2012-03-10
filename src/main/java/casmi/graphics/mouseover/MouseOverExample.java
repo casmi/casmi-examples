@@ -1,5 +1,3 @@
-package casmi.graphics.mouseover;
-
 /*
  *   casmi examples
  *   http://casmi.github.com/
@@ -18,6 +16,8 @@ package casmi.graphics.mouseover;
  * limitations under the License.
  */
 
+package casmi.graphics.mouseover;
+
 import casmi.Applet;
 import casmi.AppletRunner;
 import casmi.CursorMode;
@@ -34,141 +34,132 @@ import casmi.graphics.element.Quad;
 import casmi.graphics.element.Rect;
 import casmi.graphics.element.RoundRect;
 import casmi.graphics.element.Triangle;
+
 /**
  * Example of MouseOver.
  * 
  * @author Y. Ban
- * 
  */
 public class MouseOverExample extends Applet {
     
-    Rect rect;
-    Ellipse ellipse;
-    Triangle triangle,triangle2;
-    Quad quad;
-    Arc arc;
-    RoundRect roundrect;
+    Rect      rect;
+    Ellipse   ellipse;
+    Triangle  triangle1, triangle2;
+    Quad      quad;
+    Arc       arc;
+    RoundRect roundRect;
     
-    MouseOverCallback mouseovercb;
-    MouseClickCallback mouseclickcb;
+    MouseOverCallback  mouseOverCB;
+    MouseClickCallback mouseClickCB;
 
     public void setup() {
         setSize(1024, 768);
        
-        rect = new Rect(800,500,200,150);
-        ellipse = new Ellipse(150, 300, 100, 150);
-        triangle = new Triangle(500,100,600,250,650,50);
-        triangle2 = new Triangle(400,500,500,700,550,550);
-        quad = new Quad(20,600,70,550,200,630,80,680);
-        arc = new Arc(800, 100, 70, 30, 100, 30);
-        roundrect = new RoundRect(10,200,100,100,60);
-        rect.setFillColor(ColorSet.ORANGE);
-        rect.setStroke(false);
-        ellipse.setStrokeColor(ColorSet.LIGHT_BLUE);
-        ellipse.setFill(false);
-        triangle.setFillColor(ColorSet.LAVENDER);
-        triangle.setStroke(false);
-        triangle2.setFillColor(ColorSet.LEMON_CHIFFON);
-        quad.setStrokeColor(ColorSet.AQUA);
-        quad.setFill(false);
-        arc.setStroke(false);
-        arc.setFillColor(ColorSet.OLIVE_DRAB);
-        roundrect.setStroke(false);
-        roundrect.setFillColor(ColorSet.GOLD);
-        roundrect.setRadius(20);
-        addObject(rect);
-        addObject(ellipse);
-        addObject(triangle);
-        addObject(triangle2);
-        addObject(quad);
-        addObject(arc);
-        addObject(roundrect);
-        
-        mouseovercb = new MouseOverCallback() {
+        mouseOverCB = new MouseOverCallback() {
+            
         	@Override
-        	public void run(MouseOverTypes eventtype, Element element){
-        		switch(eventtype){
+        	public void run(MouseOverTypes eventtype, Element element) {
+        		switch (eventtype) {
         		case ENTERED:
-        			if(element == rect)
-        				cursor(CursorMode.HAND);
-        			if(element == ellipse)
-        				cursor(CursorMode.CROSS);
-        			if(element == triangle)
-        				cursor(CursorMode.CROSS);
-        			if(element == triangle2)
-        				cursor(CursorMode.TEXT);
-        			if(element == arc || element == quad)
-        				cursor(CursorMode.WAIT);
-        			if(element == roundrect)
-        				cursor(CursorMode.HAND);
+        			if (element == rect)
+        				setCursor(CursorMode.HAND);
+        			else if (element == ellipse)
+        				setCursor(CursorMode.CROSS);
+        			else if (element == triangle1)
+        				setCursor(CursorMode.CROSS);
+        			else if (element == triangle2)
+        				setCursor(CursorMode.TEXT);
+        			else if (element == arc || element == quad)
+        				setCursor(CursorMode.WAIT);
+        			else if (element == roundRect)
+        				setCursor(CursorMode.HAND);
         			break;
         		case EXITED:
-        			cursor(CursorMode.DEFAULT);
+        			setCursor(CursorMode.DEFAULT);
         			break;
+        		default:
+        		    break;
         		}
         	}
         };
         
-        mouseclickcb = new MouseClickCallback() {
+        mouseClickCB = new MouseClickCallback() {
 			
 			@Override
-			public void run(MouseClickTypes eventtype,
-					Element element) {
+			public void run(MouseClickTypes eventtype, Element element) {
 				switch(eventtype){
 				case DRAGGED:
-					element.setPosition(element.getX()+getMouseX()-getPreMouseX(), element.getY()+getMouseY()-getPreMouseY());
+					element.setPosition(element.getX() + getMouseX() - getPreMouseX(),
+					                    element.getY() + getMouseY() - getPreMouseY());
+				default:
+				    break;
 				}
-				
 			}
 		};
         
-        rect.addMouseEventCallback(mouseovercb);
-        ellipse.addMouseEventCallback(mouseovercb);
-        triangle.addMouseEventCallback(mouseovercb);
-        triangle2.addMouseEventCallback(mouseovercb);
-        quad.addMouseEventCallback(mouseovercb);
-        arc.addMouseEventCallback(mouseovercb);
-        roundrect.addMouseEventCallback(mouseovercb);
+        rect = new Rect(800, 500, 200, 150);
+        rect.setFillColor(ColorSet.ORANGE);
+        rect.setStroke(false);
+        rect.addMouseEventCallback(mouseOverCB);
+        rect.addMouseEventCallback(mouseClickCB);
+        addObject(rect);
         
-        rect.addMouseEventCallback(mouseclickcb);
-        ellipse.addMouseEventCallback(mouseclickcb);
-        triangle.addMouseEventCallback(mouseclickcb);
-        triangle2.addMouseEventCallback(mouseclickcb);
-        quad.addMouseEventCallback(mouseclickcb);
-        arc.addMouseEventCallback(mouseclickcb);
-        roundrect.addMouseEventCallback(mouseclickcb);
+        ellipse = new Ellipse(150, 300, 100, 150);
+        ellipse.setStrokeColor(ColorSet.LIGHT_BLUE);
+        ellipse.setFill(false);
+        ellipse.addMouseEventCallback(mouseOverCB);
+        ellipse.addMouseEventCallback(mouseClickCB);
+        addObject(ellipse);
+        
+        triangle1 = new Triangle(500, 100, 600, 250, 650, 50);
+        triangle1.setFillColor(ColorSet.LAVENDER);
+        triangle1.setStroke(false);
+        triangle1.addMouseEventCallback(mouseOverCB);
+        triangle1.addMouseEventCallback(mouseClickCB);
+        addObject(triangle1);
+        
+        triangle2 = new Triangle(400, 500, 500, 700, 550, 550);
+        triangle2.setFillColor(ColorSet.LEMON_CHIFFON);
+        triangle2.addMouseEventCallback(mouseOverCB);
+        triangle2.addMouseEventCallback(mouseClickCB);
+        addObject(triangle2);
+        
+        quad = new Quad(20, 600, 70, 550, 200, 630, 80, 680);
+        quad.setStrokeColor(ColorSet.AQUA);
+        quad.setFill(false);
+        quad.addMouseEventCallback(mouseOverCB);
+        quad.addMouseEventCallback(mouseClickCB);
+        addObject(quad);
+        
+        arc = new Arc(800, 100, 70, 30, 100, 30);
+        arc.setStroke(false);
+        arc.setFillColor(ColorSet.OLIVE_DRAB);
+        arc.addMouseEventCallback(mouseOverCB);
+        arc.addMouseEventCallback(mouseClickCB);
+        addObject(arc);
+        
+        roundRect = new RoundRect(10, 200, 100, 100, 60);
+        roundRect.setStroke(false);
+        roundRect.setFillColor(ColorSet.GOLD);
+        roundRect.setRadius(20);
+        roundRect.addMouseEventCallback(mouseOverCB);
+        roundRect.addMouseEventCallback(mouseClickCB);
+        addObject(roundRect);        
     }
     
+    @Override
+	public void update() {}
 
-    public static void main(String args[]) {
-        AppletRunner.run("casmi.graphics.mouseover.MouseOverExample", "Example");
+	@Override
+	public void mouseEvent(MouseEvent e, MouseButton b) {}
+
+	@Override
+	public void keyEvent(KeyEvent e) {}
+
+	@Override
+	public void mouseWheelEvent() {}
+	
+	public static void main(String[] args) {
+        AppletRunner.run("casmi.graphics.mouseover.MouseOverExample", "MouseOverExample");
     }
-
-
-	@Override
-	public void mouseEvent(MouseEvent e, MouseButton b) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void keyEvent(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void mouseWheelEvent() {
-		// TODO Auto-generated method stub
-		
-	}
 }
