@@ -56,14 +56,10 @@ import casmi.tween.equations.Quint;
 import casmi.tween.equations.Sine;
 
 /**
-<<<<<<< HEAD
  * Example of Tween.
  * 
  * @author Y. Ban
  * 
-=======
- * @author Y. Ban
->>>>>>> e4cd2efc5bb81fc95a0f2243a280e7337d6eb0a0
  */
 public class TweenEquationsExample extends Applet {
 
@@ -182,10 +178,10 @@ public class TweenEquationsExample extends Applet {
                 public void run(MouseOverTypes eventtype, Element element) {
                     switch (eventtype) {
                     case ENTERED:
-                        cursor(CursorMode.HAND);
+                        setCursor(CursorMode.HAND);
                         break;
                     case EXITED:
-                        cursor(CursorMode.DEFAULT);
+                        setCursor(CursorMode.DEFAULT);
                         break;
                     }
                 }
