@@ -41,7 +41,7 @@ public class TrackballExample extends Applet {
     
     Trackball trackball;
     
-    double prvMouseX = 0.0, prvMouseY = 0.0;
+    int prvMouseX = 0, prvMouseY = 0;
     
     @Override
     public void setup() {
@@ -86,8 +86,8 @@ public class TrackballExample extends Applet {
         }
         
         if (e == MouseEvent.DRAGGED && b == MouseButton.LEFT) {
-            double mouseX = getMouseX();
-            double mouseY = getMouseY();
+            int mouseX = getMouseX();
+            int mouseY = getMouseY();
             
             // Update Trackball.
             trackball.update(mouseX, mouseY, prvMouseX, prvMouseY);
