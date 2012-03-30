@@ -76,10 +76,6 @@ public class CPopExample extends Applet {
 	public void keyEvent(KeyEvent e) {
 	}
 
-	@Override
-	public void mouseWheelEvent() {
-	}
-
 	public void main(String[] args) {
 		AppletRunner.run("casmi.extension.cpop.CPopExample", "CPopExample");
 	}

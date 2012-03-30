@@ -53,10 +53,10 @@ public class MaterialExample extends Applet {
 	Vertex v1 = new Vertex(1000, 1000, 1000);
 	Vertex v2 = new Vertex(-10, 0, -10);
 
-	float emerald_ambient[] = { 255 * 0.0115f, 255 * 0.745f, 255 * 0.0115f, 255 * 1.0f },
-		  emerald_diffuse[] = { 255 * 0.07568f, 255 * 0.61424f, 255 * 0.07568f, 255 * 1.0f },
-		  emerald_specular[] = { 255 * 0.733f, 255 * 0.927811f, 255 * 0.733f, 255 * 1.0f },
-		  emerald_shininess[] = { 60.8f };
+	float emerald_ambient[]   = { 255 * 0.0115f,  255 * 0.745f,    255 * 0.0115f,  255 * 1.0f };
+	float emerald_diffuse[]   = { 255 * 0.07568f, 255 * 0.61424f,  255 * 0.07568f, 255 * 1.0f };
+	float emerald_specular[]  = { 255 * 0.733f,   255 * 0.927811f, 255 * 0.733f,   255 * 1.0f };
+	float emerald_shininess[] = { 60.8f };
 
 	@Override
 	public void setup() {
@@ -109,9 +109,4 @@ public class MaterialExample extends Applet {
         AppletRunner.run("casmi.graphics.MaterialExample", "MaterialExample");
     }
 
-	@Override
-	public void mouseWheelEvent() {
-		// TODO Auto-generated method stub
-		
-	}
 }

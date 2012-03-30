@@ -25,7 +25,7 @@ import casmi.MouseButton;
 import casmi.MouseEvent;
 import casmi.graphics.element.Quad;
 import casmi.graphics.element.Texture;
-import casmi.graphics.element.Texture.TextureRotationMode;
+import casmi.graphics.element.TextureRotationMode;
 
 /**
  * Example of Graphics.
@@ -35,14 +35,16 @@ import casmi.graphics.element.Texture.TextureRotationMode;
  */
 public class QuadTextureExample extends Applet {
 
-    String imagePath = Applet.class.getResource("logo.png").getPath();
+    static final String IMAGE_PATH = Applet.class.getResource("logo.png").getPath();
+    
     Texture tex = null;
     Quad q1 = new Quad(500, 300, 400, 500, 600, 500, 700, 300);
 
     @Override
     public void setup() {
         setSize(1024, 768);
-        tex = new Texture(imagePath);
+        
+        tex = new Texture(IMAGE_PATH);
         q1.setStroke(false);
         q1.setTexture(tex);
 
@@ -54,20 +56,16 @@ public class QuadTextureExample extends Applet {
 
     @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {
-        if (e == MouseEvent.PRESSED)
-            tex.rotation(TextureRotationMode.FrontRight);
+        if (e == MouseEvent.PRESSED) {
+            tex.rotation(TextureRotationMode.FRONT_RIGHT);
+        }
     }
 
     @Override
     public void keyEvent(KeyEvent e) {}
 
     public static void main(String[] args) {
-        AppletRunner.run("casmi.graphics.QuadTextureExample", "Example");
+        AppletRunner.run("casmi.graphics.QuadTextureExample", "QuadTextureExample");
     }
 
-	@Override
-	public void mouseWheelEvent() {
-		// TODO Auto-generated method stub
-		
-	}
 }

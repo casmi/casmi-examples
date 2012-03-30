@@ -66,9 +66,4 @@ public class TextExample extends Applet {
         AppletRunner.run("casmi.graphics.TextExample", "Text Example");
     }
 
-	@Override
-	public void mouseWheelEvent() {
-		// TODO Auto-generated method stub
-		
-	}
 }

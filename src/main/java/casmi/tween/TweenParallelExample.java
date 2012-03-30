@@ -101,7 +101,6 @@ public class TweenParallelExample extends Applet {
             @Override
             public void run(TweenCallbackTypes eventType, Tween tween) {
                 tmfinish = true;
-
             }
         };
     }
@@ -155,12 +154,7 @@ public class TweenParallelExample extends Applet {
     public void keyEvent(KeyEvent e) {}
 
     public static void main(String[] args) {
-        AppletRunner.run("casmi.tween.TweenParallelExample", "Example");
+        AppletRunner.run("casmi.tween.TweenParallelExample", "TweenParallelExample");
     }
 
-	@Override
-	public void mouseWheelEvent() {
-		// TODO Auto-generated method stub
-		
-	}
 }

@@ -26,49 +26,39 @@ import casmi.MouseEvent;
 import casmi.graphics.element.Circle;
 import casmi.tween.equations.Bounce;
 
-public class TweenSimpleExample extends Applet{
+/**
+ * Simple tween example.
+ * 
+ * @author Y. Ban
+ */
+public class TweenSimpleExample extends Applet {
 	
-	Circle circle = new Circle(100);
+	Circle circle;
 	TweenElement te;  
-//    private TweenManager manager = new TweenManager();
-    
 
 	@Override
 	public void setup() {
 		setSize(800,600);
+		
+		circle = new Circle(100);
 		circle.setPosition(400,500);
 		addObject(circle);
+		
 		te = new TweenElement(circle);
     	addTween(Tween.to(te, TweenType.POSITION, 3000, Bounce.OUT).addDelay(3000).target(200, 100).repeat(-1, 500));
-		
 	}
 
 	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void update() {}
 
 	@Override
-	public void mouseEvent(MouseEvent e, MouseButton b) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void mouseEvent(MouseEvent e, MouseButton b) {}
 
 	@Override
-	public void keyEvent(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-    public static void main(String args[]) {
-        AppletRunner.run("casmi.tween.TweenSimpleExample", "Example");
+	public void keyEvent(KeyEvent e) {}
+
+	public static void main(String[] args) {
+        AppletRunner.run("casmi.tween.TweenSimpleExample", "TweenSimpleExample");
     }
-
-	@Override
-	public void mouseWheelEvent() {
-		// TODO Auto-generated method stub
-		
-	}
-
+	
 }

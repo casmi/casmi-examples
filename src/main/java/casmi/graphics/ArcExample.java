@@ -60,9 +60,4 @@ public class ArcExample extends Applet {
         AppletRunner.run("casmi.graphics.ArcExample", "Arc Example");
     }
 
-	@Override
-	public void mouseWheelEvent() {
-		// TODO Auto-generated method stub
-		
-	}
 }

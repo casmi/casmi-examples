@@ -49,7 +49,7 @@ public class RotateExample extends Applet {
         b1.setStrokeColor(c);
         b1.setStrokeWidth(3);
         
-        setPosition(getWidth() / 2, 100);
+        setPosition(getWidth() / 2.0, 100.0);
         
         for (int i = 0; i < 37; i++) {
         	Bezier b = (Bezier) b1.clone();
@@ -71,17 +71,16 @@ public class RotateExample extends Applet {
 
     @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {
-        if (e == MouseEvent.PRESSED)
+        if (e == MouseEvent.PRESSED) {
             capture("rsrc" + SystemUtil.FILE_SEPARATOR + "save.png", false);
+        }
     }
 
     @Override
     public void keyEvent(KeyEvent e) {}
     
-    @Override
-	public void mouseWheelEvent() {}
-    
     public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.RotateExample", "Rotation Example");
     }
+    
 }

@@ -33,6 +33,11 @@ import casmi.tween.equations.Quart;
 import casmi.tween.simpletweenables.TweenFloat;
 import casmi.util.Random;
 
+/**
+ * Tween cursor example.
+ * 
+ * @author Y. Ban
+ */
 public class TweenCursorExample extends Applet {
 
     Ellipse el = new Ellipse(40);
@@ -85,9 +90,4 @@ public class TweenCursorExample extends Applet {
         AppletRunner.run("casmi.tween.TweenCursorExample", "TweenCursorExample");
     }
 
-	@Override
-	public void mouseWheelEvent() {
-		// TODO Auto-generated method stub
-		
-	}
 }

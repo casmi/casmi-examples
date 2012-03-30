@@ -71,9 +71,4 @@ public class IRExample extends Applet {
         AppletRunner.run("casmi.extension.coni.IRExample", "CONI (casmi OpenNI): IR Example");
     }
 
-	@Override
-	public void mouseWheelEvent() {
-		// TODO Auto-generated method stub
-		
-	}
 }

@@ -35,9 +35,20 @@ import casmi.graphics.element.Bezier;
  */
 public class BezierExample extends Applet {
 
-    Bezier b1 = new Bezier(100, 200, 200, 400, 300, 300, 400, 200);
-    Bezier b2 = new Bezier(400, 200, 500, 100, 700, 300, 700, 500);
-    Bezier b3 = new Bezier(100, 200, -20, 700, 400, -100, 300, 600, -50, 700, 500, -70);
+    Bezier b1 = new Bezier(100, 200,
+                           200, 400,
+                           300, 300,
+                           400, 200);
+    
+    Bezier b2 = new Bezier(400, 200,
+                           500, 100,
+                           700, 300,
+                           700, 500);
+    
+    Bezier b3 = new Bezier(100, 200, -20,
+                           700, 400, -100,
+                           300, 600, -50,
+                           700, 500, -70);
 
     @Override
     public void setup() {
@@ -73,9 +84,4 @@ public class BezierExample extends Applet {
         AppletRunner.run("casmi.graphics.BezierExample", "Bezier Example");
     }
 
-	@Override
-	public void mouseWheelEvent() {
-		// TODO Auto-generated method stub
-		
-	}
 }

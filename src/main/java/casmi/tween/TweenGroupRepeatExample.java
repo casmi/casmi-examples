@@ -27,15 +27,12 @@ import casmi.graphics.color.ColorSet;
 import casmi.graphics.element.Rect;
 import casmi.tween.equations.Bounce;
 
-
-
 /**
  * Example of TweenRepeat for TweenGroup.
  * 
  * @author Y. Ban
- * 
  */
-public class TweenGroupRepeatExample extends Applet{
+public class TweenGroupRepeatExample extends Applet {
 
 	Rect r1 = new Rect(200, 200);
 	TweenElement te;
@@ -43,6 +40,7 @@ public class TweenGroupRepeatExample extends Applet{
 	@Override
 	public void setup() {
 		setSize(800,600);
+		
 		r1.setFillColor(ColorSet.AQUA);
 		addObject(r1);
 		r1.setPosition(150, 150);
@@ -54,35 +52,19 @@ public class TweenGroupRepeatExample extends Applet{
 					Tween.to(te, TweenType.POSITION, 1000, Bounce.OUT).target(150,150)
 				).addDelay(1000).repeat(10,300);
 		addTween(ts);	
-		
 	}
 
 	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
-	}
+	public void update() {}
 
 	@Override
-	public void mouseEvent(MouseEvent e, MouseButton b) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void mouseEvent(MouseEvent e, MouseButton b) {}
 
 	@Override
-	public void keyEvent(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
+	public void keyEvent(KeyEvent e) {}
 
     public static void main(String[] args) {
         AppletRunner.run("casmi.tween.TweenGroupRepeatExample", "TweenGroupRepeatExample");
     }
 
-	@Override
-	public void mouseWheelEvent() {
-		// TODO Auto-generated method stub
-		
-	}
 }

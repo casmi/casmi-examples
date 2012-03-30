@@ -64,9 +64,4 @@ public class QuadExample extends Applet {
         AppletRunner.run("casmi.graphics.QuadExample", "QuadExample");
     }
 
-	@Override
-	public void mouseWheelEvent() {
-		// TODO Auto-generated method stub
-		
-	}
 }

@@ -51,23 +51,18 @@ public class TriangleExample extends Applet {
         addObject(t1);
         addObject(t2);
     }
+    
+    @Override
+	public void update() {}
 
 	@Override
 	public void mouseEvent(MouseEvent e, MouseButton b) {}
 
 	@Override
 	public void keyEvent(KeyEvent e) {}
-
-	@Override
-	public void update() {}
 	
 	public static void main(String[] args) {
-        AppletRunner.run("casmi.graphics.TriangleExample", "Example");
+        AppletRunner.run("casmi.graphics.TriangleExample", "Triangle Example");
     }
-
-	@Override
-	public void mouseWheelEvent() {
-		// TODO Auto-generated method stub
-		
-	}
+	
 }

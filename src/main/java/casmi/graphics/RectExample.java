@@ -70,9 +70,4 @@ public class RectExample extends Applet {
         AppletRunner.run("casmi.graphics.RectExample", "RectExample");
     }
 
-	@Override
-	public void mouseWheelEvent() {
-		// TODO Auto-generated method stub
-		
-	}
 }

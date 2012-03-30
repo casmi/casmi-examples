@@ -42,7 +42,7 @@ public class SphereTextureExample extends Applet {
 
     private int cx, cy;
     private double sx, sy;
-    private double cq[] = {1.0, 0.0, 0.0, 0.0};
+    private double cq[] = { 1.0, 0.0, 0.0, 0.0 };
     private double tq[] = new double[4];
     private double rt[] = new double[16];
 
@@ -50,28 +50,32 @@ public class SphereTextureExample extends Applet {
 
     @Override
     public void setup() {
-        s = new Sphere(1);
         setSize(1024, 768);
+        
+        s = new Sphere(1);
         s.setStroke(false);
         earth = new Texture(Applet.class.getResource("earthDiffuse.png"));
         v = new Vertex(0, 0, 10);
         rt[0] = rt[5] = rt[10] = rt[15] = 1.0;
 
-        mousepoint = new Vertex(0, 0);
-        perspective = new Perspective(30, (double)getWidth() / (double)getHeight(), 1.0, 100);
-        camera = new Camera(2.4, 3.2, 4.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
+        mousepoint  = new Vertex(0, 0);
+        perspective = new Perspective(30.0, (double)getWidth() / (double)getHeight(), 1.0, 100.0);
+        camera      = new Camera(2.4, 3.2, 4.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
+        
         setPerspective(perspective);
         setCamera(camera);
         applyMatix(rt);
+        
         sx = 1.0 / (double)getWidth();
         sy = 1.0 / (double)getHeight();
         s.setTexture(earth);
+        
         addObject(s);
     }
 
     @Override
     public void update() {
-        if (isMousePressed() == true) {
+        if (isMousePressed()) {
             mousepoint.setX(getMouseX());
             mousepoint.setY(getMouseY());
         }
@@ -139,7 +143,7 @@ public class SphereTextureExample extends Applet {
             }
         }
 
-        if (isMouseReleased() == true) {
+        if (isMouseReleased()) {
             double dmx, dmy;
             track = true;
             fx = getMouseX();
@@ -148,18 +152,17 @@ public class SphereTextureExample extends Applet {
             dmy = getPreMouseY() - getMouseY();
             dma = Math.sqrt(dmx * dmx + dmy * dmy);
             dmr = Math.acos(dma / dmx);
-
         }
     }
 
-    void qmul(double r[], double p[], double q[]) {
+    void qmul(double[] r, double[] p, double[] q) {
         r[0] = p[0] * q[0] - p[1] * q[1] - p[2] * q[2] - p[3] * q[3];
         r[1] = p[0] * q[1] + p[1] * q[0] + p[2] * q[3] - p[3] * q[2];
         r[2] = p[0] * q[2] - p[1] * q[3] + p[2] * q[0] + p[3] * q[1];
         r[3] = p[0] * q[3] + p[1] * q[2] - p[2] * q[1] + p[3] * q[0];
     }
 
-    void qrot(double r[], double q[]) {
+    void qrot(double[] r, double[] q) {
         double x2 = q[1] * q[1] * 2.0;
         double y2 = q[2] * q[2] * 2.0;
         double z2 = q[3] * q[3] * 2.0;
@@ -183,7 +186,6 @@ public class SphereTextureExample extends Applet {
         r[15] = 1.0;
     }
 
-    
     @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {}
 
@@ -193,11 +195,5 @@ public class SphereTextureExample extends Applet {
     public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.SphereTextureExample", "SphereTextureExample");
     }
-
-	@Override
-	public void mouseWheelEvent() {
-		// TODO Auto-generated method stub
-		
-	}
 
 }

@@ -41,10 +41,13 @@ public class SphereExample extends Applet {
     @Override
     public void setup() {
         setSize(1024, 768);
+        
         s.setFill(false);
         s.setStrokeColor(new RGBColor(0.4, 0.4, 0.8));
         s.setStrokeWidth(4);
+        
         setPosition(512.0, 430.0, 100.0);
+        
         addObject(s);
     }
 
@@ -64,9 +67,4 @@ public class SphereExample extends Applet {
         AppletRunner.run("casmi.graphics.SphereExample", "Sphere Example");
     }
 
-	@Override
-	public void mouseWheelEvent() {
-		// TODO Auto-generated method stub
-		
-	}
 }

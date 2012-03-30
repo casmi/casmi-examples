@@ -69,9 +69,4 @@ public class KeyboardSimpleExample extends Applet {
         AppletRunner.run("casmi.KeyboardSimpleExample", "Simple Keyboard Example");
     }
 
-	@Override
-	public void mouseWheelEvent() {
-		// TODO Auto-generated method stub
-		
-	}
 }

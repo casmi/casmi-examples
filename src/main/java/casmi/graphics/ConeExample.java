@@ -45,6 +45,7 @@ public class ConeExample extends Applet {
         cone.setStrokeColor(new RGBColor(0.4, 0.4, 0.8));
         cone.setStrokeWidth(4);
         cone.setPosition(400, 230, 100);
+        
         addObject(cone);
     }
     
@@ -61,9 +62,4 @@ public class ConeExample extends Applet {
         AppletRunner.run("casmi.graphics.ConeExample", "Cone Example");
     }
 
-	@Override
-	public void mouseWheelEvent() {
-		// TODO Auto-generated method stub
-		
-	}
 }

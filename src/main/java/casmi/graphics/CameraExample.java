@@ -81,9 +81,6 @@ public class CameraExample extends Applet {
 	@Override
 	public void keyEvent(KeyEvent e) {}
 	
-	@Override
-	public void mouseWheelEvent() {}
-
 	public static void main(String[] args) {
         AppletRunner.run( "casmi.graphics.CameraExample", "CameraExample");
     }

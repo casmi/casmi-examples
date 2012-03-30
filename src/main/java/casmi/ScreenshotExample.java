@@ -225,10 +225,5 @@ public class ScreenshotExample extends Applet {
     public static void main(String[] args) {
         AppletRunner.run("casmi.ScreenshotExample", "Screenshot Example");
     }
-
-	@Override
-	public void mouseWheelEvent() {
-		// TODO Auto-generated method stub
-		
-	}
+    
 }

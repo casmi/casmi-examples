@@ -103,7 +103,6 @@ public class TextureMaskExample extends Applet {
                 t.setText("MaskImage");
             }
         }
-
     }
 
     @Override
@@ -114,16 +113,10 @@ public class TextureMaskExample extends Applet {
             if (getKeycode() == 'b')
                 capture(Applet.class.getResource("save_with_bg.png").getPath());
         }
-
     }
 
     public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.TextureMaskExample", "Texture Mask Example");
     }
 
-	@Override
-	public void mouseWheelEvent() {
-		// TODO Auto-generated method stub
-		
-	}
 }

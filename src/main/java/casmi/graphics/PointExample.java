@@ -67,10 +67,5 @@ public class PointExample extends Applet {
     public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.PointExample", "PointExample");
     }
-
-	@Override
-	public void mouseWheelEvent() {
-		// TODO Auto-generated method stub
-		
-	}
+    
 }

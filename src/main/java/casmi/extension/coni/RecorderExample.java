@@ -139,9 +139,4 @@ public class RecorderExample extends Applet {
         AppletRunner.run("casmi.extension.coni.RecorderExample", "CONI (casmi OpenNI): Recorder Example");
     }
 
-	@Override
-	public void mouseWheelEvent() {
-		// TODO Auto-generated method stub
-		
-	}
 }

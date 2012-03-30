@@ -117,9 +117,4 @@ public class SimpleViewerExample extends Applet {
         AppletRunner.run("casmi.extension.coni.SimpleViewerExample", "CONI (casmi OpenNI): simple example");
     }
 
-	@Override
-	public void mouseWheelEvent() {
-		// TODO Auto-generated method stub
-		
-	}
 }

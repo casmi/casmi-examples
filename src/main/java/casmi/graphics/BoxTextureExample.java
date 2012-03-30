@@ -39,7 +39,15 @@ import casmi.graphics.object.Perspective;
  */
 public class BoxTextureExample extends Applet {
 
-	private static final String[] imageNames = { "sai1.png", "sai2.png", "sai3.png", "sai4.png", "sai5.png", "sai6.png" };
+	private static final String[] imageNames = { 
+	    "sai1.png",
+	    "sai2.png",
+	    "sai3.png",
+	    "sai4.png",
+	    "sai5.png",
+	    "sai6.png"
+	};
+	
 	private static URL[] imageURLs = new URL[6];
 
 	static {
@@ -65,8 +73,8 @@ public class BoxTextureExample extends Applet {
 		b.setStroke(false);
 		b.setRotation(rot, 1, 3, 5);
 
-		p = new Perspective(30, (double) getWidth() / (double) getHeight(),
-				1.0, 100);
+		p = new Perspective(30, (double)getWidth() / (double)getHeight(),
+				            1.0, 100);
 		c = new Camera(3.0, 4.0, 5.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
 
 		setPerspective(p);
@@ -96,9 +104,4 @@ public class BoxTextureExample extends Applet {
         AppletRunner.run("casmi.graphics.BoxTextureExample", "BoxTextureExample");
     }
 
-	@Override
-	public void mouseWheelEvent() {
-		// TODO Auto-generated method stub
-		
-	}	
 }

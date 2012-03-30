@@ -58,13 +58,8 @@ public class CircleExample extends Applet {
 	@Override
 	public void keyEvent(KeyEvent e) {}
 	
-	public static void main(String args[]) {
+	public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.CircleExample", "Circle Example");
     }
 
-	@Override
-	public void mouseWheelEvent() {
-		// TODO Auto-generated method stub
-		
-	}
 }

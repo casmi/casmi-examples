@@ -15,9 +15,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-  
-package casmi.graphics;
 
+package casmi.graphics;
 
 import casmi.Applet;
 import casmi.AppletRunner;
@@ -37,52 +36,40 @@ import casmi.util.SystemUtil;
  */
 public class ImageModeExample extends Applet {
 
-   Texture tex = null;
-    Rect r1 = new Rect(100,100);
+    static final String IMAGE_PATH = Applet.class.getResource("logo.png").getPath();
     
-   // String imagePath = ".." + SystemUtil.FILE_SEPARATOR + "rsrc" + SystemUtil.FILE_SEPARATOR + "logo.png";  // TODO can not work when running as Java Application
-   // String imagePath = "rsrc" + SystemProperty.FILE_SEPARATOR + "logo.png";
-    String imagePath = "rsrc" + SystemUtil.FILE_SEPARATOR + "logo.png";
-    
-    
-    public void setup(){
+    Texture tex = null;
+    Rect r1 = new Rect(100, 100);
+
+    public void setup() {
         setSize(1024, 768);
+        
         System.out.println(SystemUtil.USER_DIR);
-        tex = new Texture(imagePath);
+        
+        tex = new Texture(IMAGE_PATH);
         tex.setMode(ImageMode.CORNER);
         tex.setPosition(300, 300);
+        
         addObject(tex);
         addObject(r1);
+        
         tex.setMode(ImageMode.CENTER);
         tex.setPosition(600, 600);
+        
         addObject(tex);
     }
+
+    @Override
+    public void update() {}
     
-    public static void main(String args[]) {
-        AppletRunner.run( "casmi.graphics.ImageModeExample", "Example");
+    @Override
+    public void mouseEvent(MouseEvent e, MouseButton b) {}
+
+    @Override
+    public void keyEvent(KeyEvent e) {}
+    
+    public static void main(String[] args) {
+        AppletRunner.run("casmi.graphics.ImageModeExample", "ImageModeExample");
     }
 
-	@Override
-	public void mouseEvent(MouseEvent e, MouseButton b) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void keyEvent(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseWheelEvent() {
-		// TODO Auto-generated method stub
-		
-	}
 }

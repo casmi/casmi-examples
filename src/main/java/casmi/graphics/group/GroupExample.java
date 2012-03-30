@@ -50,7 +50,6 @@ public class GroupExample extends Applet {
 
     @Override
     public void setup() {
-        
         setSize(800, 600);
         setBackGroundColor(ColorSet.GRAY);
         
@@ -93,10 +92,8 @@ public class GroupExample extends Applet {
     @Override
     public void keyEvent(KeyEvent e) {}
 
-	@Override
-	public void mouseWheelEvent() {}
-	
 	public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.group.GroupExample", "GroupExample");
     }
+	
 }

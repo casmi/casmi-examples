@@ -93,9 +93,4 @@ public class TweenVertexExample extends Applet {
         AppletRunner.run("casmi.tween.TweenVertexExample", "TweenVertexExample");
     }
 
-	@Override
-	public void mouseWheelEvent() {
-		// TODO Auto-generated method stub
-		
-	}
 }

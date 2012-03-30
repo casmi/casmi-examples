@@ -135,13 +135,7 @@ public class MouseOverColorSetExample extends Applet {
     public void keyEvent(KeyEvent e) {}
 
     public static void main(String[] args) {
-        AppletRunner.run("casmi.graphics.mouseover.MouseOverColorSetExample",
-            "MouseOverColorSetExample");
+        AppletRunner.run("casmi.graphics.mouseover.MouseOverColorSetExample", "MouseOverColorSetExample");
     }
 
-	@Override
-	public void mouseWheelEvent() {
-		// TODO Auto-generated method stub
-		
-	}
 }

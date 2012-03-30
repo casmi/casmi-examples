@@ -45,6 +45,7 @@ public class EllipseExample extends Applet {
         el.setFillColor(new RGBColor(0.3, 0.7, 0.3));
         el.setStrokeColor(ColorSet.LIGHT_CORAL);
         el.setStrokeWidth(3);
+        
         addObject(el);
     }
 
@@ -61,9 +62,4 @@ public class EllipseExample extends Applet {
         AppletRunner.run("casmi.graphics.EllipseExample", "Ellipse Example");
     }
 
-	@Override
-	public void mouseWheelEvent() {
-		// TODO Auto-generated method stub
-		
-	}
 }

@@ -61,23 +61,18 @@ public class ColorSetExample extends Applet {
             addObject(rr);
         }
     }
+    
+    @Override
+    public void update() {}
 
     @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {}
 
     @Override
     public void keyEvent(KeyEvent e) {}
-
-    @Override
-    public void update() {}
     
     public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.color.ColorSetExample", "Color Set Example");
     }
 
-	@Override
-	public void mouseWheelEvent() {
-		// TODO Auto-generated method stub
-		
-	}
 }

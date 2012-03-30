@@ -100,9 +100,4 @@ public class GradationExample extends Applet {
         AppletRunner.run("casmi.graphics.gradation.GradationExample", "Gradation Example");
     }
 
-	@Override
-	public void mouseWheelEvent() {
-		// TODO Auto-generated method stub
-		
-	}
 }
