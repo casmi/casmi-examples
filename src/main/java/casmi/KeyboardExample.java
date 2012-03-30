@@ -18,7 +18,6 @@
 
 package casmi;
 
-import casmi.graphics.color.Color;
 import casmi.graphics.color.ColorSet;
 import casmi.graphics.element.Line;
 import casmi.graphics.element.Rect;
@@ -72,7 +71,7 @@ public class KeyboardExample extends Applet {
         text = new Text(content, ft,
                         getWidth()  / 2 - (r.getWidth() / 2 - 20),
                         getHeight() / 2 + r.getHeight() / 2 - 2 * r.getHeight() / (LINE_NUM + 1) + 5);
-        text.setStrokeColor(Color.color(ColorSet.LIGHT_BLUE));
+        text.setStrokeColor(ColorSet.LIGHT_BLUE);
         text.setLeading(r.getHeight() / (LINE_NUM + 1));
         
         addObject(r);
@@ -91,7 +90,7 @@ public class KeyboardExample extends Applet {
     public void update() {}
     
     @Override 
-    public void keyEvent(KeyEvent e){
+    public void keyEvent(KeyEvent e) {
     	if (e == KeyEvent.PRESSED) {
             if (44 <= getKeycode() || getKeycode() == 32) {
                 content += getKey();
@@ -103,9 +102,9 @@ public class KeyboardExample extends Applet {
             text.setText(content);
         }
     	c.set(text.getX() + text.getWidth(text.getLine()  - 1) + 2,
-                text.getY() - text.getLeading() * (text.getLine() - 2) - 10,
-                text.getX() + text.getWidth(text.getLine()  - 1) + 2,
-                text.getY() - text.getLeading() * (text.getLine() - 1) - 1);
+              text.getY() - text.getLeading() * (text.getLine() - 2) - 10,
+              text.getX() + text.getWidth(text.getLine()  - 1) + 2,
+              text.getY() - text.getLeading() * (text.getLine() - 1) - 1);
     }
 
     @Override
@@ -114,4 +113,5 @@ public class KeyboardExample extends Applet {
     public static void main(String[] args) {
         AppletRunner.run("casmi.KeyboardExample", "Keyboard Example");
     }
+		
 }

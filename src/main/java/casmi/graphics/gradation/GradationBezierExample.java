@@ -73,30 +73,18 @@ public class GradationBezierExample extends Applet {
         addObject(b3);
         addObject(curve);
     }
+    
+    @Override
+	public void update() {}
 
+    @Override
+	public void mouseEvent(MouseEvent e, MouseButton b) {}
 
-    public static void main(String args[]) {
-        AppletRunner.run("casmi.graphics.gradation.GradationBezierExample", "Bezier Example");
+	@Override
+	public void keyEvent(KeyEvent e) {}
+
+    public static void main(String[] args) {
+        AppletRunner.run("casmi.graphics.gradation.GradationBezierExample", "GradationBezierExample");
     }
 
-
-	@Override
-	public void mouseEvent(MouseEvent e, MouseButton b) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void keyEvent(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
-	}
 }

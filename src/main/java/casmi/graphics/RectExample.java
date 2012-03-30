@@ -24,7 +24,7 @@ import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseEvent;
 import casmi.graphics.color.Color;
-import casmi.graphics.color.ColorMode;
+import casmi.graphics.color.HSBColor;
 import casmi.graphics.element.Rect;
 
 /**
@@ -37,19 +37,20 @@ public class RectExample extends Applet {
     
     Rect r1 = new Rect(500, 200);
     Rect r2 = new Rect(200, 400);
-    Color c = new Color(20,100,100);
+    Color c = new HSBColor(0.1, 0.4, 0.4);
         
+    @Override
     public void setup() {
         setSize(1024, 768);
-        c.setColorMode(ColorMode.HSB);
+        
         r1.setFillColor(c);
-        r1.setStrokeColor(new Color(100, 240, 100));
+        r1.setStrokeColor(new HSBColor(0.4, 0.9, 0.4));
         r1.setStrokeWidth(3);
         r1.setPosition(500, 300);
         
         r2.setFill(false);
         r2.setStrokeWidth(5);
-        r2.setStrokeColor(new Color(180, 80, 80));
+        r2.setStrokeColor(new HSBColor(0.7, 0.3, 0.3));
         r2.setPosition(200, 300);
         
         addObject(r1);
@@ -66,6 +67,7 @@ public class RectExample extends Applet {
 	public void keyEvent(KeyEvent e) {}
 	
 	public static void main(String[] args) {
-        AppletRunner.run("casmi.graphics.RectExample", "Example");
+        AppletRunner.run("casmi.graphics.RectExample", "RectExample");
     }
+
 }

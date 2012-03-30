@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-  
+
 package casmi.graphics.mouseover;
 
 import java.util.ArrayList;
@@ -26,7 +26,9 @@ import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseEvent;
+import casmi.graphics.color.Color;
 import casmi.graphics.color.ColorSet;
+import casmi.graphics.color.RGBColor;
 import casmi.graphics.element.Element;
 import casmi.graphics.element.MouseOverCallback;
 import casmi.graphics.element.RoundRect;
@@ -42,113 +44,98 @@ import casmi.graphics.font.FontStyle;
  * 
  */
 public class MouseOverColorSetExample extends Applet {
-    
+
     List<RoundRect> rrList = new ArrayList<RoundRect>();
     List<ColorRoundrect> crList = new ArrayList<ColorRoundrect>();
     Font f;
-    Text t,backt;
-    MouseOverCallback callback;
-      int index;
-      
-      class ColorRoundrect {
-          String colorname;
-          RoundRect roundrect;
-          ColorSet cset;
-          int index;
+    Text text;
+    int index;
 
-          ColorRoundrect(ColorSet set) {
-          	cset = set;
-              roundrect = new RoundRect(6, 0, 0, 52, 52);
-              colorname = set.toString();
-              roundrect.setFillColor(set);
-              roundrect.setStrokeColor(ColorSet.WHITE);
-              roundrect.setStrokeWidth(2.0f);
-              roundrect.setStroke(false);
-          }
-      }
-      
-      
-    
-    public void setup(){
+    class ColorRoundrect {
+
+        String colorName;
+        RoundRect roundRect;
+        ColorSet colorSet;
+        int index;
+
+        ColorRoundrect(ColorSet colorSet) {
+            this.colorSet = colorSet;
+            roundRect = new RoundRect(6, 0, 0, 52, 52);
+            colorName = colorSet.toString();
+            roundRect.setFillColor(colorSet);
+            roundRect.setStrokeColor(ColorSet.WHITE);
+            roundRect.setStrokeWidth(2.0);
+            roundRect.setStroke(false);
+        }
+    }
+
+    @Override
+    public void setup() {
         setSize(1024, 768);
-        final float w = 65.0f; 
+        final float w = 65.0f;
         final float h = 65.0f;
-        
+
         int numRows = 14;
         index = 0;
-        
-        for (ColorSet set : ColorSet.values() ) {
+
+        for (ColorSet set : ColorSet.values()) {
             ColorRoundrect cr = new ColorRoundrect(set);
-            
             crList.add(cr);
         }
         f = new Font("San-Serif", FontStyle.BOLD_ITALIC, 43);
-        t = new Text(" ",f);
-        backt = new Text(" ",f);
-        t.setAlign(TextAlign.CENTER);
-        t.setStrokeColor(ColorSet.WHITE);
-        t.setPosition(770, 710);
-        backt.setAlign(TextAlign.CENTER);
-        backt.setStrokeColor(ColorSet.WHITE);
-        backt.setPosition(770, 710);
-        
+        text = new Text("", f);
+        text.setAlign(TextAlign.CENTER);
+        text.setStrokeColor(ColorSet.WHITE);
+        text.setPosition(770, 710);
+
         index = 0;
-        for(final ColorRoundrect cr : crList ){
-        	callback = new MouseOverCallback(){
+        for (final ColorRoundrect cr : crList) {
+            cr.roundRect.addMouseEventCallback(new MouseOverCallback() {
 
-				@Override
-				public void run(MouseOverTypes eventtype,
-						Element element) {
-
-            		if(eventtype == MouseOverTypes.ENTERED){
-            			element.setStroke(true);
-            			t.setText(cr.colorname);
-            			backt.setText(cr.colorname);
-                    	t.setStrokeColor(cr.cset);
-            		}
-            		if(eventtype == MouseOverTypes.EXITED){
-            			t.setText(" ");
-            			backt.setText(" ");
-            			element.setStroke(false);
-            		}
-					
-				}
-
-				
-            };
-        	cr.roundrect.setPosition(w*(index%numRows)+100, h*(index/numRows)+70); 
-        	cr.roundrect.addMouseEventCallback(callback);
-        	cr.index = index;
-        	addObject(cr.roundrect);
-        	index ++;
+                @Override
+                public void run(MouseOverTypes eventtype, Element element) {
+                    switch (eventtype) {
+                    case ENTERED:
+                    case EXISTED:
+                    {
+                        element.setStroke(true);
+                        text.setText(cr.colorName);
+                        Color c = new RGBColor(cr.colorSet);
+                        if (0.1 < c.getRed() || 0.1 < c.getBlue() || 0.1 < c.getGreen()) {
+                            text.setStrokeColor(cr.colorSet);
+                        } else {
+                            text.setStrokeColor(ColorSet.WHITE);
+                        }
+                        break;
+                    }
+                    case EXITED:
+                        element.setStroke(false);
+                        text.setText("");
+                        break;
+                    default:
+                        break;
+                    }
+                }
+            });
+            cr.roundRect.setPosition(w * (index % numRows) + 100, h * (index / numRows) + 70);
+            cr.index = index;
+            addObject(cr.roundRect);
+            index++;
         }
-        addObject(backt);
-        addObject(t);
-    }
-    
-   
-    public static void main(String args[]) {
-        AppletRunner.run( "casmi.graphics.mouseover.MouseOverColorSetExample", "Example");
+        addObject(text);
     }
 
+    @Override
+    public void update() {}
 
-	@Override
-	public void mouseEvent(MouseEvent e, MouseButton b) {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public void mouseEvent(MouseEvent e, MouseButton b) {}
 
+    @Override
+    public void keyEvent(KeyEvent e) {}
 
-	@Override
-	public void keyEvent(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+    public static void main(String[] args) {
+        AppletRunner.run("casmi.graphics.mouseover.MouseOverColorSetExample", "MouseOverColorSetExample");
+    }
 
-
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
-	}
 }

@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-  
+
 package casmi.graphics.color;
 
 import java.util.ArrayList;
@@ -35,56 +35,44 @@ import casmi.graphics.element.RoundRect;
  * 
  */
 public class ColorSetExample extends Applet {
-    
+
     List<RoundRect> rrList = new ArrayList<RoundRect>();
-    
-    public void setup(){
+
+    @Override
+    public void setup() {
         setSize(1024, 768);
-        final float w = 65.0f; 
+        final float w = 65.0f;
         final float h = 65.0f;
-        
+
         int numRows = 14;
         int index = 0;
-        
-        for (ColorSet set : ColorSet.values() ) {
+
+        for (ColorSet colorSet : ColorSet.values()) {
             RoundRect rr = new RoundRect(6, 0, 0, 52, 52);
-            rr.setFillColor( Color.color(set) );
+            rr.setFillColor(colorSet);
             rr.setStroke(false);
-            rr.setXY(w*(index%numRows), h*(index/numRows)); 
+            rr.setXY(w * (index % numRows), h * (index / numRows));
             rrList.add(rr);
             index++;
         }
-       
-        
+
         setPosition(100, 70);
-        for ( RoundRect rr : rrList ) {
-        	addObject(rr);
+        for (RoundRect rr : rrList) {
+            addObject(rr);
         }
     }
     
-   
-    public static void main(String args[]) {
-        AppletRunner.run( "casmi.graphics.color.ColorSetExample", "Example");
+    @Override
+    public void update() {}
+
+    @Override
+    public void mouseEvent(MouseEvent e, MouseButton b) {}
+
+    @Override
+    public void keyEvent(KeyEvent e) {}
+    
+    public static void main(String[] args) {
+        AppletRunner.run("casmi.graphics.color.ColorSetExample", "Color Set Example");
     }
 
-
-	@Override
-	public void mouseEvent(MouseEvent e, MouseButton b) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void keyEvent(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
-	}
 }

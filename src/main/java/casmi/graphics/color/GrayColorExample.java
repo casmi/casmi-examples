@@ -16,60 +16,47 @@
  * limitations under the License.
  */
 
-package casmi.graphics;
+package casmi.graphics.color;
 
 import casmi.Applet;
 import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseEvent;
-import casmi.graphics.element.Rect;
-import casmi.graphics.element.Texture;
-import casmi.image.ImageMode;
-import casmi.util.SystemUtil;
+import casmi.graphics.element.Circle;
 
 /**
- * Example of Graphics.
+ * GrayColor class example.
  * 
- * @author Y. BAN
+ * @author T. Takeuchi
  * 
+ * @see casmi.graphics.color.Color
+ * @see casmi.graphics.color.GrayColor
  */
-public class ImageModeExample extends Applet {
+public class GrayColorExample extends Applet {
 
-    static final String IMAGE_PATH = Applet.class.getResource("logo.png").getPath();
-    
-    Texture tex = null;
-    Rect r1 = new Rect(100, 100);
-
+    @Override
     public void setup() {
-        setSize(1024, 768);
+        setSize(640, 480);
         
-        System.out.println(SystemUtil.USER_DIR);
-        
-        tex = new Texture(IMAGE_PATH);
-        tex.setMode(ImageMode.CORNER);
-        tex.setPosition(300, 300);
-        
-        addObject(tex);
-        addObject(r1);
-        
-        tex.setMode(ImageMode.CENTER);
-        tex.setPosition(600, 600);
-        
-        addObject(tex);
+        for (int i = 1; i <= 10; i++) {
+            Circle circle = new Circle(getWidth() / 2 + 55 * (i - 6), getHeight() / 2, 23);
+            circle.setFillColor(new GrayColor(0.1 * i));
+            addObject(circle);
+        }
     }
 
     @Override
     public void update() {}
-    
+
     @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {}
 
     @Override
     public void keyEvent(KeyEvent e) {}
-    
-    public static void main(String[] args) {
-        AppletRunner.run("casmi.graphics.ImageModeExample", "ImageModeExample");
-    }
 
+    public static void main(String[] args) {
+        AppletRunner.run("casmi.graphics.color.GrayColorExample", "GrayColor Example");
+    }
+    
 }

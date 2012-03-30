@@ -24,8 +24,9 @@ import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseEvent;
 import casmi.graphics.color.Color;
-import casmi.graphics.color.ColorMode;
 import casmi.graphics.color.ColorSet;
+import casmi.graphics.color.HSBColor;
+import casmi.graphics.color.RGBColor;
 import casmi.graphics.element.Rect;
 import casmi.tween.equations.Bounce;
 import casmi.tween.equations.Circ;
@@ -41,21 +42,25 @@ public class TweenExample extends Applet {
 
 	Rect r1 = new Rect(500, 200);
 	Rect r2 = new Rect(150, 150);
-	Color c = new Color(20, 100, 100);
+	Color c = new HSBColor(0.1, 0.4, 0.4);
 	TweenElement te, te2;
 	
+	@Override
 	public void setup() {
 		setSize(1024, 768);
-		c.setColorMode(ColorMode.HSB);
+
 		r1.setFillColor(c);
-		r1.setStrokeColor(new Color(100, 240, 100));
+		r1.setStrokeColor(new RGBColor(0.4, 0.9, 0.4));
 		r1.setStrokeWidth(3);
+		
 		r2.setFill(false);
-		r2.setStrokeColor(Color.color(ColorSet.AQUA));
+		r2.setStrokeColor(ColorSet.AQUA);
+		
 		setPosition(500, 600);
 		addObject(r1);
 		addObject(r2);
-		te = new TweenElement(r1);
+		
+		te  = new TweenElement(r1);
 		te2 = new TweenElement(r2);
 	}
 
@@ -70,21 +75,14 @@ public class TweenExample extends Applet {
 			te2.reset();
 			
 			TweenSerialGroup tsg = TweenSerialGroup.create(
-					Tween.to(te, TweenType.POSITION, 2000, Bounce.OUT)
-							.target(20, -400),
-					TweenParallelGroup
-							.create(
-									Tween.to(te, TweenType.ALPHA, 2000,
-											Linear.INOUT).target(100.0f),
-									Tween.to(te, TweenType.POSITION, 1000,
-											Circ.OUT).target(500, -400)
+					Tween.to(te, TweenType.POSITION, 2000, Bounce.OUT).target(20, -400),
+					TweenParallelGroup.create(
+									Tween.to(te, TweenType.ALPHA, 2000,	Linear.INOUT).target(0.3),
+									Tween.to(te, TweenType.POSITION, 1000, Circ.OUT).target(500, -400)
 											.addDelay(5000)),
-					TweenParallelGroup
-							.create(
-									Tween.to(te2, TweenType.SCALE_X, 2000,
-											Bounce.OUT).target(1.5f),
-									Tween.to(te2, TweenType.ALPHA, 2000,
-											Linear.INOUT).target(0.0f)));
+					TweenParallelGroup.create(
+									Tween.to(te2, TweenType.SCALE_X, 2000, Bounce.OUT).target(1.5),
+									Tween.to(te2, TweenType.ALPHA, 2000, Linear.INOUT).target(0.0)));
 			addTween(tsg);
 		}
 	}
@@ -93,6 +91,7 @@ public class TweenExample extends Applet {
 	public void keyEvent(KeyEvent e) {}
 	
 	public static void main(String[] args) {
-        AppletRunner.run("casmi.tween.TweenExample", "Example");
+        AppletRunner.run("casmi.tween.TweenExample", "TweenExample");
     }
+	
 }

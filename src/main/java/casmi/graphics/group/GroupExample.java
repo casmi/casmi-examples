@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-  
+
 package casmi.graphics.group;
 
 import casmi.Applet;
@@ -30,71 +30,70 @@ import casmi.tween.TweenCallbackTypes;
 import casmi.tween.TweenElement;
 import casmi.tween.TweenParallelGroup;
 import casmi.tween.TweenSerialGroup;
-import casmi.tween.TweenManager;
 import casmi.tween.TweenType;
 import casmi.tween.equations.Bounce;
 import casmi.tween.equations.Circ;
 import casmi.tween.equations.Linear;
 
+/**
+ * Group example.
+ * 
+ * @author Y. Ban
+ *
+ * @see casmi.graphics.group.Group
+ */
 public class GroupExample extends Applet {
-    Object1 group = new Object1();
-    TweenElement te;  
-//    private TweenManager manager = new TweenManager();
+
+    Group1 group = new Group1();
+    TweenElement te;
     TweenCallback tc;
-    
-	public void setup(){
+
+    @Override
+    public void setup() {
         setSize(800, 600);
+        setBackGroundColor(ColorSet.GRAY);
+        
         tc = new TweenCallback() {
-			@Override
-			public void run(TweenCallbackTypes eventType, Tween tween) {
-				group.setTweenstart(true);
-				
-			}
-		};
-		setBackGroundColor(ColorSet.GRAY);
+
+            @Override
+            public void run(TweenCallbackTypes eventType, Tween tween) {
+                group.setTweenstart(true);
+            }
+        };
+        
+        group.setPosition(getWidth() / 2.0, getHeight() / 2.0);
+        
         addObject(group);
-        group.setPosition(getWidth()/2, getHeight()/2);
-//        addTweenManager(manager);
     }
-	
-	@Override 
-	public void mouseEvent(MouseEvent e, MouseButton b){
-		if(e == MouseEvent.PRESSED){
-		te = null;
-		te = new TweenElement(group);
-//		manager = null;
-//		manager = new TweenManager();
-//		addTweenManager(manager);
-		
-		TweenSerialGroup tsg = TweenSerialGroup.create(
-    			Tween.to(te, TweenType.POSITION, 2000, Bounce.OUT).target(getWidth()/2, getHeight()/2-200).addCompleteCallback(tc) ,
-    			TweenParallelGroup.create(
-    			Tween.to(te, TweenType.ALPHA, 2000, Linear.INOUT).target(50.0f),
-    			Tween.to(te, TweenType.ROTATION_2D, 1000, Circ.OUT).target(-360).addDelay(1000)
-    			),
-    			Tween.to(te, TweenType.SCALE, 2000, Bounce.OUT).target(1.5f,1.0f)
-    		);
-		
-		addTween(tsg);
-		}
-	}
-	
 
+    @Override
+    public void update() {}
     
-    public static void main(String args[]) {
-        AppletRunner.run( "casmi.graphics.group.GroupExample", "Example");
+    @Override
+    public void mouseEvent(MouseEvent e, MouseButton b) {
+        
+        if (e == MouseEvent.PRESSED) {
+            te = null;
+            te = new TweenElement(group);
+
+            TweenSerialGroup tsg = TweenSerialGroup.create(
+                Tween.to(te, TweenType.POSITION, 2000, Bounce.OUT).target(getWidth() / 2, getHeight() / 2 - 200).addCompleteCallback(tc),
+                TweenParallelGroup.create(
+                    Tween.to(te, TweenType.ALPHA, 2000, Linear.INOUT).target(50.0f),
+                    Tween.to(te, TweenType.ROTATION_2D, 1000, Circ.OUT).target(-360).addDelay(1000)
+                    ),
+                    Tween.to(te, TweenType.SCALE, 2000, Bounce.OUT).target(1.5f, 1.0f)
+                );
+
+            addTween(tsg);
+        }
     }
+   
+    @Override
+    public void keyEvent(KeyEvent e) {}
 
-	@Override
-	public void keyEvent(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
-	}
-
+	public static void main(String[] args) {
+        AppletRunner.run("casmi.graphics.group.GroupExample", "GroupExample");
+    }
+	
 }

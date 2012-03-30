@@ -1,7 +1,7 @@
 /*
  *   casmi examples
  *   http://casmi.github.com/
- *   Copyright (C) 2011, Xcoo, Inc.
+ *   Copyright (C) 2011-2012, Xcoo, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-package casmi.graphics.object;
+package casmi.tween;
 
 import casmi.Applet;
 import casmi.AppletRunner;
@@ -24,43 +24,47 @@ import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseEvent;
 import casmi.graphics.color.ColorSet;
-import casmi.graphics.element.Line;
+import casmi.graphics.element.Rect;
+import casmi.tween.equations.Bounce;
 
 /**
- * Object example.
+ * Example of TweenRepeat for TweenGroup.
  * 
  * @author Y. Ban
  */
-public class ObjectExample extends Applet {
+public class TweenGroupRepeatExample extends Applet {
 
-    Line l1 = new Line(200, 200, 600, 400);
-    Line l2 = new Line(200, 400, 600, 200);
+	Rect r1 = new Rect(200, 200);
+	TweenElement te;
+	
+	@Override
+	public void setup() {
+		setSize(800,600);
+		
+		r1.setFillColor(ColorSet.AQUA);
+		addObject(r1);
+		r1.setPosition(150, 150);
+		te = new TweenElement(r1);
+		TweenSerialGroup ts = (TweenSerialGroup) TweenSerialGroup.create(
+					Tween.to(te, TweenType.POSITION, 1000, Bounce.OUT).target(550,150),
+					Tween.to(te, TweenType.POSITION, 1000, Bounce.OUT).target(550,550),
+					Tween.to(te, TweenType.POSITION, 1000, Bounce.OUT).target(150,550),
+					Tween.to(te, TweenType.POSITION, 1000, Bounce.OUT).target(150,150)
+				).addDelay(1000).repeat(10,300);
+		addTween(ts);	
+	}
 
-    @Override
-    public void setup() {
-        setSize(800, 600);
-        
-        l1.setStrokeColor(ColorSet.WHITE);
-        l2.setStrokeColor(ColorSet.WHITE);
-        
-        l1.setStrokeWidth(25);
-        l2.setStrokeWidth(25);
-        
-        addObject(l1);
-        addObject(l2);
-    }
-
-    @Override
+	@Override
 	public void update() {}
-    
+
 	@Override
 	public void mouseEvent(MouseEvent e, MouseButton b) {}
 
 	@Override
 	public void keyEvent(KeyEvent e) {}
-    
+
     public static void main(String[] args) {
-        AppletRunner.run("casmi.graphics.object.ObjectExample", "Object Example");
+        AppletRunner.run("casmi.tween.TweenGroupRepeatExample", "TweenGroupRepeatExample");
     }
 
 }

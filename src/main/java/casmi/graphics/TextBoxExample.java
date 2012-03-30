@@ -1,3 +1,21 @@
+/*
+ *   casmi examples
+ *   http://casmi.github.com/
+ *   Copyright (C) 2011, Xcoo, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package casmi.graphics;
 
 import casmi.Applet;
@@ -5,7 +23,6 @@ import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseEvent;
-import casmi.graphics.color.Color;
 import casmi.graphics.color.ColorSet;
 import casmi.graphics.element.Text;
 import casmi.graphics.element.TextAlign;
@@ -18,55 +35,47 @@ import casmi.graphics.element.TextBox;
  */
 public class TextBoxExample extends Applet {
 
-    private static final String SAMPLE_TEXT = "casmi is free software:\nyou can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.";
+    static final String SAMPLE_TEXT = "casmi is free software:\nyou can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.";
     
-    private TextBox textBox1, textBox2, textBox3;
+    TextBox textBox1, textBox2, textBox3;
     
     @Override
     public void setup() {
         setSize(800, 600);
         
         Text text1 = new Text(SAMPLE_TEXT);
-        text1.setStrokeColor(Color.color(ColorSet.WHITE));
+        text1.setStrokeColor(ColorSet.WHITE);
         textBox1 = new TextBox(text1, 400, 500, 350, 150);
         addObject(textBox1);
         
         Text text2 = new Text(SAMPLE_TEXT);
-        text2.setStrokeColor(Color.color(ColorSet.RED));
+        text2.setStrokeColor(ColorSet.PINK);
         text2.setAlign(TextAlign.CENTER);
         textBox2 = new TextBox(text2, 400, 300, 350, 150);
-        textBox2.setFillColor(Color.color(ColorSet.BLUE));
+        textBox2.setFillColor(ColorSet.BLUE);
         textBox2.setFill(true);
         addObject(textBox2);
         
         Text text3 = new Text(SAMPLE_TEXT);
-        text3.setStrokeColor(Color.color(ColorSet.GREEN));
+        text3.setStrokeColor(ColorSet.GREEN);
         text3.setAlign(TextAlign.RIGHT);
         textBox3 = new TextBox(text3, 400, 100, 350, 150);
-        textBox3.setStrokeColor(Color.color(ColorSet.AQUA));
+        textBox3.setStrokeColor(ColorSet.AQUA);
         textBox3.setStroke(true);
         addObject(textBox3);
     }
 
-    public static void main(String[] args) {
+    @Override
+    public void update() {}
+
+	@Override
+	public void mouseEvent(MouseEvent e, MouseButton b) {}
+
+	@Override
+	public void keyEvent(KeyEvent e) {}
+	
+	public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.TextBoxExample", "TextBox Example");
     }
 
-	@Override
-	public void mouseEvent(MouseEvent e, MouseButton b) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void keyEvent(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
-	}
 }

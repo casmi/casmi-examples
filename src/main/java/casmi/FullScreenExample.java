@@ -80,5 +80,6 @@ public class FullScreenExample extends Applet {
 
     public static void main(String[] args) {
         AppletRunner.run("casmi.FullScreenExample", "Full Screen Example");
-    }	
+    }
+    
 }

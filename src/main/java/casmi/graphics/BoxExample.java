@@ -23,7 +23,7 @@ import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseEvent;
-import casmi.graphics.color.Color;
+import casmi.graphics.color.RGBColor;
 import casmi.graphics.element.Box;
 import casmi.graphics.element.Element;
 import casmi.graphics.element.MouseOverCallback;
@@ -39,64 +39,59 @@ import casmi.graphics.object.Perspective;
  */
 public class BoxExample extends Applet {
 
-    Box b1 = new Box(1);
-    Box b2 = new Box(1);
+    Box b1 = new Box(1.0);
+    Box b2 = new Box(0.8, 1.0, 1.2);
 
-    double rot = 0;
+    double rot = 0.0;
+    
     Perspective p;
     Camera c;
-    
-    MouseOverCallback collback;
 
+    @Override
     public void setup() {
         setSize(800, 600);
 
-        b1.setStrokeWidth(1);
-        b1.setFillColor(new Color(100, 100, 100));
-        b1.setStrokeColor(new Color(255, 255, 255));
+        b1.setStrokeWidth(1.0);
+        b1.setFillColor(new RGBColor(0.4, 0.4, 0.4));
+        b1.setStrokeColor(new RGBColor(1.0, 1.0, 1.0));
         b1.setRotation(rot, 1, 3, 5);
 
-        b2.setStrokeWidth(1);
-        b2.setFillColor(new Color(0, 0, 100, 120));
-        b2.setStrokeColor(new Color(0, 0, 255));
+        b2.setStrokeWidth(1.0);
+        b2.setFillColor(new RGBColor(0.0, 0.0, 0.4, 0.5));
+        b2.setStrokeColor(new RGBColor(0.0, 0.0, 1.0));
         b2.setPosition(0, -1, 1);
-        p = new Perspective(30, (double)getWidth() / (double)getHeight(), 1.0, 100);
+        
+        p = new Perspective(30.0, (double)getWidth() / (double)getHeight(), 1.0, 100.0);
         c = new Camera(3.0, 4.0, 5.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
-        collback = new MouseOverCallback() {
-			
-			@Override
-			public void run(MouseOverTypes eventtype, Element element) {
-				System.out.println("hit!!");
-				
-			}
-		};
-        b1.addMouseEventCallback(collback);
+        
+        b1.addMouseEventCallback(new MouseOverCallback() {
+
+            @Override
+            public void run(MouseOverTypes eventtype, Element element) {
+                System.out.println("hit!!");
+            }
+        });
+        
         setPerspective(p);
         setCamera(c);
+        
         addObject(b1);
         addObject(b2);
     }
-    
-    @Override
-    public void update(){
-    	rot += 0.1;
-    	b1.setRotation(rot, 1, 3, 5);
 
+    @Override
+    public void update() {
+        rot += 0.1;
+        b1.setRotation(rot, 1, 3, 5);
     }
 
-    public static void main(String args[]) {
+    @Override
+    public void mouseEvent(MouseEvent e, MouseButton b) {}
+
+    @Override
+    public void keyEvent(KeyEvent e) {}
+
+    public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.BoxExample", "Box Example");
     }
-
-	@Override
-	public void mouseEvent(MouseEvent e, MouseButton b) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void keyEvent(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
 }

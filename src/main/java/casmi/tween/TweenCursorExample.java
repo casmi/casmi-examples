@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-  
+
 package casmi.tween;
 
 import casmi.Applet;
@@ -25,6 +25,7 @@ import casmi.MouseButton;
 import casmi.MouseEvent;
 import casmi.graphics.color.Color;
 import casmi.graphics.color.ColorSet;
+import casmi.graphics.color.RGBColor;
 import casmi.graphics.element.Ellipse;
 import casmi.tween.equations.Bounce;
 import casmi.tween.equations.Linear;
@@ -32,58 +33,61 @@ import casmi.tween.equations.Quart;
 import casmi.tween.simpletweenables.TweenFloat;
 import casmi.util.Random;
 
-public class TweenCursorExample extends Applet{
-    
+/**
+ * Tween cursor example.
+ * 
+ * @author Y. Ban
+ */
+public class TweenCursorExample extends Applet {
 
     Ellipse el = new Ellipse(40);
-    TweenElement te;  
+    TweenElement te;
     TweenFloat tf = new TweenFloat(0.0f);
-    Color c = Color.color(ColorSet.ORANGE);
-    Color cc = Color.color(ColorSet.ORANGE);
-          
-    public void setup(){
+    Color c = new RGBColor(ColorSet.ORANGE);
+    Color cc = new RGBColor(ColorSet.ORANGE);
+
+    @Override
+    public void setup() {
         setSize(1024, 768);
         el.setFillColor(c);
-        el.setPosition(getWidth()/2, getHeight()/2);
+        el.setPosition(getWidth() / 2, getHeight() / 2);
         te = new TweenElement(el);
         addObject(el);
     }
-    
+
     @Override
-    public void mouseEvent(MouseEvent e, MouseButton b){
-    	if(e==MouseEvent.PRESSED){
-    	Color.copyColor(cc, c);
-		float sr = Random.random(0.5f, 2.0f);
-		int rr = (int) Random.random(0,255);
-		int rg = (int) Random.random(0,255);
-		int rb = (int) Random.random(0,255);
-		cc.setB(rb);cc.setG(rg);cc.setR(rr);
-		tf.setValue(0.0f);
-		TweenSerialGroup tg = TweenSerialGroup.create(
-			    Tween.to(te,TweenType.SCALE, 500, Bounce.IN).target(sr),
-				TweenParallelGroup.create(
-	    				Tween.to(tf, 1000, Linear.INOUT).target(1.0f),
-	    				Tween.to(te, TweenType.POSITION, 1000, Quart.INOUT).target(getMouseX(),getMouseY())
-	    				
-				)
-				);
-		addTween(tg);
-    	}
-    }
-    
-    @Override
-    public void update(){
-		el.setFillColor(Color.lerpColor(c, cc, tf.getValue()));
-    }
-    
-    
-    public static void main(String args[]) {
-        AppletRunner.run( "casmi.tween.TweenCursorExample", "Example");
+    public void update() {
+        el.setFillColor(RGBColor.lerpColor(c, cc, tf.getValue()));
     }
 
-	@Override
-	public void keyEvent(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public void mouseEvent(MouseEvent e, MouseButton b) {
+        if (e == MouseEvent.PRESSED) {
+            c = cc.clone();
+            float sr = Random.random(0.5f, 2.0f);
+            int rr = (int)Random.random(0, 255);
+            int rg = (int)Random.random(0, 255);
+            int rb = (int)Random.random(0, 255);
+            cc.setBlue(rb / 255.0);
+            cc.setGreen(rg / 255.0);
+            cc.setRed(rr / 255.0);
+            tf.setValue(0.0f);
+            TweenSerialGroup tg = TweenSerialGroup.create(
+                Tween.to(te, TweenType.SCALE, 500, Bounce.IN).target(sr),
+                TweenParallelGroup.create(
+                    Tween.to(tf, 1000, Linear.INOUT).target(1.0f),
+                    Tween.to(te, TweenType.POSITION, 1000, Quart.INOUT).target(getMouseX(), getMouseY())
+                    )
+                );
+            addTween(tg);
+        }
+    }
+
+    @Override
+    public void keyEvent(KeyEvent e) {}
+
+    public static void main(String[] args) {
+        AppletRunner.run("casmi.tween.TweenCursorExample", "TweenCursorExample");
+    }
+
 }

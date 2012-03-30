@@ -23,32 +23,34 @@ import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseEvent;
-import casmi.graphics.color.Color;
-import casmi.graphics.color.ColorMode;
+import casmi.graphics.color.HSBColor;
 import casmi.graphics.element.Bezier;
 import casmi.util.SystemUtil;
 
 /**
  * Example of rotation.
  * 
- * @author K. Nishimura Y. Ban
- * 
+ * @author K. Nishimura, Y. Ban
  */
 public class RotateExample extends Applet {
 
-    Bezier b1 = new Bezier(0.0, 0.0, 0.0, 400.0, 400.0, -30.0,
-        500.0, 600.0, -10.0, 400.0, 100.0, -20.0);
-    Color c = new Color(0, 240, 200);
+    Bezier b1 = new Bezier(0.0,   0.0,   0.0,
+                           400.0, 400.0, -30.0,
+                           500.0, 600.0, -10.0,
+                           400.0, 100.0, -20.0);
+    HSBColor c = new HSBColor(0.0, 0.9, 0.8);
     int r = 0;
 
     @Override
     public void setup() {
-        c.setColorMode(ColorMode.HSB);
         setSize(1024, 768);
+        
         b1.setFill(false);
         b1.setStrokeColor(c);
         b1.setStrokeWidth(3);
-        setPosition(getWidth() / 2, 100);
+        
+        setPosition(getWidth() / 2.0, 100.0);
+        
         for (int i = 0; i < 37; i++) {
         	Bezier b = (Bezier) b1.clone();
             addObject(b);
@@ -58,20 +60,20 @@ public class RotateExample extends Applet {
 
     @Override
     public void update() {
-        c.setR(r);
+        c.setHue(r / 360.0);
         r++;
         if (r >= 360)
             r = 0;
 
         b1.setNode(1, 400 + 200 * Math.sin(r / 180.0 * Math.PI), 400 - 200 * Math.sin(r / 180.0 * Math.PI), -30);
         b1.setNode(3, 400.0 - 100 * Math.cos(r / 180.0 * Math.PI), 100.0 + 100 * Math.cos(r / 180.0 * Math.PI), -20.0);
-
     }
 
     @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {
-        if (e == MouseEvent.PRESSED)
+        if (e == MouseEvent.PRESSED) {
             capture("rsrc" + SystemUtil.FILE_SEPARATOR + "save.png", false);
+        }
     }
 
     @Override
@@ -80,4 +82,5 @@ public class RotateExample extends Applet {
     public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.RotateExample", "Rotation Example");
     }
+    
 }

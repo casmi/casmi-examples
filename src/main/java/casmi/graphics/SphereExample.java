@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-  
+
 package casmi.graphics;
 
 import casmi.Applet;
@@ -23,7 +23,7 @@ import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseEvent;
-import casmi.graphics.color.Color;
+import casmi.graphics.color.RGBColor;
 import casmi.graphics.element.Sphere;
 
 /**
@@ -33,34 +33,38 @@ import casmi.graphics.element.Sphere;
  * 
  */
 public class SphereExample extends Applet {
-    
+
     Sphere s = new Sphere(300.0);
-    
+
     double rot = 90.0;
-    
+
     @Override
     public void setup() {
         setSize(1024, 768);
+        
         s.setFill(false);
-        s.setStrokeColor(new Color(100, 100, 200));
+        s.setStrokeColor(new RGBColor(0.4, 0.4, 0.8));
         s.setStrokeWidth(4);
+        
         setPosition(512.0, 430.0, 100.0);
+        
         addObject(s);
     }
-    
+
     @Override
     public void update() {
-    	rot += 0.1;
-    	s.setRotation(rot,rot*3,rot*5);
+        rot += 0.1;
+        s.setRotation(rot, rot * 3, rot * 5);
     }
-    
-	@Override
-	public void mouseEvent(MouseEvent e, MouseButton b) {}
 
-	@Override
-	public void keyEvent(KeyEvent e) {}
-	
-	public static void main(String[] args) {
-        AppletRunner.run( "casmi.graphics.SphereExample", "Sphere Example");
+    @Override
+    public void mouseEvent(MouseEvent e, MouseButton b) {}
+
+    @Override
+    public void keyEvent(KeyEvent e) {}
+
+    public static void main(String[] args) {
+        AppletRunner.run("casmi.graphics.SphereExample", "Sphere Example");
     }
+
 }

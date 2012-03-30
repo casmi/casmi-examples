@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-  
+
 package casmi.graphics;
 
 import casmi.Applet;
@@ -23,7 +23,7 @@ import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseEvent;
-import casmi.graphics.color.Color;
+import casmi.graphics.color.RGBColor;
 import casmi.graphics.element.RoundRect;
 
 /**
@@ -33,49 +33,41 @@ import casmi.graphics.element.RoundRect;
  * 
  */
 public class RoundrectExample extends Applet {
-    
+
     RoundRect r1 = new RoundRect(10, 500, 700, 500, 200);
     RoundRect r2 = new RoundRect(30, 200, 700, 200, 400);
-    RoundRect r3 = new RoundRect(10,600, 200, 200, 100);
-        
-    public void setup(){
+    RoundRect r3 = new RoundRect(10, 600, 200, 200, 100);
+
+    public void setup() {
         setSize(1024, 768);
 
-        r1.setFillColor(new Color(80, 180, 80));
-        r1.setStrokeColor(new Color(100, 240, 100));
+        r1.setFillColor(new RGBColor(0.3, 0.7, 0.3));
+        r1.setStrokeColor(new RGBColor(0.4, 0.9, 0.4));
         r1.setStrokeWidth(3);
-        
+
         r2.setFill(false);
         r2.setStrokeWidth(5);
-        r2.setStrokeColor(new Color(180, 80, 80));
-        
-        r3.setFillColor(new Color(80, 80, 180));
-        r3.setStrokeColor(new Color(120, 120, 240));
-        
+        r2.setStrokeColor(new RGBColor(0.4, 0.3, 0.3));
+
+        r3.setFillColor(new RGBColor(0.3, 0.3, 0.7));
+        r3.setStrokeColor(new RGBColor(0.5, 0.5, 0.9));
+
         addObject(r1);
         addObject(r2);
         addObject(r3);
     }
-    
-    public static void main(String args[]) {
-        AppletRunner.run( "casmi.graphics.RoundrectExample", "Example");
+
+    @Override
+    public void update() {}
+
+    @Override
+    public void mouseEvent(MouseEvent e, MouseButton b) {}
+
+    @Override
+    public void keyEvent(KeyEvent e) {}
+
+    public static void main(String[] args) {
+        AppletRunner.run("casmi.graphics.RoundrectExample", "RoundRect Example");
     }
 
-	@Override
-	public void mouseEvent(MouseEvent e, MouseButton b) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void keyEvent(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
-	}
 }

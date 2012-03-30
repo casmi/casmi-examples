@@ -25,16 +25,13 @@ import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseEvent;
-import casmi.extension.coni.CONI;
-import casmi.extension.coni.CalibrationStatus;
-import casmi.extension.coni.Joint;
-import casmi.extension.coni.SkeletonJoint;
 import casmi.extension.coni.exception.CONIException;
 import casmi.extension.coni.listener.PoseDetectionListener;
 import casmi.extension.coni.listener.SkeletonListener;
 import casmi.extension.coni.listener.UserListener;
 import casmi.graphics.color.Color;
 import casmi.graphics.color.ColorSet;
+import casmi.graphics.color.RGBColor;
 import casmi.graphics.element.Line;
 import casmi.graphics.element.Text;
 import casmi.graphics.element.Texture;
@@ -51,15 +48,15 @@ import casmi.matrix.Vertex;
 public class UserTrackerExample extends Applet 
 implements UserListener, SkeletonListener, PoseDetectionListener {
 
-    private static final Color[] COLORS = {
-        new Color(ColorSet.RED),
-        new Color(ColorSet.BLUE),
-        new Color(ColorSet.CYAN),
-        new Color(ColorSet.GREEN),
-        new Color(ColorSet.MAGENTA),
-        new Color(ColorSet.PINK),
-        new Color(ColorSet.YELLOW),
-        new Color(ColorSet.WHITE)
+    private static final RGBColor[] COLORS = {
+        new RGBColor(ColorSet.RED),
+        new RGBColor(ColorSet.BLUE),
+        new RGBColor(ColorSet.CYAN),
+        new RGBColor(ColorSet.GREEN),
+        new RGBColor(ColorSet.MAGENTA),
+        new RGBColor(ColorSet.PINK),
+        new RGBColor(ColorSet.YELLOW),
+        new RGBColor(ColorSet.WHITE)
     };
     
     private CONI coni;
@@ -266,4 +263,5 @@ implements UserListener, SkeletonListener, PoseDetectionListener {
     public static void main(String[] args) {
         AppletRunner.run("casmi.extension.coni.UserTrackerExample", "CONI (casmi-OpenNI): user tracking example");
     }
+
 }

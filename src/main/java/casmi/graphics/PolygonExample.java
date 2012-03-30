@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-  
+
 package casmi.graphics;
 
 import casmi.Applet;
@@ -23,7 +23,7 @@ import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseEvent;
-import casmi.graphics.color.Color;
+import casmi.graphics.color.RGBColor;
 import casmi.graphics.element.Polygon;
 
 /**
@@ -33,56 +33,45 @@ import casmi.graphics.element.Polygon;
  * 
  */
 public class PolygonExample extends Applet {
-    
-    Polygon poly, poly2;
-        
-    public void setup(){
+
+    Polygon polygon1, polygon2;
+
+    @Override
+    public void setup() {
         setSize(1024, 768);
-        poly = new Polygon();
-        poly.vertex(210, 120);
-        poly.vertex(280, 115);
-        poly.vertex(495, 390);
-        poly.vertex(240, 345);
-        poly.vertex(200, 445);
-        
 
-        poly2 = new Polygon();
-        poly2.vertex(310, 20);
-        poly2.vertex(380, 115);
-        poly2.vertex(695, 290);
-        poly2.vertex(440, 345);
-        poly2.vertex(200, 445);
-        poly2.setFill(false);
-        poly2.setStrokeColor(new Color(200,0,100));
-        poly2.setStrokeWidth(7);
-        
-        addObject(poly);
-        addObject(poly2);
-    }
-    
-    
-    public static void main(String args[]) {
-        AppletRunner.run( "casmi.graphics.PolygonExample", "Example");
+        polygon1 = new Polygon();
+        polygon1.vertex(210, 120);
+        polygon1.vertex(280, 115);
+        polygon1.vertex(495, 390);
+        polygon1.vertex(240, 345);
+        polygon1.vertex(200, 445);
+
+        polygon2 = new Polygon();
+        polygon2.vertex(310, 20);
+        polygon2.vertex(380, 115);
+        polygon2.vertex(695, 290);
+        polygon2.vertex(440, 345);
+        polygon2.vertex(200, 445);
+        polygon2.setFill(false);
+        polygon2.setStrokeColor(new RGBColor(0.8, 0.0, 0.4));
+        polygon2.setStrokeWidth(7);
+
+        addObject(polygon1);
+        addObject(polygon2);
     }
 
+    @Override
+    public void update() {}
+    
+    @Override
+    public void mouseEvent(MouseEvent e, MouseButton b) {}
 
-	@Override
-	public void mouseEvent(MouseEvent e, MouseButton b) {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public void keyEvent(KeyEvent e) {}
 
+    public static void main(String[] args) {
+        AppletRunner.run("casmi.graphics.PolygonExample", "PolygonExample");
+    }
 
-	@Override
-	public void keyEvent(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
-	}
 }

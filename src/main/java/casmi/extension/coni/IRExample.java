@@ -70,4 +70,5 @@ public class IRExample extends Applet {
     public static void main(String[] args) {
         AppletRunner.run("casmi.extension.coni.IRExample", "CONI (casmi OpenNI): IR Example");
     }
+
 }

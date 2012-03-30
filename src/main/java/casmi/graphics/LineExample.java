@@ -48,30 +48,22 @@ public class LineExample extends Applet {
         
         l1.setStrokeWidth(25);
         l2.setStrokeWidth(25);
-       // l1.setPosition(100,100);
+
         addObject(l1);
         addObject(l2);
     }
 
-    public static void main(String args[]) {
+    @Override
+	public void update() {}
+
+	@Override
+	public void mouseEvent(MouseEvent e, MouseButton b) {}
+
+	@Override
+	public void keyEvent(KeyEvent e) {}
+	
+	public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.LineExample", "Line Example");
     }
-
-	@Override
-	public void mouseEvent(MouseEvent e, MouseButton b) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void keyEvent(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
-	}
+	
 }

@@ -23,7 +23,7 @@ import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseEvent;
-import casmi.graphics.color.Color;
+import casmi.graphics.color.RGBColor;
 import casmi.graphics.element.Line;
 
 /**
@@ -35,7 +35,7 @@ public class NoiseExample extends Applet {
 
 	Line[] lines;
 	float noiseScale;
-	Color c = new Color(0);
+	RGBColor c = new RGBColor(0.0);
 	float noiseValue = 0;
 
 	@Override
@@ -55,7 +55,7 @@ public class NoiseExample extends Applet {
 			noiseValue = Noise.noise((getMouseX() + x) * noiseScale, 
 									getMouseY() * noiseScale);
 					
-			c.setGray((int) (noiseValue * 255));
+			c.setGray(noiseValue);
 			lines[x].setStrokeColor(c);
 			lines[x].set(x, getMouseY() + noiseValue * 80, x, getHeight());
 		}
@@ -70,4 +70,5 @@ public class NoiseExample extends Applet {
 	public static void main(String[] args) {
 		AppletRunner.run("casmi.util.NoiseExample", "Noise Example");
 	}
+
 }

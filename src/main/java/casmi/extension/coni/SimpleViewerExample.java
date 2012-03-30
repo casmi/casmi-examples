@@ -116,4 +116,5 @@ public class SimpleViewerExample extends Applet {
     public static void main(String[] args) {
         AppletRunner.run("casmi.extension.coni.SimpleViewerExample", "CONI (casmi OpenNI): simple example");
     }
+
 }

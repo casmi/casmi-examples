@@ -25,6 +25,7 @@ import casmi.MouseButton;
 import casmi.MouseEvent;
 import casmi.graphics.color.Color;
 import casmi.graphics.color.ColorSet;
+import casmi.graphics.color.RGBColor;
 import casmi.graphics.element.Circle;
 import casmi.graphics.element.GradationMode;
 import casmi.graphics.element.Quad;
@@ -43,19 +44,20 @@ public class GradationExample extends Applet {
     Circle circle = new Circle(80);
     Quad quad;
     Triangle triangle = new Triangle(200, 200, 300, 100, 100, 100);
-    Color c = new Color(ColorSet.BLUE);
+    Color color = new RGBColor(ColorSet.BLUE);
     Rect r1, r2, r3;
 
     @Override
     public void setup() {
         setSize(1024, 768);
-        c.setA(0);
-        circle.setFillColor(new Color(80, 180, 80));
+        
+        color.setAlpha(0.0);
+        circle.setFillColor(new RGBColor(0.3, 0.7, 0.3));
         circle.setStroke(false);
         circle.setStrokeWidth(1);
         circle.setPosition(400, 300);
         circle.setCenterColor(ColorSet.BLUE);
-        circle.setEdgeColor(c);
+        circle.setEdgeColor(color);
         addObject(circle);
 
         quad = new Quad(20, 600, 70, 550, 200, 630, 80, 680);
@@ -74,9 +76,9 @@ public class GradationExample extends Applet {
         r1 = new Rect(200, 100);
         r2 = new Rect(200, 100);
         r3 = new Rect(200, 100);
-        r1.setGradationColor(GradationMode.Horizontal,   ColorSet.BURLY_WOOD,   ColorSet.CRIMSON);
-        r2.setGradationColor(GradationMode.Vertical,     ColorSet.DARK_MAGENTA, ColorSet.HONEYDEW);
-        r3.setGradationColor(GradationMode.LeftSideways, ColorSet.DARK_BLUE,    ColorSet.MAROON);
+        r1.setGradationColor(GradationMode.HORIZONTAL,    ColorSet.BURLY_WOOD,   ColorSet.CRIMSON);
+        r2.setGradationColor(GradationMode.VERTICAL,      ColorSet.DARK_MAGENTA, ColorSet.HONEYDEW);
+        r3.setGradationColor(GradationMode.LEFT_SIDEWAYS, ColorSet.DARK_BLUE,    ColorSet.MAROON);
         r1.setPosition(900, 100);
         r2.setPosition(700, 400);
         r3.setPosition(300, 500);
@@ -97,4 +99,5 @@ public class GradationExample extends Applet {
     public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.gradation.GradationExample", "Gradation Example");
     }
+
 }

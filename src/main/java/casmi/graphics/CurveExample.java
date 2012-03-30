@@ -23,7 +23,7 @@ import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseEvent;
-import casmi.graphics.color.Color;
+import casmi.graphics.color.RGBColor;
 import casmi.graphics.element.Curve;
 
 /**
@@ -43,33 +43,21 @@ public class CurveExample extends Applet {
         setSize(800, 600);
 
         curve.setFill(false);
-        curve.setStrokeColor(new Color(255, 80, 80));
+        curve.setStrokeColor(new RGBColor(0.9, 0.3, 0.3));
         addObject(curve);
     }
 
+    @Override
+    public void update() {}
 
-    public static void main(String args[]) {
+    @Override
+    public void mouseEvent(MouseEvent e, MouseButton b) {}
+
+    @Override
+    public void keyEvent(KeyEvent e) {}
+
+    public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.CurveExample", "Curve Example");
     }
-
-
-	@Override
-	public void mouseEvent(MouseEvent e, MouseButton b) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void keyEvent(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
-	}
+    
 }

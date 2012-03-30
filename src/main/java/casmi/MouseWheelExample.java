@@ -16,50 +16,49 @@
  * limitations under the License.
  */
 
-package casmi.graphics;
+package casmi;
 
-import casmi.Applet;
-import casmi.AppletRunner;
-import casmi.KeyEvent;
-import casmi.MouseButton;
-import casmi.MouseEvent;
-import casmi.graphics.color.RGBColor;
-import casmi.graphics.element.Cone;
+import casmi.graphics.color.ColorSet;
+import casmi.graphics.element.Rect;
 
 /**
- * Cone example.
+ * Mouse wheel example.
+ * <p>
+ * When scroll a mouse wheel, up/down a rect.  
  * 
- * @see casmi.graphics.element.Cone
+ * @author T. Takeuchi
  * 
- * @author Y. Ban
+ * @see casmi.Applet#getMouseWheelRotation()
  */
-public class ConeExample extends Applet {
+public class MouseWheelExample extends Applet {
 
-    Cone cone = new Cone(300, 300);
-
+    Rect rect;
+    
     @Override
     public void setup() {
         setSize(800, 600);
-
-        cone.setFill(false);
-        cone.setStrokeColor(new RGBColor(0.4, 0.4, 0.8));
-        cone.setStrokeWidth(4);
-        cone.setPosition(400, 230, 100);
         
-        addObject(cone);
+        rect = new Rect(getWidth() / 2.0, getHeight() / 2.0, 100.0, 100.0);
+        rect.setFillColor(ColorSet.BLUE);
+        addObject(rect);
     }
-    
+
     @Override
     public void update() {}
 
     @Override
-    public void mouseEvent(MouseEvent e, MouseButton b) {}
+    public void mouseEvent(MouseEvent e, MouseButton b) {
+        if (e == MouseEvent.WHEEL_ROTATED) {
+            double wrot = getMouseWheelRotation();
+            rect.setY(rect.getY() + wrot);    
+        }
+    }
 
     @Override
     public void keyEvent(KeyEvent e) {}
 
     public static void main(String[] args) {
-        AppletRunner.run("casmi.graphics.ConeExample", "Cone Example");
+        AppletRunner.run("casmi.MouseWheelExample", "MouseWheelExample");
     }
-
+    
 }
