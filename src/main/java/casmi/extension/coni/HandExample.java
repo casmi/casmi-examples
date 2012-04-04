@@ -17,8 +17,6 @@
  */
 package casmi.extension.coni;
 
-import java.util.LinkedList;
-
 import casmi.Applet;
 import casmi.AppletRunner;
 import casmi.KeyEvent;
@@ -30,6 +28,7 @@ import casmi.extension.coni.listener.HandListener;
 import casmi.graphics.color.ColorSet;
 import casmi.graphics.element.Line;
 import casmi.graphics.element.Texture;
+import casmi.graphics.object.GraphicsObject;
 import casmi.matrix.Vertex;
 
 /**
@@ -43,8 +42,8 @@ import casmi.matrix.Vertex;
 public class HandExample extends Applet implements GestureListener, HandListener {
 
     CONI coni;
-    boolean tracking = false;
-    LinkedList<Vertex> handPoints = new LinkedList<Vertex>();
+    GraphicsObject texObject, handsObject;
+    Vertex prvPosition;
     
     @Override
     public void setup() {
@@ -58,30 +57,25 @@ public class HandExample extends Applet implements GestureListener, HandListener
         
         coni.addGestureListener(this);
         coni.addHandListener(this);
+        
+        texObject = new GraphicsObject();
+        addObject(texObject);
+        
+        handsObject = new GraphicsObject();
+        addObject(handsObject);
     }
     
     @Override
     public void update() {
-        clearObject();
+        texObject.clear();
         
         try {
             coni.update();
             Texture tex = coni.getDepthMap().getTexture();
             tex.setPosition(getWidth() / 2, getHeight() / 2);
-            addObject(tex);
+            texObject.add(tex);
         } catch (CONIException e) {
             e.printStackTrace();
-        }
-        
-        if (tracking) {
-            int size = handPoints.size();
-            for (int i = 0; i < size - 1; i++) {
-                Vertex v1 = handPoints.get(i);
-                Vertex v2 = handPoints.get(i + 1);
-                Line l = new Line(v1, v2);
-                l.setStrokeColor(ColorSet.YELLOW);
-                addObject(l);
-            }
         }
     }
 
@@ -104,14 +98,12 @@ public class HandExample extends Applet implements GestureListener, HandListener
     public void gestureProgress(CONI coni, Gesture gesture, Vertex position, float progress) {}
     
     @Override
-    public void handCreate(CONI coni, int userID, Vertex position, float time) {
-        tracking = true;
-    }
+    public void handCreate(CONI coni, int userID, Vertex position, float time) {}
 
     @Override
-    public void handDestroy(CONI coni, int userID, float time) {
-        tracking = false;
-        handPoints.clear();
+    public void handDestroy(CONI coni, int userID, float time) {        
+        handsObject.clear();
+        
         try {
             coni.stopHandTracking(userID);
         } catch (CONIException e) {
@@ -121,12 +113,16 @@ public class HandExample extends Applet implements GestureListener, HandListener
 
     @Override
     public void handUpdate(CONI coni, int userID, Vertex position, float time) {
-        if (30 < handPoints.size()) {
-            handPoints.poll();
-        }
         position = coni.convertRealWorldToProjective(position);
         position.setY(getHeight() - position.getY());
-        handPoints.offer(position);
+        
+        if (prvPosition != null) {
+            Line l = new Line(prvPosition, position);
+            l.setStrokeColor(ColorSet.YELLOW);
+            handsObject.add(l);
+        }
+        
+        prvPosition = position;
     }
 
     public static void main(String[] args) {
