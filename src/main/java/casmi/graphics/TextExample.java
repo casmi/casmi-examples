@@ -43,11 +43,11 @@ public class TextExample extends Applet {
         Font font = new Font("San-Serif", FontStyle.BOLD_ITALIC, 20);
         text = new Text(SAMPLE_TEXT, font);
         text.setPosition(200, 300);
-        text.setStrokeColor(ColorSet.WHITE);
+        text.setStrokeColor(ColorSet.WHITE,10);
         
         line = new Line(200, 300 - text.getDescent(),
                         200 + text.getWidth(), 300 - text.getDescent());
-        line.setStrokeColor(ColorSet.BLUE);
+        line.setStrokeColor(ColorSet.BLUE,0);
         
         addObject(text);
         addObject(line);

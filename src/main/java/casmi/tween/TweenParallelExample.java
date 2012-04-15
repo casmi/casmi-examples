@@ -119,7 +119,7 @@ public class TweenParallelExample extends Applet {
                 if (i != 4) {
                     tgtmp = (TweenSerialGroup)TweenSerialGroup.create(
                         TweenParallelGroup.create(
-                            Tween.to(tes.get(i), TweenType.ALPHA_STROKE, 2500, Linear.INOUT).target(255.0f),
+                            Tween.to(tes.get(i), TweenType.ALPHA_STROKE, 2500, Linear.INOUT).target(1.0f),
                             Tween.to(tes.get(i), TweenType.POSITION, 2500, Circ.OUT).target(100 + 60 * i, 700 - 316)
                             ),
                         TweenParallelGroup.create(
@@ -130,7 +130,7 @@ public class TweenParallelExample extends Applet {
                 } else {
                     tgtmp = (TweenSerialGroup)TweenSerialGroup.create(
                         TweenParallelGroup.create(
-                            Tween.to(tes.get(i), TweenType.ALPHA_STROKE, 2500, Linear.INOUT).target(255.0f),
+                            Tween.to(tes.get(i), TweenType.ALPHA_STROKE, 2500, Linear.INOUT).target(1.0f),
                             Tween.to(tes.get(i), TweenType.POSITION, 2500, Circ.OUT).target(100 + 60 * i, 700 - 316)
                             ),
                         TweenParallelGroup.create(

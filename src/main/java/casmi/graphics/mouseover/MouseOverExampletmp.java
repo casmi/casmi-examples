@@ -83,7 +83,7 @@ public class MouseOverExampletmp extends Applet {
                 }
             };
 
-            //t1.addMouseEventCallback(mouseovertriangle);
+            t1.addMouseEventCallback(mouseovertriangle);
             
         }
 
@@ -145,7 +145,7 @@ public class MouseOverExampletmp extends Applet {
         };
         
         
-        triangleGroup2.addMouseEventCallback(mouseoverTriangles);
+       // triangleGroup2.addMouseEventCallback(mouseoverTriangles);
         triangleGroup2.setPosition(200, 200);
         addObject(triangleGroup1);
         addObject(triangleGroup2);
