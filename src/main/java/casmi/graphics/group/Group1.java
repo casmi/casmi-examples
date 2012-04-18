@@ -113,7 +113,7 @@ public class Group1 extends Group {
             TweenParallelGroup tpg = 
                 TweenParallelGroup.create(
                     Tween.to(tf, 3500, Quint.OUT).target(0),
-                    Tween.to(te, TweenType.ALPHA_STROKE, 3500, Linear.INOUT).target(255)
+                    Tween.to(te, TweenType.ALPHA_STROKE, 3500, Linear.INOUT).target(1.0)
                     );
             manager.add(tpg);
 
