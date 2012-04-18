@@ -23,13 +23,11 @@ import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseEvent;
-import casmi.extension.coni.CONI;
 import casmi.extension.coni.exception.CONIException;
 import casmi.graphics.color.ColorSet;
 import casmi.graphics.element.Text;
 import casmi.graphics.element.TextAlign;
 import casmi.graphics.element.Texture;
-import casmi.graphics.object.GraphicsObject;
 
 /**
  * CONI (casmi OpenNI) simple viewer example.
@@ -49,7 +47,6 @@ public class SimpleViewerExample extends Applet {
     private CONI coni;
     private Text text;
     private ScreenMode screenMode = ScreenMode.IMAGE;
-    private GraphicsObject group = new GraphicsObject();
     
     @Override
     public void setup() {
@@ -58,6 +55,10 @@ public class SimpleViewerExample extends Applet {
         coni = new CONI();
         coni.enableImage(640, 480, 30);
         coni.enableDepth(640, 480, 30);
+        
+        Texture tex = coni.getImageMap().getTexture();
+        tex.setPosition(getWidth() / 2, getHeight() / 2);
+        addObject(tex);
         
         text = new Text("MODE: IMAGE");
         text.setPosition(630, 10);
@@ -75,19 +76,6 @@ public class SimpleViewerExample extends Applet {
             e.printStackTrace();
             return;
         }
-
-        // rendering
-        group.clear();
-        if (screenMode == ScreenMode.IMAGE) {
-            Texture tex = coni.getImageMap().getTexture();
-            tex.setPosition(getWidth() / 2, getHeight() / 2);
-            group.add(tex);
-        } else if (screenMode == ScreenMode.DEPTH) {
-            Texture tex = coni.getDepthMap().getTexture();
-            tex.setPosition(getWidth() / 2, getHeight() / 2);
-            group.add(tex);
-        }
-        addObject(0, group);
     }
 
     @Override
@@ -101,15 +89,35 @@ public class SimpleViewerExample extends Applet {
     }
     
     private void changeMode() {
+        clearObject();
+        
         switch (screenMode) {
         case IMAGE:
+        {
+            Texture tex = coni.getDepthMap().getTexture();
+            tex.setPosition(getWidth() / 2, getHeight() / 2);
+            addObject(tex);
+         
             text.setText("MODE: DEPTH");
+            addObject(text);
+            
             screenMode = ScreenMode.DEPTH;
+            
             break;
+        }
         case DEPTH:
+        {
+            Texture tex = coni.getImageMap().getTexture();
+            tex.setPosition(getWidth() / 2, getHeight() / 2);
+            addObject(tex);
+            
             text.setText("MODE: IMAGE");
+            addObject(text);
+            
             screenMode = ScreenMode.IMAGE;
+            
             break;
+        }
         }
     }
     
