@@ -97,6 +97,7 @@ public class HandControlExample extends Applet implements GestureListener, HandL
     public void gestureRecognized(CONI coni, Gesture gesture, Vertex idPosition, Vertex endPosition) {
         try {
             coni.startHandTracking(endPosition);
+            coni.removeGesture(Gesture.CLICK);
         } catch (CONIException e) {
             e.printStackTrace();
         }
@@ -113,11 +114,7 @@ public class HandControlExample extends Applet implements GestureListener, HandL
     @Override
     public void handDestroy(CONI coni, int userID, float time) {
         line.hidden();
-        try {
-            coni.stopHandTracking(userID);
-        } catch (CONIException e) {
-            e.printStackTrace();
-        }        
+        coni.addGesture(Gesture.CLICK);
     }
 
     @Override
