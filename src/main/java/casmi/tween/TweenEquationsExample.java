@@ -422,12 +422,12 @@ public class TweenEquationsExample extends Applet {
     public void keyEvent(KeyEvent e) {
         switch (e) {
         case PRESSED:
-            if (getKeycode() == 37) {
+            if (getKeyCode() == 37) {
                 io--;
                 if (io < 0)
                     io = 0;
                 modeChange = true;
-            } else if (getKeycode() == 39) {
+            } else if (getKeyCode() == 39) {
                 io++;
                 if (io > 2)
                     io = 2;
