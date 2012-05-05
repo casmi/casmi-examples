@@ -42,7 +42,7 @@ import casmi.matrix.Vertex;
 public class HandExample extends Applet implements GestureListener, HandListener {
 
     CONI coni;
-    GraphicsObject texObject, handsObject;
+    GraphicsObject handsObject;
     Vertex prvPosition;
     
     @Override
@@ -58,8 +58,9 @@ public class HandExample extends Applet implements GestureListener, HandListener
         coni.addGestureListener(this);
         coni.addHandListener(this);
         
-        texObject = new GraphicsObject();
-        addObject(texObject);
+        Texture tex = coni.getDepthMap().getTexture();
+        tex.setPosition(getWidth() / 2, getHeight() / 2);
+        addObject(tex);
         
         handsObject = new GraphicsObject();
         addObject(handsObject);
@@ -67,13 +68,8 @@ public class HandExample extends Applet implements GestureListener, HandListener
     
     @Override
     public void update() {
-        texObject.clear();
-        
         try {
             coni.update();
-            Texture tex = coni.getDepthMap().getTexture();
-            tex.setPosition(getWidth() / 2, getHeight() / 2);
-            texObject.add(tex);
         } catch (CONIException e) {
             e.printStackTrace();
         }
@@ -89,6 +85,7 @@ public class HandExample extends Applet implements GestureListener, HandListener
     public void gestureRecognized(CONI coni, Gesture gesture, Vertex idPosition, Vertex endPosition) {
         try {
             coni.startHandTracking(endPosition);
+            coni.removeGesture(Gesture.CLICK, Gesture.WAVE);
         } catch (CONIException e) {
             e.printStackTrace();
         }
@@ -101,14 +98,11 @@ public class HandExample extends Applet implements GestureListener, HandListener
     public void handCreate(CONI coni, int userID, Vertex position, float time) {}
 
     @Override
-    public void handDestroy(CONI coni, int userID, float time) {        
+    public void handDestroy(CONI coni, int userID, float time) {
         handsObject.clear();
+        prvPosition = null;
         
-        try {
-            coni.stopHandTracking(userID);
-        } catch (CONIException e) {
-            e.printStackTrace();
-        }
+        coni.addGesture(Gesture.CLICK, Gesture.WAVE);
     }
 
     @Override

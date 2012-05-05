@@ -36,7 +36,6 @@ import casmi.graphics.element.Texture;
 public class IRExample extends Applet {
 
     CONI coni;
-    Texture tex;
     
     @Override
     public void setup() {
@@ -44,21 +43,19 @@ public class IRExample extends Applet {
         
         coni = new CONI();
         coni.enableIR(640, 480, 30);
+        
+        Texture tex = coni.getIRMap().getTexture();
+        tex.setPosition(getWidth() / 2, getHeight() / 2);
+        addObject(tex);
     }
 
     @Override
     public void update() {
-        clearObject();
-        
         try {
             coni.update();
-            tex = coni.getIRMap().getTexture();
-            tex.setPosition(getWidth() / 2, getHeight() / 2);
         } catch (CONIException e) {
             e.printStackTrace();
         }
-        
-        addObject(tex);
     }
     
     @Override

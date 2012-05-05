@@ -49,8 +49,6 @@ public class RecorderExample extends Applet {
     boolean recording = false;
     boolean playing   = false;
     
-    Texture tex;
-    
     @Override
     public void setup() {
         setSize(640, 480);
@@ -59,34 +57,23 @@ public class RecorderExample extends Applet {
         coni.enableImage(640, 480, 30);
         coni.enableDepth(640, 480, 30);
         coni.setDepthViewpointToImage();
+        
+        Texture imageTex = coni.getImageMap().getTexture();
+        imageTex.setPosition(getWidth() / 2, getHeight() / 2);
+        addObject(imageTex);
+        
+        Texture depthTex = coni.getDepthMap().getTexture();
+        depthTex.setPosition(getWidth() / 2, getHeight() / 2);
+        addObject(depthTex); 
     }
 
     @Override
     public void update() {
-        clearObject();
-        
         try {
-            if (!playing) {
+            if (!playing)
                 coni.update();
-                
-                tex = coni.getImageMap().getTexture();
-                tex.setPosition(getWidth() / 2, getHeight() / 2);
-                addObject(tex);
-                
-                tex = coni.getDepthMap().getTexture();
-                tex.setPosition(getWidth() / 2, getHeight() / 2);
-                addObject(tex);
-            } else {
+            else
                 player.update();
-                
-                tex = player.getImageMap().getTexture();
-                tex.setPosition(getWidth() / 2, getHeight() / 2);
-                addObject(tex);
-                
-                tex = player.getDepthMap().getTexture();
-                tex.setPosition(getWidth() / 2, getHeight() / 2);
-                addObject(tex);
-            }
         } catch (CONIException e) {
             e.printStackTrace();
         }
