@@ -55,6 +55,7 @@ public class ArcExample extends Applet {
 
     @Override
     public void keyEvent(KeyEvent e) {}
+    
 
     public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.ArcExample", "Arc Example");

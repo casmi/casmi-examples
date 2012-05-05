@@ -28,7 +28,7 @@ import casmi.graphics.color.RGBColor;
 import casmi.graphics.element.Sphere;
 import casmi.graphics.material.Material;
 import casmi.graphics.object.Light;
-import casmi.graphics.object.Light.LightMode;
+import casmi.graphics.object.LightMode;
 import casmi.matrix.Vertex;
 
 /**
@@ -53,9 +53,9 @@ public class MaterialExample extends Applet {
 	Vertex v1 = new Vertex(1000, 1000, 1000);
 	Vertex v2 = new Vertex(-10, 0, -10);
 
-	float emerald_ambient[]   = { 255 * 0.0115f,  255 * 0.745f,    255 * 0.0115f,  255 * 1.0f };
-	float emerald_diffuse[]   = { 255 * 0.07568f, 255 * 0.61424f,  255 * 0.07568f, 255 * 1.0f };
-	float emerald_specular[]  = { 255 * 0.733f,   255 * 0.927811f, 255 * 0.733f,   255 * 1.0f };
+	float emerald_ambient[]   = {  0.0115f,   0.745f,     0.0115f,   1.0f };
+	float emerald_diffuse[]   = {  0.07568f,  0.61424f,   0.07568f,  1.0f };
+	float emerald_specular[]  = {  0.733f,    0.927811f,  0.733f,    1.0f };
 	float emerald_shininess[] = { 60.8f };
 
 	@Override
@@ -65,8 +65,8 @@ public class MaterialExample extends Applet {
 		s1.setStroke(false);
 		m1.shininess(3);
 		m1.ambient(2);
-		m1.diffuse((float) (255 * 0.5), (float) (255 * 0.5), (float) (255 * 0.9));
-		m1.specular(30);
+		m1.diffuse((float) ( 0.5), (float) ( 0.5), (float) ( 0.9));
+		m1.specular((float)(30/255.0));
 		s1.setMaterial(m1);
 
 		s2.setStroke(false);
@@ -78,9 +78,9 @@ public class MaterialExample extends Applet {
 
 		s3.setStroke(false);
 		m3.shininess(100f);
-		m3.ambient(10);
-		m3.diffuse((float) (255 * 0.9), (float) (255 * 0.6), (float) (255 * 0.6));
-		m3.specular(200);
+		m3.ambient((float)(250/255.0));
+		m3.diffuse((float) ( 0.9), (float) ( 0.6), (float) ( 0.6));
+		m3.specular((float)(200/255.0));
 		s3.setMaterial(m3);
 		
         s1.setPosition(150, 300, 100);

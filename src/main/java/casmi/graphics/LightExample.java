@@ -28,7 +28,7 @@ import casmi.graphics.color.HSBColor;
 import casmi.graphics.color.RGBColor;
 import casmi.graphics.element.Sphere;
 import casmi.graphics.object.Light;
-import casmi.graphics.object.Light.LightMode;
+import casmi.graphics.object.LightMode;
 import casmi.matrix.Vertex;
 
 /**
@@ -51,10 +51,9 @@ public class LightExample extends Applet {
     @Override
     public void setup() {
         setSize(800, 600);
-
-        s.setStroke(true);
-        s.setStrokeColor(new RGBColor(0.4, 0.4, 0.8));
-
+        s.setDepthTest(true);
+        s.setStroke(false);
+       
         hsbColor = new HSBColor(0.0, 0.8, 0.6);
 
         l1 = new Light(LightMode.AMBIENT);
