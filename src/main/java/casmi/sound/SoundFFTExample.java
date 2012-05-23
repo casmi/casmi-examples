@@ -3,6 +3,11 @@ package casmi.sound;
 import java.util.ArrayList;
 import java.util.List;
 
+import minim.sound.AudioMetaData;
+import minim.sound.AudioPlayer;
+import minim.sound.Sound;
+import minim.sound.analysis.FFT;
+
 import casmi.Applet;
 import casmi.AppletRunner;
 import casmi.KeyEvent;
@@ -13,7 +18,6 @@ import casmi.graphics.color.ColorSet;
 import casmi.graphics.color.RGBColor;
 import casmi.graphics.element.Line;
 import casmi.graphics.element.Text;
-import casmi.sound.analysis.FFT;
 
 public class SoundFFTExample extends Applet{
 

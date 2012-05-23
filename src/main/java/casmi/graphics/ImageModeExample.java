@@ -23,7 +23,6 @@ import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseEvent;
-import casmi.graphics.element.Rect;
 import casmi.graphics.element.Texture;
 import casmi.image.ImageMode;
 import casmi.util.SystemUtil;
@@ -38,25 +37,24 @@ public class ImageModeExample extends Applet {
 
     static final String IMAGE_PATH = Applet.class.getResource("logo.png").getPath();
     
-    Texture tex = null;
-    Rect r1 = new Rect(100, 100);
+    Texture tex1,tex2;
 
     public void setup() {
         setSize(1024, 768);
         
         System.out.println(SystemUtil.USER_DIR);
         
-        tex = new Texture(IMAGE_PATH);
-        tex.setMode(ImageMode.CORNER);
-        tex.setPosition(300, 300);
+        tex1 = new Texture(IMAGE_PATH);
+        tex1.setMode(ImageMode.CORNER);
+        tex1.setPosition(300, 300);
         
-        addObject(tex);
-        addObject(r1);
+        addObject(tex1);
         
-        tex.setMode(ImageMode.CENTER);
-        tex.setPosition(600, 600);
+        tex2 = (Texture) tex1.clone();
+        tex2.setMode(ImageMode.CENTER);
+        tex2.setPosition(600, 600);
         
-        addObject(tex);
+        addObject(tex2);
     }
 
     @Override

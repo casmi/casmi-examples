@@ -3,6 +3,9 @@ package casmi.sound;
 import java.util.ArrayList;
 import java.util.List;
 
+import minim.sound.AudioPlayer;
+import minim.sound.Sound;
+
 import casmi.Applet;
 import casmi.AppletRunner;
 import casmi.KeyEvent;

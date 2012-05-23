@@ -21,7 +21,6 @@ package casmi.graphics.group;
 import casmi.graphics.color.ColorSet;
 import casmi.graphics.element.Line;
 import casmi.graphics.element.Rect;
-import casmi.graphics.element.Text;
 import casmi.graphics.element.Triangle;
 import casmi.graphics.font.Font;
 import casmi.graphics.font.FontStyle;
@@ -29,8 +28,6 @@ import casmi.tween.Tween;
 import casmi.tween.TweenElement;
 import casmi.tween.TweenManager;
 import casmi.tween.TweenParallelGroup;
-import casmi.tween.TweenType;
-import casmi.tween.equations.Linear;
 import casmi.tween.equations.Quint;
 import casmi.tween.simpletweenables.TweenFloat;
 
@@ -42,7 +39,6 @@ public class Group1 extends Group {
     Rect     r1, r2;
     Line     l1;
     Triangle t1;
-    Text     text;
     Font     f;
     
     TweenElement te;
@@ -83,12 +79,6 @@ public class Group1 extends Group {
         
         f = new Font("COPPERPLATE", FontStyle.PLAIN, 14);
         
-
-        text = new Text("LINE ARK", f, -165, -40);
-        text.setStrokeColor(ColorSet.LIGHT_GOLDENROD_YELLOW);
-        text.setScaleX(1.4);
-        add(text);
-        
         tf = new TweenFloat(0);
         
         tx = t1.getX();
@@ -105,15 +95,12 @@ public class Group1 extends Group {
         if (isTweenstart()) {
             tf.setValue(280);
             setTweenstart(false);
-            text.getStrokeColor().setAlpha(0.0);
-            te = new TweenElement(text);
             manager = new TweenManager();
             addTweenManager(manager);
 
             TweenParallelGroup tpg = 
                 TweenParallelGroup.create(
-                    Tween.to(tf, 3500, Quint.OUT).target(0),
-                    Tween.to(te, TweenType.ALPHA_STROKE, 3500, Linear.INOUT).target(1.0)
+                    Tween.to(tf, 3500, Quint.OUT).target(0)
                     );
             manager.add(tpg);
 

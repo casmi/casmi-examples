@@ -36,15 +36,15 @@ import casmi.graphics.element.Curve;
  */
 public class CurveExample extends Applet {
 
-    Curve curve = new Curve(200, 100, 300, 400, 600, 200, 400, 0);
+    Curve curve1 = new Curve(200, 100, 300, 400, 600, 200, 400, 0);
 
     @Override
     public void setup() {
         setSize(800, 600);
 
-        curve.setFill(false);
-        curve.setStrokeColor(new RGBColor(0.9, 0.3, 0.3));
-        addObject(curve);
+        curve1.setFill(false);
+        curve1.setStrokeColor(new RGBColor(0.9, 0.3, 0.3));
+        addObject(curve1);
     }
 
     @Override

@@ -47,7 +47,7 @@ public class RotateExample extends Applet {
         
         b1.setFill(false);
         b1.setStrokeColor(c);
-        b1.setStrokeWidth(3);
+        b1.setStrokeWidth(1);
         
         setPosition(getWidth() / 2.0, 100.0);
         
