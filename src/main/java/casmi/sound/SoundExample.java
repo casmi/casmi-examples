@@ -1,10 +1,29 @@
+/*
+ *   casmi examples
+ *   http://casmi.github.com/
+ *   Copyright (C) 2011, Xcoo, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
 package casmi.sound;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import minim.sound.AudioPlayer;
-import minim.sound.Sound;
+import casmi.sound.AudioPlayer;
+import casmi.sound.Sound;
 
 import casmi.Applet;
 import casmi.AppletRunner;
@@ -13,6 +32,13 @@ import casmi.MouseButton;
 import casmi.MouseEvent;
 import casmi.graphics.color.ColorSet;
 import casmi.graphics.element.Line;
+
+/**
+ * sound example.
+ * 
+ * 
+ * @author Y.Ban
+ */
 
 public class SoundExample extends Applet{
 
@@ -36,8 +62,8 @@ public class SoundExample extends Applet{
 		  {
 		    double x1 = map(i, 0, player.bufferSize(), 0, getWidth());
 		    double x2 = map(i+1, 0, player.bufferSize(), 0, getWidth());
-		    Llines.add(new Line(x1, 50 + player.left.get(i)*50, x2, 50 + player.left.get(i+1)*50));
-		    Rlines.add(new Line(x1, 150 + player.right.get(i)*50, x2, 150 + player.right.get(i+1)*50));
+		    Llines.add(new Line(x1, 50 + player.left().get(i)*50, x2, 50 + player.left().get(i+1)*50));
+		    Rlines.add(new Line(x1, 150 + player.right().get(i)*50, x2, 150 + player.right().get(i+1)*50));
 		    Llines.get(i).setStrokeColor(ColorSet.AQUAMARINE);
 		    Rlines.get(i).setStrokeColor(ColorSet.AQUAMARINE);
 		    addObject(Llines.get(i));
@@ -65,8 +91,8 @@ public class SoundExample extends Applet{
 		  {
 		    double x1 = map(i, 0, player.bufferSize(), 0, getWidth());
 		    double x2 = map(i+1, 0, player.bufferSize(), 0, getWidth());
-		    Llines.get(i).set(x1, 50 + player.left.get(i)*50, x2, 50 + player.left.get(i+1)*50);
-		    Rlines.get(i).set(x1, 150 + player.right.get(i)*50, x2, 150 + player.right.get(i+1)*50);
+		    Llines.get(i).set(x1, 50 + player.left().get(i)*50, x2, 50 + player.left().get(i+1)*50);
+		    Rlines.get(i).set(x1, 150 + player.right().get(i)*50, x2, 150 + player.right().get(i+1)*50);
 		  }
 		
 	}
