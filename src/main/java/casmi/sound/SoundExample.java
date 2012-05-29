@@ -76,7 +76,7 @@ public class SoundExample extends Applet {
     }
 
     @Override
-    public void end() {
+    public void exit() {
         player.close();
         sound.stop();
     }
