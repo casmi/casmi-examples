@@ -239,57 +239,57 @@ public class TweenEquationsExample extends Applet {
                     switch (eq) {
                     case 0:
                         addTween(Tween.to(te,
-                            TweenType.POSITION, 3000, Back.IN).target(
+                            TweenType.POSITION, 2000, Back.IN).target(
                             el.getX(), 200));
                         break;
                     case 1:
                         addTween(Tween.to(te,
-                            TweenType.POSITION, 3000, Bounce.IN).target(
+                            TweenType.POSITION, 2000, Bounce.IN).target(
                             el.getX(), 200));
                         break;
                     case 2:
                         addTween(Tween.to(te,
-                            TweenType.POSITION, 3000, Circ.IN).target(
+                            TweenType.POSITION, 2000, Circ.IN).target(
                             el.getX(), 200));
                         break;
                     case 3:
                         addTween(Tween.to(te,
-                            TweenType.POSITION, 3000, Cubic.IN).target(
+                            TweenType.POSITION, 2000, Cubic.IN).target(
                             el.getX(), 200));
                         break;
                     case 4:
                         addTween(Tween.to(te,
-                            TweenType.POSITION, 3000, Elastic.IN).target(
+                            TweenType.POSITION, 2000, Elastic.IN).target(
                             el.getX(), 200));
                         break;
                     case 5:
                         addTween(Tween.to(te,
-                            TweenType.POSITION, 3000, Expo.IN).target(
+                            TweenType.POSITION, 2000, Expo.IN).target(
                             el.getX(), 200));
                         break;
                     case 6:
                         addTween(Tween.to(te,
-                            TweenType.POSITION, 3000, Linear.INOUT).target(
+                            TweenType.POSITION, 2000, Linear.INOUT).target(
                             el.getX(), 200));
                         break;
                     case 7:
                         addTween(Tween.to(te,
-                            TweenType.POSITION, 3000, Quad.IN).target(
+                            TweenType.POSITION, 2000, Quad.IN).target(
                             el.getX(), 200));
                         break;
                     case 8:
                         addTween(Tween.to(te,
-                            TweenType.POSITION, 3000, Quart.IN).target(
+                            TweenType.POSITION, 2000, Quart.IN).target(
                             el.getX(), 200));
                         break;
                     case 9:
                         addTween(Tween.to(te,
-                            TweenType.POSITION, 3000, Quint.IN).target(
+                            TweenType.POSITION, 2000, Quint.IN).target(
                             el.getX(), 200));
                         break;
                     case 10:
                         addTween(Tween.to(te,
-                            TweenType.POSITION, 3000, Sine.IN).target(
+                            TweenType.POSITION, 2000, Sine.IN).target(
                             el.getX(), 200));
                         break;
                     }
@@ -298,57 +298,57 @@ public class TweenEquationsExample extends Applet {
                     switch (eq) {
                     case 0:
                         addTween(Tween.to(te,
-                            TweenType.POSITION, 3000, Back.OUT).target(
+                            TweenType.POSITION, 2000, Back.OUT).target(
                             el.getX(), 200));
                         break;
                     case 1:
                         addTween(Tween.to(te,
-                            TweenType.POSITION, 3000, Bounce.OUT).target(
+                            TweenType.POSITION, 2000, Bounce.OUT).target(
                             el.getX(), 200));
                         break;
                     case 2:
                         addTween(Tween.to(te,
-                            TweenType.POSITION, 3000, Circ.OUT).target(
+                            TweenType.POSITION, 2000, Circ.OUT).target(
                             el.getX(), 200));
                         break;
                     case 3:
                         addTween(Tween.to(te,
-                            TweenType.POSITION, 3000, Cubic.OUT).target(
+                            TweenType.POSITION, 2000, Cubic.OUT).target(
                             el.getX(), 200));
                         break;
                     case 4:
                         addTween(Tween.to(te,
-                            TweenType.POSITION, 3000, Elastic.OUT).target(
+                            TweenType.POSITION, 2000, Elastic.OUT).target(
                             el.getX(), 200));
                         break;
                     case 5:
                         addTween(Tween.to(te,
-                            TweenType.POSITION, 3000, Expo.OUT).target(
+                            TweenType.POSITION, 2000, Expo.OUT).target(
                             el.getX(), 200));
                         break;
                     case 6:
                         addTween(Tween.to(te,
-                            TweenType.POSITION, 3000, Linear.INOUT).target(
+                            TweenType.POSITION, 2000, Linear.INOUT).target(
                             el.getX(), 200));
                         break;
                     case 7:
                         addTween(Tween.to(te,
-                            TweenType.POSITION, 3000, Quad.OUT).target(
+                            TweenType.POSITION, 2000, Quad.OUT).target(
                             el.getX(), 200));
                         break;
                     case 8:
                         addTween(Tween.to(te,
-                            TweenType.POSITION, 3000, Quart.OUT).target(
+                            TweenType.POSITION, 2000, Quart.OUT).target(
                             el.getX(), 200));
                         break;
                     case 9:
                         addTween(Tween.to(te,
-                            TweenType.POSITION, 3000, Quint.OUT).target(
+                            TweenType.POSITION, 2000, Quint.OUT).target(
                             el.getX(), 200));
                         break;
                     case 10:
                         addTween(Tween.to(te,
-                            TweenType.POSITION, 3000, Sine.OUT).target(
+                            TweenType.POSITION, 2000, Sine.OUT).target(
                             el.getX(), 200));
                         break;
                     }
@@ -357,57 +357,57 @@ public class TweenEquationsExample extends Applet {
                     switch (eq) {
                     case 0:
                         addTween(Tween.to(te,
-                            TweenType.POSITION, 3000, Back.INOUT).target(
+                            TweenType.POSITION, 2000, Back.INOUT).target(
                             el.getX(), 200));
                         break;
                     case 1:
                         addTween(Tween.to(te,
-                            TweenType.POSITION, 3000, Bounce.INOUT).target(
+                            TweenType.POSITION, 2000, Bounce.INOUT).target(
                             el.getX(), 200));
                         break;
                     case 2:
                         addTween(Tween.to(te,
-                            TweenType.POSITION, 3000, Circ.INOUT).target(
+                            TweenType.POSITION, 2000, Circ.INOUT).target(
                             el.getX(), 200));
                         break;
                     case 3:
                         addTween(Tween.to(te,
-                            TweenType.POSITION, 3000, Cubic.INOUT).target(
+                            TweenType.POSITION, 2000, Cubic.INOUT).target(
                             el.getX(), 200));
                         break;
                     case 4:
                         addTween(Tween.to(te,
-                            TweenType.POSITION, 3000, Elastic.INOUT).target(
+                            TweenType.POSITION, 2000, Elastic.INOUT).target(
                             el.getX(), 200));
                         break;
                     case 5:
                         addTween(Tween.to(te,
-                            TweenType.POSITION, 3000, Expo.INOUT).target(
+                            TweenType.POSITION, 2000, Expo.INOUT).target(
                             el.getX(), 200));
                         break;
                     case 6:
                         addTween(Tween.to(te,
-                            TweenType.POSITION, 3000, Linear.INOUT).target(
+                            TweenType.POSITION, 2000, Linear.INOUT).target(
                             el.getX(), 200));
                         break;
                     case 7:
                         addTween(Tween.to(te,
-                            TweenType.POSITION, 3000, Quad.INOUT).target(
+                            TweenType.POSITION, 2000, Quad.INOUT).target(
                             el.getX(), 200));
                         break;
                     case 8:
                         addTween(Tween.to(te,
-                            TweenType.POSITION, 3000, Quart.INOUT).target(
+                            TweenType.POSITION, 2000, Quart.INOUT).target(
                             el.getX(), 200));
                         break;
                     case 9:
                         addTween(Tween.to(te,
-                            TweenType.POSITION, 3000, Quint.INOUT).target(
+                            TweenType.POSITION, 2000, Quint.INOUT).target(
                             el.getX(), 200));
                         break;
                     case 10:
                         addTween(Tween.to(te,
-                            TweenType.POSITION, 3000, Sine.INOUT).target(
+                            TweenType.POSITION, 2000, Sine.INOUT).target(
                             el.getX(), 200));
                         break;
                     }
@@ -422,12 +422,12 @@ public class TweenEquationsExample extends Applet {
     public void keyEvent(KeyEvent e) {
         switch (e) {
         case PRESSED:
-            if (getKeycode() == 37) {
+            if (getKeyCode() == 37) {
                 io--;
                 if (io < 0)
                     io = 0;
                 modeChange = true;
-            } else if (getKeycode() == 39) {
+            } else if (getKeyCode() == 39) {
                 io++;
                 if (io > 2)
                     io = 2;

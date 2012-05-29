@@ -63,13 +63,13 @@ implements UserListener, SkeletonListener, PoseDetectionListener {
     private Map<Integer, Map<SkeletonJoint, Joint>> joints;
 
     private GraphicsObject group;
-    private Texture tex;
     
     @Override
     public void setup() {
         setSize(640, 480);
         
         coni = new CONI();
+        
         coni.enableDepth(640, 480, 30);
         coni.enableUser();
         coni.enableSkeleton();
@@ -78,9 +78,19 @@ implements UserListener, SkeletonListener, PoseDetectionListener {
         coni.addPoseDetectionListener(this);
         coni.setMirror(true);
         
+        Texture depthTex = coni.getDepthMap().getTexture();
+        depthTex.setPosition(getWidth() / 2, getHeight() / 2);
+        addObject(depthTex);
+        
+        Texture userTex = coni.getUserMap().getTexture();
+        userTex.setPosition(getWidth() / 2, getHeight() / 2);
+        userTex.setFillColor(ColorSet.BLUE);
+        addObject(userTex);
+        
         joints = new HashMap<Integer, Map<SkeletonJoint,Joint>>();
         
         group = new GraphicsObject();
+        addObject(group);
     }
 
     @Override
@@ -91,15 +101,6 @@ implements UserListener, SkeletonListener, PoseDetectionListener {
             // update sensor data
             coni.update();
             
-            // rendering depth and users
-            tex = coni.getDepthMap().getTexture();
-            tex.setPosition(getWidth() / 2, getHeight() / 2);
-            group.add(tex);
-            tex = coni.getUserMap().getTexture();
-            tex.setPosition(getWidth() / 2, getHeight() / 2);
-            tex.setFillColor(ColorSet.BLUE);
-            group.add(tex);
-            
             // rendering skeletons and labels
             int[] users = coni.getUsers();
             for (int i = 0; i < users.length; i++) {
@@ -109,8 +110,6 @@ implements UserListener, SkeletonListener, PoseDetectionListener {
         } catch (CONIException e) {
             e.printStackTrace();
         }
-        
-        addObject(group);
     }
     
     @Override

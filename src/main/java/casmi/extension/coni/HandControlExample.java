@@ -44,12 +44,10 @@ import casmi.matrix.Vertex;
 public class HandControlExample extends Applet implements GestureListener, HandListener {
 
     CONI coni = new CONI();
-    GraphicsObject group = new GraphicsObject();
     GraphicsObject imageGroup = new GraphicsObject();
     Line line = new Line(0, 0, 0, 490);
     
     int select = 0;
-    boolean tracking = false;
     
     @Override
     public void setup() {
@@ -74,24 +72,18 @@ public class HandControlExample extends Applet implements GestureListener, HandL
             imageGroup.add(image);
         }
         addObject(imageGroup);
-        
-        addObject(group);
+
+        Texture tex = coni.getDepthMap().getTexture();
+        tex.set(560, 60, 160, 120);
+        addObject(tex);
     }
 
     @Override
     public void update() {
-        group.clear();
         try {
             coni.update();
-            Texture tex = coni.getDepthMap().getTexture();
-            tex.set(560, 60, 160, 120);
-            group.add(tex);
         } catch (CONIException e) {
             e.printStackTrace();
-        }
-        
-        if (tracking) {
-            // TODO
         }
     }
 
@@ -105,6 +97,7 @@ public class HandControlExample extends Applet implements GestureListener, HandL
     public void gestureRecognized(CONI coni, Gesture gesture, Vertex idPosition, Vertex endPosition) {
         try {
             coni.startHandTracking(endPosition);
+            coni.removeGesture(Gesture.CLICK);
         } catch (CONIException e) {
             e.printStackTrace();
         }
@@ -115,19 +108,13 @@ public class HandControlExample extends Applet implements GestureListener, HandL
 
     @Override
     public void handCreate(CONI coni, int userID, Vertex position, float time) {
-        tracking = true;
         line.visible();
     }
 
     @Override
     public void handDestroy(CONI coni, int userID, float time) {
-        tracking = false;
         line.hidden();
-        try {
-            coni.stopHandTracking(userID);
-        } catch (CONIException e) {
-            e.printStackTrace();
-        }        
+        coni.addGesture(Gesture.CLICK);
     }
 
     @Override

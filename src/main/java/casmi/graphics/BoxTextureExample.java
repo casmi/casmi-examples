@@ -74,7 +74,7 @@ public class BoxTextureExample extends Applet {
 		b.setRotation(rot, 1, 3, 5);
 
 		p = new Perspective(30, (double)getWidth() / (double)getHeight(),
-				            1.0, 100);
+				            1.00, 500);
 		c = new Camera(3.0, 4.0, 5.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
 
 		setPerspective(p);

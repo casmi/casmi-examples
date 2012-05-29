@@ -23,6 +23,7 @@ import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseEvent;
+import casmi.graphics.color.ColorSet;
 import casmi.graphics.color.RGBColor;
 import casmi.graphics.element.Polygon;
 
@@ -41,18 +42,17 @@ public class PolygonExample extends Applet {
         setSize(1024, 768);
 
         polygon1 = new Polygon();
-        polygon1.vertex(210, 120);
-        polygon1.vertex(280, 115);
-        polygon1.vertex(495, 390);
-        polygon1.vertex(240, 345);
-        polygon1.vertex(200, 445);
+        polygon1.vertex(200, 100);
+        polygon1.vertex(280, 120);
+        polygon1.vertex(500, 300);
+        polygon1.vertex(300, 350);
+        polygon1.vertex(200, 200);
+        polygon1.setStrokeColor(ColorSet.AQUA);
 
         polygon2 = new Polygon();
         polygon2.vertex(310, 20);
         polygon2.vertex(380, 115);
         polygon2.vertex(695, 290);
-        polygon2.vertex(440, 345);
-        polygon2.vertex(200, 445);
         polygon2.setFill(false);
         polygon2.setStrokeColor(new RGBColor(0.8, 0.0, 0.4));
         polygon2.setStrokeWidth(7);

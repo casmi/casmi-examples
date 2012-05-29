@@ -35,14 +35,12 @@ import casmi.graphics.element.Texture;
 public class TextureExample extends Applet {
 
     static final URL IMAGE_PATH = Applet.class.getResource("logo.png");
-    
     Texture tex;
 
     double rot = 0.0;
 
     public void setup() {
         setSize(1024, 768);
-        
         tex = new Texture(IMAGE_PATH);
         tex.setPosition(200, 500);
         tex.setWidth(tex.getWidth() / 1.2);

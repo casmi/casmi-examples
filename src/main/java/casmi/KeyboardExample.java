@@ -92,11 +92,11 @@ public class KeyboardExample extends Applet {
     @Override 
     public void keyEvent(KeyEvent e) {
     	if (e == KeyEvent.PRESSED) {
-            if (44 <= getKeycode() || getKeycode() == 32) {
+            if (44 <= getKeyCode() || getKeyCode() == 32) {
                 content += getKey();
-            } else if (getKeycode() == java.awt.event.KeyEvent.VK_ENTER) {
+            } else if (getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
                 content += "\n";
-            } else if (getKeycode() == 8&&content.length()>0) {
+            } else if (getKeyCode() == 8&&content.length()>0) {
                 content = content.substring(0, content.length() - 1);
             }
             text.setText(content);
