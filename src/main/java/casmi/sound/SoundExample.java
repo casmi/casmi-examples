@@ -1,7 +1,7 @@
 /*
  *   casmi examples
  *   http://casmi.github.com/
- *   Copyright (C) 2011, Xcoo, Inc.
+ *   Copyright (C) 2012, Xcoo, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,9 +20,6 @@ package casmi.sound;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import casmi.sound.AudioPlayer;
-import casmi.sound.Sound;
 
 import casmi.Applet;
 import casmi.AppletRunner;
