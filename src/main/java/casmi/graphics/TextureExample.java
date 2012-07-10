@@ -41,6 +41,7 @@ public class TextureExample extends Applet {
 
     public void setup() {
         setSize(1024, 768);
+        System.out.println(IMAGE_PATH);
         tex = new Texture(IMAGE_PATH);
         tex.setPosition(200, 500);
         tex.setWidth(tex.getWidth() / 1.2);

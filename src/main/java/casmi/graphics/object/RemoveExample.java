@@ -1,3 +1,22 @@
+/*
+ *   casmi examples
+ *   http://casmi.github.com/
+ *   Copyright (C) 2011, Xcoo, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
 package casmi.graphics.object;
 
 import casmi.Applet;
@@ -13,11 +32,17 @@ import casmi.graphics.element.Rect;
 import casmi.graphics.element.Triangle;
 import casmi.graphics.group.Group;
 
-class TriangleGroup extends Group {
+/**
+ * Object example.
+ * 
+ * @author Y. Ban
+ */
+
+class TriangleGroups extends Group {
 
     Triangle t1, t2;
 
-    public TriangleGroup() {
+    public TriangleGroups() {
         setup();
     }
 
@@ -40,7 +65,7 @@ class TriangleGroup extends Group {
 
 public class RemoveExample extends Applet{
 	
-	TriangleGroup tg1,tg2;
+	Group tg1,tg2;
 	Ellipse el;
 	Rect r1,r2;
 	MouseOverCallback removeover;
@@ -48,8 +73,8 @@ public class RemoveExample extends Applet{
 	@Override
 	public void setup() {
 		setSize(800,600);
-		tg1 = new TriangleGroup();
-		tg2 = new TriangleGroup();
+		tg1 = new TriangleGroups();
+		tg2 = new TriangleGroups();
 		el = new Ellipse(10);
 		r1 = new Rect(100, 100);
 		r2 = new Rect(200, 120);
