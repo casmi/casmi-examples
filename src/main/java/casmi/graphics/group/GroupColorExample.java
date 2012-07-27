@@ -27,8 +27,6 @@ import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseEvent;
-import casmi.graphics.color.Color;
-import casmi.graphics.color.ColorSet;
 import casmi.graphics.color.GrayColor;
 import casmi.graphics.element.Line;
 
