@@ -54,7 +54,7 @@ public class MouseOverExample extends Applet {
 
     public void setup() {
         setSize(1024, 768);
-       
+
         mouseOverCB = new MouseOverCallback() {
             
         	@Override

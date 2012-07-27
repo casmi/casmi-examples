@@ -63,6 +63,9 @@ public class MouseExample extends Applet {
             System.out.println("Released!!");
             mouseFlag = true;
             break;
+        case DOUBLE_CLICKED:
+        	System.out.println("Double_Clicked!!");
+        	mouseFlag = true;
         }
         
         if (mouseFlag) {

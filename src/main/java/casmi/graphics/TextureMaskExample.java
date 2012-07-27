@@ -70,11 +70,11 @@ public class TextureMaskExample extends Applet {
         t.setStrokeColor(ColorSet.WHITE);
         t.setPosition(50, 20);
 
+       
         addObject(tex);
         addObject(mask);
         addObject(masked);
         addObject(t);
-
         capture(Applet.class.getResource("save.png").getPath());
     }
 
