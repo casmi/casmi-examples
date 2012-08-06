@@ -17,7 +17,7 @@
  */
 package casmi;
 
-import casmi.graphics.color.Color;
+import casmi.extension.video.Recorder;
 import casmi.graphics.color.ColorSet;
 import casmi.graphics.color.RGBColor;
 import casmi.graphics.element.Circle;
@@ -42,6 +42,8 @@ public class RecordExample extends Applet {
 
     static final String RECORD_FILE = SystemUtil.JAVA_TMP_PATH + "casmi_record.mp4";
     
+    Recorder recorder;
+    
     Circle circle       = new Circle(320, 240, 15);
     Circle recordCircle = new Circle(610, 450, 15);
     
@@ -52,14 +54,16 @@ public class RecordExample extends Applet {
     
     @Override
     public void setup() {
+        recorder = new Recorder(this);
+        
         setSize(640, 480);
         
         circle.setCenterColor(ColorSet.YELLOW);
         circle.setEdgeColor(new RGBColor(0.0, 0.0));
         addObject(circle);
+               
+        recordCircle.setFillColor(new RGBColor(ColorSet.RED, 0.5));
         
-        Color c = new RGBColor(ColorSet.RED, 0.5);
-        recordCircle.setFillColor(c);
         recordCircle.addMouseEventCallback(new MouseOverCallback() {
             @Override
             public void run(MouseOverTypes eventtype, Element element) {
@@ -75,17 +79,18 @@ public class RecordExample extends Applet {
                 }
             }
         });
+        
         recordCircle.addMouseEventCallback(new MouseClickCallback() {
             @Override
             public void run(MouseClickTypes eventtype, Element element) {
                 if (eventtype == MouseClickTypes.CLICKED) {
                     if (!isRecording) {
-                        record(RECORD_FILE);
+                        recorder.record(RECORD_FILE);
                         isRecording = true;
                         recordCircle.setFillColor(new RGBColor(ColorSet.RED));
                         System.out.println("start recording");
                     } else {
-                        stopRecord();
+                        recorder.stopRecord();
                         isRecording = false;
                         recordCircle.setFillColor(new RGBColor(ColorSet.RED, 0.5));
                         System.out.println("stop recording");
@@ -94,6 +99,7 @@ public class RecordExample extends Applet {
                 }
             }
         });
+        
         addObject(recordCircle);
     }
 
