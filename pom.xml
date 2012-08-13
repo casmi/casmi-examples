@@ -38,6 +38,11 @@
 			<artifactId>casmi-ext-video</artifactId>
 			<version>0.2.1-SNAPSHOT</version>
 		</dependency>
+		<dependency>
+			<groupId>casmi</groupId>
+			<artifactId>casmi-ext-bvh</artifactId>
+			<version>0.2.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 
 	<build>
