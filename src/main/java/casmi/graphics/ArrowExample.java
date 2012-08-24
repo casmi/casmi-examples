@@ -1,12 +1,12 @@
-package casmi.extension.graphics;
+package casmi.graphics;
 
 import casmi.Applet;
 import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseEvent;
-import casmi.extension.graphics.Arrow;
-import casmi.extension.graphics.ArrowAlign;
+import casmi.graphics.element.Arrow;
+import casmi.graphics.element.ArrowAlign;
 import casmi.graphics.color.ColorSet;
 import casmi.matrix.Vertex;
 
@@ -61,7 +61,7 @@ public class ArrowExample extends Applet{
 	}
 	
 	public static void main(String[] args) {
-        AppletRunner.run("casmi.extension.graphics.ArrowExample", "Arrow Example");
+        AppletRunner.run("casmi.graphics.ArrowExample", "Arrow Example");
     }
 	
 

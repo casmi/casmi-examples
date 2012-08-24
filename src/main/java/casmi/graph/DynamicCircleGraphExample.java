@@ -17,8 +17,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
-package casmi.extension.graph;
+package casmi.graph;
 
 import java.net.URL;
 
@@ -27,37 +26,34 @@ import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseEvent;
-import casmi.extension.graph.data.LoadData2D;
-import casmi.extension.graph.data.MatrixData2D;
-import casmi.extension.graph.view.DynamicBarGraph;
-import casmi.extension.graph.view.GraphAxis;
-import casmi.graphics.color.ColorSet;
-import casmi.graphics.color.RGBColor;
+import casmi.graph.data.LoadData2D;
+import casmi.graph.data.MatrixData2D;
+import casmi.graph.view.DynamicCircleGraph;
+import casmi.graph.view.GraphTurn;
 
 /**
- * DynamicBarGraph example.
+ * DynamicCircleGraph example.
  * 
- * @see casmi.extension.graph.DynamicBarGraph
- * @see casmi.extension.graph.Graph
+ * @see casmi.extension.graph.DynamicCircleGraph
+ * @see casmi.extension.graph.GraphTurn
  * 
  * @author Y. Ban
  */
 
-public class DynamicBarGraphExample extends Applet{
+public class DynamicCircleGraphExample extends Applet{
 
-	DynamicBarGraph barGraph;
+	DynamicCircleGraph circleGraph;
 	MatrixData2D m;
-	static final URL CSV_PATH = Applet.class.getResource("data2D.csv");
+	static final URL CSV_PATH = Applet.class.getResource("data2D4circle.csv");
+	
 	
 	@Override
 	public void setup() {
 		setSize(1024, 768);
-		m =  LoadData2D.load( CSV_PATH );
-		barGraph = new DynamicBarGraph(800, 600, m, 600, 0);
-		barGraph.setPosition(100, 100);
-		barGraph.setDivisionSpace(GraphAxis.VERTICAL, 50);
-		barGraph.setRectColor(new RGBColor(ColorSet.ORANGE));
-		addObject(barGraph);
+		m =  LoadData2D.loadWithoutAxisName( CSV_PATH );
+		circleGraph = new DynamicCircleGraph(m, 200, GraphTurn.CLOCKWISE);
+		circleGraph.setPosition(getWidth()/2, getHeight()/2);
+		addObject(circleGraph);
 		
 	}
 
@@ -70,21 +66,24 @@ public class DynamicBarGraphExample extends Applet{
 	@Override
 	public void mouseEvent(MouseEvent e, MouseButton b) {
 		switch(e){
-			case PRESSED:
-				barGraph.setTweenstart(true);
-				break;
-		}
+		case PRESSED:
+			circleGraph.setTweenstart(true);
+			break;
+	}
 		
 	}
 
 	@Override
 	public void keyEvent(KeyEvent e) {
-		// TODO Auto-generated method stub
+		if(e == KeyEvent.PRESSED){
+			circleGraph.resetArc();
+		}
 		
 	}
 	
     public static void main(String[] args) {
-        AppletRunner.run("casmi.extension.graph.DynamicBarGraphExample", "DynamicBarGraph Example");
+        AppletRunner.run("casmi.graph.DynamicCircleGraphExample", "DynamicCircleGraph Example");
     }
+
 
 }

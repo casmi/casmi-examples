@@ -17,7 +17,8 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package casmi.extension.graph;
+
+package casmi.graph;
 
 import java.net.URL;
 
@@ -26,22 +27,25 @@ import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseEvent;
-import casmi.extension.graph.view.GraphAxis;
-import casmi.extension.graph.view.LineGraph;
-import casmi.extension.graph.data.*;
+import casmi.graph.data.LoadData2D;
+import casmi.graph.data.MatrixData2D;
+import casmi.graph.view.DynamicBarGraph;
+import casmi.graph.view.GraphAxis;
+import casmi.graphics.color.ColorSet;
+import casmi.graphics.color.RGBColor;
 
 /**
  * DynamicBarGraph example.
  * 
- * @see casmi.extension.graph.LineGraph
+ * @see casmi.extension.graph.DynamicBarGraph
  * @see casmi.extension.graph.Graph
  * 
  * @author Y. Ban
  */
 
-public class LineGraphExample extends Applet{
+public class DynamicBarGraphExample extends Applet{
 
-	LineGraph lineGraph;
+	DynamicBarGraph barGraph;
 	MatrixData2D m;
 	static final URL CSV_PATH = Applet.class.getResource("data2D.csv");
 	
@@ -49,21 +53,27 @@ public class LineGraphExample extends Applet{
 	public void setup() {
 		setSize(1024, 768);
 		m =  LoadData2D.load( CSV_PATH );
-		lineGraph = new LineGraph(800, 600, m, 600, 0);
-		lineGraph.setDivisionSpace(GraphAxis.VERTICAL, 50);
-		lineGraph.setPosition(100, 100);
-		addObject(lineGraph);
+		barGraph = new DynamicBarGraph(800, 600, m, 600, 0);
+		barGraph.setPosition(100, 100);
+		barGraph.setDivisionSpace(GraphAxis.VERTICAL, 50);
+		barGraph.setRectColor(new RGBColor(ColorSet.ORANGE));
+		addObject(barGraph);
 		
 	}
 
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub		
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
 	public void mouseEvent(MouseEvent e, MouseButton b) {
-		// TODO Auto-generated method stub
+		switch(e){
+			case PRESSED:
+				barGraph.setTweenstart(true);
+				break;
+		}
 		
 	}
 
@@ -74,8 +84,7 @@ public class LineGraphExample extends Applet{
 	}
 	
     public static void main(String[] args) {
-        AppletRunner.run("casmi.extension.graph.LineGraphExample", "LineGraph Example");
+        AppletRunner.run("casmi.graph.DynamicBarGraphExample", "DynamicBarGraph Example");
     }
-
 
 }

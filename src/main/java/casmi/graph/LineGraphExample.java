@@ -17,7 +17,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-package casmi.extension.graph;
+package casmi.graph;
 
 import java.net.URL;
 
@@ -26,63 +26,55 @@ import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseEvent;
-import casmi.extension.graph.data.LoadData2D;
-import casmi.extension.graph.data.MatrixData2D;
-import casmi.extension.graph.view.DynamicCircleGraph;
-import casmi.extension.graph.view.GraphTurn;
+import casmi.graph.data.*;
+import casmi.graph.view.GraphAxis;
+import casmi.graph.view.LineGraph;
 
 /**
- * DynamicCircleGraph example.
+ * DynamicBarGraph example.
  * 
- * @see casmi.extension.graph.DynamicCircleGraph
- * @see casmi.extension.graph.GraphTurn
+ * @see casmi.extension.graph.LineGraph
+ * @see casmi.extension.graph.Graph
  * 
  * @author Y. Ban
  */
 
-public class DynamicCircleGraphExample extends Applet{
+public class LineGraphExample extends Applet{
 
-	DynamicCircleGraph circleGraph;
+	LineGraph lineGraph;
 	MatrixData2D m;
-	static final URL CSV_PATH = Applet.class.getResource("data2D4circle.csv");
-	
+	static final URL CSV_PATH = Applet.class.getResource("data2D.csv");
 	
 	@Override
 	public void setup() {
 		setSize(1024, 768);
-		m =  LoadData2D.loadWithoutAxisName( CSV_PATH );
-		circleGraph = new DynamicCircleGraph(m, 200, GraphTurn.CLOCKWISE);
-		circleGraph.setPosition(getWidth()/2, getHeight()/2);
-		addObject(circleGraph);
+		m =  LoadData2D.load( CSV_PATH );
+		lineGraph = new LineGraph(800, 600, m, 600, 0);
+		lineGraph.setDivisionSpace(GraphAxis.VERTICAL, 50);
+		lineGraph.setPosition(100, 100);
+		addObject(lineGraph);
 		
 	}
 
 	@Override
 	public void update() {
+		// TODO Auto-generated method stub		
+	}
+
+	@Override
+	public void mouseEvent(MouseEvent e, MouseButton b) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void mouseEvent(MouseEvent e, MouseButton b) {
-		switch(e){
-		case PRESSED:
-			circleGraph.setTweenstart(true);
-			break;
-	}
-		
-	}
-
-	@Override
 	public void keyEvent(KeyEvent e) {
-		if(e == KeyEvent.PRESSED){
-			circleGraph.resetArc();
-		}
+		// TODO Auto-generated method stub
 		
 	}
 	
     public static void main(String[] args) {
-        AppletRunner.run("casmi.extension.graph.DynamicCircleGraphExample", "DynamicCircleGraph Example");
+        AppletRunner.run("casmi.graph.LineGraphExample", "LineGraph Example");
     }
 
 
