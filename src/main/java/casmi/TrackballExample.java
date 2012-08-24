@@ -16,13 +16,14 @@
  * limitations under the License.
  */
 
-package casmi.extension.trackball;
+package casmi;
 
 import casmi.Applet;
 import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseEvent;
+import casmi.Trackball;
 import casmi.graphics.color.ColorSet;
 import casmi.graphics.element.Box;
 import casmi.graphics.element.Line;
@@ -72,7 +73,7 @@ public class TrackballExample extends Applet {
         addObject(group);
         
         // Create Trackball object.
-        trackball = new Trackball(getWidth(), getHeight());
+        trackball = new Trackball(this);
     }
 
     @Override
@@ -104,7 +105,7 @@ public class TrackballExample extends Applet {
     public void keyEvent(KeyEvent e) {}
 
     public static void main(String[] args) {
-        AppletRunner.run("casmi.extension.trackball.TrackballExample", "Trackball Example");
+        AppletRunner.run("casmi.TrackballExample", "TrackballExample");
     }
     
 }

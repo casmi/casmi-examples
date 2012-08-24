@@ -48,13 +48,11 @@ public class RecordExample extends Applet {
     Circle recordCircle = new Circle(610, 450, 15);
     
     TweenManager manager = new TweenManager();
-    TweenElement te = new TweenElement(circle);
-    
-    boolean isRecording = false;
+    TweenElement te = new TweenElement(circle);    
     
     @Override
     public void setup() {
-        recorder = new Recorder(this);
+        recorder = new Recorder(this);        
         
         setSize(640, 480);
         
@@ -84,14 +82,12 @@ public class RecordExample extends Applet {
             @Override
             public void run(MouseClickTypes eventtype, Element element) {
                 if (eventtype == MouseClickTypes.CLICKED) {
-                    if (!isRecording) {
-                        recorder.record(RECORD_FILE);
-                        isRecording = true;
+                    if (!recorder.isRecording()) {
+                        recorder.start(RECORD_FILE);
                         recordCircle.setFillColor(new RGBColor(ColorSet.RED));
                         System.out.println("start recording");
                     } else {
-                        recorder.stopRecord();
-                        isRecording = false;
+                        recorder.stop();
                         recordCircle.setFillColor(new RGBColor(ColorSet.RED, 0.5));
                         System.out.println("stop recording");
                         System.out.println("file: " + RECORD_FILE);

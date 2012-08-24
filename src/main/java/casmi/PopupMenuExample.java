@@ -16,10 +16,11 @@
  * limitations under the License.
  */
 
-package casmi.extension.cpop;
+package casmi;
 
 import casmi.Applet;
 import casmi.AppletRunner;
+import casmi.PopupMenu;
 import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseEvent;
@@ -30,22 +31,22 @@ import casmi.graphics.color.RGBColor;
 /**
  * @author S. Yoshida
  *
- * @see casmi.extension.cpop.CPopupMenu
+ * @see casmi.PopupMenu
  */
-public class CPopExample extends Applet {
+public class PopupMenuExample extends Applet {
 	
-	CPopupMenu menu;
+	PopupMenu menu;
 	
 	Color color;
-	Color white = new RGBColor(ColorSet.WHITE);;
+	static final Color DEFAULT_COLOR = new RGBColor(ColorSet.WHITE); 
 
 	@Override
 	public void setup() {
 		setSize(200, 200);
 
-		color = white;
+		color = DEFAULT_COLOR;
 
-		menu = new CPopupMenu(this);
+		menu = getPopupMenu();
 		menu.addMenuItem("clear", "clearColor");
 		menu.addSeparator();
 		menu.addMenuItem("red",   "changeColor", new RGBColor(ColorSet.RED));
@@ -54,7 +55,7 @@ public class CPopExample extends Applet {
 	}
 
 	public void clearColor() {
-		this.color = white;
+		this.color = DEFAULT_COLOR;
 	}
 
 	public void changeColor(RGBColor color) {
@@ -73,10 +74,9 @@ public class CPopExample extends Applet {
 	}
 
 	@Override
-	public void keyEvent(KeyEvent e) {
-	}
+	public void keyEvent(KeyEvent e) {}
 
-	public void main(String[] args) {
-		AppletRunner.run("casmi.extension.cpop.CPopExample", "CPopExample");
+	public static void main(String[] args) {
+		AppletRunner.run("casmi.PopupMenuExample", "PopupMenuExample");
 	}
 }
