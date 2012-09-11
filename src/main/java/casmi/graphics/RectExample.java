@@ -44,13 +44,13 @@ public class RectExample extends Applet {
         setSize(1024, 768);
         
         r1.setFillColor(c);
-        r1.setStrokeColor(new HSBColor(0.4, 0.9, 0.4));
+        r1.setStrokeColor(new HSBColor(0.4, 0.9, 0.8));
         r1.setStrokeWidth(3);
         r1.setPosition(500, 300);
         
         r2.setFill(false);
         r2.setStrokeWidth(5);
-        r2.setStrokeColor(new HSBColor(0.7, 0.3, 0.3));
+        r2.setStrokeColor(new HSBColor(0.7, 0.7, 0.7));
         r2.setPosition(200, 300);
         
         addObject(r1);

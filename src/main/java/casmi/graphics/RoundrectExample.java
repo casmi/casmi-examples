@@ -34,20 +34,20 @@ import casmi.graphics.element.RoundRect;
  */
 public class RoundrectExample extends Applet {
 
-    RoundRect r1 = new RoundRect(10, 500, 700, 500, 200);
-    RoundRect r2 = new RoundRect(30, 200, 700, 200, 400);
+    RoundRect r1 = new RoundRect(10, 500, 300, 500, 200);
+    RoundRect r2 = new RoundRect(30, 200, 500, 200, 400);
     RoundRect r3 = new RoundRect(10, 600, 200, 200, 100);
 
     public void setup() {
         setSize(1024, 768);
 
-        r1.setFillColor(new RGBColor(0.3, 0.7, 0.3));
+        r1.setFillColor(new RGBColor(0.3, 0.9, 0.9));
         r1.setStrokeColor(new RGBColor(0.4, 0.9, 0.4));
         r1.setStrokeWidth(3);
 
         r2.setFill(false);
         r2.setStrokeWidth(5);
-        r2.setStrokeColor(new RGBColor(0.4, 0.3, 0.3));
+        r2.setStrokeColor(new RGBColor(0.9, 0.3, 0.3));
 
         r3.setFillColor(new RGBColor(0.3, 0.3, 0.7));
         r3.setStrokeColor(new RGBColor(0.5, 0.5, 0.9));

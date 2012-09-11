@@ -57,7 +57,7 @@ public class QuadTextureExample extends Applet {
     @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {
         if (e == MouseEvent.PRESSED) {
-            tex.rotation(TextureRotationMode.FRONT_RIGHT);
+            tex.rotation(TextureRotationMode.CLOCKWIZE);
         }
     }
 

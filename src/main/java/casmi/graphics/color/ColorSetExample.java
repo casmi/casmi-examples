@@ -51,7 +51,7 @@ public class ColorSetExample extends Applet {
             RoundRect rr = new RoundRect(6, 0, 0, 52, 52);
             rr.setFillColor(colorSet);
             rr.setStroke(false);
-            rr.setXY(w * (index % numRows), h * (index / numRows));
+            rr.setPosition(w * (index % numRows), h * (index / numRows));
             rrList.add(rr);
             index++;
         }
