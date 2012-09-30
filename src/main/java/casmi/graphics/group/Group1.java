@@ -21,6 +21,8 @@ package casmi.graphics.group;
 import casmi.graphics.color.ColorSet;
 import casmi.graphics.element.Line;
 import casmi.graphics.element.Rect;
+import casmi.graphics.element.Text;
+import casmi.graphics.element.TextBox;
 import casmi.graphics.element.Triangle;
 import casmi.graphics.font.Font;
 import casmi.graphics.font.FontStyle;
@@ -40,6 +42,8 @@ public class Group1 extends Group {
     Line     l1;
     Triangle t1;
     Font     f;
+    Text 	 t;
+    TextBox tb;
     
     TweenElement te;
     
@@ -87,6 +91,12 @@ public class Group1 extends Group {
         t1.setPosition(tx + tf.getValue(), ty);
         
         l1.set((-90 + tf.getValue()), 0, 210, 0);
+        
+        t = new Text("test",f);
+        t.setStrokeColor(ColorSet.WHITE);
+      //  add(t);
+        tb = new TextBox(t,400,300);
+        add(t);
     }
 
     @Override

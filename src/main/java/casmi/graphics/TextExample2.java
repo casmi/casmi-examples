@@ -28,7 +28,7 @@ import casmi.graphics.element.Line;
 import casmi.graphics.element.Text;
 import casmi.graphics.element.TextAlign;
 import casmi.graphics.font.Font;
-import casmi.graphics.object.GraphicsObject;
+import casmi.graphics.object.RootObject;
 
 /**
  * Example of casmi Font
@@ -41,7 +41,7 @@ public class TextExample2 extends Applet {
     Font f = null;
     Line l;
     Text t, t2, t3;
-    GraphicsObject group;
+    RootObject group;
 
     public void setup() {
         String s = "casmi is free software: \n you can redistribute it and/or modify it \n" +
@@ -74,7 +74,7 @@ public class TextExample2 extends Applet {
         l.setStrokeColor(ColorSet.LIGHT_BLUE);
         // t.setRotation(30);
         // l.setRotation(30);
-        group = new GraphicsObject();
+        group = new RootObject();
         group.add(t);
         group.add(l);
         group.setRotation(30);

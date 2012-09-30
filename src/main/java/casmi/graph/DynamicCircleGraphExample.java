@@ -29,13 +29,13 @@ import casmi.MouseEvent;
 import casmi.graph.data.LoadData2D;
 import casmi.graph.data.MatrixData2D;
 import casmi.graph.view.DynamicCircleGraph;
-import casmi.graph.view.GraphTurn;
+import casmi.graph.view.GraphTurnType;
 
 /**
  * DynamicCircleGraph example.
  * 
  * @see casmi.extension.graph.DynamicCircleGraph
- * @see casmi.extension.graph.GraphTurn
+ * @see casmi.GraphTurnType.graph.GraphTurn
  * 
  * @author Y. Ban
  */
@@ -51,8 +51,9 @@ public class DynamicCircleGraphExample extends Applet{
 	public void setup() {
 		setSize(1024, 768);
 		m =  LoadData2D.loadWithoutAxisName( CSV_PATH );
-		circleGraph = new DynamicCircleGraph(m, 200, GraphTurn.CLOCKWISE);
+		circleGraph = new DynamicCircleGraph(m, 200, GraphTurnType.CLOCKWISE);
 		circleGraph.setPosition(getWidth()/2, getHeight()/2);
+		circleGraph.setAnimation(false);
 		addObject(circleGraph);
 		
 	}
@@ -67,7 +68,7 @@ public class DynamicCircleGraphExample extends Applet{
 	public void mouseEvent(MouseEvent e, MouseButton b) {
 		switch(e){
 		case PRESSED:
-			circleGraph.setTweenstart(true);
+			circleGraph.startTween();
 			break;
 	}
 		
@@ -75,10 +76,9 @@ public class DynamicCircleGraphExample extends Applet{
 
 	@Override
 	public void keyEvent(KeyEvent e) {
-		if(e == KeyEvent.PRESSED){
-			circleGraph.resetArc();
-		}
-		
+		if(getKey() == 'r'){
+			circleGraph.resetTween();
+		}    
 	}
 	
     public static void main(String[] args) {

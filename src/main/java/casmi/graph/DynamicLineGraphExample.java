@@ -28,20 +28,20 @@ import casmi.MouseButton;
 import casmi.MouseEvent;
 import casmi.graph.data.*;
 import casmi.graph.view.GraphAxis;
-import casmi.graph.view.LineGraph;
+import casmi.graph.view.DynamicLineGraph;
 
 /**
  * DynamicBarGraph example.
  * 
- * @see casmi.extension.graph.LineGraph
+ * @see casmi.DynamicLineGraph.graph.LineGraph
  * @see casmi.extension.graph.Graph
  * 
  * @author Y. Ban
  */
 
-public class LineGraphExample extends Applet{
+public class DynamicLineGraphExample extends Applet{
 
-	LineGraph lineGraph;
+	DynamicLineGraph lineGraph;
 	MatrixData2D m;
 	static final URL CSV_PATH = Applet.class.getResource("data2D.csv");
 	
@@ -49,9 +49,10 @@ public class LineGraphExample extends Applet{
 	public void setup() {
 		setSize(1024, 768);
 		m =  LoadData2D.load( CSV_PATH );
-		lineGraph = new LineGraph(800, 600, m, 600, 0);
+		lineGraph = new DynamicLineGraph(800, 600, m, 600, 0);
 		lineGraph.setDivisionSpace(GraphAxis.VERTICAL, 50);
 		lineGraph.setPosition(100, 100);
+		lineGraph.setTweenMilliSec(2000);
 		addObject(lineGraph);
 		
 	}
@@ -63,18 +64,23 @@ public class LineGraphExample extends Applet{
 
 	@Override
 	public void mouseEvent(MouseEvent e, MouseButton b) {
-		// TODO Auto-generated method stub
+		switch(e){
+		case PRESSED:
+			lineGraph.startTween();
+			break;
+	}
 		
 	}
 
 	@Override
 	public void keyEvent(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
+		if(getKey() == 'r'){
+			lineGraph.resetTween();
+		}    
 	}
 	
     public static void main(String[] args) {
-        AppletRunner.run("casmi.graph.LineGraphExample", "LineGraph Example");
+        AppletRunner.run("casmi.graph.DynamicLineGraphExample", "LineGraph Example");
     }
 
 

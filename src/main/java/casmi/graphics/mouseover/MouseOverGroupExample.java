@@ -27,6 +27,7 @@ import casmi.MouseEvent;
 import casmi.graphics.color.ColorSet;
 import casmi.graphics.element.Circle;
 import casmi.graphics.element.Element;
+import casmi.graphics.element.MouseClickCallback;
 import casmi.graphics.element.MouseOverCallback;
 import casmi.graphics.element.Rect;
 import casmi.graphics.element.Triangle;
@@ -45,7 +46,7 @@ public class MouseOverGroupExample extends Applet {
     class TriangleGroup extends Group {
 
         Triangle t1, t2;
-        MouseOverCallback mouseovertriangle;
+        MouseClickCallback mouseovertriangle;
 
         public TriangleGroup() {
             setup();
@@ -61,19 +62,19 @@ public class MouseOverGroupExample extends Applet {
             t2.setFillColor(ColorSet.FIREBRICK);
             this.add(t1);
             this.add(t2);
-            mouseovertriangle = new MouseOverCallback() {
+            mouseovertriangle = new MouseClickCallback() {
 
                 @Override
-                public void run(MouseOverTypes eventtype,
+                public void run(MouseClickTypes eventtype,
                     Element element) {
                     switch (eventtype) {
-                    case ENTERED:
+                    case PRESSED:
                         if (element == t1)
                             setCursor(CursorMode.WAIT);
                         else if (element == t2)
                             setCursor(CursorMode.TEXT);
                         break;
-                    case EXITED:
+                    case RELEASED:
                         setCursor(CursorMode.DEFAULT);
                         break;
                     }

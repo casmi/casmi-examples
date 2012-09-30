@@ -39,13 +39,7 @@ public class Scene2 extends Scene {
     Text t;
 
     public Scene2(int id, double time) {
-        setId(id);
-        setTime(time);
-        setup();
-    }
-
-    @Override
-    public void setup() {
+    	super(id, time);
         t1.setFillColor(new RGBColor(1.0, 1.0, 1.0));
         t1.setStroke(false);
 
@@ -62,4 +56,11 @@ public class Scene2 extends Scene {
         addObject(t2);
         addObject(t);
     }
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

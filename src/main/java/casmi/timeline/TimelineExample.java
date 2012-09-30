@@ -32,27 +32,33 @@ import casmi.MouseEvent;
  */
 public class TimelineExample extends Applet {
 
-    Timeline tl = new Timeline();
-    Scene0 s0 = new Scene0(0, 8);
-    Scene1 s1 = new Scene1(1, 6);
-    Scene2 s2 = new Scene2(2, 6);
-    Scene3 s3 = new Scene3(3, 6);
+    Timeline tl;
+    Scene0 s0;
+    Scene1 s1;
+    Scene2 s2;
+    Scene3 s3;
 
     @Override
     public void setup() {
         setSize(1024, 768);
         
+        tl = new Timeline();
+        s0 = new Scene0(0, 8);
+        s1 = new Scene1(1, 6);
+        s2 = new Scene2(2, 6);
+        s3 = new Scene3(3, 6);
+        
         tl.appendScene(s0);
-        tl.appendDisolve(3, DissolveMode.NORMAL);
+        tl.appendDisolve(3, DissolveMode.BLACK);
         tl.appendScene(s1);
         tl.appendDissolve(2);
         tl.appendScene(s2);
-        tl.appendDisolve(2, DissolveMode.NORMAL);
+        tl.appendDisolve(2, DissolveMode.BLACK);
         tl.appendScene(s3);
-        tl.appendDisolve(2, DissolveMode.NORMAL);
+        tl.appendDisolve(2, DissolveMode.BLACK);
 
         tl.startTimer();
-
+        
         addObject(tl);
     }
 

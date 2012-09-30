@@ -27,7 +27,7 @@ import casmi.Trackball;
 import casmi.graphics.color.ColorSet;
 import casmi.graphics.element.Box;
 import casmi.graphics.element.Line;
-import casmi.graphics.object.GraphicsObject;
+import casmi.graphics.object.RootObject;
 
 /**
  * Trackball example.
@@ -36,7 +36,7 @@ import casmi.graphics.object.GraphicsObject;
  */
 public class TrackballExample extends Applet {
 
-    GraphicsObject group;
+    RootObject group;
     Line[] lines = new Line[3];
     Box box;
     
@@ -48,7 +48,7 @@ public class TrackballExample extends Applet {
     public void setup() {
         setSize(800, 600);
     
-        group = new GraphicsObject();
+        group = new RootObject();
         
         lines[0] = new Line(0.0, 0.0, 0.0,
                             120.0, 0.0, 0.0);

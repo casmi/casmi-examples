@@ -30,6 +30,7 @@ import casmi.MouseEvent;
 import casmi.graph.data.LoadData2D;
 import casmi.graph.data.MatrixData2D;
 import casmi.graph.view.DynamicBarGraph;
+import casmi.graph.view.DynamicBarGraphTweenType;
 import casmi.graph.view.GraphAxis;
 import casmi.graphics.color.ColorSet;
 import casmi.graphics.color.RGBColor;
@@ -55,8 +56,11 @@ public class DynamicBarGraphExample extends Applet{
 		m =  LoadData2D.load( CSV_PATH );
 		barGraph = new DynamicBarGraph(800, 600, m, 600, 0);
 		barGraph.setPosition(100, 100);
-		barGraph.setDivisionSpace(GraphAxis.VERTICAL, 50);
-		barGraph.setRectColor(new RGBColor(ColorSet.ORANGE));
+		barGraph.setDivisionSpace(GraphAxis.VERTICAL, 150);
+		barGraph.setBarColor(new RGBColor(ColorSet.ORANGE));
+		barGraph.setTweenType(DynamicBarGraphTweenType.ORDER);
+		barGraph.setDelayMilliSec(100);
+		barGraph.setTweenMilliSec(500);
 		addObject(barGraph);
 		
 	}
@@ -71,7 +75,7 @@ public class DynamicBarGraphExample extends Applet{
 	public void mouseEvent(MouseEvent e, MouseButton b) {
 		switch(e){
 			case PRESSED:
-				barGraph.setTweenstart(true);
+				barGraph.startTween();
 				break;
 		}
 		
@@ -79,7 +83,8 @@ public class DynamicBarGraphExample extends Applet{
 
 	@Override
 	public void keyEvent(KeyEvent e) {
-		// TODO Auto-generated method stub
+		if(getKey() == 'r')
+			barGraph.resetTween();
 		
 	}
 	

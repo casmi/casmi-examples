@@ -39,31 +39,32 @@ public class Scene1 extends Scene {
     Text t;
 	
 	public Scene1(int id,double time) {
-		setId(id);
-		setTime(time);
-		setup();
+		super(id, time);
+		r1.setFillColor(c);
+        r1.setStrokeColor(new RGBColor(0.4, 0.9, 0.4));
+        r1.setStrokeWidth(3);
+        r1.setPosition(500, 300);
+        
+        r2.setFill(false);
+        r2.setStrokeWidth(5);
+        r2.setStrokeColor(new RGBColor(0.7, 0.3, 0.3));
+        r2.setPosition(200, 300);
+        
+        addObject(r1);
+        addObject(r2);
+        
+        f = new Font("San-Serif");
+        f.setSize(70);
+        t = new Text("Rect", f, 700, 600);
+        t.setStrokeColor(ColorSet.WHITE);
+        
+        addObject(t);
+	}
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
 	}
 	
-	@Override
-	public void setup() {
-			r1.setFillColor(c);
-	        r1.setStrokeColor(new RGBColor(0.4, 0.9, 0.4));
-	        r1.setStrokeWidth(3);
-	        r1.setPosition(500, 300);
-	        
-	        r2.setFill(false);
-	        r2.setStrokeWidth(5);
-	        r2.setStrokeColor(new RGBColor(0.7, 0.3, 0.3));
-	        r2.setPosition(200, 300);
-	        
-	        addObject(r1);
-	        addObject(r2);
-	        
-	        f = new Font("San-Serif");
-	        f.setSize(70);
-	        t = new Text("Rect", f, 700, 600);
-	        t.setStrokeColor(ColorSet.WHITE);
-	        
-	        addObject(t);
-	}
 }

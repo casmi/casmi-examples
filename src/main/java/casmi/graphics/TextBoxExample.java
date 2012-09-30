@@ -54,6 +54,7 @@ public class TextBoxExample extends Applet {
         textBox2 = new TextBox(text2, 400, 300, 350, 150);
         textBox2.setFillColor(ColorSet.BLUE);
         textBox2.setFill(true);
+        textBox2.setRotation(20);
         addObject(textBox2);
         
         Text text3 = new Text(SAMPLE_TEXT);

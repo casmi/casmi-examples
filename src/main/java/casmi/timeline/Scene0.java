@@ -39,13 +39,7 @@ public class Scene0 extends Scene {
     double rot = 0.0;
 
     public Scene0(int id, double time) {
-        setId(id);
-        setTime(time);
-        setup();
-    }
-
-    @Override
-    public void setup() {
+    	super(id, time);
         tex = new Texture(IMAGE_PATH);
         tex.setX(200);
         tex.setY(500);
@@ -53,6 +47,7 @@ public class Scene0 extends Scene {
         tex.setRotation(rot, 0.0, 1.0, 0.0);
         addObject(tex);
     }
+
 
     @Override
     public void update() {

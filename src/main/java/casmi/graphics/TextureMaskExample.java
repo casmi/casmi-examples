@@ -109,9 +109,9 @@ public class TextureMaskExample extends Applet {
     @Override
     public void keyEvent(KeyEvent e) {
         if (e == KeyEvent.PRESSED) {
-            if (getKeyCode() == 's')
+            if (getKey() == 's')
                 capture(Applet.class.getResource("save_without_bg.png").getPath(), false);
-            if (getKeyCode() == 'b')
+            if (getKey() == 'b')
                 capture(Applet.class.getResource("save_with_bg.png").getPath());
         }
     }
