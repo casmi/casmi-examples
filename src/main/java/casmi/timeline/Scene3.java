@@ -47,8 +47,12 @@ public class Scene3 extends Scene {
 
     Font f = null;
     Text t;
+    
+    public Scene3(String id){
+    	this(id, 0);
+    }
 
-    public Scene3(int id, double time) {
+    public Scene3(String id, double time) {
     	super(id, time);
         b1.setFill(false);
         b2.setFill(false);

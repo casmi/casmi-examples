@@ -43,10 +43,10 @@ public class TimelineExample extends Applet {
         setSize(1024, 768);
         
         tl = new Timeline();
-        s0 = new Scene0(0, 8);
-        s1 = new Scene1(1, 6);
-        s2 = new Scene2(2, 6);
-        s3 = new Scene3(3, 6);
+        s0 = new Scene0("scene0", 8);
+        s1 = new Scene1("scene1", 6);
+        s2 = new Scene2("scene2", 6);
+        s3 = new Scene3("scene3", 6);
         
         tl.appendScene(s0);
         tl.appendDisolve(3, DissolveMode.BLACK);

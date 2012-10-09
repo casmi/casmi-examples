@@ -37,8 +37,12 @@ public class Scene0 extends Scene {
     
     Texture tex;
     double rot = 0.0;
+    
+    public Scene0(String id) {
+    	this(id, 0);
+    }
 
-    public Scene0(int id, double time) {
+    public Scene0(String id, double time) {
     	super(id, time);
         tex = new Texture(IMAGE_PATH);
         tex.setX(200);

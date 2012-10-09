@@ -37,8 +37,12 @@ public class Scene1 extends Scene {
     Color c = new RGBColor(0.1, 0.4, 0.4);
     Font f = null;
     Text t;
+    
+    public Scene1(String id){
+    	this(id, 0 );
+    }
 	
-	public Scene1(int id,double time) {
+	public Scene1(String id,double time) {
 		super(id, time);
 		r1.setFillColor(c);
         r1.setStrokeColor(new RGBColor(0.4, 0.9, 0.4));
