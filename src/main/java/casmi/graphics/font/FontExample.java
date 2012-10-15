@@ -25,7 +25,7 @@ import casmi.MouseButton;
 import casmi.MouseEvent;
 import casmi.graphics.color.ColorSet;
 import casmi.graphics.element.Text;
-import casmi.graphics.object.RootObject;
+import casmi.graphics.object.GraphicsObject;
 
 /**
  * Font example.
@@ -40,7 +40,7 @@ import casmi.graphics.object.RootObject;
  */
 public class FontExample extends Applet {
 
-    RootObject go = new RootObject();
+    GraphicsObject go = new GraphicsObject();
     double bottom = 0;
     
     @Override
