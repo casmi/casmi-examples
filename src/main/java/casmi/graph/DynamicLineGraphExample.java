@@ -1,20 +1,19 @@
 /*
- *   casmi
+ *   casmi examples
  *   http://casmi.github.com/
  *   Copyright (C) 2011, Xcoo, Inc.
  *
- *  casmi is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU Lesser General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
- *  This program is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU Lesser General Public License for more details.
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
- *  You should have received a copy of the GNU Lesser General Public License
- *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 package casmi.graph;
@@ -33,55 +32,46 @@ import casmi.graph.view.DynamicLineGraph;
 /**
  * DynamicBarGraph example.
  * 
- * @see casmi.DynamicLineGraph.graph.LineGraph
- * @see casmi.extension.graph.Graph
+ * @see casmi.graph.view.DynamicLineGraph
  * 
  * @author Y. Ban
  */
+public class DynamicLineGraphExample extends Applet {
+    
+    static final URL CSV_PATH = Applet.class.getResource("data2D.csv");
 
-public class DynamicLineGraphExample extends Applet{
+    DynamicLineGraph lineGraph;
+    MatrixData2D     mat;
 
-	DynamicLineGraph lineGraph;
-	MatrixData2D m;
-	static final URL CSV_PATH = Applet.class.getResource("data2D.csv");
-	
-	@Override
-	public void setup() {
-		setSize(1024, 768);
-		m =  LoadData2D.load( CSV_PATH );
-		lineGraph = new DynamicLineGraph(800, 600, m, 600, 0);
-		lineGraph.setDivisionSpace(GraphAxis.VERTICAL, 50);
-		lineGraph.setPosition(100, 100);
-		lineGraph.setTweenMilliSec(2000);
-		addObject(lineGraph);
-		
-	}
+    @Override
+    public void setup() {
+        setSize(1024, 768);
 
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub		
-	}
+        mat = LoadData2D.load(CSV_PATH);
 
-	@Override
-	public void mouseEvent(MouseEvent e, MouseButton b) {
-		switch(e){
-		case PRESSED:
-			lineGraph.startTween();
-			break;
-	}
-		
-	}
-
-	@Override
-	public void keyEvent(KeyEvent e) {
-		if(getKey() == 'r'){
-			lineGraph.resetTween();
-		}    
-	}
-	
-    public static void main(String[] args) {
-        AppletRunner.run("casmi.graph.DynamicLineGraphExample", "LineGraph Example");
+        lineGraph = new DynamicLineGraph(800, 600, mat, 600, 0);
+        lineGraph.setDivisionSpace(GraphAxis.VERTICAL, 50);
+        lineGraph.setPosition(100, 100);
+        lineGraph.setTweenMilliSec(2000);
+        addObject(lineGraph);
     }
 
+    @Override
+    public void update() {}
 
+    @Override
+    public void mouseEvent(MouseEvent e, MouseButton b) {
+        if (e == MouseEvent.PRESSED)
+            lineGraph.startTween();
+    }
+
+    @Override
+    public void keyEvent(KeyEvent e) {
+        if (getKey() == 'r')
+            lineGraph.resetTween();
+    }
+
+    public static void main(String[] args) {
+        AppletRunner.run("casmi.graph.DynamicLineGraphExample", "DynamicLineGraph Example");
+    }
 }

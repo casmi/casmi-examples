@@ -83,6 +83,8 @@ public class BoxTextureExample extends Applet {
 		for (int i = 0; i < textures.length; i++) {
 			textures[i] = new Texture(imageURLs[i]);
 			b.setTexture(i, textures[i]);
+			
+			textures[i].setReloadFlag(true);
 		}
 
 		addObject(b);

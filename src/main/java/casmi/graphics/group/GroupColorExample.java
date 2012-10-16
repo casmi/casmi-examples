@@ -1,8 +1,3 @@
-package casmi.graphics.group;
-
-
-
-
 /*
  *   casmi examples
  *   http://casmi.github.com/
@@ -21,6 +16,7 @@ package casmi.graphics.group;
  * limitations under the License.
  */
 
+package casmi.graphics.group;
 
 import casmi.Applet;
 import casmi.AppletRunner;
@@ -35,28 +31,24 @@ import casmi.graphics.element.Line;
  * 
  * @author Y. Ban
  */
-
-class GroupX extends Group {
-
-    Line l1 = new Line(200, 200, 400, 400);
-    Line l2 = new Line(200, 400, 400, 200);
-    
-    public GroupX() {
-    	this.add(l1);
-    	this.add(l2);
-    }
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
-	}
-	
-}
-
 public class GroupColorExample extends Applet {
 
-	GroupX  group;
-	double gray;
+    class GroupX extends Group {
+
+        Line l1 = new Line(200, 200, 400, 400);
+        Line l2 = new Line(200, 400, 400, 200);
+
+        public GroupX() {
+            this.add(l1);
+            this.add(l2);
+        }
+
+        @Override
+        public void update() {}
+    }
+    
+	GroupX    group;
+	double    gray;
 	GrayColor color;
 
     @Override
@@ -73,9 +65,9 @@ public class GroupColorExample extends Applet {
 
     @Override
 	public void update() {
-    	if(gray<0.0)
+    	if (gray < 0.0)
     		gray = 1.0;
-    	gray-=0.01;
+    	gray -= 0.01;
     	color.setGray(gray);
     }
     
@@ -86,7 +78,6 @@ public class GroupColorExample extends Applet {
 	public void keyEvent(KeyEvent e) {}
     
     public static void main(String[] args) {
-        AppletRunner.run("casmi.graphics.group.GroupColorExample", "Object Example");
+        AppletRunner.run("casmi.graphics.group.GroupColorExample", "GroupColorExample");
     }
-
 }

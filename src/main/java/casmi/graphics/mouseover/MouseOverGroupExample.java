@@ -27,7 +27,6 @@ import casmi.MouseEvent;
 import casmi.graphics.color.ColorSet;
 import casmi.graphics.element.Circle;
 import casmi.graphics.element.Element;
-import casmi.graphics.element.MouseClickCallback;
 import casmi.graphics.element.MouseOverCallback;
 import casmi.graphics.element.Rect;
 import casmi.graphics.element.Triangle;
@@ -40,13 +39,9 @@ import casmi.graphics.group.Group;
  */
 public class MouseOverGroupExample extends Applet {
 
-    Circle circle = new Circle(20);
-    MouseOverCallback mouseoverCircle;
-
     class TriangleGroup extends Group {
 
         Triangle t1, t2;
-        MouseClickCallback mouseovertriangle;
 
         public TriangleGroup() {
             setup();
@@ -55,34 +50,14 @@ public class MouseOverGroupExample extends Applet {
         @Override
         public void setup() {
             t1 = new Triangle(100, 100, 200, 100, 150, 150);
-            t2 = new Triangle(10, 10, 30, 10, 20, 20);
             t1.setStroke(false);
             t1.setFillColor(ColorSet.CYAN);
+            add(t1);
+            
+            t2 = new Triangle(10, 10, 30, 10, 20, 20);
             t2.setStroke(false);
             t2.setFillColor(ColorSet.FIREBRICK);
-            this.add(t1);
-            this.add(t2);
-            mouseovertriangle = new MouseClickCallback() {
-
-                @Override
-                public void run(MouseClickTypes eventtype,
-                    Element element) {
-                    switch (eventtype) {
-                    case PRESSED:
-                        if (element == t1)
-                            setCursor(CursorMode.WAIT);
-                        else if (element == t2)
-                            setCursor(CursorMode.TEXT);
-                        break;
-                    case RELEASED:
-                        setCursor(CursorMode.DEFAULT);
-                        break;
-                    }
-                }
-            };
-
-            t1.addMouseEventCallback(mouseovertriangle);
-            t2.addMouseEventCallback(mouseovertriangle);
+            add(t2);
         }
 
         @Override
@@ -102,20 +77,19 @@ public class MouseOverGroupExample extends Applet {
         @Override
         public void setup() {
             r1 = new Rect(100, 100);
+            r1.setPosition(300, 300);
             r1.setStroke(false);
             r1.setFillColor(ColorSet.CHARTREUSE);
+
             r2 = new Rect(100, 200);
+            r2.setPosition(500, 200);
             r2.setStroke(false);
             r2.setFillColor(ColorSet.TOMATO);
-
-            r1.setPosition(300, 300);
-            r2.setPosition(500, 200);
 
             mouseoverrect = new MouseOverCallback() {
 
                 @Override
-                public void run(MouseOverTypes eventtype,
-                    Element element) {
+                public void run(MouseOverTypes eventtype, Element element) {                    
                     switch (eventtype) {
                     case ENTERED:
                         if (element == r1)
@@ -142,37 +116,18 @@ public class MouseOverGroupExample extends Applet {
         public void update() {}
     }
 
+    Circle        circle;
     RectGroup     rectGroup1, rectGroup2;
     TriangleGroup triangleGroup1, triangleGroup2;
-    MouseOverCallback mouseoverTriangles;
 
     @Override
     public void setup() {
         setSize(800, 600);
         
-        rectGroup2 = new RectGroup();
-        rectGroup1 = new RectGroup();
-        triangleGroup1 = new TriangleGroup();
-        triangleGroup2 = new TriangleGroup();
+        circle = new Circle(20);
+        circle.setPosition(300, 100);
         circle.setFillColor(ColorSet.DARK_VIOLET);
-        rectGroup1.setPosition(0, 0);
-        rectGroup2.setPosition(200, 100);
-        mouseoverTriangles = new MouseOverCallback() {
-
-            @Override
-            public void run(MouseOverTypes eventtype, Element element) {
-                switch (eventtype) {
-                case ENTERED:
-                    circle.setScaleX(1.5);
-                    break;
-                case EXITED:
-                    circle.setScaleX(1.0);
-                    break;
-                }
-            }
-        };
-        triangleGroup2.addMouseEventCallback(mouseoverTriangles);
-        mouseoverCircle = new MouseOverCallback() {
+        circle.addMouseEventCallback(new MouseOverCallback() {
 
             @Override
             public void run(MouseOverTypes eventtype, Element element) {
@@ -187,14 +142,36 @@ public class MouseOverGroupExample extends Applet {
                     break;
                 }
             }
-        };
-        circle.addMouseEventCallback(mouseoverCircle);
-        triangleGroup2.setPosition(200, 200);
+        });
+        addObject(circle);
+
+        rectGroup1 = new RectGroup();
+        rectGroup1.setPosition(0, 0);
+        rectGroup2 = new RectGroup();
+        rectGroup2.setPosition(200, 100);
         addObject(rectGroup2);
         addObject(rectGroup1);
-        circle.setPosition(300, 100);
-        addObject(circle);
+
+        triangleGroup1 = new TriangleGroup();
         addObject(triangleGroup1);
+        
+        triangleGroup2 = new TriangleGroup();
+        triangleGroup2.setPosition(200, 200);
+        triangleGroup2.addMouseEventCallback(new MouseOverCallback() {
+
+            @Override
+            public void run(MouseOverTypes eventtype, Element element) {
+                System.out.println("hogehoge");
+                switch (eventtype) {
+                case ENTERED:
+                    circle.setScaleX(1.5);
+                    break;
+                case EXITED:
+                    circle.setScaleX(1.0);
+                    break;
+                }
+            }
+        });
         addObject(triangleGroup2);
     }
 
@@ -210,5 +187,4 @@ public class MouseOverGroupExample extends Applet {
     public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.mouseover.MouseOverGroupExample", "MouseOverGroupExample");
     }
-    
 }
