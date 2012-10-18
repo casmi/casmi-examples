@@ -18,6 +18,9 @@
 
 package casmi.timeline;
 
+import casmi.KeyEvent;
+import casmi.MouseButton;
+import casmi.MouseEvent;
 import casmi.graphics.color.ColorSet;
 import casmi.graphics.color.RGBColor;
 import casmi.graphics.element.Bezier;
@@ -78,6 +81,22 @@ public class Scene3 extends Scene {
 
 	@Override
 	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyEvent(KeyEvent e) {
+		switch(e){
+		case PRESSED:
+			System.out.println(getKey());
+		}
+		
+	}
+
+
+	@Override
+	public void mouseEvent(MouseEvent e, MouseButton b) {
 		// TODO Auto-generated method stub
 		
 	}

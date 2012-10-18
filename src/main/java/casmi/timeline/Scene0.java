@@ -18,6 +18,9 @@
 
 package casmi.timeline;
 
+import casmi.KeyEvent;
+import casmi.MouseButton;
+import casmi.MouseEvent;
 import casmi.graphics.element.Texture;
 
 /**
@@ -44,6 +47,7 @@ public class Scene0 extends Scene {
 
     public Scene0(String id, double time) {
     	super(id, time);
+    	System.out.println(IMAGE_PATH);
         tex = new Texture(IMAGE_PATH);
         tex.setX(200);
         tex.setY(500);
@@ -58,4 +62,23 @@ public class Scene0 extends Scene {
         rot += 2.0;
         tex.setRotation(rot, 0.0, 1.0, 0.0);
     }
+
+	@Override
+	public void keyEvent(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mouseEvent(MouseEvent e, MouseButton b) {
+		switch (e) {
+		case CLICKED:
+			System.out.println("clicked0");
+			break;
+
+		default:
+			break;
+		}
+	}
 }

@@ -27,7 +27,7 @@ import casmi.graphics.color.Color;
 import casmi.graphics.color.ColorSet;
 import casmi.graphics.color.RGBColor;
 import casmi.graphics.element.Circle;
-import casmi.graphics.element.GradationMode;
+import casmi.graphics.element.GradationMode2D;
 import casmi.graphics.element.Quad;
 import casmi.graphics.element.Rect;
 import casmi.graphics.element.Triangle;
@@ -35,7 +35,7 @@ import casmi.graphics.element.Triangle;
 /**
  * Gradation example.
  * 
- * @see casmi.graphics.element.GradationMode
+ * @see casmi.graphics.element.GradationMode2D
  * 
  * @author Y.Ban
  */
@@ -76,9 +76,9 @@ public class GradationExample extends Applet {
         r1 = new Rect(200, 100);
         r2 = new Rect(200, 100);
         r3 = new Rect(200, 100);
-        r1.setGradationColor(GradationMode.HORIZONTAL,    ColorSet.BURLY_WOOD,   ColorSet.CRIMSON);
-        r2.setGradationColor(GradationMode.VERTICAL,      ColorSet.DARK_MAGENTA, ColorSet.HONEYDEW);
-        r3.setGradationColor(GradationMode.LEFT_SIDEWAYS, ColorSet.DARK_BLUE,    ColorSet.MAROON);
+        r1.setGradationColor(GradationMode2D.HORIZONTAL,    ColorSet.BURLY_WOOD,   ColorSet.CRIMSON);
+        r2.setGradationColor(GradationMode2D.VERTICAL,      ColorSet.DARK_MAGENTA, ColorSet.HONEYDEW);
+        r3.setGradationColor(GradationMode2D.LEFT_SIDEWAYS, ColorSet.DARK_BLUE,    ColorSet.MAROON);
         r1.setPosition(900, 100);
         r2.setPosition(700, 400);
         r3.setPosition(300, 500);

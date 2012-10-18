@@ -18,6 +18,9 @@
 
 package casmi.timeline;
 
+import casmi.KeyEvent;
+import casmi.MouseButton;
+import casmi.MouseEvent;
 import casmi.graphics.color.ColorSet;
 import casmi.graphics.color.RGBColor;
 import casmi.graphics.element.Text;
@@ -63,6 +66,19 @@ public class Scene2 extends Scene {
 
 	@Override
 	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyEvent(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void mouseEvent(MouseEvent e, MouseButton b) {
 		// TODO Auto-generated method stub
 		
 	}
