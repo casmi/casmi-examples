@@ -36,7 +36,7 @@ import casmi.tween.simpletweenables.TweenFloat;
 /**
  * @author Y. Ban
  */
-public class Group1 extends Group {
+public class SampleGroup extends Group {
 
     Rect     r1, r2;
     Line     l1;
@@ -53,7 +53,7 @@ public class Group1 extends Group {
     TweenFloat tf;
     double     tx, ty;
 
-    public Group1() {
+    public SampleGroup() {
         super();
         setup();
     }

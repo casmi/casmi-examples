@@ -1,20 +1,19 @@
 /*
- *   casmi
+ *   casmi examples
  *   http://casmi.github.com/
  *   Copyright (C) 2011, Xcoo, Inc.
  *
- *  casmi is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU Lesser General Public License as published by
- *  the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
  *
- *  This program is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU Lesser General Public License for more details.
+ * http://www.apache.org/licenses/LICENSE-2.0
  *
- *  You should have received a copy of the GNU Lesser General Public License
- *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
  */
 
 package casmi.graph;
@@ -34,56 +33,46 @@ import casmi.graph.view.GraphTurnType;
 /**
  * DynamicCircleGraph example.
  * 
- * @see casmi.extension.graph.DynamicCircleGraph
- * @see casmi.GraphTurnType.graph.GraphTurn
+ * @see casmi.graph.view.DynamicCircleGraph
+ * @see casmi.graph.view.GraphTurnType
  * 
  * @author Y. Ban
  */
+public class DynamicCircleGraphExample extends Applet {
 
-public class DynamicCircleGraphExample extends Applet{
+    static final URL CSV_PATH = Applet.class.getResource("data2D4circle.csv");
 
-	DynamicCircleGraph circleGraph;
-	MatrixData2D m;
-	static final URL CSV_PATH = Applet.class.getResource("data2D4circle.csv");
-	
-	
-	@Override
-	public void setup() {
-		setSize(1024, 768);
-		m =  LoadData2D.loadWithoutAxisName( CSV_PATH );
-		circleGraph = new DynamicCircleGraph(m, 200, GraphTurnType.CLOCKWISE);
-		circleGraph.setPosition(getWidth()/2, getHeight()/2);
-		circleGraph.setAnimation(false);
-		addObject(circleGraph);
-		
-	}
+    DynamicCircleGraph circleGraph;
+    MatrixData2D       mat;
 
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public void setup() {
+        setSize(1024, 768);
+        
+        mat = LoadData2D.loadWithoutAxisName(CSV_PATH);
 
-	@Override
-	public void mouseEvent(MouseEvent e, MouseButton b) {
-		switch(e){
-		case PRESSED:
-			circleGraph.startTween();
-			break;
-	}
-		
-	}
+        circleGraph = new DynamicCircleGraph(mat, 200, GraphTurnType.CLOCKWISE);
+        circleGraph.setPosition(getWidth() / 2, getHeight() / 2);
+        circleGraph.setAnimation(false);
+        addObject(circleGraph);
+    }
 
-	@Override
-	public void keyEvent(KeyEvent e) {
-		if(getKey() == 'r'){
-			circleGraph.resetTween();
-		}    
-	}
-	
+    @Override
+    public void update() {}
+
+    @Override
+    public void mouseEvent(MouseEvent e, MouseButton b) {
+        if (e == MouseEvent.PRESSED)
+            circleGraph.startTween();
+    }
+
+    @Override
+    public void keyEvent(KeyEvent e) {
+        if (getKey() == 'r')
+            circleGraph.resetTween();
+    }
+
     public static void main(String[] args) {
         AppletRunner.run("casmi.graph.DynamicCircleGraphExample", "DynamicCircleGraph Example");
     }
-
-
 }
