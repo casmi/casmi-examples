@@ -87,9 +87,10 @@ public class Scene3 extends Scene {
 
 	@Override
 	public void keyEvent(KeyEvent e) {
-		switch(e){
+		switch (e) {
 		case PRESSED:
-			System.out.println(getKey());
+			if(getKey()=='b')
+				goNextScene("Top", DissolveMode.BLACK, 3);
 		}
 		
 	}

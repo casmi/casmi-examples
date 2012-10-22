@@ -43,19 +43,15 @@ public class TimelineExample extends Applet {
         setSize(1024, 768);
         
         tl = new Timeline();
-        s0 = new Scene0("scene0", 8);
-        s1 = new Scene1("scene1", 6);
-        s2 = new Scene2("scene2", 6);
-        s3 = new Scene3("scene3", 6);
+        s0 = new Scene0("scene0", 6);
+        s1 = new Scene1("scene1", 5);
+        s2 = new Scene2("scene2", 5);
+        s3 = new Scene3("scene3", 5);
         
-        tl.appendScene(s0);
-        tl.appendDisolve(3, DissolveMode.BLACK);
-        tl.appendScene(s1);
-        tl.appendDissolve(2);
+        tl.appendScene(s0, DissolveMode.BLACK, 3);
+        tl.appendScene(s1, DissolveMode.CROSS, 2);
         tl.appendScene(s2);
-        tl.appendDisolve(2, DissolveMode.BLACK);
-        tl.appendScene(s3);
-        tl.appendDisolve(2, DissolveMode.BLACK);
+        tl.appendScene(s3, DissolveMode.CROSS, 2);
 
         tl.startTimer();
         

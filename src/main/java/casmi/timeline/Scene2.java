@@ -72,7 +72,11 @@ public class Scene2 extends Scene {
 
 	@Override
 	public void keyEvent(KeyEvent e) {
-		// TODO Auto-generated method stub
+		switch (e) {
+		case PRESSED:
+			if(getKey()=='b')
+				goNextScene("Top", DissolveMode.BLACK, 3);
+		}
 		
 	}
 

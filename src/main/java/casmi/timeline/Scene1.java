@@ -24,6 +24,8 @@ import casmi.MouseEvent;
 import casmi.graphics.color.Color;
 import casmi.graphics.color.ColorSet;
 import casmi.graphics.color.RGBColor;
+import casmi.graphics.element.Element;
+import casmi.graphics.element.MouseOverCallback;
 import casmi.graphics.element.Rect;
 import casmi.graphics.element.Text;
 import casmi.graphics.font.Font;
@@ -40,6 +42,7 @@ public class Scene1 extends Scene {
     Color c = new RGBColor(0.1, 0.4, 0.4);
     Font f = null;
     Text t;
+    MouseOverCallback mouseOver;
     
     public Scene1(String id){
     	this(id, 0 );
@@ -60,6 +63,22 @@ public class Scene1 extends Scene {
         addObject(r1);
         addObject(r2);
         
+        mouseOver = new MouseOverCallback() {
+			
+			@Override
+			public void run(MouseOverTypes eventtype, Element element) {
+				switch(eventtype){
+				case ENTERED:
+					element.setFillColor(ColorSet.AQUA);
+					break;
+				case EXITED:
+					element.setFillColor(c);
+				}
+				
+			}
+		};
+        
+		r1.addMouseEventCallback(mouseOver);
         f = new Font("San-Serif");
         f.setSize(70);
         t = new Text("Rect", f, 700, 600);
@@ -76,7 +95,11 @@ public class Scene1 extends Scene {
 
 	@Override
 	public void keyEvent(KeyEvent e) {
-		// TODO Auto-generated method stub
+		switch (e) {
+		case PRESSED:
+			if(getKey()=='b')
+				goNextScene("Top", DissolveMode.BLACK, 3);
+		}
 		
 	}
 
