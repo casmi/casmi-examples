@@ -15,6 +15,7 @@ public class TimelineActiveExample extends Applet{
     Scene1 s1;
     Scene2 s2;
     Scene3 s3;
+    Scene4 s4;
     
 	@Override
 	public void setup() {
@@ -29,12 +30,14 @@ public class TimelineActiveExample extends Applet{
         s1 = new Scene1("scene1");
         s2 = new Scene2("scene2");
         s3 = new Scene3("scene3");
+        s4 = new Scene4("scene4");
         
         tl.appendScene(st);
         tl.appendScene(s0);
         tl.appendScene(s1);
         tl.appendScene(s2);
         tl.appendScene(s3);
+        tl.appendScene(s4);
 
         tl.startTimer();
         

@@ -26,7 +26,7 @@ public class SceneTop extends Scene{
     private ArrayList<TweenElement> tes;
     private TweenParallelGroup tg = new TweenParallelGroup();
 
-    private Text text[] = new Text[3];
+    private Text text[] = new Text[4];
     private MouseClickCallback mcc;
 
 	public SceneTop(String id) {
@@ -42,6 +42,7 @@ public class SceneTop extends Scene{
         text[0] = new Text("Rect");
         text[1] = new Text("Triangle");
         text[2] = new Text("Bezier");
+        text[3] = new Text("Box");
         
 
         tes = new ArrayList<TweenElement>(text.length);
@@ -58,6 +59,8 @@ public class SceneTop extends Scene{
 						goNextScene("scene2", DissolveMode.CROSS, 3);
 					if(t.getText()=="Bezier")
 						goNextScene("scene3", DissolveMode.CROSS, 3);
+					if(t.getText()=="Box")
+						goNextScene("scene4", DissolveMode.CROSS, 3);
 					
 				}				
 			}
@@ -65,7 +68,7 @@ public class SceneTop extends Scene{
 		
         int index = 0;
         for(Text t : text){
-        	t.setPosition(1024-100, 80-index*30);
+        	t.setPosition(1024-100, 110-index*30);
         	t.setStrokeColor(ColorSet.WHITE_SMOKE);
         	t.setStrokeColorAlpha(0);
         	t.addMouseEventCallback(mcc);
