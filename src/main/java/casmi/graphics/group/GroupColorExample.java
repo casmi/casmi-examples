@@ -25,6 +25,8 @@ import casmi.MouseButton;
 import casmi.MouseEvent;
 import casmi.graphics.color.GrayColor;
 import casmi.graphics.element.Line;
+import casmi.graphics.element.Rect;
+import casmi.graphics.object.Mask;
 
 /**
  * Color of Group example.
@@ -50,16 +52,22 @@ public class GroupColorExample extends Applet {
 	GroupX    group;
 	double    gray;
 	GrayColor color;
+	Mask mask;
+	Rect rect;
 
     @Override
     public void setup() {
         setSize(600, 600);
-        
+        mask = new Mask();
         group = new GroupX();
         gray = 1.0;
         color = new GrayColor(gray);
         group.setStrokeColor(color);
         group.setStrokeWidth(25);
+        rect = new Rect(150,150);
+        rect.setPosition(300, 300);
+        mask.add(rect);
+        group.setMask(mask);
         addObject(group);
     }
 
@@ -68,6 +76,7 @@ public class GroupColorExample extends Applet {
     	if (gray < 0.0)
     		gray = 1.0;
     	gray -= 0.01;
+    	rect.setScale(1-gray);
     	color.setGray(gray);
     }
     

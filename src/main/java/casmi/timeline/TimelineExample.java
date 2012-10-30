@@ -24,6 +24,7 @@ import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseEvent;
+import casmi.tween.equations.Bounce;
 
 /**
  * Example of Timeline.
@@ -43,15 +44,15 @@ public class TimelineExample extends Applet {
         setSize(1024, 768);
         
         tl = new Timeline();
-        s0 = new Scene0("scene0", 6);
-        s1 = new Scene1("scene1", 5);
-        s2 = new Scene2("scene2", 5);
-        s3 = new Scene3("scene3", 5);
+        s0 = new Scene0("scene0", 2);
+        s1 = new Scene1("scene1", 2);
+        s2 = new Scene2("scene2", 2);
+        s3 = new Scene3("scene3", 2);
         
-        tl.appendScene(s0, DissolveMode.BLACK, 3);
-        tl.appendScene(s1, DissolveMode.CROSS, 2);
-        tl.appendScene(s2);
-        tl.appendScene(s3, DissolveMode.CROSS, 2);
+        tl.appendScene(s0, DissolveMode.CURTAIN_TOP, 1, Bounce.OUT);
+        tl.appendScene(s1, DissolveMode.CURTAIN_RIGHT, 1, Bounce.OUT);
+        tl.appendScene(s2, DissolveMode.CURTAIN_BOTTOM, 1, Bounce.OUT);
+        tl.appendScene(s3, DissolveMode.CURTAIN_LEFT, 1, Bounce.OUT);
 
         tl.startTimer();
         

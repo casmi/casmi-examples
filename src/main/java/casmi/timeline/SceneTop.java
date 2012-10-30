@@ -53,6 +53,7 @@ public class SceneTop extends Scene{
 			public void run(MouseClickTypes eventtype, Element element) {
 				if(eventtype == MouseClickTypes.PRESSED && element instanceof Text){
 					Text t = (Text)element;
+					System.out.println("goNextScene:"+t.getText());
 					if(t.getText()=="Rect")
 						goNextScene("scene1", DissolveMode.CROSS, 3);
 					if(t.getText()=="Triangle")

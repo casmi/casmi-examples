@@ -11,7 +11,6 @@ public class TimelineActiveExample extends Applet{
 	
     Timeline tl;
     SceneTop st;
-    Scene0 s0;
     Scene1 s1;
     Scene2 s2;
     Scene3 s3;
@@ -26,14 +25,12 @@ public class TimelineActiveExample extends Applet{
         
         
         st = new SceneTop("Top");
-        s0 = new Scene0("scene0");
         s1 = new Scene1("scene1");
         s2 = new Scene2("scene2");
         s3 = new Scene3("scene3");
         s4 = new Scene4("scene4");
         
         tl.appendScene(st);
-        tl.appendScene(s0);
         tl.appendScene(s1);
         tl.appendScene(s2);
         tl.appendScene(s3);
@@ -53,7 +50,6 @@ public class TimelineActiveExample extends Applet{
 	@Override
 	public void mouseEvent(MouseEvent e, MouseButton b) {
 		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
