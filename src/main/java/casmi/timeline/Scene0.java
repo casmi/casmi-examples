@@ -29,11 +29,6 @@ import casmi.graphics.element.Texture;
  * @author Y. Ban
  * 
  */
-
-/**
- * 
- * @author Y. Ban
- */
 public class Scene0 extends Scene {
 
     static final String IMAGE_PATH = casmi.Applet.class.getResource("logo.png").getPath();
@@ -47,8 +42,10 @@ public class Scene0 extends Scene {
 
     public Scene0(String id, double time) {
     	super(id, time);
-    	System.out.println(IMAGE_PATH);
-        tex = new Texture(IMAGE_PATH);
+    	
+    	System.out.println("image: " + IMAGE_PATH);
+        
+    	tex = new Texture(IMAGE_PATH);
         tex.setX(200);
         tex.setY(500);
         tex.setWidth(tex.getWidth() / 1.2);
@@ -56,29 +53,23 @@ public class Scene0 extends Scene {
         addObject(tex);
     }
 
-
     @Override
     public void update() {
         rot += 2.0;
         tex.setRotation(rot, 0.0, 1.0, 0.0);
     }
 
-	@Override
-	public void keyEvent(KeyEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public void keyEvent(KeyEvent e) {}
 
-
-	@Override
-	public void mouseEvent(MouseEvent e, MouseButton b) {
-		switch (e) {
+    @Override
+    public void mouseEvent(MouseEvent e, MouseButton b) {
+        switch (e) {
 		case CLICKED:
-			System.out.println("clicked0");
+		    System.out.println("clicked0");
 			break;
-
 		default:
-			break;
+		    break;
 		}
-	}
+    }
 }
