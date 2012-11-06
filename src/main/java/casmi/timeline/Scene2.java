@@ -31,7 +31,6 @@ import casmi.graphics.font.Font;
  * Example of Timeline.
  * 
  * @author Y. Ban
- * 
  */
 public class Scene2 extends Scene {
 
@@ -40,13 +39,13 @@ public class Scene2 extends Scene {
 
     Font f = null;
     Text t;
-    
-    public Scene2(String id){
-    	this(id, 0);
+
+    public Scene2(String id) {
+        this(id, 0);
     }
 
     public Scene2(String id, double time) {
-    	super(id, time);
+        super(id, time);
         t1.setFillColor(new RGBColor(1.0, 1.0, 1.0));
         t1.setStroke(false);
 
@@ -64,27 +63,20 @@ public class Scene2 extends Scene {
         addObject(t);
     }
 
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
-	}
+    @Override
+    public void update() {}
 
-	@Override
-	public void keyEvent(KeyEvent e) {
-		switch (e) {
-		case PRESSED:
-			if(getKey()=='b')
-				goNextScene("Top", DissolveMode.BLACK, 3);
-		}
-		
-	}
+    @Override
+    public void keyEvent(KeyEvent e) {
+        switch (e) {
+        case PRESSED:
+            if (getKey() == 'b')
+                goNextScene("Top", DissolveMode.BLACK, 3);
+            break;
+        }
+    }
 
 
-	@Override
-	public void mouseEvent(MouseEvent e, MouseButton b) {
-		// TODO Auto-generated method stub
-		
-	}
-
+    @Override
+    public void mouseEvent(MouseEvent e, MouseButton b) {}
 }
