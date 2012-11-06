@@ -53,7 +53,6 @@ public class DynamicCircleGraphExample extends Applet {
 
         circleGraph = new DynamicCircleGraph(mat, 200, GraphTurnType.CLOCKWISE);
         circleGraph.setPosition(getWidth() / 2, getHeight() / 2);
-        circleGraph.setAnimation(false);
         addObject(circleGraph);
     }
 
