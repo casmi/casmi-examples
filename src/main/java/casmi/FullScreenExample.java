@@ -74,7 +74,7 @@ public class FullScreenExample extends Applet {
 
     @Override
     public void keyEvent(KeyEvent e) {
-        if (e == KeyEvent.TYPED) {
+        if (e == KeyEvent.PRESSED) {
             if (getKeyCode() == 27) {
                 System.exit(0);
             } else if (getKey() == 'f') {             
