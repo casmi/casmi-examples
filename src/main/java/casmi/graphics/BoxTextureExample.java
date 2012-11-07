@@ -40,11 +40,11 @@ import casmi.graphics.object.Perspective;
 public class BoxTextureExample extends Applet {
 
 	private static final String[] imageNames = { 
-	    "sai1.png",
+	    "sai4.png",
 	    "sai2.png",
 	    "sai3.png",
-	    "sai4.png",
 	    "sai5.png",
+	    "sai1.png",
 	    "sai6.png"
 	};
 	
@@ -83,8 +83,6 @@ public class BoxTextureExample extends Applet {
 		for (int i = 0; i < textures.length; i++) {
 			textures[i] = new Texture(imageURLs[i]);
 			b.setTexture(i, textures[i]);
-			
-			textures[i].setReloadFlag(true);
 		}
 
 		addObject(b);
