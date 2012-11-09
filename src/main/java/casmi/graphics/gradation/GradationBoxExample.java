@@ -16,51 +16,53 @@
  * limitations under the License.
  */
 
-package casmi.timeline;
+package casmi.graphics.gradation;
 
 import casmi.Applet;
 import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseEvent;
-import casmi.tween.equations.Bounce;
+import casmi.graphics.color.ColorSet;
+import casmi.graphics.color.RGBColor;
+import casmi.graphics.element.Box;
+import casmi.graphics.element.GradationMode3D;
+import casmi.graphics.object.Camera;
+import casmi.graphics.object.Perspective;
 
 /**
- * Example of Timeline.
+ * Example for Box with gradation color.
  * 
  * @author Y. Ban
  */
-public class TimelineExample extends Applet {
+public class GradationBoxExample extends Applet {
 
-    Timeline tl;
-    Scene0 s0;
-    Scene1 s1;
-    Scene2 s2;
-    Scene3 s3;
+    Box b1 = new Box(1.0);
+
+    Perspective p;
+    Camera c;
 
     @Override
     public void setup() {
-        setSize(1024, 768);
-        
-        tl = new Timeline();
-        s0 = new Scene0("scene0", 2);
-        s1 = new Scene1("scene1", 2);
-        s2 = new Scene2("scene2", 2);
-        s3 = new Scene3("scene3", 2);
-        
-        tl.appendScene(s0, DissolveMode.CURTAIN_TOP, 1, Bounce.OUT);
-        tl.appendScene(s1, DissolveMode.CURTAIN_RIGHT, 1, Bounce.OUT);
-        tl.appendScene(s2, DissolveMode.CURTAIN_BOTTOM, 1, Bounce.OUT);
-        tl.appendScene(s3, DissolveMode.CURTAIN_LEFT, 1, Bounce.OUT);
+        setSize(800, 600);
 
-        tl.startTimer();
-        
-        addObject(tl);
+        b1.setStrokeWidth(1.0);
+        b1.setFillColor(new RGBColor(0.4, 0.4, 0.4));
+        b1.setStroke(false);
+        b1.setGradationColor(GradationMode3D.Y_AXIS,ColorSet.AQUA, ColorSet.ORANGE_RED);
+
+        p = new Perspective(30.0, (double)getWidth() / (double)getHeight(), 1.0, 100.0);
+        c = new Camera(3.0, 4.0, 5.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
+
+        setPerspective(p);
+        setCamera(c);
+
+        addObject(b1);
     }
 
     @Override
     public void update() {}
-    
+
     @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {}
 
@@ -68,6 +70,6 @@ public class TimelineExample extends Applet {
     public void keyEvent(KeyEvent e) {}
 
     public static void main(String[] args) {
-        AppletRunner.run("casmi.timeline.TimelineExample", "Timeline Example");
-    }  
+        AppletRunner.run("casmi.graphics.gradation.GradationBoxExample", "Gradation Box Example");
+    }
 }

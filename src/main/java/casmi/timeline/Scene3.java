@@ -18,6 +18,9 @@
 
 package casmi.timeline;
 
+import casmi.KeyEvent;
+import casmi.MouseButton;
+import casmi.MouseEvent;
 import casmi.graphics.color.ColorSet;
 import casmi.graphics.color.RGBColor;
 import casmi.graphics.element.Bezier;
@@ -33,29 +36,27 @@ import casmi.graphics.font.Font;
 public class Scene3 extends Scene {
 
     Bezier b1 = new Bezier(100, 200, 
-                           200, 400, 
-                           300, 300, 
-                           400, 200);
+        200, 400, 
+        300, 300, 
+        400, 200);
     Bezier b2 = new Bezier(400, 200, 
-                           500, 100, 
-                           700, 300, 
-                           800, 600);
+        500, 100, 
+        700, 300, 
+        800, 600);
     Bezier b3 = new Bezier(300.0, 300.0, -20.0,
-                           800.0, 800.0, -100.0,
-                           300.0, 600.0, -50.0,
-                           700.0, 500.0, -70.0);
+        800.0, 800.0, -100.0,
+        300.0, 600.0, -50.0,
+        700.0, 500.0, -70.0);
 
     Font f = null;
     Text t;
 
-    public Scene3(int id, double time) {
-        setId(id);
-        setTime(time);
-        setup();
+    public Scene3(String id) {
+        this(id, 0);
     }
 
-    @Override
-    public void setup() {
+    public Scene3(String id, double time) {
+        super(id, time);
         b1.setFill(false);
         b2.setFill(false);
         b3.setFill(false);
@@ -77,4 +78,21 @@ public class Scene3 extends Scene {
         addObject(b3);
         addObject(t);
     }
+
+    @Override
+    public void update() {}
+
+    @Override
+    public void keyEvent(KeyEvent e) {
+        switch (e) {
+        case PRESSED:
+            if (getKey() == 'b')
+                goNextScene("Top", DissolveMode.BLACK, 3);
+            break;
+        }
+    }
+
+
+    @Override
+    public void mouseEvent(MouseEvent e, MouseButton b) {}
 }

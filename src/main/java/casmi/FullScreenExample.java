@@ -33,27 +33,26 @@ import casmi.graphics.element.TextAlign;
 public class FullScreenExample extends Applet {
     
 	Ellipse ellipse = new Ellipse(30);
-    Text text = new Text("Click or type ESC key to exit.");
+    Text text = new Text("ESC key to exit.");
     
     @Override
     public void setup() {
-        // setFullScreen(boolean) must be used in setup().
-        setFullScreen(true);    
+        setSize(800, 600);
+        setFullScreen(true);
 
         ellipse.setFillColor(ColorSet.WHITE);
         
         text.setStrokeColor(ColorSet.RED);
         text.setAlign(TextAlign.CENTER);
         
-        for (int x = 30; x < getWidth(); x += 80) {
-            for (int y = getHeight() - 30; 0 < y; y -= 80) {
+        for (int x = 30; x < 1920; x += 80) {
+            for (int y = 1080 - 30; 0 < y; y -= 80) {
             	Ellipse el = (Ellipse) ellipse.clone();
             	el.setPosition(x, y);
                 addObject(el);
             }
         }
         
-        Text text = new Text("Click or type ESC key to exit.");
         text.setStrokeColor(ColorSet.RED);
         text.setAlign(TextAlign.CENTER);
         text.setX(getWidth()  / 2);
@@ -67,14 +66,22 @@ public class FullScreenExample extends Applet {
     @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {
         if (e == MouseEvent.PRESSED) {
-            System.exit(0);
+            setFullScreen(!isFullScreen());
+            text.setX(getWidth()  / 2);
+            text.setY(getHeight() / 2);
         }
     }
 
     @Override
     public void keyEvent(KeyEvent e) {
-        if (e == KeyEvent.TYPED && getKeyCode() == 27) {
-            System.exit(0);
+        if (e == KeyEvent.TYPED) {
+            if (getKeyCode() == 27) {
+                System.exit(0);
+            } else if (getKey() == 'f') {             
+                setFullScreen(!isFullScreen());
+                text.setX(getWidth()  / 2);
+                text.setY(getHeight() / 2);
+            }
         }
     }
 

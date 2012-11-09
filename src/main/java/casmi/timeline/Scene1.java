@@ -18,9 +18,14 @@
 
 package casmi.timeline;
 
+import casmi.KeyEvent;
+import casmi.MouseButton;
+import casmi.MouseEvent;
 import casmi.graphics.color.Color;
 import casmi.graphics.color.ColorSet;
 import casmi.graphics.color.RGBColor;
+import casmi.graphics.element.Element;
+import casmi.graphics.element.MouseOverCallback;
 import casmi.graphics.element.Rect;
 import casmi.graphics.element.Text;
 import casmi.graphics.font.Font;
@@ -37,33 +42,72 @@ public class Scene1 extends Scene {
     Color c = new RGBColor(0.1, 0.4, 0.4);
     Font f = null;
     Text t;
-	
-	public Scene1(int id,double time) {
-		setId(id);
-		setTime(time);
-		setup();
-	}
-	
-	@Override
-	public void setup() {
-			r1.setFillColor(c);
-	        r1.setStrokeColor(new RGBColor(0.4, 0.9, 0.4));
-	        r1.setStrokeWidth(3);
-	        r1.setPosition(500, 300);
-	        
-	        r2.setFill(false);
-	        r2.setStrokeWidth(5);
-	        r2.setStrokeColor(new RGBColor(0.7, 0.3, 0.3));
-	        r2.setPosition(200, 300);
-	        
-	        addObject(r1);
-	        addObject(r2);
-	        
-	        f = new Font("San-Serif");
-	        f.setSize(70);
-	        t = new Text("Rect", f, 700, 600);
-	        t.setStrokeColor(ColorSet.WHITE);
-	        
-	        addObject(t);
-	}
+    MouseOverCallback mouseOver;
+
+    public Scene1(String id) {
+        this(id, 0);
+    }
+
+    public Scene1(String id,double time) {
+        super(id, time);
+        r1.setFillColor(c);
+        r1.setStrokeColor(new RGBColor(0.4, 0.9, 0.4));
+        r1.setStrokeWidth(3);
+        r1.setPosition(500, 300);
+
+        r2.setFill(false);
+        r2.setStrokeWidth(5);
+        r2.setStrokeColor(new RGBColor(0.7, 0.3, 0.3));
+        r2.setPosition(200, 300);
+
+        addObject(r1);
+        addObject(r2);
+
+        mouseOver = new MouseOverCallback() {
+
+            @Override
+            public void run(MouseOverTypes eventtype, Element element) {
+                switch(eventtype){
+                case ENTERED:
+                    element.setFillColor(ColorSet.AQUA);
+                    break;
+                case EXITED:
+                    element.setFillColor(c);
+                    break;
+                }
+            }
+        };
+
+        r1.addMouseEventCallback(mouseOver);
+        f = new Font("San-Serif");
+        f.setSize(70);
+        t = new Text("Rect", f, 700, 600);
+        t.setStrokeColor(ColorSet.WHITE);
+
+        addObject(t);
+    }
+
+    @Override
+    public void update() {}
+
+    @Override
+    public void keyEvent(KeyEvent e) {
+        switch (e) {
+        case PRESSED:
+            if (getKey() == 'b')
+                goNextScene("Top", DissolveMode.BLACK, 3);
+            break;
+        }
+    }
+
+    @Override
+    public void mouseEvent(MouseEvent e, MouseButton b) {
+        switch (e) {
+        case CLICKED:
+            System.out.println("clicked1");
+            break;
+        default:
+            break;
+        }
+    }
 }

@@ -26,6 +26,7 @@ import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseEvent;
 import casmi.graphics.element.Texture;
+import casmi.graphics.group.Group;
 
 /**
  * Example of Graphics.
@@ -36,23 +37,50 @@ public class TextureExample extends Applet {
 
     static final URL IMAGE_PATH = Applet.class.getResource("logo.png");
     Texture tex;
-
+    TexObject texo;
     double rot = 0.0;
+    
+    class TexObject extends Group {
+
+        private URL IMAGE_PATH = Applet.class.getResource("logo.png");
+        private Texture tex;
+        private double rot = 0.0;
+        
+        public TexObject() {
+        	tex = new Texture(IMAGE_PATH);
+            tex.setPosition(200, 500);
+            tex.setWidth(tex.getWidth() / 1.2);
+            tex.setRotation(rot, 0.0, 1.0, 0.0);
+
+            add(tex);
+        }
+    	
+		@Override
+		public void update() {
+	        rot += 2.0;
+	        tex.setRotation(rot, 0.0, 1.0, 0.0);
+			
+		}
+    	
+    }
 
     public void setup() {
         setSize(1024, 768);
-        tex = new Texture(IMAGE_PATH);
-        tex.setPosition(200, 500);
-        tex.setWidth(tex.getWidth() / 1.2);
-        tex.setRotation(rot, 0.0, 1.0, 0.0);
+        System.out.println(IMAGE_PATH);
+        texo = new TexObject();
+        addObject(texo);
+     //   tex = new Texture(IMAGE_PATH);
+     //   tex.setPosition(200, 500);
+      //  tex.setWidth(tex.getWidth() / 1.2);
+      //  tex.setRotation(rot, 0.0, 1.0, 0.0);
 
-        addObject(tex);
+       // addObject(tex);
     }
 
     @Override
     public void update() {
-        rot += 2.0;
-        tex.setRotation(rot, 0.0, 1.0, 0.0);
+      //  rot += 2.0;
+     //   tex.setRotation(rot, 0.0, 1.0, 0.0);
     }
 
     @Override

@@ -1,7 +1,7 @@
 /*
  *   casmi examples
  *   http://casmi.github.com/
- *   Copyright (C) 2011, Xcoo, Inc.
+ *   Copyright (C) 2012, Xcoo, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,41 +23,39 @@ import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseEvent;
-import casmi.graphics.element.Quad;
-import casmi.graphics.element.Texture;
-import casmi.graphics.element.TextureRotationMode;
+import casmi.graphics.element.Rect;
+import casmi.util.SystemUtil;
 
 /**
- * Example of Graphics.
+ * Example for rotating Rect.
  * 
- * @author Y.Ban
- * 
+ * @author Y. Ban
  */
-public class QuadTextureExample extends Applet {
+public class RectRotateExample extends Applet {
 
-    static final String IMAGE_PATH = Applet.class.getResource("logo.png").getPath();
+    Rect rect = new Rect(100,100);
+    int r;
     
-    Texture tex = null;
-    Quad q1 = new Quad(500, 300, 400, 500, 600, 500, 700, 300);
-
     @Override
     public void setup() {
-        setSize(1024, 768);
-        
-        tex = new Texture(IMAGE_PATH);
-        q1.setStroke(false);
-        q1.setTexture(tex);
-
-        addObject(q1);
+        setFPS(30);
+        setSize(800,600);
+        rect.setPosition(400, 300);
+        addObject(rect);
     }
 
     @Override
-    public void update() {}
+    public void update() {
+        r++;
+        if (r >= 360)
+            r = 0;
+        rect.setRotation(r);
+    }
 
     @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {
         if (e == MouseEvent.PRESSED) {
-            tex.rotation(TextureRotationMode.CLOCKWIZE);
+            capture("rsrc" + SystemUtil.FILE_SEPARATOR + "rectrotate.png", true);
         }
     }
 
@@ -65,7 +63,6 @@ public class QuadTextureExample extends Applet {
     public void keyEvent(KeyEvent e) {}
 
     public static void main(String[] args) {
-        AppletRunner.run("casmi.graphics.QuadTextureExample", "QuadTextureExample");
+        AppletRunner.run("casmi.graphics.RectRotateExample", "RectRotateExample");
     }
-
 }

@@ -23,6 +23,8 @@ import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseEvent;
+import casmi.graphics.color.ColorSet;
+import casmi.graphics.element.Circle;
 import casmi.graphics.element.Texture;
 import casmi.image.ImageMode;
 import casmi.util.SystemUtil;
@@ -38,6 +40,7 @@ public class ImageModeExample extends Applet {
     static final String IMAGE_PATH = Applet.class.getResource("logo.png").getPath();
     
     Texture tex1,tex2;
+    Circle c1, c2;
 
     public void setup() {
         setSize(1024, 768);
@@ -47,21 +50,28 @@ public class ImageModeExample extends Applet {
         tex1 = new Texture(IMAGE_PATH);
         tex1.setMode(ImageMode.CORNER);
         tex1.setPosition(300, 300);
+        c1 = new Circle(300, 300, 10);
+        c1.setFillColor(ColorSet.RED);
         
         addObject(tex1);
+        addObject(c1);
         
-        tex2 = (Texture) tex1.clone();
+        tex2 = new Texture(IMAGE_PATH);
         tex2.setMode(ImageMode.CENTER);
         tex2.setPosition(600, 600);
+        c2 = new Circle(600, 600, 10);
+        c2.setFillColor(ColorSet.RED);
         
         addObject(tex2);
+        addObject(c2);
     }
 
     @Override
     public void update() {}
     
     @Override
-    public void mouseEvent(MouseEvent e, MouseButton b) {}
+    public void mouseEvent(MouseEvent e, MouseButton b) {
+    }
 
     @Override
     public void keyEvent(KeyEvent e) {}

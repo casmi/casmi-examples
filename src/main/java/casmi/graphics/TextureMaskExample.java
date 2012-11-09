@@ -70,11 +70,12 @@ public class TextureMaskExample extends Applet {
         t.setStrokeColor(ColorSet.WHITE);
         t.setPosition(50, 20);
 
+       
+       
         addObject(tex);
         addObject(mask);
-        addObject(masked);
+        addObject(masked); 
         addObject(t);
-
         capture(Applet.class.getResource("save.png").getPath());
     }
 
@@ -108,9 +109,9 @@ public class TextureMaskExample extends Applet {
     @Override
     public void keyEvent(KeyEvent e) {
         if (e == KeyEvent.PRESSED) {
-            if (getKeyCode() == 's')
+            if (getKey() == 's')
                 capture(Applet.class.getResource("save_without_bg.png").getPath(), false);
-            if (getKeyCode() == 'b')
+            if (getKey() == 'b')
                 capture(Applet.class.getResource("save_with_bg.png").getPath());
         }
     }

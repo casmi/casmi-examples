@@ -57,7 +57,6 @@ public class MaskExample extends Applet {
 		
 		tex.setPosition(getWidth() / 2.0, getHeight() / 2.0);
 		tex.setMask(mask);
-		
 		addObject(tex);
 	}
 

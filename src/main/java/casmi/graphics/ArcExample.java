@@ -43,7 +43,7 @@ public class ArcExample extends Applet {
 
         arc.setFillColor(new RGBColor(0.3, 0.7, 0.3));
         arc.setStrokeColor(new RGBColor(0.5, 0.9, 0.5));
-        arc.setStrokeWidth(3);
+        arc.setStrokeWidth(10);
         addObject(arc);
     }
 

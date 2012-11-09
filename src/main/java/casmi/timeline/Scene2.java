@@ -18,6 +18,9 @@
 
 package casmi.timeline;
 
+import casmi.KeyEvent;
+import casmi.MouseButton;
+import casmi.MouseEvent;
 import casmi.graphics.color.ColorSet;
 import casmi.graphics.color.RGBColor;
 import casmi.graphics.element.Text;
@@ -28,7 +31,6 @@ import casmi.graphics.font.Font;
  * Example of Timeline.
  * 
  * @author Y. Ban
- * 
  */
 public class Scene2 extends Scene {
 
@@ -38,14 +40,12 @@ public class Scene2 extends Scene {
     Font f = null;
     Text t;
 
-    public Scene2(int id, double time) {
-        setId(id);
-        setTime(time);
-        setup();
+    public Scene2(String id) {
+        this(id, 0);
     }
 
-    @Override
-    public void setup() {
+    public Scene2(String id, double time) {
+        super(id, time);
         t1.setFillColor(new RGBColor(1.0, 1.0, 1.0));
         t1.setStroke(false);
 
@@ -62,4 +62,21 @@ public class Scene2 extends Scene {
         addObject(t2);
         addObject(t);
     }
+
+    @Override
+    public void update() {}
+
+    @Override
+    public void keyEvent(KeyEvent e) {
+        switch (e) {
+        case PRESSED:
+            if (getKey() == 'b')
+                goNextScene("Top", DissolveMode.BLACK, 3);
+            break;
+        }
+    }
+
+
+    @Override
+    public void mouseEvent(MouseEvent e, MouseButton b) {}
 }

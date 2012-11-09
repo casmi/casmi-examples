@@ -27,7 +27,7 @@ package casmi.sql;
  */
 public class MySQLExample {
 
-    // change information for your environment
+    // NOTE: Change the following information for your environment.
     static final String HOST     = "localhost";
     static final String DATABASE = "casmi";
     static final String USER     = "test";
@@ -37,14 +37,14 @@ public class MySQLExample {
         MySQL mysql = null;
         
         try {
-            // create instance
+            // Create instance
             mysql = new MySQL(HOST, DATABASE, USER, PASSWORD);
             // mysql = new MySQL(HOST, DATABASE);
 
-            // connect database
+            // Connect database
             mysql.connect();
 
-            // insert
+            // Insert
             Liquor l1 = mysql.entity(Liquor.class);
             l1.setName("Urakasumi");
             l1.setAbv(15);
@@ -57,13 +57,19 @@ public class MySQLExample {
             l2.origin = "Aomori";
             l2.save();
             
-            // select all
+            // Select all
             Liquor[] ls = mysql.all(Liquor.class);
             for (Liquor l : ls) {
                 System.out.println(l);
             }
             
-            // delete all
+            // Select with query
+            Liquor[] ls2 = mysql.all(Liquor.class, new Query().where("origin='Miyagi'"));
+            for (Liquor l : ls2) {
+                System.out.println(l);
+            }
+            
+            // Delete all
             mysql.truncate(Liquor.class);
         } catch (Exception e) {
             e.printStackTrace();

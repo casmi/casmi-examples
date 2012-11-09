@@ -38,6 +38,7 @@ public class BackGroundColorExample extends Applet {
 	public void setup() {
 		setSize(800,600);
 		setBackGroundColor(ColorSet.AQUA);
+
 	}
 
 	@Override

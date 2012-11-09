@@ -1,7 +1,7 @@
 /*
  *   casmi examples
  *   http://casmi.github.com/
- *   Copyright (C) 2011, Xcoo, Inc.
+ *   Copyright (C) 2012, Xcoo, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,49 +15,54 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package casmi.extension.coni;
+
+package casmi.timeline;
 
 import casmi.Applet;
 import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseEvent;
-import casmi.extension.coni.CONI;
-import casmi.extension.coni.exception.CONIException;
-import casmi.graphics.element.Texture;
 
 /**
- * CONI (casmi OpenNI) IR example.
- * <p>
- * This example shows an infrared rays (IR) view. 
+ * Example of Timeline.
  * 
- * @author T. Takeuchi
+ * @author Y. Ban
  */
-public class IRExample extends Applet {
+public class TimelineActiveExample extends Applet {
 
-    CONI coni;
-    
+    Timeline tl;
+    SceneTop st;
+    Scene1 s1;
+    Scene2 s2;
+    Scene3 s3;
+    Scene4 s4;
+
     @Override
     public void setup() {
-        setSize(640, 480);
-        
-        coni = new CONI();
-        coni.enableIR(640, 480, 30);
-        
-        Texture tex = coni.getIRMap().getTexture();
-        tex.setPosition(getWidth() / 2, getHeight() / 2);
-        addObject(tex);
+        setSize(1024, 768);
+
+        tl = new Timeline();
+        addObject(tl);
+
+        st = new SceneTop("Top");
+        s1 = new Scene1("scene1");
+        s2 = new Scene2("scene2");
+        s3 = new Scene3("scene3");
+        s4 = new Scene4("scene4");
+
+        tl.appendScene(st);
+        tl.appendScene(s1);
+        tl.appendScene(s2);
+        tl.appendScene(s3);
+        tl.appendScene(s4);
+
+        tl.startTimer();
     }
 
     @Override
-    public void update() {
-        try {
-            coni.update();
-        } catch (CONIException e) {
-            e.printStackTrace();
-        }
-    }
-    
+    public void update() {}
+
     @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {}
 
@@ -65,7 +70,6 @@ public class IRExample extends Applet {
     public void keyEvent(KeyEvent e) {}
 
     public static void main(String[] args) {
-        AppletRunner.run("casmi.extension.coni.IRExample", "CONI (casmi OpenNI): IR Example");
+        AppletRunner.run("casmi.timeline.TimelineActiveExample", "Timeline Active Example");
     }
-
 }

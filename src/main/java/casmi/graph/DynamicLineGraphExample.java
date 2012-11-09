@@ -16,39 +16,44 @@
  * limitations under the License.
  */
 
-package casmi.graphics;
+package casmi.graph;
+
+import java.net.URL;
 
 import casmi.Applet;
 import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseEvent;
-import casmi.graphics.element.Quad;
-import casmi.graphics.element.Texture;
-import casmi.graphics.element.TextureRotationMode;
+import casmi.graph.data.*;
+import casmi.graph.view.GraphAxis;
+import casmi.graph.view.DynamicLineGraph;
 
 /**
- * Example of Graphics.
+ * DynamicBarGraph example.
  * 
- * @author Y.Ban
+ * @see casmi.graph.view.DynamicLineGraph
  * 
+ * @author Y. Ban
  */
-public class QuadTextureExample extends Applet {
-
-    static final String IMAGE_PATH = Applet.class.getResource("logo.png").getPath();
+public class DynamicLineGraphExample extends Applet {
     
-    Texture tex = null;
-    Quad q1 = new Quad(500, 300, 400, 500, 600, 500, 700, 300);
+    static final URL CSV_PATH = Applet.class.getResource("data2D.csv");
+
+    DynamicLineGraph lineGraph;
+    MatrixData2D     mat;
 
     @Override
     public void setup() {
         setSize(1024, 768);
-        
-        tex = new Texture(IMAGE_PATH);
-        q1.setStroke(false);
-        q1.setTexture(tex);
 
-        addObject(q1);
+        mat = LoadData2D.load(CSV_PATH);
+
+        lineGraph = new DynamicLineGraph(800, 600, mat, 600, 0);
+        lineGraph.setDivisionSpace(GraphAxis.VERTICAL, 50);
+        lineGraph.setPosition(100, 100);
+        lineGraph.setTweenMilliSec(2000);
+        addObject(lineGraph);
     }
 
     @Override
@@ -56,16 +61,17 @@ public class QuadTextureExample extends Applet {
 
     @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {
-        if (e == MouseEvent.PRESSED) {
-            tex.rotation(TextureRotationMode.CLOCKWIZE);
-        }
+        if (e == MouseEvent.PRESSED)
+            lineGraph.startTween();
     }
 
     @Override
-    public void keyEvent(KeyEvent e) {}
-
-    public static void main(String[] args) {
-        AppletRunner.run("casmi.graphics.QuadTextureExample", "QuadTextureExample");
+    public void keyEvent(KeyEvent e) {
+        if (getKey() == 'r')
+            lineGraph.resetTween();
     }
 
+    public static void main(String[] args) {
+        AppletRunner.run("casmi.graph.DynamicLineGraphExample", "DynamicLineGraph Example");
+    }
 }

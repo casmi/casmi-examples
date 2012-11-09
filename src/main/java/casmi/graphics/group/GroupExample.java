@@ -44,7 +44,7 @@ import casmi.tween.equations.Linear;
  */
 public class GroupExample extends Applet {
 
-    Group1 group = new Group1();
+    SampleGroup group = new SampleGroup();
     TweenElement te;
     TweenCallback tc;
 
