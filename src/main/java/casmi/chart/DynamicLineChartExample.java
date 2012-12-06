@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-package casmi.graph;
+package casmi.chart;
 
 import java.net.URL;
 
@@ -25,35 +25,36 @@ import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseEvent;
-import casmi.graph.data.LoadData2D;
-import casmi.graph.data.MatrixData2D;
-import casmi.graph.view.DynamicCircleGraph;
-import casmi.graph.view.GraphTurnType;
+import casmi.chart.data.LoadData2D;
+import casmi.chart.data.MatrixData2D;
+import casmi.chart.view.ChartAxis;
+import casmi.chart.view.DynamicLineChart;
 
 /**
- * DynamicCircleGraph example.
+ * DynamicBarChat example.
  * 
- * @see casmi.graph.view.DynamicCircleGraph
- * @see casmi.graph.view.GraphTurnType
+ * @see casmi.chart.view.DynamicLineChart
  * 
  * @author Y. Ban
  */
-public class DynamicCircleGraphExample extends Applet {
+public class DynamicLineChartExample extends Applet {
+    
+    static final URL CSV_PATH = Applet.class.getResource("data2D.csv");
 
-    static final URL CSV_PATH = Applet.class.getResource("data2D4circle.csv");
-
-    DynamicCircleGraph circleGraph;
-    MatrixData2D       mat;
+    DynamicLineChart lineGraph;
+    MatrixData2D     mat;
 
     @Override
     public void setup() {
         setSize(1024, 768);
-        
-        mat = LoadData2D.loadWithoutAxisName(CSV_PATH);
 
-        circleGraph = new DynamicCircleGraph(mat, 200, GraphTurnType.CLOCKWISE);
-        circleGraph.setPosition(getWidth() / 2, getHeight() / 2);
-        addObject(circleGraph);
+        mat = LoadData2D.load(CSV_PATH);
+
+        lineGraph = new DynamicLineChart(800, 600, mat, 600, 0);
+        lineGraph.setDivisionSpace(ChartAxis.VERTICAL, 50);
+        lineGraph.setPosition(100, 100);
+        lineGraph.setTweenMilliSec(2000);
+        addObject(lineGraph);
     }
 
     @Override
@@ -62,16 +63,16 @@ public class DynamicCircleGraphExample extends Applet {
     @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {
         if (e == MouseEvent.PRESSED)
-            circleGraph.startTween();
+            lineGraph.startTween();
     }
 
     @Override
     public void keyEvent(KeyEvent e) {
         if (getKey() == 'r')
-            circleGraph.resetTween();
+            lineGraph.resetTween();
     }
 
     public static void main(String[] args) {
-        AppletRunner.run("casmi.graph.DynamicCircleGraphExample", "DynamicCircleGraph Example");
+        AppletRunner.run("casmi.graph.DynamicLineChartExample", "DynamicLineChart Example");
     }
 }
