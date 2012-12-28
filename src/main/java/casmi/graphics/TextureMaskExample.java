@@ -62,8 +62,8 @@ public class TextureMaskExample extends Applet {
 
         masked.setMask(mask);
 
-        tex.hidden();
-        mask.hidden();
+        tex.setVisible(false);
+        mask.setVisible(false);
         flg = 0;
 
         t = new Text("MaskedImage");
@@ -89,18 +89,18 @@ public class TextureMaskExample extends Applet {
             if (flg > 2)
                 flg = 0;
             if (flg == 0) {
-                masked.visible();
-                mask.hidden();
+                masked.setVisible(true);
+                mask.setVisible(false);
                 t.setText("MaskedImage");
             }
             if (flg == 1) {
-                tex.visible();
-                masked.hidden();
+                tex.setVisible(true);
+                masked.setVisible(false);
                 t.setText("BaseImage");
             }
             if (flg == 2) {
-                mask.visible();
-                tex.hidden();
+                mask.setVisible(true);
+                tex.setVisible(false);
                 t.setText("MaskImage");
             }
         }

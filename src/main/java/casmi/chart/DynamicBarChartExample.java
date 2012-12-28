@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-package casmi.graph;
+package casmi.chart;
 
 import java.net.URL;
 
@@ -25,36 +25,42 @@ import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseEvent;
-import casmi.graph.data.LoadData2D;
-import casmi.graph.data.MatrixData2D;
-import casmi.graph.view.DynamicCircleGraph;
-import casmi.graph.view.GraphTurnType;
+import casmi.chart.data.LoadData2D;
+import casmi.chart.data.MatrixData2D;
+import casmi.chart.view.ChartAxis;
+import casmi.chart.view.DynamicBarChart;
+import casmi.chart.view.DynamicBarChartTweenType;
+import casmi.graphics.color.ColorSet;
+import casmi.graphics.color.RGBColor;
 
 /**
- * DynamicCircleGraph example.
+ * DynamicBarChart example.
  * 
- * @see casmi.graph.view.DynamicCircleGraph
- * @see casmi.graph.view.GraphTurnType
+ * @see casmi.chart.view.DynamicBarChart
  * 
  * @author Y. Ban
  */
-public class DynamicCircleGraphExample extends Applet {
+public class DynamicBarChartExample extends Applet {
 
-    static final URL CSV_PATH = Applet.class.getResource("data2D4circle.csv");
+    static final URL CSV_PATH = Applet.class.getResource("data2D.csv");
 
-    DynamicCircleGraph circleGraph;
-    MatrixData2D       mat;
-
+    DynamicBarChart barGraph;
+    MatrixData2D    mat;
+ 
     @Override
     public void setup() {
         setSize(1024, 768);
-        
-        mat = LoadData2D.loadWithoutAxisName(CSV_PATH);
 
-        circleGraph = new DynamicCircleGraph(mat, 200, GraphTurnType.CLOCKWISE);
-        circleGraph.setPosition(getWidth() / 2, getHeight() / 2);
-        circleGraph.setAnimation(false);
-        addObject(circleGraph);
+        mat = LoadData2D.load(CSV_PATH);
+
+        barGraph = new DynamicBarChart(800, 600, mat, 600, 0);
+        barGraph.setPosition(100, 100);
+        barGraph.setDivisionSpace(ChartAxis.VERTICAL, 150);
+        barGraph.setBarColor(new RGBColor(ColorSet.ORANGE));
+        barGraph.setTweenType(DynamicBarChartTweenType.ORDER);
+        barGraph.setDelayMilliSec(100);
+        barGraph.setTweenMilliSec(500);
+        addObject(barGraph);
     }
 
     @Override
@@ -63,16 +69,16 @@ public class DynamicCircleGraphExample extends Applet {
     @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {
         if (e == MouseEvent.PRESSED)
-            circleGraph.startTween();
+            barGraph.startTween();
     }
 
     @Override
     public void keyEvent(KeyEvent e) {
         if (getKey() == 'r')
-            circleGraph.resetTween();
+            barGraph.resetTween();
     }
 
     public static void main(String[] args) {
-        AppletRunner.run("casmi.graph.DynamicCircleGraphExample", "DynamicCircleGraph Example");
+        AppletRunner.run("casmi.graph.DynamicBarChartExample", "DynamicBarChart Example");
     }
 }

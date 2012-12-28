@@ -1,46 +1,160 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<groupId>casmi</groupId>
-	<artifactId>casmi-examples</artifactId>
-	<version>0.3.0</version>
-	<packaging>jar</packaging>
+    <groupId>casmi</groupId>
+    <artifactId>casmi-examples</artifactId>
+    <version>0.3.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
-	<name>casmi-examples</name>
-	<url>http://casmi.github.com</url>
+    <name>casmi-examples</name>
+    <url>http://casmi.github.com/</url>
+    <description>Examples for casmi.</description>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
+    <organization>
+        <name>Xcoo, Inc.</name>
+        <url>http://www.xcoo.jp/</url>
+    </organization>
 
-	<repositories>
-		<repository>
-			<id>casmi</id>
-			<name>casmi</name>
-			<url>http://casmi.github.com/maven-repo/</url>
-		</repository>
-	</repositories>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
-	<dependencies>
-		<dependency>
-			<groupId>casmi</groupId>
-			<artifactId>casmi</artifactId>
-			<version>0.3.0</version>
-		</dependency>
-	</dependencies>
+    <repositories>
+        <repository>
+            <id>casmi</id>
+            <name>casmi</name>
+            <url>http://casmi.github.com/maven-repo/</url>
+        </repository>
+    </repositories>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.3.2</version>
-				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+    <dependencies>
+        <dependency>
+            <groupId>casmi</groupId>
+            <artifactId>casmi</artifactId>
+            <version>0.3.1-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.0</version>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    
+    <profiles>
+        <profile>
+            <id>default</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>production-mac</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>osxappbundle-maven-plugin</artifactId>
+                        <version>1.0-alpha-2</version>
+                        <configuration>
+                            <mainClass>casmi.AllExample</mainClass>
+                            <jvmVersion>1.6+</jvmVersion>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>bundle</goal>
+                                </goals>
+                            </execution>
+                       </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>production-win</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-shade-plugin</artifactId>
+                        <version>2.0</version>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>shade</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                        	<artifactSet>
+				                <excludes>
+				                    <exclude>org.jogamp.jogl:jogl-all</exclude>
+				                    <exclude>org.jogamp.gluegen:gluegen-rt</exclude>
+				                </excludes>
+				            </artifactSet>
+                            <transformers>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <manifestEntries>
+                                        <Main-Class>casmi.AllExample</Main-Class>
+                                        <Build-Number>${project.version}</Build-Number>
+                                    </manifestEntries>
+                                </transformer>
+                            </transformers>
+                            <shadedArtifactAttached>true</shadedArtifactAttached>
+                            <shadedClassifierName>shaded</shadedClassifierName>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>com.akathist.maven.plugins.launch4j</groupId>
+                        <artifactId>launch4j-maven-plugin</artifactId>
+                        <version>1.5.1</version>
+                        <executions>
+                            <execution>
+                                <id>l4j-gui</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>launch4j</goal>
+                                </goals>
+                                <configuration>
+                                    <headerType>gui</headerType>
+                                    <outfile>target/casmi-examples.exe</outfile>
+                                    <jar>target/${project.artifactId}-${project.version}-shaded.jar</jar>
+                                    <errTitle>casmi-examples</errTitle>
+                                    <classPath>
+                                        <mainClass>casmi.AllExample</mainClass>
+                                    </classPath>
+                                    <jre>
+                                        <minVersion>1.6.0</minVersion>
+                                    </jre>
+                                    <versionInfo>
+                                        <fileVersion>${project.version}</fileVersion>
+                                        <txtFileVersion>txt file version?</txtFileVersion>
+                                        <fileDescription>a description</fileDescription>
+                                        <copyright>Xcoo, Inc.</copyright>
+                                        <productVersion>${project.version}</productVersion>
+                                        <txtProductVersion>txt product version</txtProductVersion>
+                                        <productName>casmi-examples</productName>
+                                        <internalName>casmi-examples</internalName>
+                                        <originalFilename>casmi-examples.exe</originalFilename>
+                                    </versionInfo>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>

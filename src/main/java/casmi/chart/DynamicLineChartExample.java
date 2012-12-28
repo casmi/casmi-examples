@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-package casmi.graph;
+package casmi.chart;
 
 import java.net.URL;
 
@@ -25,22 +25,23 @@ import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseEvent;
-import casmi.graph.data.*;
-import casmi.graph.view.GraphAxis;
-import casmi.graph.view.DynamicLineGraph;
+import casmi.chart.data.LoadData2D;
+import casmi.chart.data.MatrixData2D;
+import casmi.chart.view.ChartAxis;
+import casmi.chart.view.DynamicLineChart;
 
 /**
- * DynamicBarGraph example.
+ * DynamicBarChat example.
  * 
- * @see casmi.graph.view.DynamicLineGraph
+ * @see casmi.chart.view.DynamicLineChart
  * 
  * @author Y. Ban
  */
-public class DynamicLineGraphExample extends Applet {
+public class DynamicLineChartExample extends Applet {
     
     static final URL CSV_PATH = Applet.class.getResource("data2D.csv");
 
-    DynamicLineGraph lineGraph;
+    DynamicLineChart lineGraph;
     MatrixData2D     mat;
 
     @Override
@@ -49,8 +50,8 @@ public class DynamicLineGraphExample extends Applet {
 
         mat = LoadData2D.load(CSV_PATH);
 
-        lineGraph = new DynamicLineGraph(800, 600, mat, 600, 0);
-        lineGraph.setDivisionSpace(GraphAxis.VERTICAL, 50);
+        lineGraph = new DynamicLineChart(800, 600, mat, 600, 0);
+        lineGraph.setDivisionSpace(ChartAxis.VERTICAL, 50);
         lineGraph.setPosition(100, 100);
         lineGraph.setTweenMilliSec(2000);
         addObject(lineGraph);
@@ -72,6 +73,6 @@ public class DynamicLineGraphExample extends Applet {
     }
 
     public static void main(String[] args) {
-        AppletRunner.run("casmi.graph.DynamicLineGraphExample", "DynamicLineGraph Example");
+        AppletRunner.run("casmi.graph.DynamicLineChartExample", "DynamicLineChart Example");
     }
 }
