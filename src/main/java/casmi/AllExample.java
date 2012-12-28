@@ -80,7 +80,7 @@ public class AllExample extends JFrame {
         { "casmi.graphics.QuadTextureExample",                 "Quad Texture Example"        },
         { "casmi.graphics.RectExample",                        "Rect Example"                },
         { "casmi.graphics.RotateExample",                      "Rotate Example"              },
-        { "casmi.graphics.RoundrectExmaple",                   "Roundrect Example"           },
+        { "casmi.graphics.RoundrectExample",                   "Roundrect Example"           },
         { "casmi.graphics.SphereExample",                      "Sphere Example"              },
         { "casmi.graphics.SphereTextureExample",               "Sphere Texture Example"      },
         { "casmi.graphics.TextBoxExample",                     "TextBox Example"             },
@@ -186,7 +186,7 @@ public class AllExample extends JFrame {
                         currentApplication = AppletRunner.frame;
                         break;
                     }
-                }                
+                }              
             }
         });
         
