@@ -72,6 +72,6 @@ public class DynamicCircleChartExample extends Applet {
     }
 
     public static void main(String[] args) {
-        AppletRunner.run("casmi.graph.DynamicCircleChartExample", "DynamicCircleChart Example");
+        AppletRunner.run("casmi.chart.DynamicCircleChartExample", "DynamicCircleChart Example");
     }
 }
