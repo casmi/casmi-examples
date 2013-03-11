@@ -73,6 +73,6 @@ public class DynamicLineChartExample extends Applet {
     }
 
     public static void main(String[] args) {
-        AppletRunner.run("casmi.graph.DynamicLineChartExample", "DynamicLineChart Example");
+        AppletRunner.run("casmi.chart.DynamicLineChartExample", "DynamicLineChart Example");
     }
 }
