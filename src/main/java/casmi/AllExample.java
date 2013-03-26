@@ -32,7 +32,7 @@ import javax.swing.tree.TreePath;
 
 /**
  * Example launcher.
- * 
+ *
  * @author T. Takeuchi
  */
 public class AllExample extends JFrame {
@@ -89,41 +89,38 @@ public class AllExample extends JFrame {
         { "casmi.graphics.TextureExample",                     "Texture Example"             },
         { "casmi.graphics.TextureMaskExample",                 "Texture Mask Example"        },
         { "casmi.graphics.TriangleExample",                    "Triangle Example"            },
-   
+
         { "casmi.graphics.color", "" },
         { "casmi.graphics.color.ColorSetExample",              "ColorSet Example"            },
         { "casmi.graphics.color.GrayColorExample",             "GrayColor Example"           },
         { "casmi.graphics.color.LerpColorExample",             "LerpColor Example"           },
-        
+
         { "casmi.graphics.font", "" },
         { "casmi.graphics.font.FontExample",                   "Font Example"                },
-        
+
         { "casmi.graphics.gradation", "" },
         { "casmi.graphics.gradation.GradationBezierExample",   "Gradation Bezier Example"    },
         { "casmi.graphics.gradation.GradationBoxExample",      "Gradation Box Example"       },
         { "casmi.graphics.gradation.GradationExample",         "Gradation Example"           },
-        
+
         { "casmi.graphics.group", "" },
         { "casmi.graphics.group.GroupColorExample",            "Group Color Example"         },
         { "casmi.graphics.group.GroupExample",                 "Group Example"               },
-        
+
         { "casmi.graphics.mouseover", "" },
         { "casmi.graphics.mouseover.MouseOverColorSetExample", "MouseOver ColorSet Example"  },
         { "casmi.graphics.mouseover.MouseOverExample",         "MouseOver Example"           },
         { "casmi.graphics.mouseover.MouseOverGroupExample",    "MouseOver Group Example"     },
         { "casmi.graphics.mouseover.MouseOverTextExample",     "MouseOver Text Example"      },
-        
+
         { "casmi.graphics.object", "" },
         { "casmi.graphics.object.ObjectExample",               "Object Example"              },
         { "casmi.graphics.object.RemoveExample",               "Remove Example"              },
-        
-        { "casmi.sound", "" },
-        { "casmi.sound.SoundExample",                          "Sound Example"               },
-        
+
         { "casmi.timeline", "" },
         { "casmi.timeline.TimelineActiveExample",              "Timeline Active Example"     },
         { "casmi.timeline.TimelineExample",                    "Timeline Example"            },
-        
+
         { "casmi.tween", "" },
         { "casmi.tween.TweenCursorExample",                    "Tween Cursor Example"        },
         { "casmi.tween.TweenEquationsExample",                 "Tween Equations Example"     },
@@ -134,17 +131,17 @@ public class AllExample extends JFrame {
         { "casmi.tween.TweenSimpleExample",                    "Tween Simple Example"        },
         { "casmi.tween.TweenVertexExample",                    "Tween Vertex Example"        }
     };
-    
+
     JTree tree;
     JFrame currentApplication;
-    
+
     public AllExample() {
         super();
-        
+
         setTitle("Example Launcher");
         setBounds(50, 50, 300, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
+
         DefaultMutableTreeNode rootNode = new DefaultMutableTreeNode("Examples");
 
         DefaultMutableTreeNode node = null;
@@ -156,29 +153,29 @@ public class AllExample extends JFrame {
                 node.add(new DefaultMutableTreeNode(s[1]));
             }
         }
-        
+
         DefaultTreeModel model = new DefaultTreeModel(rootNode);
         tree = new JTree(model);
-        
+
         JScrollPane sp = new JScrollPane();
         sp.getViewport().setView(tree);
-        
+
         JButton button = new JButton("Run");
         button.addActionListener(new ActionListener() {
-            
+
             @Override
-            public void actionPerformed(ActionEvent arg0) {                
+            public void actionPerformed(ActionEvent arg0) {
                 TreePath path = tree.getSelectionPath();
                 if (path == null) {
                     return;
                 }
-                
+
                 if (currentApplication != null) {
                     currentApplication.dispose();
-                }               
-                
+                }
+
                 String title = path.getLastPathComponent().toString();
-                
+
                 for (String[] s : EXAMPLES) {
                     if (title.equals(s[1])) {
                         AppletRunner.run(s[0], s[1]);
@@ -186,16 +183,16 @@ public class AllExample extends JFrame {
                         currentApplication = AppletRunner.frame;
                         break;
                     }
-                }              
+                }
             }
         });
-        
+
         getContentPane().add(sp, BorderLayout.CENTER);
         getContentPane().add(button, BorderLayout.SOUTH);
-        
+
         setVisible(true);
     }
-    
+
     public static void main(String[] args) {
         new AllExample();
     }
