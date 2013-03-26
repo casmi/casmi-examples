@@ -79,6 +79,6 @@ public class DynamicBarChartExample extends Applet {
     }
 
     public static void main(String[] args) {
-        AppletRunner.run("casmi.graph.DynamicBarChartExample", "DynamicBarChart Example");
+        AppletRunner.run("casmi.chart.DynamicBarChartExample", "DynamicBarChart Example");
     }
 }

@@ -1,5 +1,6 @@
-bin/
-target/
-rsrc/*.sqlite3
-rsrc/write_example.xml
-rsrc/write_example.csv
+bin/**
+target/**
+.project
+.metadata
+.classpath
+.settings/

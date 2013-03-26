@@ -21,7 +21,9 @@ package casmi;
 import casmi.graphics.color.ColorSet;
 import casmi.graphics.element.Box;
 import casmi.graphics.element.Line;
+import casmi.graphics.object.Camera;
 import casmi.graphics.object.GraphicsObject;
+import casmi.graphics.object.Perspective;
 
 /**
  * Trackball example.
@@ -37,6 +39,9 @@ public class TrackballExample extends Applet {
     Trackball trackball;
     
     int prvMouseX = 0, prvMouseY = 0;
+    
+    Perspective p;
+    Camera c;
     
     @Override
     public void setup() {
@@ -57,14 +62,20 @@ public class TrackballExample extends Applet {
         group.add(lines[1]);
         group.add(lines[2]);
         
-        box = new Box(100.0);
+        box = new Box(1.0);
         box.setStrokeColor(ColorSet.GRAY);
         box.setFillColor(ColorSet.WHITE);
         group.add(box);
         
-        group.setPosition(getWidth() / 2.0, getHeight() / 2.0);
+       // group.setPosition(getWidth() / 2.0, getHeight() / 2.0);
         
         addObject(group);
+        
+        p = new Perspective(30.0, (double)getWidth() / (double)getHeight(), 1.0, 100.0);
+        c = new Camera(3.0, 4.0, 5.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
+        
+        setPerspective(p);
+        setCamera(c);
         
         // Create Trackball object.
         trackball = new Trackball(this);
