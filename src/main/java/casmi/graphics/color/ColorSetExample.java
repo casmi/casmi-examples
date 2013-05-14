@@ -29,10 +29,11 @@ import casmi.MouseEvent;
 import casmi.graphics.element.RoundRect;
 
 /**
- * Example of Graphics.
- * 
+ * Example of ColorSet.
+ *
  * @author K. Nishimura
- * 
+ *
+ * @see casmi.graphics.color.ColorSet
  */
 public class ColorSetExample extends Applet {
 
@@ -61,7 +62,7 @@ public class ColorSetExample extends Applet {
             addObject(rr);
         }
     }
-    
+
     @Override
     public void update() {}
 
@@ -70,9 +71,9 @@ public class ColorSetExample extends Applet {
 
     @Override
     public void keyEvent(KeyEvent e) {}
-    
+
     public static void main(String[] args) {
-        AppletRunner.run("casmi.graphics.color.ColorSetExample", "Color Set Example");
+        AppletRunner.run("casmi.graphics.color.ColorSetExample", "ColorSet Example");
     }
 
 }

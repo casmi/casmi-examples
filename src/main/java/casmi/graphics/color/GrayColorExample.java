@@ -27,9 +27,9 @@ import casmi.graphics.element.Circle;
 
 /**
  * GrayColor class example.
- * 
+ *
  * @author T. Takeuchi
- * 
+ *
  * @see casmi.graphics.color.Color
  * @see casmi.graphics.color.GrayColor
  */
@@ -38,8 +38,8 @@ public class GrayColorExample extends Applet {
     @Override
     public void setup() {
         setSize(640, 480);
-        
-        for (int i = 1; i <= 10; i++) {
+
+        for (int i = 1; i <= 10; ++i) {
             Circle circle = new Circle(getWidth() / 2 + 55 * (i - 6), getHeight() / 2, 23);
             circle.setFillColor(new GrayColor(0.1 * i));
             addObject(circle);
@@ -58,5 +58,5 @@ public class GrayColorExample extends Applet {
     public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.color.GrayColorExample", "GrayColor Example");
     }
-    
+
 }
