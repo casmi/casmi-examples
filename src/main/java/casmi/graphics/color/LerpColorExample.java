@@ -27,9 +27,9 @@ import casmi.graphics.element.Rect;
 
 /**
  * Example for lerp of colors.
- * 
- * @author Y.Ban
- * 
+ *
+ * @author Y. Ban
+ *
  * @see casmi.graphics.color.RGBColor#lerpColor(Color, Color, double)
  */
 public class LerpColorExample extends Applet {
@@ -42,7 +42,7 @@ public class LerpColorExample extends Applet {
     public void setup() {
         setSize(800, 600);
 
-        for (int i = 0; i < rects.length; i++) {
+        for (int i = 0; i < rects.length; ++i) {
             rects[i] = new Rect(100, 300);
             rects[i].setStrokeWidth(5);
             rects[i].setStrokeColor(ColorSet.WHITE);
@@ -68,13 +68,13 @@ public class LerpColorExample extends Applet {
 
     @Override
     public void update() {}
-    
+
     @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {}
 
     @Override
     public void keyEvent(KeyEvent e) {}
-    
+
     public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.color.LerpColorExample", "LerpColorExample");
     }

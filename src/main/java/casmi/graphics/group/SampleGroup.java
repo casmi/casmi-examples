@@ -44,11 +44,11 @@ public class SampleGroup extends Group {
     Font     f;
     Text 	 t;
     TextBox tb;
-    
+
     TweenElement te;
-    
+
     TweenManager manager = new TweenManager();
-    
+
     boolean    tweenstart;
     TweenFloat tf;
     double     tx, ty;
@@ -60,38 +60,38 @@ public class SampleGroup extends Group {
 
     @Override
     public void setup() {
-        
+
         r1 = new Rect(420, 210);
         r1.setStroke(false);
         r1.setFillColor(ColorSet.LIGHT_GOLDENROD_YELLOW);
         add(r1);
-        
+
         r2 = new Rect(420, 90);
         r2.setStroke(false);
         r2.setFillColor(ColorSet.BLACK);
         add(r2);
-        
+
         l1 = new Line(-90, 0, 210, 0);
         l1.setStrokeColor(ColorSet.LIGHT_GOLDENROD_YELLOW);
         l1.setStrokeWidth(2);
         add(l1);
-        
+
         t1 = new Triangle(-90, 0, -70, 0, -80, 8);
         t1.setStroke(false);
         t1.setFillColor(ColorSet.LIGHT_GOLDENROD_YELLOW);
         add(t1);
-        
+
         f = new Font("COPPERPLATE", FontStyle.PLAIN, 14);
-        
+
         tf = new TweenFloat(0);
-        
+
         tx = t1.getX();
         ty = t1.getY();
-        
+
         t1.setPosition(tx + tf.getValue(), ty);
-        
+
         l1.set((-90 + tf.getValue()), 0, 210, 0);
-        
+
         t = new Text("test",f);
         t.setStrokeColor(ColorSet.WHITE);
       //  add(t);
@@ -101,14 +101,14 @@ public class SampleGroup extends Group {
 
     @Override
     public void update() {
-        
+
         if (isTweenstart()) {
             tf.setValue(280);
             setTweenstart(false);
             manager = new TweenManager();
             addTweenManager(manager);
 
-            TweenParallelGroup tpg = 
+            TweenParallelGroup tpg =
                 TweenParallelGroup.create(
                     Tween.to(tf, 3500, Quint.OUT).target(0)
                     );

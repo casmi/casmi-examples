@@ -26,24 +26,24 @@ import casmi.MouseEvent;
 
 /**
  * Example of {@link casmi.ui.Indicator} class.
- * 
+ *
  * @author T. Takeuchi
- * 
+ *
  * @see casmi.ui.Indicator
  */
 public class IndicatorExample extends Applet {
 
     Indicator indicator;
-    
+
     @Override
     public void setup() {
         setSize(200, 200);
-        
+
         indicator = new Indicator();
         indicator.setPosition(getWidth() / 2.0, getHeight() / 2.0);
         indicator.setHideWhenStopped(true);
         addObject(indicator);
-        
+
         indicator.start();
     }
 
