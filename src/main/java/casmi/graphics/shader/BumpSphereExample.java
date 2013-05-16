@@ -1,8 +1,6 @@
-package casmi.graphics.shader;
-
 /*
  *   casmi examples
- *   http://casmi.github.com/
+ *   http://casmi.github.io/
  *   Copyright (C) 2011, Xcoo, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,6 +16,7 @@ package casmi.graphics.shader;
  * limitations under the License.
  */
 
+package casmi.graphics.shader;
 
 import casmi.Applet;
 import casmi.AppletRunner;
@@ -32,13 +31,16 @@ import casmi.graphics.object.LightMode;
 import casmi.graphics.object.Perspective;
 
 /**
- * BumpShading example for Sphere
+ * BumpShading example for Sphere.
  *
- * @see casmi.graphics.shader
+ * @author Y. Ban
  *
- * @author Y. BAN
+ * @see casmi.graphics.shader.Shader
  */
 public class BumpSphereExample extends Applet {
+
+    static final String EARTH_IMAGE_PATH = Applet.class.getResource("earthDiffuse.png").getPath();
+    static final String EARTH_NORMAL_IMAGE_PATH = Applet.class.getResource("earthNormal.png").getPath();
 
     Sphere s = new Sphere(1.3, 50, 50);
     Light light = new Light(LightMode.DIRECTION);
@@ -66,8 +68,8 @@ public class BumpSphereExample extends Applet {
         m.specular(specular);
         m.shininess(100.0f);
 
-        Texture earth = new Texture(Applet.class.getResource("earthDiffuse.png"));
-        Texture normal = new Texture(Applet.class.getResource("earthNormal.png"));
+        Texture earth = new Texture(EARTH_IMAGE_PATH);
+        Texture normal = new Texture(EARTH_NORMAL_IMAGE_PATH);
 
         light.setAmbient(lightAmbient);
         light.setDiffuse(lightDiffuse);
@@ -76,7 +78,7 @@ public class BumpSphereExample extends Applet {
         s.setPosition(0, 0, -5);
         s.setRotation(90, 1, 0, 0);
         s.setStroke(false);
-        p = new Perspective(50.0f, getWidth()/(double)getHeight(), 1.0, 1000.0);
+        p = new Perspective(50.0, getWidth() / (double)getHeight(), 1.0, 1000.0);
         setPerspective(p);
         s.setMaterial(m);
         s.setShader(shader);
@@ -97,13 +99,13 @@ public class BumpSphereExample extends Applet {
 
     @Override
     public void keyEvent(KeyEvent e) {
-        if(e == KeyEvent.PRESSED){
-        if(getKey()=='s'){
-            if(s.isEnableShader())
-                s.disableShader();
-            else
-                s.enableShader();
-        }
+        if (e == KeyEvent.PRESSED) {
+            if (getKey() == 's') {
+                if (s.isEnableShader())
+                    s.disableShader();
+                else
+                    s.enableShader();
+            }
         }
     }
 

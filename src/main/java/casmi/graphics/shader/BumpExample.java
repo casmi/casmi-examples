@@ -1,9 +1,6 @@
-package casmi.graphics.shader;
-
-
 /*
  *   casmi examples
- *   http://casmi.github.com/
+ *   http://casmi.github.io/
  *   Copyright (C) 2011, Xcoo, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,6 +16,7 @@ package casmi.graphics.shader;
  * limitations under the License.
  */
 
+package casmi.graphics.shader;
 
 import casmi.Applet;
 import casmi.AppletRunner;
@@ -34,13 +32,16 @@ import casmi.graphics.object.LightMode;
 import casmi.graphics.object.Perspective;
 
 /**
- * BumpShading example
+ * BumpShading example.
  *
- * @see casmi.graphics.shader
+ * @author Y. Ban
  *
- * @author Y. BAN
+ * @see casmi.graphics.shader.Shader
  */
 public class BumpExample extends Applet {
+
+    static final String IMAGE_PATH = Applet.class.getResource("japan.png").getPath();
+    static final String NORMAL_IMAGE_PATH = Applet.class.getResource("japanNormal.png").getPath();
 
     TexObject texo;
     double rot = 0.0;
@@ -58,8 +59,8 @@ public class BumpExample extends Applet {
         Material m = new Material();
 
         public TexObject() {
-            tex = new Texture(Applet.class.getResource("japan.png"));
-            normal = new Texture(Applet.class.getResource("japanNormal.png"));
+            tex = new Texture(IMAGE_PATH);
+            normal = new Texture(NORMAL_IMAGE_PATH);
             tex.setWidth(tex.getWidth() / 1.2);
             tex.setRotation(rot, 0.0, 1.0, 0.0);
 
@@ -79,11 +80,7 @@ public class BumpExample extends Applet {
         }
 
         @Override
-        public void update() {
-            /*    rot += 1.0;
-            tex.setRotation(rot, 0.0, 1.0, 0.0);
-*/
-        }
+        public void update() {}
     }
 
     @Override
@@ -99,18 +96,17 @@ public class BumpExample extends Applet {
         light.setSpecular(lightSpecular);
         light.setDirection(lightPos[0], lightPos[1], lightPos[2]);
 
-        p = new Perspective(50.0f, getWidth()/(double)getHeight(), 1.0, 1000.0);
+        p = new Perspective(50.0, getWidth() / (double)getHeight(), 1.0, 1000.0);
         setPerspective(p);
         texo.setScale(0.01);
-        texo.setPosition(0,0,-5);
+        texo.setPosition(0, 0, -5);
         addObject(texo);
         addLight(light);
         trackball = new Trackball(this);
     }
 
     @Override
-    public void update() {
-    }
+    public void update() {}
 
     @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {

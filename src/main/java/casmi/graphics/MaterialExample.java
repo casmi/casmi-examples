@@ -1,6 +1,6 @@
 /*
  *   casmi examples
- *   http://casmi.github.com/
+ *   http://casmi.github.io/
  *   Copyright (C) 2011, Xcoo, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -38,74 +38,74 @@ import casmi.matrix.Vertex;
  */
 public class MaterialExample extends Applet {
 
-	Sphere s1 = new Sphere(70.0);
-	Sphere s2 = new Sphere(70.0);
-	Sphere s3 = new Sphere(70.0);
+    Sphere s1 = new Sphere(70.0);
+    Sphere s2 = new Sphere(70.0);
+    Sphere s3 = new Sphere(70.0);
 
-	Material m1 = new Material();
-	Material m2 = new Material();
-	Material m3 = new Material();
+    Material m1 = new Material();
+    Material m2 = new Material();
+    Material m3 = new Material();
 
-	Light l = new Light(LightMode.SPOT);
+    Light l = new Light(LightMode.SPOT);
 
-	Color c = new RGBColor(1.0, 1.0, 1.0);
+    Color c = new RGBColor(1.0, 1.0, 1.0);
 
-	Vertex v1 = new Vertex(1000, 1000, 1000);
-	Vertex v2 = new Vertex(-10, 0, -10);
+    Vertex v1 = new Vertex(1000, 1000, 1000);
+    Vertex v2 = new Vertex(-10, 0, -10);
 
-	float emerald_ambient[]   = {  0.0115f,   0.745f,     0.0115f,   1.0f };
-	float emerald_diffuse[]   = {  0.07568f,  0.61424f,   0.07568f,  1.0f };
-	float emerald_specular[]  = {  0.733f,    0.927811f,  0.733f,    1.0f };
-	float emerald_shininess =  60.8f;
+    float emerald_ambient[] = {0.0115f, 0.745f, 0.0115f, 1.0f};
+    float emerald_diffuse[] = {0.07568f, 0.61424f, 0.07568f, 1.0f};
+    float emerald_specular[] = {0.733f, 0.927811f, 0.733f, 1.0f};
+    float emerald_shininess = 60.8f;
 
-	@Override
-	public void setup() {
-		setSize(800, 600);
+    @Override
+    public void setup() {
+        setSize(800, 600);
 
-		s1.setStroke(false);
-		m1.shininess(3);
-		m1.ambient(2);
-		m1.diffuse((float) ( 0.5), (float) ( 0.5), (float) ( 0.9));
-		m1.specular((float)(30/255.0));
-		s1.setMaterial(m1);
+        s1.setStroke(false);
+        m1.shininess(3);
+        m1.ambient(2);
+        m1.diffuse((float)(0.5), (float)(0.5), (float)(0.9));
+        m1.specular((float)(30 / 255.0));
+        s1.setMaterial(m1);
 
-		s2.setStroke(false);
-		m2.shininess(emerald_shininess);
-		m2.ambient(emerald_ambient);
-		m2.diffuse(emerald_diffuse);
-		m2.specular(emerald_specular);
-		s2.setMaterial(m2);
+        s2.setStroke(false);
+        m2.shininess(emerald_shininess);
+        m2.ambient(emerald_ambient);
+        m2.diffuse(emerald_diffuse);
+        m2.specular(emerald_specular);
+        s2.setMaterial(m2);
 
-		s3.setStroke(false);
-		m3.shininess(100f);
-		m3.ambient((float)(250/255.0));
-		m3.diffuse((float) ( 0.9), (float) ( 0.6), (float) ( 0.6));
-		m3.specular((float)(200/255.0));
-		s3.setMaterial(m3);
+        s3.setStroke(false);
+        m3.shininess(100f);
+        m3.ambient((float)(250 / 255.0));
+        m3.diffuse((float)(0.9), (float)(0.6), (float)(0.6));
+        m3.specular((float)(200 / 255.0));
+        s3.setMaterial(m3);
 
         s1.setPosition(150, 300, 100);
         s2.setPosition(400, 300, 100);
         s3.setPosition(650, 300, 100);
-		addObject(s1);
-		addObject(s2);
-		addObject(s3);
-		addLight(l);
-		l.setAngle(30);
-		l.setPosition(v2);
-		l.setDirection(1, 0, 1);
-		l.setColor(c);
-	}
+        addObject(s1);
+        addObject(s2);
+        addObject(s3);
+        addLight(l);
+        l.setAngle(30);
+        l.setPosition(v2);
+        l.setDirection(1, 0, 1);
+        l.setColor(c);
+    }
 
-	@Override
+    @Override
     public void update() {}
 
-	@Override
-	public void mouseEvent(MouseEvent e, MouseButton b) {}
+    @Override
+    public void mouseEvent(MouseEvent e, MouseButton b) {}
 
-	@Override
-	public void keyEvent(KeyEvent e) {}
+    @Override
+    public void keyEvent(KeyEvent e) {}
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.MaterialExample", "MaterialExample");
     }
 

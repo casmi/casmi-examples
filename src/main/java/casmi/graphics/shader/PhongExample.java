@@ -1,9 +1,6 @@
-package casmi.graphics.shader;
-
-
 /*
  *   casmi examples
- *   http://casmi.github.com/
+ *   http://casmi.github.io/
  *   Copyright (C) 2011, Xcoo, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,6 +16,7 @@ package casmi.graphics.shader;
  * limitations under the License.
  */
 
+package casmi.graphics.shader;
 
 import casmi.Applet;
 import casmi.AppletRunner;
@@ -33,17 +31,21 @@ import casmi.graphics.object.LightMode;
 import casmi.graphics.object.Perspective;
 
 /**
- * PhongShading example
+ * PhongShading example.
  *
- * @see casmi.graphics.shader
+ * @author Y. Ban
  *
- * @author Y. BAN
+ * @see casmi.graphics.shader.Shader
  */
 public class PhongExample extends Applet {
 
-    Sphere s1 = new Sphere(0.7, 50, 50), s2 = new Sphere(0.5, 50, 50);
+    static final String IMAGE_PATH = Applet.class.getResource("earthDiffuse.png").getPath();
+
+    Sphere s1 = new Sphere(0.7, 50, 50);
+    Sphere s2 = new Sphere(0.5, 50, 50);
     Light light = new Light(LightMode.DIRECTION);
-    Material m = new Material(), m2 = new Material();
+    Material m = new Material();
+    Material m2 = new Material();
     Perspective p;
     double lightPos[] = {10.0, 15.0, 10.0, 0.0};
     Shader shaderT = new Shader("Texture");
@@ -77,14 +79,14 @@ public class PhongExample extends Applet {
         m2.specular(specular2);
         m2.shininess(100.0f);
 
-        Texture earth = new Texture(Applet.class.getResource("earthDiffuse.png"));
+        Texture earth = new Texture(IMAGE_PATH);
 
         light.setAmbient(lightAmbient);
         light.setDiffuse(lightDiffuse);
         light.setSpecular(lightSpecular);
         light.setDirection(lightPos[0], lightPos[1], lightPos[2]);
         s1.setPosition(-1.5, 0, -5);
-        p = new Perspective(50.0f, getWidth()/(double)getHeight(), 1.0, 1000.0);
+        p = new Perspective(50.0, getWidth() / (double)getHeight(), 1.0, 1000.0);
         setPerspective(p);
         s1.setMaterial(m);
         s1.setShader(shaderT);
@@ -104,13 +106,13 @@ public class PhongExample extends Applet {
 
     @Override
     public void keyEvent(KeyEvent e) {
-        if(e == KeyEvent.PRESSED){
-        if(getKey()=='s'){
-            if(s1.isEnableShader())
-                s1.disableShader();
-            else
-                s1.enableShader();
-        }
+        if (e == KeyEvent.PRESSED) {
+            if (getKey() == 's') {
+                if (s1.isEnableShader())
+                    s1.disableShader();
+                else
+                    s1.enableShader();
+            }
         }
     }
 
