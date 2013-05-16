@@ -2,13 +2,12 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>casmi</groupId>
     <artifactId>casmi-examples</artifactId>
-    <version>0.3.2</version>
+    <version>0.4.0</version>
     <packaging>jar</packaging>
 
     <name>casmi-examples</name>
-    <url>http://casmi.github.com/</url>
+    <url>http://casmi.github.io/</url>
     <description>Examples for casmi.</description>
 
     <organization>
@@ -30,9 +29,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>casmi</groupId>
+            <groupId>com.github.casmi</groupId>
             <artifactId>casmi</artifactId>
-            <version>0.3.2</version>
+            <version>0.3.3-SNAPSHOT</version>
         </dependency>
     </dependencies>
 
@@ -157,4 +156,5 @@
             </build>
         </profile>
     </profiles>
+    <groupId>com.github.casmi</groupId>
 </project>

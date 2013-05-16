@@ -25,7 +25,6 @@ import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseEvent;
-import casmi.chart.data.LoadData2D;
 import casmi.chart.data.MatrixData2D;
 import casmi.chart.view.ChartTurnType;
 import casmi.chart.view.DynamicCircleChart;
@@ -49,8 +48,14 @@ public class DynamicCircleChartExample extends Applet {
     public void setup() {
         setSize(1024, 768);
         
-        mat = LoadData2D.loadWithoutAxisName(CSV_PATH);
+        mat = new MatrixData2D();
+        
+        mat.appendData("A", 60);
+        mat.appendData("B", 25);
+        mat.appendData("c", 15);
 
+        mat.calculate();
+        
         circleGraph = new DynamicCircleChart(mat, 200, ChartTurnType.CLOCKWISE);
         circleGraph.setPosition(getWidth() / 2, getHeight() / 2);
         addObject(circleGraph);

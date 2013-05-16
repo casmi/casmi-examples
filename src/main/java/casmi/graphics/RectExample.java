@@ -67,7 +67,7 @@ public class RectExample extends Applet {
 	public void keyEvent(KeyEvent e) {}
 	
 	public static void main(String[] args) {
-        AppletRunner.run("casmi.graphics.RectExample", "RectExample");
+        AppletRunner.run(new RectExample(), "RectExample");
     }
 
 }

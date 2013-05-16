@@ -16,22 +16,22 @@
  * limitations under the License.
  */
 
-package casmi;
+package casmi.ui;
 
 import casmi.Applet;
 import casmi.AppletRunner;
-import casmi.PopupMenu;
 import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseEvent;
 import casmi.graphics.color.Color;
 import casmi.graphics.color.ColorSet;
 import casmi.graphics.color.RGBColor;
+import casmi.ui.PopupMenu;
 
 /**
  * @author S. Yoshida
  *
- * @see casmi.PopupMenu
+ * @see casmi.ui.PopupMenu
  */
 public class PopupMenuExample extends Applet {
 	

@@ -25,7 +25,6 @@ import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseEvent;
-import casmi.chart.data.LoadData2D;
 import casmi.chart.data.MatrixData2D;
 import casmi.chart.view.ChartAxis;
 import casmi.chart.view.DynamicLineChart;
@@ -48,12 +47,28 @@ public class DynamicLineChartExample extends Applet {
     public void setup() {
         setSize(1024, 768);
 
-        mat = LoadData2D.load(CSV_PATH);
+        mat = new MatrixData2D();
+        
+        mat.setAxis("year", "data");
+        
+        mat.appendData("1996", 50);
+        mat.appendData("2001", 140);
+        mat.appendData("2004", 340);
+        mat.appendData("2005", 40);
+        mat.appendData("2007", 280);
+        mat.appendData("2009", 480);
+        mat.appendData("2010", 580);
+        mat.appendData("2011", 400);
+        mat.appendData("2012", 599);
+        mat.appendData("2013", 200);
+        
+        mat.calculate();
 
         lineGraph = new DynamicLineChart(800, 600, mat, 600, 0);
         lineGraph.setDivisionSpace(ChartAxis.VERTICAL, 50);
         lineGraph.setPosition(100, 100);
         lineGraph.setTweenMilliSec(2000);
+        
         addObject(lineGraph);
     }
 
