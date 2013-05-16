@@ -33,7 +33,7 @@ import casmi.matrix.Vertex;
 
 /**
  * Example of Graphics.
- * 
+ *
  * @author Y.Ban
  */
 public class MaterialExample extends Applet {
@@ -47,16 +47,16 @@ public class MaterialExample extends Applet {
 	Material m3 = new Material();
 
 	Light l = new Light(LightMode.SPOT);
-	
+
 	Color c = new RGBColor(1.0, 1.0, 1.0);
-	
+
 	Vertex v1 = new Vertex(1000, 1000, 1000);
 	Vertex v2 = new Vertex(-10, 0, -10);
 
 	float emerald_ambient[]   = {  0.0115f,   0.745f,     0.0115f,   1.0f };
 	float emerald_diffuse[]   = {  0.07568f,  0.61424f,   0.07568f,  1.0f };
 	float emerald_specular[]  = {  0.733f,    0.927811f,  0.733f,    1.0f };
-	float emerald_shininess[] = { 60.8f };
+	float emerald_shininess =  60.8f;
 
 	@Override
 	public void setup() {
@@ -82,7 +82,7 @@ public class MaterialExample extends Applet {
 		m3.diffuse((float) ( 0.9), (float) ( 0.6), (float) ( 0.6));
 		m3.specular((float)(200/255.0));
 		s3.setMaterial(m3);
-		
+
         s1.setPosition(150, 300, 100);
         s2.setPosition(400, 300, 100);
         s3.setPosition(650, 300, 100);
@@ -104,7 +104,7 @@ public class MaterialExample extends Applet {
 
 	@Override
 	public void keyEvent(KeyEvent e) {}
-	
+
 	public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.MaterialExample", "MaterialExample");
     }
