@@ -18,8 +18,6 @@ package casmi.graphics.shader;
  * limitations under the License.
  */
 
-import java.net.URL;
-
 import casmi.Applet;
 import casmi.AppletRunner;
 import casmi.KeyEvent;
@@ -32,8 +30,6 @@ import casmi.graphics.element.MouseClickCallback;
 import casmi.graphics.element.Rect;
 import casmi.graphics.element.Text;
 import casmi.graphics.element.Texture;
-import casmi.graphics.element.Triangle;
-import casmi.graphics.group.Group;
 
 /**
  * GlowShading example
@@ -45,71 +41,16 @@ import casmi.graphics.group.Group;
 
 public class GlowExample extends Applet {
 
-    Rect r1,r2, r3;
-    Triangle tr1;
+    static final String IMAGE_PATH = Applet.class.getResource("logo.png").getPath();
+    Rect r1,r2,r3;
     Circle c;
     MouseClickCallback mouseover;
     Text t;
     double radian = 0;
 
-    TexObject texo;
     Texture tex;
-    GroupObject go;
 
     double rot = 0.0;
-
-    class GroupObject extends Group {
-        private Rect r1,r2;
-
-        public GroupObject() {
-            r1 = new Rect(100, 100);
-            r1.setPosition(100,100);
-            r2 = new Rect(100, 100);
-            r2.setPosition(150,150);
-            r1.setFillColor(ColorSet.DARK_GREEN);
-            r1.setStroke(false);
-            r2.setFillColor(ColorSet.RED);
-            r2.setStroke(false);
-           // r1.enableBlur();
-           // r2.enableBlur();
-           // r2.setBlurMode(BlurMode.Glow);
-            add(r1);
-            add(r2);
-        }
-
-        @Override
-        public void update() {
-            // TODO Auto-generated method stub
-
-        }
-
-    }
-
-    class TexObject extends Group {
-
-        private URL IMAGE_PATH = Applet.class.getResource("/img/logo.png");
-        private Texture tex;
-        private double rot = 0.0;
-
-        public TexObject() {
-            tex = new Texture(IMAGE_PATH);
-            tex.setPosition(500, 100);
-            tex.setWidth(tex.getWidth() / 1.2);
-            tex.setRotation(rot, 0.0, 1.0, 0.0);
-
-            add(tex);
-        }
-
-        @Override
-        public void update() {
-            rot += 2.0;
-            tex.setRotation(rot, 0.0, 1.0, 0.0);
-
-        }
-
-    }
-
-
 
     @Override
     public void setup() {
@@ -124,7 +65,6 @@ public class GlowExample extends Applet {
         t.getFont().setSize(50);
         t.setStrokeColor(ColorSet.LIGHT_BLUE);
         t.setPosition(70, 70);
-        tr1 = new Triangle(400, 500, 500, 550, 550, 500);
         r1.setFillColor(ColorSet.DARK_GREEN);
         r2.setFillColor(ColorSet.ORANGE);
         r2.setStroke(false);
@@ -135,10 +75,6 @@ public class GlowExample extends Applet {
         r2.setBlurMode(BlurMode.Glow);
         t.enableBlur();
         t.setBlurMode(BlurMode.Glow);
-        tr1.setFillColor(ColorSet.BURLY_WOOD);
-        tr1.setBlurMode(BlurMode.Blur);
-        tr1.setStroke(false);
-        tr1.enableBlur();
         c = new Circle(30);
         c.enableBlur();
         c.setBlurMode(BlurMode.MotionBlur);
@@ -170,9 +106,8 @@ public class GlowExample extends Applet {
         addObject(t);
         addObject(r3);
         addObject(r2);
-        addObject(tr1);
+        addObject(c);
 
-        URL IMAGE_PATH = Applet.class.getResource("/img/logo.png");
         tex = new Texture(IMAGE_PATH);
         tex.setPosition(500, 100);
         tex.setWidth(tex.getWidth() / 1.2);
@@ -180,13 +115,6 @@ public class GlowExample extends Applet {
         addObject(tex);
         tex.enableBlur();
         tex.addMouseEventCallback(mouseover);
-        //texo = new TexObject();
-        //addObject(texo);
-       // addObject(c);
-        go = new GroupObject();
-        go.setPosition(300, 400);
-        go.enableBlur();
-        addObject(go);
         enableBlurShader();
 
 
@@ -194,7 +122,6 @@ public class GlowExample extends Applet {
 
     @Override
     public void update() {
-       // System.out.println(String.format("%4.2f", getWorkingFPS()));
         rot += 2.0;
         tex.setRotation(rot, 0.0, 1.0, 0.0);
         radian+=2;
@@ -205,10 +132,7 @@ public class GlowExample extends Applet {
     }
 
     @Override
-    public void mouseEvent(MouseEvent e, MouseButton b) {
-        // TODO Auto-generated method stub
-
-    }
+    public void mouseEvent(MouseEvent e, MouseButton b) {}
 
     @Override
     public void keyEvent(KeyEvent e) {
