@@ -66,7 +66,7 @@ public class GlowExample extends Applet {
         r2.setFillColor(ColorSet.ORANGE);
         r2.setStroke(false);
         r2.enableBlur();
-        r2.setBlurMode(BlurMode.Glow);
+        r2.setBlurMode(BlurMode.GLOW);
 
         r3 = new Rect(100, 100);
         r3.setPosition(200, 200, 100);
@@ -79,7 +79,7 @@ public class GlowExample extends Applet {
         t.setPosition(70, 70);
         t.setStrokeColor(ColorSet.LIGHT_BLUE);
         t.enableBlur();
-        t.setBlurMode(BlurMode.Glow);
+        t.setBlurMode(BlurMode.GLOW);
 
         c = new Circle(30);
         c.setPosition(500 + 100 * Math.cos((radian / 180.0) * Math.PI),
@@ -87,7 +87,7 @@ public class GlowExample extends Applet {
         c.setFillColor(ColorSet.RED);
         c.setStrokeColor(ColorSet.RED);
         c.enableBlur();
-        c.setBlurMode(BlurMode.MotionBlur);
+        c.setBlurMode(BlurMode.MOTION_BLUR);
 
         MouseClickCallback mouseclick = new MouseClickCallback() {
 
@@ -96,13 +96,13 @@ public class GlowExample extends Applet {
                 if (eventtype == MouseClickTypes.CLICKED) {
                     BlurMode blur = element.getBlurMode();
                     if (element.isBlur()) {
-                        if (blur == BlurMode.Blur)
-                            element.setBlurMode(BlurMode.Glow);
-                        else if (blur == BlurMode.Glow)
+                        if (blur == BlurMode.BLUR)
+                            element.setBlurMode(BlurMode.GLOW);
+                        else if (blur == BlurMode.GLOW)
                             element.disableBlur();
                     } else {
                         element.enableBlur();
-                        element.setBlurMode(BlurMode.Blur);
+                        element.setBlurMode(BlurMode.BLUR);
                     }
                 }
             }
