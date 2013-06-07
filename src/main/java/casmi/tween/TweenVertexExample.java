@@ -32,9 +32,9 @@ import casmi.tween.equations.Bounce;
 
 /**
  * Example of Tween.
- * 
+ *
  * @author Y. Ban
- * 
+ *
  */
 public class TweenVertexExample extends Applet {
 
@@ -50,7 +50,7 @@ public class TweenVertexExample extends Applet {
     @Override
     public void setup() {
         setSize(1024, 768);
-        
+
         l1.setStrokeColor(ColorSet.ALICE_BLUE);
         v1 = new TweenVertex(100, 600);
         v2 = new TweenVertex(500, 500);
@@ -79,7 +79,10 @@ public class TweenVertexExample extends Applet {
         }
         l1.set(v1, v2);
     }
-    
+
+    @Override
+    public void exit() {}
+
     @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {
         if (e == MouseEvent.PRESSED)

@@ -33,11 +33,11 @@ import casmi.matrix.Vertex;
 
 /**
  * Lighting example.
- * 
+ *
  * @see casmi.graphics.Graphics#ambientLight(float, float, float, Vertex)
  * @see casmi.graphics.Graphics#directionalLight(int, Color, float, float,
  *      float)
- * 
+ *
  * @author Y.Ban
  */
 public class LightExample extends Applet {
@@ -53,7 +53,7 @@ public class LightExample extends Applet {
         setSize(800, 600);
         s.setDepthTest(true);
         s.setStroke(false);
-       
+
         hsbColor = new HSBColor(0.0, 0.8, 0.6);
 
         l1 = new Light(LightMode.AMBIENT);
@@ -79,11 +79,14 @@ public class LightExample extends Applet {
     }
 
     @Override
+    public void exit() {}
+
+    @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {}
 
     @Override
     public void keyEvent(KeyEvent e) {}
-    
+
     public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.LightExample", "Light Example");
     }

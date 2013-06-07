@@ -25,9 +25,9 @@ import casmi.graphics.element.MouseOverCallback;
 
 /**
  * Cursor example.
- * 
+ *
  * @see casmi.Applet.CursorMode
- * 
+ *
  * @author Y. Ban
  */
 public class CursorExample extends Applet {
@@ -37,11 +37,11 @@ public class CursorExample extends Applet {
 	@Override
 	public void setup() {
 		setSize(800, 600);
-		
+
 		circle.setFillColor(new GrayColor(0.4));
-		
+
 		circle.addMouseEventCallback(new MouseOverCallback() {
-		    
+
             @Override
             public void run(MouseOverTypes eventtype, Element element) {
                 switch (eventtype) {
@@ -55,13 +55,16 @@ public class CursorExample extends Applet {
                 }
             }
         });
-		
+
 		addObject(circle);
 	}
-	
+
 	@Override
 	public void update() {}
-	
+
+	@Override
+    public void exit() {}
+
 	@Override
     public void mouseEvent(MouseEvent e, MouseButton b) {}
 
@@ -71,5 +74,5 @@ public class CursorExample extends Applet {
 	public static void main(String[] args) {
 		AppletRunner.run("casmi.CursorExample", "CursorExample");
 	}
-	
+
 }

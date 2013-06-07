@@ -28,7 +28,7 @@ import casmi.graphics.element.Texture;
 
 /**
  * Example of texture mask.
- * 
+ *
  * @author Y. BAN
  */
 public class TextureMaskExample extends Applet {
@@ -70,17 +70,20 @@ public class TextureMaskExample extends Applet {
         t.setStrokeColor(ColorSet.WHITE);
         t.setPosition(50, 20);
 
-       
-       
+
+
         addObject(tex);
         addObject(mask);
-        addObject(masked); 
+        addObject(masked);
         addObject(t);
         capture(Applet.class.getResource("save.png").getPath());
     }
 
     @Override
     public void update() {}
+
+    @Override
+    public void exit() {}
 
     @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {

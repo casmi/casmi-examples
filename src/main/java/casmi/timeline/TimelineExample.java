@@ -27,7 +27,7 @@ import casmi.tween.equations.Bounce;
 
 /**
  * Example of Timeline.
- * 
+ *
  * @author Y. Ban
  */
 public class TimelineExample extends Applet {
@@ -41,26 +41,29 @@ public class TimelineExample extends Applet {
     @Override
     public void setup() {
         setSize(1024, 768);
-        
+
         tl = new Timeline();
         s0 = new Scene0("scene0", 2);
         s1 = new Scene1("scene1", 2);
         s2 = new Scene2("scene2", 2);
         s3 = new Scene3("scene3", 2);
-        
+
         tl.appendScene(s0, DissolveMode.CURTAIN_TOP, 1, Bounce.OUT);
         tl.appendScene(s1, DissolveMode.CURTAIN_RIGHT, 1, Bounce.OUT);
         tl.appendScene(s2, DissolveMode.CURTAIN_BOTTOM, 1, Bounce.OUT);
         tl.appendScene(s3, DissolveMode.CURTAIN_LEFT, 1, Bounce.OUT);
 
         tl.startTimer();
-        
+
         addObject(tl);
     }
 
     @Override
     public void update() {}
-    
+
+    @Override
+    public void exit() {}
+
     @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {}
 
@@ -69,5 +72,5 @@ public class TimelineExample extends Applet {
 
     public static void main(String[] args) {
         AppletRunner.run("casmi.timeline.TimelineExample", "Timeline Example");
-    }  
+    }
 }

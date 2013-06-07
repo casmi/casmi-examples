@@ -26,7 +26,7 @@ import casmi.MouseEvent;
 
 /**
  * Example of Timeline.
- * 
+ *
  * @author Y. Ban
  */
 public class TimelineActiveExample extends Applet {
@@ -62,6 +62,9 @@ public class TimelineActiveExample extends Applet {
 
     @Override
     public void update() {}
+
+    @Override
+    public void exit() {}
 
     @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {}

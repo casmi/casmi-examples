@@ -39,9 +39,9 @@ import casmi.tween.equations.Linear;
 
 /**
  * Example of Tween.
- * 
+ *
  * @author Y. Ban
- * 
+ *
  */
 public class TweenParallelExample extends Applet {
 
@@ -146,6 +146,9 @@ public class TweenParallelExample extends Applet {
             addTween(tg);
         }
     }
+
+    @Override
+    public void exit() {}
 
     @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {}

@@ -28,9 +28,9 @@ import casmi.graphics.element.Arc;
 
 /**
  * Arc example
- * 
+ *
  * @see casmi.graphics.element.Arc
- * 
+ *
  * @author K. Nishimura
  */
 public class ArcExample extends Applet {
@@ -51,11 +51,14 @@ public class ArcExample extends Applet {
     public void update() {}
 
     @Override
+    public void exit() {}
+
+    @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {}
 
     @Override
     public void keyEvent(KeyEvent e) {}
-    
+
 
     public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.ArcExample", "Arc Example");

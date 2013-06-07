@@ -28,9 +28,9 @@ import casmi.graphics.element.Quad;
 
 /**
  * Example of Graphics.
- * 
+ *
  * @author K. Nishimura
- * 
+ *
  */
 public class QuadExample extends Applet {
 
@@ -53,6 +53,9 @@ public class QuadExample extends Applet {
 
     @Override
     public void update() {}
+
+    @Override
+    public void exit() {}
 
     @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {}

@@ -35,7 +35,7 @@ import casmi.util.Random;
 
 /**
  * Tween cursor example.
- * 
+ *
  * @author Y. Ban
  */
 public class TweenCursorExample extends Applet {
@@ -61,13 +61,16 @@ public class TweenCursorExample extends Applet {
     }
 
     @Override
+    public void exit() {}
+
+    @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {
         if (e == MouseEvent.PRESSED) {
             c = cc.clone();
             float sr = Random.random(0.5f, 2.0f);
-            int rr = (int)Random.random(0, 255);
-            int rg = (int)Random.random(0, 255);
-            int rb = (int)Random.random(0, 255);
+            int rr = Random.random(0, 255);
+            int rg = Random.random(0, 255);
+            int rb = Random.random(0, 255);
             cc.setBlue(rb / 255.0);
             cc.setGreen(rg / 255.0);
             cc.setRed(rr / 255.0);

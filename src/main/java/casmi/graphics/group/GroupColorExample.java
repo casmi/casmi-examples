@@ -30,7 +30,7 @@ import casmi.graphics.object.Mask;
 
 /**
  * Color of Group example.
- * 
+ *
  * @author Y. Ban
  */
 public class GroupColorExample extends Applet {
@@ -48,7 +48,7 @@ public class GroupColorExample extends Applet {
         @Override
         public void update() {}
     }
-    
+
 	GroupX    group;
 	double    gray;
 	GrayColor color;
@@ -79,13 +79,16 @@ public class GroupColorExample extends Applet {
     	rect.setScale(1-gray);
     	color.setGray(gray);
     }
-    
+
+    @Override
+    public void exit() {}
+
 	@Override
 	public void mouseEvent(MouseEvent e, MouseButton b) {}
 
 	@Override
 	public void keyEvent(KeyEvent e) {}
-    
+
     public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.group.GroupColorExample", "GroupColorExample");
     }

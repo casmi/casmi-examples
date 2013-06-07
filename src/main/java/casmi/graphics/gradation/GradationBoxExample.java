@@ -32,7 +32,7 @@ import casmi.graphics.object.Perspective;
 
 /**
  * Example for Box with gradation color.
- * 
+ *
  * @author Y. Ban
  */
 public class GradationBoxExample extends Applet {
@@ -62,6 +62,9 @@ public class GradationBoxExample extends Applet {
 
     @Override
     public void update() {}
+
+    @Override
+    public void exit() {}
 
     @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {}

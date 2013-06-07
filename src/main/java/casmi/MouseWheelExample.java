@@ -24,20 +24,20 @@ import casmi.graphics.element.Rect;
 /**
  * Mouse wheel example.
  * <p>
- * When scroll a mouse wheel, up/down a rect.  
- * 
+ * When scroll a mouse wheel, up/down a rect.
+ *
  * @author T. Takeuchi
- * 
+ *
  * @see casmi.Applet#getMouseWheelRotation()
  */
 public class MouseWheelExample extends Applet {
 
     Rect rect;
-    
+
     @Override
     public void setup() {
         setSize(800, 600);
-        
+
         rect = new Rect(getWidth() / 2.0, getHeight() / 2.0, 100.0, 100.0);
         rect.setFillColor(ColorSet.BLUE);
         addObject(rect);
@@ -47,10 +47,13 @@ public class MouseWheelExample extends Applet {
     public void update() {}
 
     @Override
+    public void exit() {}
+
+    @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {
         if (e == MouseEvent.WHEEL_ROTATED) {
             double wrot = getMouseWheelRotation();
-            rect.setY(rect.getY() + wrot);    
+            rect.setY(rect.getY() + wrot);
         }
     }
 
@@ -60,5 +63,5 @@ public class MouseWheelExample extends Applet {
     public static void main(String[] args) {
         AppletRunner.run("casmi.MouseWheelExample", "MouseWheelExample");
     }
-    
+
 }

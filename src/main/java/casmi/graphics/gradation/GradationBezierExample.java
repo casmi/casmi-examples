@@ -31,9 +31,9 @@ import casmi.graphics.element.Lines;
 
 /**
  * Bezier example.
- * 
+ *
  * @see casmi.graphics.element.Bezier
- * 
+ *
  * @author Y.Ban
  */
 public class GradationBezierExample extends Applet {
@@ -42,13 +42,14 @@ public class GradationBezierExample extends Applet {
     Lines l2;
     Bezier b3 = new Bezier(100, 200, -20, 700, 400, -100, 300, 600, -50, 700, 500, -70);
     Curve curve = new Curve(200, 100, 300, 400, 100, 200, 200, 0);
-    
+
+    @Override
     public void setup() {
         setSize(800, 600);
 
         l1.setCornerColor(1, ColorSet.AZURE);
         l1.setCornerColor(0, ColorSet.BLUE_VIOLET);
-        
+
         l2 = new Lines();
         l2.vertex(310, 20);
         l2.vertex(380, 115);
@@ -58,24 +59,27 @@ public class GradationBezierExample extends Applet {
         l2.setStartCornerColor(ColorSet.YELLOW_GREEN);
         l2.setEndCornerColor(ColorSet.DARK_MAGENTA);
         l2.setStrokeWidth(2);
-        
+
         b3.setFill(false);
         b3.setAnchorColor(0, ColorSet.RED);
         b3.setAnchorColor(1, ColorSet.LIGHT_GREEN);
         b3.setStrokeWidth(5);
-        
+
         curve.setFill(false);
         curve.setAnchorColor(0, ColorSet.BLUE);
-        curve.setAnchorColor(1, ColorSet.YELLOW);    
-        
+        curve.setAnchorColor(1, ColorSet.YELLOW);
+
         addObject(l1);
         addObject(l2);
         addObject(b3);
         addObject(curve);
     }
-    
+
     @Override
 	public void update() {}
+
+    @Override
+    public void exit() {}
 
     @Override
 	public void mouseEvent(MouseEvent e, MouseButton b) {}

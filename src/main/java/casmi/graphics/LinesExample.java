@@ -30,9 +30,9 @@ import casmi.graphics.element.Lines;
 
 /**
  * Multiple lines example.
- * 
+ *
  * @see casmi.graphics.element.Lines
- * 
+ *
  * @author Y. Ban
  */
 public class LinesExample extends Applet {
@@ -67,6 +67,9 @@ public class LinesExample extends Applet {
 
     @Override
     public void update() {}
+
+    @Override
+    public void exit() {}
 
     @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {}

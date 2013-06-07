@@ -31,13 +31,13 @@ import casmi.chart.view.DynamicLineChart;
 
 /**
  * DynamicBarChat example.
- * 
+ *
  * @see casmi.chart.view.DynamicLineChart
- * 
+ *
  * @author Y. Ban
  */
 public class DynamicLineChartExample extends Applet {
-    
+
     static final URL CSV_PATH = Applet.class.getResource("data2D.csv");
 
     DynamicLineChart lineGraph;
@@ -48,9 +48,9 @@ public class DynamicLineChartExample extends Applet {
         setSize(1024, 768);
 
         mat = new MatrixData2D();
-        
+
         mat.setAxis("year", "data");
-        
+
         mat.appendData("1996", 50);
         mat.appendData("2001", 140);
         mat.appendData("2004", 340);
@@ -61,19 +61,22 @@ public class DynamicLineChartExample extends Applet {
         mat.appendData("2011", 400);
         mat.appendData("2012", 599);
         mat.appendData("2013", 200);
-        
+
         mat.calculate();
 
         lineGraph = new DynamicLineChart(800, 600, mat, 600, 0);
         lineGraph.setDivisionSpace(ChartAxis.VERTICAL, 50);
         lineGraph.setPosition(100, 100);
         lineGraph.setTweenMilliSec(2000);
-        
+
         addObject(lineGraph);
     }
 
     @Override
     public void update() {}
+
+    @Override
+    public void exit() {}
 
     @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {

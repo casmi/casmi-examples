@@ -30,7 +30,7 @@ import casmi.graphics.group.Group;
 
 /**
  * Example of Graphics.
- * 
+ *
  * @author Y. BAN
  */
 public class TextureExample extends Applet {
@@ -39,13 +39,13 @@ public class TextureExample extends Applet {
     Texture tex;
     TexObject texo;
     double rot = 0.0;
-    
+
     class TexObject extends Group {
 
         private URL IMAGE_PATH = Applet.class.getResource("logo.png");
         private Texture tex;
         private double rot = 0.0;
-        
+
         public TexObject() {
         	tex = new Texture(IMAGE_PATH);
             tex.setPosition(200, 500);
@@ -54,16 +54,17 @@ public class TextureExample extends Applet {
 
             add(tex);
         }
-    	
+
 		@Override
 		public void update() {
 	        rot += 2.0;
 	        tex.setRotation(rot, 0.0, 1.0, 0.0);
-			
+
 		}
-    	
+
     }
 
+    @Override
     public void setup() {
         setSize(1024, 768);
         System.out.println(IMAGE_PATH);
@@ -84,11 +85,14 @@ public class TextureExample extends Applet {
     }
 
     @Override
+    public void exit() {}
+
+    @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {}
 
     @Override
     public void keyEvent(KeyEvent e) {}
-    
+
     public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.TextureExample", "Texture Example");
     }

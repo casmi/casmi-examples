@@ -31,9 +31,9 @@ import casmi.util.SystemUtil;
 
 /**
  * Screenshot example.
- * 
+ *
  * @see casmi.Applet#capture(String)
- * 
+ *
  * @author T. Takeuchi
  */
 public class ScreenshotExample extends Applet {
@@ -41,7 +41,7 @@ public class ScreenshotExample extends Applet {
     enum Mode {
         JPG, PNG, BMP, GIF, PDF
     }
-    
+
     class HighlightCallback implements MouseOverCallback {
         @Override
         public void run(MouseOverTypes eventtype, Element element) {
@@ -62,7 +62,7 @@ public class ScreenshotExample extends Applet {
             }
         }
     }
-    
+
     class ClickCallback implements MouseClickCallback {
         @Override
         public void run(MouseClickTypes eventtype, Element element) {
@@ -76,9 +76,9 @@ public class ScreenshotExample extends Applet {
             }
         }
     }
-    
+
     static final String SAVE_DIR = SystemUtil.JAVA_TMP_PATH;
-    
+
     Circle  circle  = new Circle(200, 200, 80);
     Rect    rect    = new Rect(600, 450, 200, 80);
     Bezier  bezier  = new Bezier(0, 400, 300, 600, 500, 0, 800, 200);
@@ -88,55 +88,55 @@ public class ScreenshotExample extends Applet {
     Text    textBMP = new Text("BMP", 400, 20);
     Text    textGIF = new Text("GIF", 500, 20);
     Text    textPDF = new Text("PDF", 600, 20);
-    
+
     Mode mode = Mode.JPG;
     HighlightCallback highlightCallback = new HighlightCallback();
     ClickCallback     clickCallback     = new ClickCallback();
-    
+
     @Override
     public void setup() {
         setSize(800, 600);
-        
+
         circle.setFillColor(ColorSet.RED);
         addObject(circle);
-        
+
         rect.setFillColor(ColorSet.BLUE);
         addObject(rect);
-        
+
         bezier.setFill(false);
         bezier.setStrokeColor(ColorSet.YELLOW);
         addObject(bezier);
-        
+
         icon.set(400, 570, 50, 50);
         icon.setFillColor(ColorSet.GRAY);
         icon.addMouseEventCallback(highlightCallback);
         icon.addMouseEventCallback(clickCallback);
         addObject(icon);
-        
+
         textJPG.setStrokeColor(ColorSet.GRAY);
         textJPG.setAlign(TextAlign.CENTER);
         textJPG.addMouseEventCallback(highlightCallback);
         textJPG.addMouseEventCallback(clickCallback);
         addObject(textJPG);
-        
+
         textPNG.setStrokeColor(ColorSet.GRAY);
         textPNG.setAlign(TextAlign.CENTER);
         textPNG.addMouseEventCallback(highlightCallback);
         textPNG.addMouseEventCallback(clickCallback);
         addObject(textPNG);
-        
+
         textBMP.setStrokeColor(ColorSet.GRAY);
         textBMP.setAlign(TextAlign.CENTER);
         textBMP.addMouseEventCallback(highlightCallback);
         textBMP.addMouseEventCallback(clickCallback);
         addObject(textBMP);
-        
+
         textGIF.setStrokeColor(ColorSet.GRAY);
         textGIF.setAlign(TextAlign.CENTER);
         textGIF.addMouseEventCallback(highlightCallback);
         textGIF.addMouseEventCallback(clickCallback);
         addObject(textGIF);
-        
+
         textPDF.setStrokeColor(ColorSet.GRAY);
         textPDF.setAlign(TextAlign.CENTER);
         textPDF.addMouseEventCallback(highlightCallback);
@@ -166,20 +166,23 @@ public class ScreenshotExample extends Applet {
     }
 
     @Override
+    public void exit() {}
+
+    @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {}
 
     @Override
     public void keyEvent(KeyEvent e) {}
-    
+
     private void changeMode(Mode mode) {
         this.mode = mode;
-        
+
         textJPG.setStrokeColor(ColorSet.GRAY);
         textPNG.setStrokeColor(ColorSet.GRAY);
         textBMP.setStrokeColor(ColorSet.GRAY);
         textGIF.setStrokeColor(ColorSet.GRAY);
         textPDF.setStrokeColor(ColorSet.GRAY);
-        
+
         switch (mode) {
         case JPG:
             textJPG.setStrokeColor(ColorSet.AQUA);
@@ -198,7 +201,7 @@ public class ScreenshotExample extends Applet {
             break;
         }
     }
-    
+
     private void screenshot() {
         String file = SAVE_DIR + "casmi_screenshot";
         switch (mode) {
@@ -221,9 +224,9 @@ public class ScreenshotExample extends Applet {
         capture(file);
         System.out.println("save a screenshot: " + file);
     }
-    
+
     public static void main(String[] args) {
         AppletRunner.run("casmi.ScreenshotExample", "Screenshot Example");
     }
-    
+
 }

@@ -30,21 +30,21 @@ import casmi.tween.equations.Bounce;
 
 /**
  * Example of TweenRepeat.
- * 
+ *
  * @author Y. Ban
- * 
+ *
  */
 public class TweenRepeatExample  extends Applet {
 
     static final URL IMAGE_PATH = Applet.class.getResource("logo.png");
-    
+
     Texture tex = null;
-    TweenElement te;  
-    
+    TweenElement te;
+
     @Override
     public void setup() {
         setSize(1024, 768);
-        
+
         tex = new Texture(IMAGE_PATH);
         tex.setPosition(200, 500);
         addObject(tex);
@@ -54,6 +54,9 @@ public class TweenRepeatExample  extends Applet {
 
 	@Override
 	public void update() {}
+
+    @Override
+    public void exit() {}
 
 	@Override
 	public void mouseEvent(MouseEvent e, MouseButton b) {}

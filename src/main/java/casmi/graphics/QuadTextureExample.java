@@ -29,21 +29,21 @@ import casmi.graphics.element.TextureRotationMode;
 
 /**
  * Example of Graphics.
- * 
+ *
  * @author Y.Ban
- * 
+ *
  */
 public class QuadTextureExample extends Applet {
 
     static final String IMAGE_PATH = Applet.class.getResource("logo.png").getPath();
-    
+
     Texture tex = null;
     Quad q1 = new Quad(500, 300, 400, 500, 600, 500, 700, 300);
 
     @Override
     public void setup() {
         setSize(1024, 768);
-        
+
         tex = new Texture(IMAGE_PATH);
         q1.setStroke(false);
         q1.setTexture(tex);
@@ -53,6 +53,9 @@ public class QuadTextureExample extends Applet {
 
     @Override
     public void update() {}
+
+    @Override
+    public void exit() {}
 
     @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {

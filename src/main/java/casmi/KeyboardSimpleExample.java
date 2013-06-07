@@ -27,7 +27,7 @@ import casmi.util.Random;
  * Simple keyboard example.
  * <p>
  * Press any key and show.
- * 
+ *
  * @author Y. Ban
  */
 public class KeyboardSimpleExample extends Applet {
@@ -42,6 +42,9 @@ public class KeyboardSimpleExample extends Applet {
 
     @Override
     public void update() {}
+
+    @Override
+    public void exit() {}
 
     @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {
@@ -59,7 +62,7 @@ public class KeyboardSimpleExample extends Applet {
             s += getKey();
             t = new Text(s, f);
             HSBColor c = new HSBColor(0.7, 0.8, 0.8);
-            c.setHue((int)Random.random(0, 255) / 255.0);
+            c.setHue(Random.random(0, 255) / 255.0);
             t.setStrokeColor(c);
             t.setPosition(Random.random(0, 400), Random.random(0, 400));
             addObject(t);

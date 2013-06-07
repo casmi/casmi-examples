@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-  
+
 package casmi.graphics;
 
 import casmi.Applet;
@@ -28,9 +28,9 @@ import casmi.graphics.element.Triangle;
 
 /**
  * Example of Graphics.
- * 
+ *
  * @author K. Nishimura
- * 
+ *
  */
 public class TriangleExample extends Applet {
 
@@ -47,22 +47,25 @@ public class TriangleExample extends Applet {
         t2.setFillColor(new RGBColor(0.5, 0.8, 0.4));
         t2.setStrokeColor(new RGBColor(0.0, 0.4, 0.8));
         t2.setStrokeWidth(5);
-        
+
         addObject(t1);
         addObject(t2);
     }
-    
+
     @Override
 	public void update() {}
+
+    @Override
+    public void exit() {}
 
 	@Override
 	public void mouseEvent(MouseEvent e, MouseButton b) {}
 
 	@Override
 	public void keyEvent(KeyEvent e) {}
-	
+
 	public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.TriangleExample", "Triangle Example");
     }
-	
+
 }

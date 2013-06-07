@@ -31,51 +31,55 @@ import casmi.util.SystemUtil;
 
 /**
  * Example of Graphics.
- * 
+ *
  * @author Y. BAN
- * 
+ *
  */
 public class ImageModeExample extends Applet {
 
     static final String IMAGE_PATH = Applet.class.getResource("logo.png").getPath();
-    
+
     Texture tex1,tex2;
     Circle c1, c2;
 
+    @Override
     public void setup() {
         setSize(1024, 768);
-        
+
         System.out.println(SystemUtil.USER_DIR);
-        
+
         tex1 = new Texture(IMAGE_PATH);
         tex1.setMode(ImageMode.CORNER);
         tex1.setPosition(300, 300);
         c1 = new Circle(300, 300, 10);
         c1.setFillColor(ColorSet.RED);
-        
+
         addObject(tex1);
         addObject(c1);
-        
+
         tex2 = new Texture(IMAGE_PATH);
         tex2.setMode(ImageMode.CENTER);
         tex2.setPosition(600, 600);
         c2 = new Circle(600, 600, 10);
         c2.setFillColor(ColorSet.RED);
-        
+
         addObject(tex2);
         addObject(c2);
     }
 
     @Override
     public void update() {}
-    
+
+    @Override
+    public void exit() {}
+
     @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {
     }
 
     @Override
     public void keyEvent(KeyEvent e) {}
-    
+
     public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.ImageModeExample", "ImageModeExample");
     }

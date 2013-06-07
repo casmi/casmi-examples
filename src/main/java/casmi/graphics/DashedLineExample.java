@@ -28,11 +28,11 @@ import casmi.graphics.element.Line;
 
 /**
  * Dashed Line example.
- * 
+ *
  * @see casmi.graphics.element.Line
- * 
+ *
  * @author Y.Ban
- * 
+ *
  */
 public class DashedLineExample extends Applet {
 
@@ -42,13 +42,13 @@ public class DashedLineExample extends Applet {
     @Override
     public void setup() {
         setSize(800, 600);
-        
+
         l1.setStrokeColor(ColorSet.WHITE);
         l2.setStrokeColor(ColorSet.WHITE);
-        
+
         l1.setStrokeWidth(25);
         l2.setStrokeWidth(25);
-        
+
         l1.setDashedLinePram(20, 10);
         l2.setDashedLinePram(10, 20);
 
@@ -59,14 +59,17 @@ public class DashedLineExample extends Applet {
     @Override
 	public void update() {}
 
+    @Override
+    public void exit() {}
+
 	@Override
 	public void mouseEvent(MouseEvent e, MouseButton b) {}
 
 	@Override
 	public void keyEvent(KeyEvent e) {}
-	
+
 	public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.DashedLineExample", "Dashed Line Example");
     }
-	
+
 }

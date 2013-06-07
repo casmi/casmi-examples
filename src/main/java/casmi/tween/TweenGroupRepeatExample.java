@@ -29,18 +29,18 @@ import casmi.tween.equations.Bounce;
 
 /**
  * Example of TweenRepeat for TweenGroup.
- * 
+ *
  * @author Y. Ban
  */
 public class TweenGroupRepeatExample extends Applet {
 
 	Rect r1 = new Rect(200, 200);
 	TweenElement te;
-	
+
 	@Override
 	public void setup() {
 		setSize(800,600);
-		
+
 		r1.setFillColor(ColorSet.AQUA);
 		addObject(r1);
 		r1.setPosition(150, 150);
@@ -51,11 +51,14 @@ public class TweenGroupRepeatExample extends Applet {
 					Tween.to(te, TweenType.POSITION, 1000, Bounce.OUT).target(150,550),
 					Tween.to(te, TweenType.POSITION, 1000, Bounce.OUT).target(150,150)
 				).addDelay(1000).repeat(10,300);
-		addTween(ts);	
+		addTween(ts);
 	}
 
 	@Override
 	public void update() {}
+
+    @Override
+    public void exit() {}
 
 	@Override
 	public void mouseEvent(MouseEvent e, MouseButton b) {}

@@ -33,13 +33,13 @@ import casmi.graphics.object.Perspective;
 
 /**
  * Example of Graphics.
- * 
+ *
  * @author K. Nishimura
- * 
+ *
  */
 public class BoxTextureExample extends Applet {
 
-	private static final String[] imageNames = { 
+	private static final String[] imageNames = {
 	    "sai4.png",
 	    "sai2.png",
 	    "sai3.png",
@@ -47,7 +47,7 @@ public class BoxTextureExample extends Applet {
 	    "sai1.png",
 	    "sai6.png"
 	};
-	
+
 	private static URL[] imageURLs = new URL[6];
 
 	static {
@@ -66,7 +66,7 @@ public class BoxTextureExample extends Applet {
 	@Override
 	public void setup() {
 		setSize(800, 600);
-		
+
 		b.setStrokeWidth(1);
 		b.setFillColor(new RGBColor(1.0, 1.0, 1.0));
 		b.setFill(true);
@@ -87,12 +87,15 @@ public class BoxTextureExample extends Applet {
 
 		addObject(b);
 	}
-	
+
 	@Override
     public void update() {
         rot += 0.1;
         b.setRotation(rot, 1, 3, 5);
     }
+
+    @Override
+    public void exit() {}
 
 	@Override
 	public void mouseEvent(MouseEvent e, MouseButton b) {}

@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-  
+
 package casmi.tween;
 
 import casmi.Applet;
@@ -28,28 +28,31 @@ import casmi.tween.equations.Bounce;
 
 /**
  * Simple tween example.
- * 
+ *
  * @author Y. Ban
  */
 public class TweenSimpleExample extends Applet {
-	
+
 	Circle circle;
-	TweenElement te;  
+	TweenElement te;
 
 	@Override
 	public void setup() {
 		setSize(800,600);
-		
+
 		circle = new Circle(100);
 		circle.setPosition(400,500);
 		addObject(circle);
-		
+
 		te = new TweenElement(circle);
     	addTween(Tween.to(te, TweenType.POSITION, 3000, Bounce.OUT).addDelay(3000).target(200, 100).repeat(-1, 500));
 	}
 
 	@Override
 	public void update() {}
+
+    @Override
+    public void exit() {}
 
 	@Override
 	public void mouseEvent(MouseEvent e, MouseButton b) {}
@@ -60,5 +63,5 @@ public class TweenSimpleExample extends Applet {
 	public static void main(String[] args) {
         AppletRunner.run("casmi.tween.TweenSimpleExample", "TweenSimpleExample");
     }
-	
+
 }

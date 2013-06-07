@@ -29,9 +29,9 @@ import casmi.graphics.element.Polygon;
 
 /**
  * Example of Graphics.
- * 
+ *
  * @author Y. Ban
- * 
+ *
  */
 public class PolygonExample extends Applet {
 
@@ -63,7 +63,10 @@ public class PolygonExample extends Applet {
 
     @Override
     public void update() {}
-    
+
+    @Override
+    public void exit() {}
+
     @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {}
 

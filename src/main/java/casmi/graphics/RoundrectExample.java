@@ -28,9 +28,9 @@ import casmi.graphics.element.RoundRect;
 
 /**
  * Example of Graphics.
- * 
+ *
  * @author K. Nishimura
- * 
+ *
  */
 public class RoundrectExample extends Applet {
 
@@ -38,6 +38,7 @@ public class RoundrectExample extends Applet {
     RoundRect r2 = new RoundRect(30, 200, 500, 200, 400);
     RoundRect r3 = new RoundRect(10, 600, 200, 200, 100);
 
+    @Override
     public void setup() {
         setSize(1024, 768);
 
@@ -59,6 +60,9 @@ public class RoundrectExample extends Applet {
 
     @Override
     public void update() {}
+
+    @Override
+    public void exit() {}
 
     @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {}

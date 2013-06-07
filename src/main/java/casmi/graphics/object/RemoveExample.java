@@ -33,7 +33,7 @@ import casmi.graphics.group.Group;
 
 /**
  * Object removal example.
- * 
+ *
  * @author Y. Ban
  */
 public class RemoveExample extends Applet {
@@ -62,39 +62,39 @@ public class RemoveExample extends Applet {
         @Override
         public void update() {}
     }
-    
+
 	TriangleGroup tg1, tg2;
 	Ellipse       el;
-	Rect          r1, r2;	
+	Rect          r1, r2;
 
 	@Override
 	public void setup() {
 		setSize(800,600);
-		
+
 		tg1 = new TriangleGroup();
 		tg1.setPosition(300,300);
 
 		tg2 = new TriangleGroup();
 		tg2.setPosition(600,400);
-		
+
 		el = new Ellipse(10);
 		el.setPosition(200, 100);
 		el.setFillColor(ColorSet.DARK_RED);
-		
+
 		r1 = new Rect(100, 100);
 		r1.setPosition(700,200);
 		r1.setFillColor(ColorSet.ALICE_BLUE);
-		
+
 		r2 = new Rect(200, 120);
 		r2.setPosition(200,500);
 		r2.setFillColor(ColorSet.CHOCOLATE);
-		
+
 		r2.addMouseEventCallback(new MouseOverCallback() {
-			
+
 			@Override
 			public void run(MouseOverTypes eventtype, Element element) {
 				if(eventtype == MouseOverTypes.ENTERED)
-					element.remove();				
+					element.remove();
 			}
 		});
 
@@ -107,6 +107,9 @@ public class RemoveExample extends Applet {
 
 	@Override
 	public void update() {}
+
+    @Override
+    public void exit() {}
 
 	@Override
 	public void mouseEvent(MouseEvent e, MouseButton b) {}
@@ -127,7 +130,7 @@ public class RemoveExample extends Applet {
 			}
 		}
 	}
-	
+
 	public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.object.RemoveExample", "RemoveExample");
     }

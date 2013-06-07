@@ -57,9 +57,9 @@ import casmi.tween.equations.Sine;
 
 /**
  * Example of Tween.
- * 
+ *
  * @author Y. Ban
- * 
+ *
  */
 public class TweenEquationsExample extends Applet {
 
@@ -76,7 +76,7 @@ public class TweenEquationsExample extends Applet {
             rect.setFillColor(c);
         }
     }
-    
+
     static final String[] EQ_NAME = {
         "Back",
         "Bounce",
@@ -90,14 +90,14 @@ public class TweenEquationsExample extends Applet {
         "Quint",
         "Sine"
     };
-    
+
     Line l1 = new Line(100, 200, 600, 200);
     Line l2 = new Line(100, 550, 600, 550);
     Rect r = new Rect(150, 50);
     Ellipse el = new Ellipse(20);
     Font f, f2;
     Text inText, outText;
-    
+
     private int eq = 0;
     private int io = 1;
     TweenElement te, te2;
@@ -106,7 +106,7 @@ public class TweenEquationsExample extends Applet {
     Color pink, blue;
     int start = 0;
 
-    List<EqRect> eqRectList = new ArrayList<EqRect>();    
+    List<EqRect> eqRectList = new ArrayList<EqRect>();
 
     @Override
     public void setup() {
@@ -159,7 +159,7 @@ public class TweenEquationsExample extends Applet {
         index = 0;
         for (final EqRect eqRect : eqRectList) {
             addObject(eqRect.rect);
-            
+
             eqRect.rect.addMouseEventCallback(new MouseClickCallback() {
 
                 @Override
@@ -227,6 +227,9 @@ public class TweenEquationsExample extends Applet {
             }
         }
     }
+
+    @Override
+    public void exit() {}
 
     @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {

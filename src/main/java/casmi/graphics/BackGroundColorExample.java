@@ -27,7 +27,7 @@ import casmi.graphics.color.ColorSet;
 
 /**
  * Example that changes background color.
- * 
+ *
  * @author Y. Ban
  *
  * @see casmi.Applet#setBackGroundColor(casmi.graphics.color.Color)
@@ -45,11 +45,14 @@ public class BackGroundColorExample extends Applet {
 	public void update() {}
 
 	@Override
+    public void exit() {}
+
+	@Override
 	public void mouseEvent(MouseEvent e, MouseButton b) {}
 
 	@Override
 	public void keyEvent(KeyEvent e) {}
-	
+
     public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.BackGroundColorExample", "BackGroundColor Example");
     }

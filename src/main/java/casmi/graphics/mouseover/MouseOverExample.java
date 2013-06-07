@@ -37,26 +37,27 @@ import casmi.graphics.element.Triangle;
 
 /**
  * Example of MouseOver.
- * 
+ *
  * @author Y. Ban
  */
 public class MouseOverExample extends Applet {
-    
+
     Rect      rect;
     Ellipse   ellipse;
     Triangle  triangle1, triangle2;
     Quad      quad;
     Arc       arc;
     RoundRect roundRect;
-    
+
     MouseOverCallback  mouseOverCB;
     MouseClickCallback mouseClickCB;
 
+    @Override
     public void setup() {
         setSize(1024, 768);
 
         mouseOverCB = new MouseOverCallback() {
-            
+
         	@Override
         	public void run(MouseOverTypes eventtype, Element element) {
         		switch (eventtype) {
@@ -82,9 +83,9 @@ public class MouseOverExample extends Applet {
         		}
         	}
         };
-        
+
         mouseClickCB = new MouseClickCallback() {
-			
+
 			@Override
 			public void run(MouseClickTypes eventtype, Element element) {
 				switch(eventtype){
@@ -96,59 +97,62 @@ public class MouseOverExample extends Applet {
 				}
 			}
 		};
-        
+
         rect = new Rect(800, 500, 200, 150);
         rect.setFillColor(ColorSet.ORANGE);
         rect.setStroke(false);
         rect.addMouseEventCallback(mouseOverCB);
         rect.addMouseEventCallback(mouseClickCB);
         addObject(rect);
-        
+
         ellipse = new Ellipse(150, 300, 100, 150);
         ellipse.setStrokeColor(ColorSet.LIGHT_BLUE);
         ellipse.setFill(false);
         ellipse.addMouseEventCallback(mouseOverCB);
         ellipse.addMouseEventCallback(mouseClickCB);
         addObject(ellipse);
-        
+
         triangle1 = new Triangle(500, 100, 600, 250, 650, 50);
         triangle1.setFillColor(ColorSet.LAVENDER);
         triangle1.setStroke(false);
         triangle1.addMouseEventCallback(mouseOverCB);
         triangle1.addMouseEventCallback(mouseClickCB);
         addObject(triangle1);
-        
+
         triangle2 = new Triangle(400, 500, 500, 700, 550, 550);
         triangle2.setFillColor(ColorSet.LEMON_CHIFFON);
         triangle2.addMouseEventCallback(mouseOverCB);
         triangle2.addMouseEventCallback(mouseClickCB);
         addObject(triangle2);
-        
+
         quad = new Quad(20, 600, 70, 550, 200, 630, 80, 680);
         quad.setStrokeColor(ColorSet.AQUA);
         quad.setFill(false);
         quad.addMouseEventCallback(mouseOverCB);
         quad.addMouseEventCallback(mouseClickCB);
         addObject(quad);
-        
+
         arc = new Arc(800, 100, 70, 30, 100, 30);
         arc.setStroke(false);
         arc.setFillColor(ColorSet.OLIVE_DRAB);
         arc.addMouseEventCallback(mouseOverCB);
         arc.addMouseEventCallback(mouseClickCB);
         addObject(arc);
-        
+
         roundRect = new RoundRect(10, 200, 100, 100, 60);
         roundRect.setStroke(false);
         roundRect.setFillColor(ColorSet.GOLD);
         roundRect.setRadius(20);
         roundRect.addMouseEventCallback(mouseOverCB);
         roundRect.addMouseEventCallback(mouseClickCB);
-        addObject(roundRect);        
+        addObject(roundRect);
     }
-    
+
     @Override
 	public void update() {}
+
+    @Override
+    public void exit() {}
 
 	@Override
 	public void mouseEvent(MouseEvent e, MouseButton b) {}
@@ -159,5 +163,5 @@ public class MouseOverExample extends Applet {
 	public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.mouseover.MouseOverExample", "MouseOverExample");
     }
-	
+
 }

@@ -39,9 +39,9 @@ import casmi.graphics.font.FontStyle;
 
 /**
  * Example of MouseOver.
- * 
+ *
  * @author Y. Ban
- * 
+ *
  */
 public class MouseOverColorSetExample extends Applet {
 
@@ -127,6 +127,9 @@ public class MouseOverColorSetExample extends Applet {
 
     @Override
     public void update() {}
+
+    @Override
+    public void exit() {}
 
     @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {}

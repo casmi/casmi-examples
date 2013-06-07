@@ -28,11 +28,11 @@ import casmi.graphics.element.Curve;
 
 /**
  * Curve example.
- * 
+ *
  * @see casmi.graphics.element.Curve
- * 
+ *
  * @author K. Nishimura
- * 
+ *
  */
 public class CurveExample extends Applet {
 
@@ -51,6 +51,9 @@ public class CurveExample extends Applet {
     public void update() {}
 
     @Override
+    public void exit() {}
+
+    @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {}
 
     @Override
@@ -59,5 +62,5 @@ public class CurveExample extends Applet {
     public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.CurveExample", "Curve Example");
     }
-    
+
 }

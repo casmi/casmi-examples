@@ -30,24 +30,24 @@ import casmi.graphics.element.TextBox;
 
 /**
  * TextBox example.
- * 
+ *
  * @author T. Takeuchi
  */
 public class TextBoxExample extends Applet {
 
     static final String SAMPLE_TEXT = "casmi is free software:\nyou can redistribute it and/or modify it under the terms of the GNU Lesser General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.";
-    
+
     TextBox textBox1, textBox2, textBox3;
-    
+
     @Override
     public void setup() {
         setSize(800, 600);
-        
+
         Text text1 = new Text(SAMPLE_TEXT);
         text1.setStrokeColor(ColorSet.WHITE);
         textBox1 = new TextBox(text1, 400, 500, 350, 150);
         addObject(textBox1);
-        
+
         Text text2 = new Text(SAMPLE_TEXT);
         text2.setStrokeColor(ColorSet.PINK);
         text2.setAlign(TextAlign.CENTER);
@@ -56,7 +56,7 @@ public class TextBoxExample extends Applet {
         textBox2.setFill(true);
         textBox2.setRotation(20);
         addObject(textBox2);
-        
+
         Text text3 = new Text(SAMPLE_TEXT);
         text3.setStrokeColor(ColorSet.GREEN);
         text3.setAlign(TextAlign.RIGHT);
@@ -69,12 +69,15 @@ public class TextBoxExample extends Applet {
     @Override
     public void update() {}
 
+    @Override
+    public void exit() {}
+
 	@Override
 	public void mouseEvent(MouseEvent e, MouseButton b) {}
 
 	@Override
 	public void keyEvent(KeyEvent e) {}
-	
+
 	public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.TextBoxExample", "TextBox Example");
     }

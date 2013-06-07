@@ -34,7 +34,7 @@ import casmi.graphics.group.Group;
 
 /**
  * MouseOverGroup example.
- * 
+ *
  * @author Y. Ban
  */
 public class MouseOverGroupExample extends Applet {
@@ -53,7 +53,7 @@ public class MouseOverGroupExample extends Applet {
             t1.setStroke(false);
             t1.setFillColor(ColorSet.CYAN);
             add(t1);
-            
+
             t2 = new Triangle(10, 10, 30, 10, 20, 20);
             t2.setStroke(false);
             t2.setFillColor(ColorSet.FIREBRICK);
@@ -89,7 +89,7 @@ public class MouseOverGroupExample extends Applet {
             mouseoverrect = new MouseOverCallback() {
 
                 @Override
-                public void run(MouseOverTypes eventtype, Element element) {                    
+                public void run(MouseOverTypes eventtype, Element element) {
                     switch (eventtype) {
                     case ENTERED:
                         if (element == r1)
@@ -123,7 +123,7 @@ public class MouseOverGroupExample extends Applet {
     @Override
     public void setup() {
         setSize(800, 600);
-        
+
         circle = new Circle(20);
         circle.setPosition(300, 100);
         circle.setFillColor(ColorSet.DARK_VIOLET);
@@ -154,7 +154,7 @@ public class MouseOverGroupExample extends Applet {
 
         triangleGroup1 = new TriangleGroup();
         addObject(triangleGroup1);
-        
+
         triangleGroup2 = new TriangleGroup();
         triangleGroup2.setPosition(200, 200);
         triangleGroup2.addMouseEventCallback(new MouseOverCallback() {
@@ -177,6 +177,9 @@ public class MouseOverGroupExample extends Applet {
 
     @Override
     public void update() {}
+
+    @Override
+    public void exit() {}
 
     @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {}

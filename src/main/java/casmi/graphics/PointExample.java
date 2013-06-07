@@ -32,9 +32,9 @@ import casmi.graphics.element.Point;
 
 /**
  * Example of Graphics.
- * 
+ *
  * @author K. Nishimura
- * 
+ *
  */
 public class PointExample extends Applet {
 
@@ -59,6 +59,9 @@ public class PointExample extends Applet {
     public void update() {}
 
     @Override
+    public void exit() {}
+
+    @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {}
 
     @Override
@@ -67,5 +70,5 @@ public class PointExample extends Applet {
     public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.PointExample", "PointExample");
     }
-    
+
 }

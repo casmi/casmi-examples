@@ -32,8 +32,8 @@ import casmi.graphics.object.GraphicsObject;
  * <p>
  * All available fonts are displayed.
  * You can scroll with up/down keys or mouse wheel rotation.
- * Press ESC key to quit the application. 
- * 
+ * Press ESC key to quit the application.
+ *
  * @author T. Takeuchi
  *
  * @see casmi.graphics.font.Font
@@ -42,45 +42,48 @@ public class FontExample extends Applet {
 
     GraphicsObject go = new GraphicsObject();
     double bottom = 0;
-    
+
     @Override
     public void setup() {
         setSize(300, 500);
-        
+
         String[] fontnames = Font.getAvailableFontFamilyNames();
-        
+
         int y = getHeight();
-        
+
         for (String fontname : fontnames) {
             Font font = new Font(fontname, FontStyle.PLAIN, 16);
-            
+
             Text text = new Text(fontname, font, 5, y);
             text.setStrokeColor(ColorSet.WHITE);
-            
+
             go.add(text);
-            
+
             y -= 20;
         }
-        
+
         bottom = y;
-        
+
         addObject(go);
     }
 
     @Override
 	public void update() {}
-    
+
+    @Override
+    public void exit() {}
+
     @Override
 	public void mouseEvent(MouseEvent e, MouseButton b) {
         if (e == MouseEvent.WHEEL_ROTATED) {
             double newY = go.getY() + getMouseWheelRotation();
-        
+
             if (newY < 0) {
                 newY = 0;
             } else if (- bottom < newY) {
                 newY = - bottom;
             }
-            
+
             go.setY(newY);
         }
     }
@@ -90,7 +93,7 @@ public class FontExample extends Applet {
 	    if (e == KeyEvent.PRESSED) {
 	        int keyCode = getKeyCode();
 	        double newY = go.getY();
-	        
+
 	        if (keyCode == java.awt.event.KeyEvent.VK_UP) {
 	            newY -= 20;
 	        } else if (keyCode == java.awt.event.KeyEvent.VK_DOWN) {
@@ -98,17 +101,17 @@ public class FontExample extends Applet {
 	        } else if (keyCode == java.awt.event.KeyEvent.VK_ESCAPE) {
 	            System.exit(0);
 	        }
-	        
+
 	        if (newY < 0) {
                 newY = 0;
             } else if (- bottom < newY) {
                 newY = - bottom;
             }
-	        
+
 	        go.setY(newY);
 	    }
 	}
-    
+
     public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.font.FontExample", "Font Example");
     }

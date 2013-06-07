@@ -34,9 +34,9 @@ import casmi.graphics.element.Triangle;
 
 /**
  * Gradation example.
- * 
+ *
  * @see casmi.graphics.element.GradationMode2D
- * 
+ *
  * @author Y.Ban
  */
 public class GradationExample extends Applet {
@@ -50,7 +50,7 @@ public class GradationExample extends Applet {
     @Override
     public void setup() {
         setSize(1024, 768);
-        
+
         color.setAlpha(0.0);
         circle.setFillColor(new RGBColor(0.3, 0.7, 0.3));
         circle.setStroke(false);
@@ -89,6 +89,9 @@ public class GradationExample extends Applet {
 
     @Override
     public void update() {}
+
+    @Override
+    public void exit() {}
 
     @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {}

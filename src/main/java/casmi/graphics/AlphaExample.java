@@ -28,10 +28,10 @@ import casmi.graphics.element.Rect;
 
 /**
  * Alpha example.
- * 
+ *
  * @see casmi.graphics.Graphics
  * @see casmi.graphics.color.Color
- * 
+ *
  * @author Y. Ban
  */
 public class AlphaExample extends Applet {
@@ -39,9 +39,10 @@ public class AlphaExample extends Applet {
     Rect r1 = new Rect(300, 300);
     Rect r2 = new Rect(300, 300);
 
+    @Override
     public void setup() {
         setSize(800, 600);
-        
+
         r1.setStroke(false);
         r1.setFillColor(new RGBColor(0.4, 0.95, 0.4, 0.6));
         r1.setPosition(350, 250);
@@ -49,7 +50,7 @@ public class AlphaExample extends Applet {
         r2.setStroke(false);
         r2.setFillColor(new RGBColor(0.7, 0.1, 0.1, 0.6));
         r2.setPosition(450, 350);
-        
+
         addObject(r1);
         addObject(r2);
     }
@@ -57,14 +58,16 @@ public class AlphaExample extends Applet {
     @Override
     public void update() {}
 
+    @Override
+    public void exit() {}
+
 	@Override
 	public void mouseEvent(MouseEvent e, MouseButton b) {}
 
 	@Override
 	public void keyEvent(KeyEvent e) {}
-	
+
 	public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.AlphaExample", "Alpha Example");
     }
-	
 }

@@ -28,7 +28,7 @@ import casmi.graphics.element.Line;
 
 /**
  * Random example.
- * 
+ *
  * @author Y.Ban
  */
 public class RandomExample extends Applet {
@@ -54,14 +54,17 @@ public class RandomExample extends Applet {
             l[i].setStrokeColor(c);
             l[i].set(getWidth() / 2, i, getWidth() / 2 + r, i);
         }
-    }    
+    }
+
+    @Override
+    public void exit() {}
 
     @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {}
 
     @Override
     public void keyEvent(KeyEvent e) {}
-    
+
     public static void main(String[] args) {
         AppletRunner.run("casmi.util.RandomExample", "Random Example");
     }

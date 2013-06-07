@@ -29,32 +29,32 @@ import casmi.graphics.object.Mask;
 
 /**
  * Mask example.
- * 
+ *
  * @author Y. Ban
  *
  * @see casmi.graphics.object.Mask
  */
 public class MaskExample extends Applet {
-	
-    static final String IMAGE_PATH = Applet.class.getResource("sora.png").getPath(); 
-    
+
+    static final String IMAGE_PATH = Applet.class.getResource("sora.png").getPath();
+
     Mask    mask;
 	Circle  circle;
 	Texture tex;
-    
+
 	@Override
 	public void setup() {
 		setSize(1024, 768);
-		
+
 		mask = new Mask();
-		
+
 		circle = new Circle(60);
 		circle.setPosition(300, 300);
-		
+
 		tex = new Texture(IMAGE_PATH);
-		
+
 		mask.add(circle);
-		
+
 		tex.setPosition(getWidth() / 2.0, getHeight() / 2.0);
 		tex.setMask(mask);
 		addObject(tex);
@@ -62,6 +62,9 @@ public class MaskExample extends Applet {
 
 	@Override
 	public void update() {}
+
+    @Override
+    public void exit() {}
 
 	@Override
 	public void mouseEvent(MouseEvent e, MouseButton b) {
@@ -72,7 +75,7 @@ public class MaskExample extends Applet {
 
 	@Override
 	public void keyEvent(KeyEvent e) {}
-	
+
 	public static void main(String[] args) {
 	    AppletRunner.run("casmi.graphics.MaskExample", "Mask Example");
 	}

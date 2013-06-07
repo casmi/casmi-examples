@@ -25,26 +25,26 @@ import casmi.graphics.element.TextAlign;
 
 /**
  * Full screen example.
- * 
+ *
  * @see casmi.Applet
- * 
+ *
  * @author T. Takeuchi
  */
 public class FullScreenExample extends Applet {
-    
+
 	Ellipse ellipse = new Ellipse(30);
     Text text = new Text("ESC key to exit.");
-    
+
     @Override
     public void setup() {
         setSize(800, 600);
         setFullScreen(true);
 
         ellipse.setFillColor(ColorSet.WHITE);
-        
+
         text.setStrokeColor(ColorSet.RED);
         text.setAlign(TextAlign.CENTER);
-        
+
         for (int x = 30; x < 1920; x += 80) {
             for (int y = 1080 - 30; 0 < y; y -= 80) {
             	Ellipse el = (Ellipse) ellipse.clone();
@@ -52,17 +52,20 @@ public class FullScreenExample extends Applet {
                 addObject(el);
             }
         }
-        
+
         text.setStrokeColor(ColorSet.RED);
         text.setAlign(TextAlign.CENTER);
         text.setX(getWidth()  / 2);
         text.setY(getHeight() / 2);
         addObject(text);
     }
-    
+
     @Override
     public void update() {}
-    
+
+    @Override
+    public void exit() {}
+
     @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {
         if (e == MouseEvent.PRESSED) {
@@ -77,7 +80,7 @@ public class FullScreenExample extends Applet {
         if (e == KeyEvent.PRESSED) {
             if (getKeyCode() == 27) {
                 System.exit(0);
-            } else if (getKey() == 'f') {             
+            } else if (getKey() == 'f') {
                 setFullScreen(!isFullScreen());
                 text.setX(getWidth()  / 2);
                 text.setY(getHeight() / 2);
@@ -88,5 +91,5 @@ public class FullScreenExample extends Applet {
     public static void main(String[] args) {
         AppletRunner.run("casmi.FullScreenExample", "Full Screen Example");
     }
-    
+
 }

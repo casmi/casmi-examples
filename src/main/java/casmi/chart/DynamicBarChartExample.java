@@ -34,9 +34,9 @@ import casmi.graphics.color.RGBColor;
 
 /**
  * DynamicBarChart example.
- * 
+ *
  * @see casmi.chart.view.DynamicBarChart
- * 
+ *
  * @author Y. Ban
  */
 public class DynamicBarChartExample extends Applet {
@@ -45,15 +45,15 @@ public class DynamicBarChartExample extends Applet {
 
     DynamicBarChart barGraph;
     MatrixData2D    mat;
- 
+
     @Override
     public void setup() {
         setSize(1024, 768);
 
         mat = new MatrixData2D();
-        
+
         mat.setAxis("year", "data");
-        
+
         mat.appendData("1996", 50);
         mat.appendData("2001", 140);
         mat.appendData("2004", 340);
@@ -64,7 +64,7 @@ public class DynamicBarChartExample extends Applet {
         mat.appendData("2011", 400);
         mat.appendData("2012", 599);
         mat.appendData("2013", 200);
-        
+
         mat.calculate();
 
         barGraph = new DynamicBarChart(800, 600, mat, 600, 0);
@@ -79,6 +79,9 @@ public class DynamicBarChartExample extends Applet {
 
     @Override
     public void update() {}
+
+    @Override
+    public void exit() {}
 
     @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {

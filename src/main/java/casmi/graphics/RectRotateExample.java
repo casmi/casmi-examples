@@ -28,14 +28,14 @@ import casmi.util.SystemUtil;
 
 /**
  * Example for rotating Rect.
- * 
+ *
  * @author Y. Ban
  */
 public class RectRotateExample extends Applet {
 
     Rect rect = new Rect(100,100);
     int r;
-    
+
     @Override
     public void setup() {
         setFPS(30);
@@ -51,6 +51,9 @@ public class RectRotateExample extends Applet {
             r = 0;
         rect.setRotation(r);
     }
+
+    @Override
+    public void exit() {}
 
     @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {

@@ -28,9 +28,9 @@ import casmi.graphics.element.Sphere;
 
 /**
  * Example of Graphics.
- * 
+ *
  * @author K. Nishimura
- * 
+ *
  */
 public class SphereExample extends Applet {
 
@@ -41,13 +41,13 @@ public class SphereExample extends Applet {
     @Override
     public void setup() {
         setSize(1024, 768);
-        
+
         s.setFill(false);
         s.setStrokeColor(new RGBColor(0.4, 0.4, 0.8));
         s.setStrokeWidth(4);
-        
+
         setPosition(512.0, 430.0, 100.0);
-        
+
         addObject(s);
     }
 
@@ -56,6 +56,9 @@ public class SphereExample extends Applet {
         rot += 0.1;
         s.setRotation(rot, rot * 3, rot * 5);
     }
+
+    @Override
+    public void exit() {}
 
     @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {}

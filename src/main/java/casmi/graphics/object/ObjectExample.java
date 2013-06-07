@@ -28,7 +28,7 @@ import casmi.graphics.element.Line;
 
 /**
  * Object example.
- * 
+ *
  * @author Y. Ban
  */
 public class ObjectExample extends Applet {
@@ -39,26 +39,29 @@ public class ObjectExample extends Applet {
     @Override
     public void setup() {
         setSize(800, 600);
-        
+
         l1.setStrokeColor(ColorSet.WHITE);
         l2.setStrokeColor(ColorSet.WHITE);
-        
+
         l1.setStrokeWidth(25);
         l2.setStrokeWidth(25);
-        
+
         addObject(l1);
         addObject(l2);
     }
 
     @Override
 	public void update() {}
-    
+
+    @Override
+    public void exit() {}
+
 	@Override
 	public void mouseEvent(MouseEvent e, MouseButton b) {}
 
 	@Override
 	public void keyEvent(KeyEvent e) {}
-    
+
     public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.object.ObjectExample", "Object Example");
     }

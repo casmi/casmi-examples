@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-  
+
 package casmi.graphics;
 
 import casmi.Applet;
@@ -29,15 +29,15 @@ import casmi.graphics.element.Ellipse;
 
 /**
  * Ellipse example.
- * 
+ *
  * @see casmi.graphics.element.Ellipse
- * 
+ *
  * @author K. Nishimura
  */
 public class EllipseExample extends Applet {
-    
+
     Ellipse el = new Ellipse(400, 300, 300, 160);
-        
+
     @Override
     public void setup() {
         setSize(800, 600);
@@ -45,7 +45,7 @@ public class EllipseExample extends Applet {
         el.setFillColor(new RGBColor(0.3, 0.7, 0.3));
         el.setStrokeColor(ColorSet.LIGHT_CORAL);
         el.setStrokeWidth(3);
-        
+
         addObject(el);
     }
 
@@ -57,7 +57,10 @@ public class EllipseExample extends Applet {
 
 	@Override
 	public void update() {}
-	
+
+    @Override
+    public void exit() {}
+
 	public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.EllipseExample", "Ellipse Example");
     }

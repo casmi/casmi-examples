@@ -37,7 +37,7 @@ import casmi.tween.equations.Linear;
 
 /**
  * Group example.
- * 
+ *
  * @author Y. Ban
  *
  * @see casmi.graphics.group.Group
@@ -52,7 +52,7 @@ public class GroupExample extends Applet {
     public void setup() {
         setSize(800, 600);
         setBackGroundColor(ColorSet.GRAY);
-        
+
         tc = new TweenCallback() {
 
             @Override
@@ -60,18 +60,21 @@ public class GroupExample extends Applet {
                 group.setTweenstart(true);
             }
         };
-        
+
         group.setPosition(getWidth() / 2.0, getHeight() / 2.0);
-        
+
         addObject(group);
     }
 
     @Override
     public void update() {}
-    
+
+    @Override
+    public void exit() {}
+
     @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {
-        
+
         if (e == MouseEvent.PRESSED) {
             te = null;
             te = new TweenElement(group);
@@ -88,12 +91,12 @@ public class GroupExample extends Applet {
             addTween(tsg);
         }
     }
-   
+
     @Override
     public void keyEvent(KeyEvent e) {}
 
 	public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.group.GroupExample", "GroupExample");
     }
-	
+
 }

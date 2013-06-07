@@ -28,7 +28,7 @@ import casmi.graphics.element.Line;
 
 /**
  * Example of Noise.
- * 
+ *
  * @author Y.Ban
  */
 public class NoiseExample extends Applet {
@@ -48,25 +48,28 @@ public class NoiseExample extends Applet {
 		}
 		noiseScale = 0.02f;
 	}
-	
+
 	@Override
 	public void update() {
 		for (int x = 0; x < getWidth(); x++) {
-			noiseValue = Noise.noise((getMouseX() + x) * noiseScale, 
+			noiseValue = Noise.noise((getMouseX() + x) * noiseScale,
 									getMouseY() * noiseScale);
-					
+
 			c.setGray(noiseValue);
 			lines[x].setStrokeColor(c);
 			lines[x].set(x, getMouseY() + noiseValue * 80, x, getHeight());
 		}
 	}
 
+    @Override
+    public void exit() {}
+
 	@Override
     public void mouseEvent(MouseEvent e, MouseButton b) {}
 
     @Override
     public void keyEvent(KeyEvent e) {}
-	
+
 	public static void main(String[] args) {
 		AppletRunner.run("casmi.util.NoiseExample", "Noise Example");
 	}

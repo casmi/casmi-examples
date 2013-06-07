@@ -31,10 +31,10 @@ import casmi.chart.view.DynamicCircleChart;
 
 /**
  * DynamicCircleChart example.
- * 
+ *
  * @see casmi.chart.view.DynamicCircleChart
  * @see casmi.chart.view.ChartTurnType
- * 
+ *
  * @author Y. Ban
  */
 public class DynamicCircleChartExample extends Applet {
@@ -47,15 +47,15 @@ public class DynamicCircleChartExample extends Applet {
     @Override
     public void setup() {
         setSize(1024, 768);
-        
+
         mat = new MatrixData2D();
-        
+
         mat.appendData("A", 60);
         mat.appendData("B", 25);
         mat.appendData("c", 15);
 
         mat.calculate();
-        
+
         circleGraph = new DynamicCircleChart(mat, 200, ChartTurnType.CLOCKWISE);
         circleGraph.setPosition(getWidth() / 2, getHeight() / 2);
         addObject(circleGraph);
@@ -63,6 +63,9 @@ public class DynamicCircleChartExample extends Applet {
 
     @Override
     public void update() {}
+
+    @Override
+    public void exit() {}
 
     @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {

@@ -32,9 +32,9 @@ import casmi.graphics.object.Perspective;
 
 /**
  * Box example.
- * 
+ *
  * @see casmi.graphics.element.Box
- * 
+ *
  * @author Y. BAN
  */
 public class BoxExample extends Applet {
@@ -43,7 +43,7 @@ public class BoxExample extends Applet {
     Box b2 = new Box(0.8, 1.0, 1.2);
 
     double rot = 0.0;
-    
+
     Perspective p;
     Camera c;
 
@@ -60,10 +60,10 @@ public class BoxExample extends Applet {
         b2.setFillColor(new RGBColor(0.0, 0.0, 0.4, 0.5));
         b2.setStrokeColor(new RGBColor(0.0, 0.0, 1.0));
         b2.setPosition(0, -1, 1);
-        
+
         p = new Perspective(30.0, (double)getWidth() / (double)getHeight(), 1.0, 100.0);
         c = new Camera(3.0, 4.0, 5.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
-        
+
         b1.addMouseEventCallback(new MouseOverCallback() {
 
             @Override
@@ -71,10 +71,10 @@ public class BoxExample extends Applet {
                 System.out.println("hit!!");
             }
         });
-        
+
         setPerspective(p);
         setCamera(c);
-        
+
         addObject(b1);
         addObject(b2);
     }
@@ -84,6 +84,9 @@ public class BoxExample extends Applet {
         rot += 0.1;
         b1.setRotation(rot, 1, 3, 5);
     }
+
+    @Override
+    public void exit() {}
 
     @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {}

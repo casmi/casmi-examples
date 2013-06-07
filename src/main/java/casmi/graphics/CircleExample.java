@@ -29,9 +29,9 @@ import casmi.graphics.element.Circle;
 
 /**
  * Circle example.
- * 
+ *
  * @see casmi.graphics.element.Circle
- * 
+ *
  * @author Y.Ban
  */
 public class CircleExample extends Applet {
@@ -52,12 +52,15 @@ public class CircleExample extends Applet {
     @Override
     public void update() {}
 
+    @Override
+    public void exit() {}
+
 	@Override
 	public void mouseEvent(MouseEvent e, MouseButton b) {}
 
 	@Override
 	public void keyEvent(KeyEvent e) {}
-	
+
 	public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.CircleExample", "Circle Example");
     }

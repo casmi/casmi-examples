@@ -15,7 +15,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-  
+
 package casmi.graphics;
 
 import casmi.Applet;
@@ -29,43 +29,46 @@ import casmi.graphics.element.Rect;
 
 /**
  * Example of Graphics.
- * 
+ *
  * @author K. Nishimura
- * 
+ *
  */
 public class RectExample extends Applet {
-    
+
     Rect r1 = new Rect(500, 200);
     Rect r2 = new Rect(200, 400);
     Color c = new HSBColor(0.1, 0.4, 0.4);
-        
+
     @Override
     public void setup() {
         setSize(1024, 768);
-        
+
         r1.setFillColor(c);
         r1.setStrokeColor(new HSBColor(0.4, 0.9, 0.8));
         r1.setStrokeWidth(3);
         r1.setPosition(500, 300);
-        
+
         r2.setFill(false);
         r2.setStrokeWidth(5);
         r2.setStrokeColor(new HSBColor(0.7, 0.7, 0.7));
         r2.setPosition(200, 300);
-        
+
         addObject(r1);
         addObject(r2);
     }
-    
+
     @Override
     public void update() {}
+
+    @Override
+    public void exit() {}
 
 	@Override
 	public void mouseEvent(MouseEvent e, MouseButton b) {}
 
 	@Override
 	public void keyEvent(KeyEvent e) {}
-	
+
 	public static void main(String[] args) {
         AppletRunner.run(new RectExample(), "RectExample");
     }

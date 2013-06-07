@@ -51,7 +51,7 @@ public class SphereTextureExample extends Applet {
     @Override
     public void setup() {
         setSize(1024, 768);
-        
+
         s = new Sphere(1);
         s.setStroke(false);
         earth = new Texture(Applet.class.getResource("earthDiffuse.png"));
@@ -61,15 +61,15 @@ public class SphereTextureExample extends Applet {
         mousepoint  = new Vertex(0, 0);
         perspective = new Perspective(30.0, (double)getWidth() / (double)getHeight(), 1.0, 100.0);
         camera      = new Camera(2.4, 3.2, 4.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
-        
+
         setPerspective(perspective);
         setCamera(camera);
         applyMatix(rt);
-        
-        sx = 1.0 / (double)getWidth();
-        sy = 1.0 / (double)getHeight();
+
+        sx = 1.0 / getWidth();
+        sy = 1.0 / getHeight();
         s.setTexture(earth);
-        
+
         addObject(s);
     }
 
@@ -81,6 +81,9 @@ public class SphereTextureExample extends Applet {
         }
         trackball();
     }
+
+    @Override
+    public void exit() {}
 
     private boolean track = false;
     private int fx, fy;

@@ -32,9 +32,9 @@ import casmi.graphics.object.GraphicsObject;
 
 /**
  * Example of casmi Font
- * 
+ *
  * @author Y.Ban
- * 
+ *
  */
 public class TextExample2 extends Applet {
 
@@ -43,6 +43,7 @@ public class TextExample2 extends Applet {
     Text t, t2, t3;
     GraphicsObject group;
 
+    @Override
     public void setup() {
         String s = "casmi is free software: \n you can redistribute it and/or modify it \n" +
             " under the terms of the GNU Lesser General Public License \n" +
@@ -85,6 +86,9 @@ public class TextExample2 extends Applet {
 
     @Override
     public void update() {}
+
+    @Override
+    public void exit() {}
 
     @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {}

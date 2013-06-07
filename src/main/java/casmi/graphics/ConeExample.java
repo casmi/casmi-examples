@@ -28,9 +28,9 @@ import casmi.graphics.element.Cone;
 
 /**
  * Cone example.
- * 
+ *
  * @see casmi.graphics.element.Cone
- * 
+ *
  * @author Y. Ban
  */
 public class ConeExample extends Applet {
@@ -45,12 +45,15 @@ public class ConeExample extends Applet {
         cone.setStrokeColor(new RGBColor(0.4, 0.4, 0.8));
         cone.setStrokeWidth(4);
         cone.setPosition(400, 230, 100);
-        
+
         addObject(cone);
     }
-    
+
     @Override
     public void update() {}
+
+    @Override
+    public void exit() {}
 
     @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {}

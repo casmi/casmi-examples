@@ -23,9 +23,9 @@ import casmi.graphics.element.Triangle;
 
 /**
  * Mouse example.
- * 
+ *
  * @see casmi.Applet
- * 
+ *
  * @author K. Nishimura
  */
 public class MouseExample extends Applet {
@@ -47,9 +47,12 @@ public class MouseExample extends Applet {
     }
 
     @Override
+    public void exit() {}
+
+    @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {
         boolean mouseFlag = false;
-     
+
         switch (e) {
         case CLICKED:
             System.out.println("Clicked!!");
@@ -67,7 +70,7 @@ public class MouseExample extends Applet {
         	System.out.println("Double_Clicked!!");
         	mouseFlag = true;
         }
-        
+
         if (mouseFlag) {
             switch (b) {
             case LEFT:
@@ -82,9 +85,9 @@ public class MouseExample extends Applet {
 
     @Override
     public void keyEvent(KeyEvent e) {}
-    
+
     public static void main(String[] args) {
         AppletRunner.run("casmi.MouseExample", "Mouse Example");
     }
-    
+
 }

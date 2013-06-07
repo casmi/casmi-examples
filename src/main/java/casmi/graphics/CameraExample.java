@@ -30,7 +30,7 @@ import casmi.graphics.object.Camera;
 
 /**
  * Camera example.
- * 
+ *
  * @author Y. Ban
  *
  * @see casmi.graphics.object.Camera
@@ -40,32 +40,32 @@ public class CameraExample extends Applet {
 	@Override
 	public void setup() {
 		setSize(800, 600);
-		
+
 		Line lineX = new Line(0.0, 0.0, 0.0,
 		                      1.0, 0.0, 0.0);
 		lineX.setStrokeColor(ColorSet.RED);
 		lineX.setStrokeWidth(2.0);
 		addObject(lineX);
-		
+
 		Line lineY = new Line(0.0, 0.0, 0.0,
 		                      0.0, 1.0, 0.0);
 		lineY.setStrokeColor(ColorSet.BLUE);
 		lineY.setStrokeWidth(2.0);
 		addObject(lineY);
-		
+
 		Line lineZ = new Line(0.0, 0.0, 0.0,
 		                      0.0, 0.0, 1.0);
 		lineZ.setStrokeColor(ColorSet.GREEN);
 		lineZ.setStrokeWidth(2.0);
 		addObject(lineZ);
-		
+
 		Sphere sphere = new Sphere(1.0);
 		sphere.setStrokeColor(ColorSet.AQUA, 0.4);
 		sphere.setFill(false);
 		addObject(sphere);
-		
+
 		setPerspective(30.0, (double)getWidth() / (double)getHeight(), 1.0, 100.0);
-        
+
 		Camera camera = new Camera(2.4, 3.2, 4.0,  // eye
 		                           0.0, 0.0, 0.0,  // center
 		                           0.0, 1.0, 0.0); // orientation
@@ -75,12 +75,15 @@ public class CameraExample extends Applet {
 	@Override
 	public void update() {}
 
+    @Override
+    public void exit() {}
+
 	@Override
 	public void mouseEvent(MouseEvent e, MouseButton b) {}
 
 	@Override
 	public void keyEvent(KeyEvent e) {}
-	
+
 	public static void main(String[] args) {
         AppletRunner.run( "casmi.graphics.CameraExample", "CameraExample");
     }

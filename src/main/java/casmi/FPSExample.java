@@ -28,9 +28,9 @@ import casmi.graphics.element.TextAlign;
  * <p>
  * The Left number is setting FPS, and the right one is working FPS.
  * Click anywhere to change FPS.
- * 
+ *
  * @author T. Takeuchi
- * 
+ *
  * @see casmi.Applet#getFPS()
  * @see casmi.Applet#setFPS(double)
  * @see casmi.Applet#getWorkingFPS()
@@ -39,26 +39,26 @@ public class FPSExample extends Applet {
 
     Text fpsText, workingFPSText;
     Circle circle;
-    
+
     int cnt = 0;
     int fps = 30;
-    
+
     @Override
     public void setup() {
         setSize(440, 150);
-        
+
         fpsText = new Text("30");
         fpsText.setAlign(TextAlign.CENTER);
         fpsText.setPosition(120, 30);
         fpsText.setStrokeColor(ColorSet.WHITE);
         addObject(fpsText);
-        
+
         workingFPSText = new Text();
         workingFPSText.setAlign(TextAlign.CENTER);
         workingFPSText.setPosition(280, 30);
         workingFPSText.setStrokeColor(ColorSet.WHITE);
         addObject(workingFPSText);
-        
+
         circle = new Circle(25);
         circle.setPosition(40, 100);
         addObject(circle);
@@ -67,11 +67,14 @@ public class FPSExample extends Applet {
     @Override
     public void update() {
         circle.setX(40 + cnt * 40);
-        
+
         workingFPSText.setText(String.format("%4.2f", getWorkingFPS()));
-        
+
         if (10 <= ++cnt) cnt = 0;
     }
+
+    @Override
+    public void exit() {}
 
     @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {
@@ -103,7 +106,7 @@ public class FPSExample extends Applet {
 
     @Override
     public void keyEvent(KeyEvent e) {}
-    
+
     public static void main(String[] args) {
 		AppletRunner.run("casmi.FPSExample", "FPS Example");
 	}

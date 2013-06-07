@@ -50,6 +50,9 @@ public class GrayColorExample extends Applet {
     public void update() {}
 
     @Override
+    public void exit() {}
+
+    @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {}
 
     @Override

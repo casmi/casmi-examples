@@ -28,9 +28,9 @@ import casmi.graphics.element.Bezier;
 
 /**
  * Bezier example.
- * 
+ *
  * @see casmi.graphics.element.Bezier
- * 
+ *
  * @author K. Nishimura
  */
 public class BezierExample extends Applet {
@@ -39,12 +39,12 @@ public class BezierExample extends Applet {
                            200, 400,
                            300, 300,
                            400, 200);
-    
+
     Bezier b2 = new Bezier(400, 200,
                            500, 100,
                            700, 300,
                            700, 500);
-    
+
     Bezier b3 = new Bezier(100, 200, -20,
                            700, 400, -100,
                            300, 600, -50,
@@ -75,11 +75,14 @@ public class BezierExample extends Applet {
     public void update() {}
 
     @Override
+    public void exit() {}
+
+    @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {}
 
     @Override
     public void keyEvent(KeyEvent e) {}
-    
+
     public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.BezierExample", "Bezier Example");
     }

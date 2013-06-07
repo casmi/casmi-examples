@@ -33,7 +33,7 @@ import casmi.graphics.font.FontStyle;
 
 /**
  * An example of Mouseover of Text.
- * 
+ *
  * @author Y. Ban
  */
 public class MouseOverTextExample extends Applet {
@@ -70,6 +70,9 @@ public class MouseOverTextExample extends Applet {
     public void update() {}
 
     @Override
+    public void exit() {}
+
+    @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {}
 
     @Override
@@ -78,5 +81,5 @@ public class MouseOverTextExample extends Applet {
     public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.mouseover.MouseOverTextExample", "MouseOverTextExample");
     }
-    
+
 }

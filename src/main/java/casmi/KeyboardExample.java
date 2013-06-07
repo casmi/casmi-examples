@@ -28,9 +28,9 @@ import casmi.graphics.font.FontStyle;
 
 /**
  * Keyboard example.
- * 
+ *
  * @see casmi.Applet
- * 
+ *
  * @author Y.Ban
  */
 public class KeyboardExample extends Applet {
@@ -48,14 +48,14 @@ public class KeyboardExample extends Applet {
     @Override
     public void setup() {
         setSize(800, 600);
-        
+
         r.setFill(false);
         r.setStrokeColor(ColorSet.GRAY);
         r.setPosition(getWidth() / 2, getHeight() / 2);
-        
+
         line.setStrokeColor(ColorSet.GRAY);
         line.setStrokeWidth(1.1);
-        
+
         c.setStrokeColor(ColorSet.LIGHT_CORAL);
 
         f = new Font("Times New Roman");
@@ -73,7 +73,7 @@ public class KeyboardExample extends Applet {
                         getHeight() / 2 + r.getHeight() / 2 - 2 * r.getHeight() / (LINE_NUM + 1) + 5);
         text.setStrokeColor(ColorSet.LIGHT_BLUE);
         text.setLeading(r.getHeight() / (LINE_NUM + 1));
-        
+
         addObject(r);
         for (int i = 0; i < LINE_NUM; i++) {
         	Line l = (Line) line.clone();
@@ -85,11 +85,14 @@ public class KeyboardExample extends Applet {
         addObject(text);
         addObject(c);
     }
-    
+
     @Override
     public void update() {}
-    
-    @Override 
+
+    @Override
+    public void exit() {}
+
+    @Override
     public void keyEvent(KeyEvent e) {
     	if (e == KeyEvent.PRESSED) {
             if (44 <= getKeyCode() || getKeyCode() == 32) {
@@ -108,10 +111,10 @@ public class KeyboardExample extends Applet {
     }
 
     @Override
-    public void mouseEvent(MouseEvent e, MouseButton b) {}    
+    public void mouseEvent(MouseEvent e, MouseButton b) {}
 
     public static void main(String[] args) {
         AppletRunner.run("casmi.KeyboardExample", "Keyboard Example");
     }
-		
+
 }
