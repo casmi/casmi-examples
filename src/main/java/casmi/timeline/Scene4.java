@@ -34,7 +34,7 @@ import casmi.graphics.object.Perspective;
 
 /**
  * Example of Timeline.
- * 
+ *
  * @author Y. Ban
  */
 public class Scene4 extends Scene {
@@ -47,11 +47,11 @@ public class Scene4 extends Scene {
     BoxName boxName;
 
     class BoxName extends Group {
-        
+
         Ortho ortho;
         Text t;
         Font f = null;
-        
+
         public BoxName() {
             ortho = new Ortho();
             addPerse(ortho);
@@ -61,7 +61,7 @@ public class Scene4 extends Scene {
             t.setStrokeColor(ColorSet.WHITE);
             add(t);
         }
-        
+
         @Override
         public void update() {}
     }

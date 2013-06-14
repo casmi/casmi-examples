@@ -55,11 +55,6 @@ public class SampleGroup extends Group {
 
     public SampleGroup() {
         super();
-        setup();
-    }
-
-    @Override
-    public void setup() {
 
         r1 = new Rect(420, 210);
         r1.setStroke(false);

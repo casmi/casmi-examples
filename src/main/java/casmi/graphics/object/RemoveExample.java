@@ -43,11 +43,6 @@ public class RemoveExample extends Applet {
         Triangle t1, t2;
 
         public TriangleGroup() {
-            setup();
-        }
-
-        @Override
-        public void setup() {
             t1 = new Triangle(100, 100, 200, 100, 150, 150);
             t2 = new Triangle(10, 10, 30, 10, 20, 20);
             t1.setStroke(false);
@@ -56,7 +51,6 @@ public class RemoveExample extends Applet {
             t2.setFillColor(ColorSet.FIREBRICK);
             this.add(t1);
             this.add(t2);
-
         }
 
         @Override

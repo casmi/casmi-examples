@@ -44,11 +44,6 @@ public class MouseOverGroupExample extends Applet {
         Triangle t1, t2;
 
         public TriangleGroup() {
-            setup();
-        }
-
-        @Override
-        public void setup() {
             t1 = new Triangle(100, 100, 200, 100, 150, 150);
             t1.setStroke(false);
             t1.setFillColor(ColorSet.CYAN);
@@ -71,11 +66,6 @@ public class MouseOverGroupExample extends Applet {
         MouseOverCallback mouseoverrect;
 
         public RectGroup() {
-            setup();
-        }
-
-        @Override
-        public void setup() {
             r1 = new Rect(100, 100);
             r1.setPosition(300, 300);
             r1.setStroke(false);

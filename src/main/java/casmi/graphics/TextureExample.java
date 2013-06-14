@@ -61,7 +61,6 @@ public class TextureExample extends Applet {
 	        tex.setRotation(rot, 0.0, 1.0, 0.0);
 
 		}
-
     }
 
     @Override
