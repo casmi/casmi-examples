@@ -26,7 +26,6 @@ import casmi.MouseEvent;
 import casmi.graphics.color.Color;
 import casmi.graphics.color.ColorSet;
 import casmi.graphics.color.RGBColor;
-import casmi.ui.PopupMenu;
 
 /**
  * @author S. Yoshida
@@ -34,11 +33,11 @@ import casmi.ui.PopupMenu;
  * @see casmi.ui.PopupMenu
  */
 public class PopupMenuExample extends Applet {
-	
+
 	PopupMenu menu;
-	
+
 	Color color;
-	static final Color DEFAULT_COLOR = new RGBColor(ColorSet.WHITE); 
+	static final Color DEFAULT_COLOR = new RGBColor(ColorSet.WHITE);
 
 	@Override
 	public void setup() {
@@ -66,6 +65,9 @@ public class PopupMenuExample extends Applet {
 	public void update() {
 		setBackGroundColor(color);
 	}
+
+	@Override
+    public void exit() {}
 
 	@Override
 	public void mouseEvent(MouseEvent e, MouseButton b) {
