@@ -64,6 +64,7 @@ public class SphereTextureExample extends Applet {
 
         setPerspective(perspective);
         setCamera(camera);
+
         applyMatix(rt);
 
         sx = 1.0 / getWidth();
@@ -151,8 +152,8 @@ public class SphereTextureExample extends Applet {
             track = true;
             fx = getMouseX();
             fy = getMouseY();
-            dmx = getPreMouseX() - getMouseX();
-            dmy = getPreMouseY() - getMouseY();
+            dmx = getPrevMouseX() - getMouseX();
+            dmy = getPrevMouseY() - getMouseY();
             dma = Math.sqrt(dmx * dmx + dmy * dmy);
             dmr = Math.acos(dma / dmx);
         }

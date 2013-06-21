@@ -54,7 +54,7 @@ public class Scene4 extends Scene {
 
         public BoxName() {
             ortho = new Ortho();
-            addPerse(ortho);
+            addProjection(ortho);
             f = new Font("San-Serif");
             f.setSize(70);
             t = new Text("Box", f, 750, 600);

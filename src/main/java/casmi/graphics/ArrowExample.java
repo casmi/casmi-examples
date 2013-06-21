@@ -28,17 +28,16 @@ public class ArrowExample extends Applet{
 	@Override
 	public void setup() {
 		setSize(800, 600);
+
+		arrow = new Arrow(30, 150);
+        arrow.setFillColor(ColorSet.ALICE_BLUE);
+        arrow.setAlign(ArrowAlign.CENTER);
+        arrow.setPosition(getWidth()/2, getHeight()/2);
+        addObject(arrow);
+
 		arrow2 = new Arrow(30, new Vertex(200, 150), new Vertex(600, 450));
 		arrow2.setFillColor(ColorSet.ORANGE);
 		addObject(arrow2);
-
-		arrow = new Arrow(30, 150);
-		arrow.setFillColor(ColorSet.ALICE_BLUE);
-		arrow.setAlign(ArrowAlign.CENTER);
-		arrow.setPosition(getWidth()/2, getHeight()/2);
-		addObject(arrow);
-
-
 	}
 
 	@Override

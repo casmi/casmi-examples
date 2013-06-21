@@ -90,8 +90,8 @@ public class MouseOverExample extends Applet {
 			public void run(MouseClickTypes eventtype, Element element) {
 				switch(eventtype){
 				case DRAGGED:
-					element.setPosition(element.getX() + getMouseX() - getPreMouseX(),
-					                    element.getY() + getMouseY() - getPreMouseY());
+					element.setPosition(element.getX() + getMouseX() - getPrevMouseX(),
+					                    element.getY() + getMouseY() - getPrevMouseY());
 				default:
 				    break;
 				}
