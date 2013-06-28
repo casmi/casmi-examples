@@ -24,12 +24,8 @@ import casmi.graphics.element.Rect;
 import casmi.graphics.element.Triangle;
 import casmi.graphics.font.Font;
 import casmi.graphics.font.FontStyle;
-import casmi.tween.Tween;
-import casmi.tween.TweenElement;
+import casmi.tween.Tweener;
 import casmi.tween.TweenManager;
-import casmi.tween.TweenParallelGroup;
-import casmi.tween.equations.Quint;
-import casmi.tween.simpletweenables.TweenFloat;
 
 /**
  * @author Y. Ban
@@ -41,12 +37,12 @@ public class Group1 extends Group {
     Triangle t1;
     Font     f;
 
-    TweenElement te;
+    Tweener te;
 
     TweenManager manager = new TweenManager();
 
     boolean    tweenstart;
-    TweenFloat tf;
+//    TweenFloat tf; // TODO fix
     double     tx, ty;
 
     public Group1() {
@@ -74,34 +70,35 @@ public class Group1 extends Group {
 
         f = new Font("COPPERPLATE", FontStyle.PLAIN, 14);
 
-        tf = new TweenFloat(0);
+//        tf = new TweenFloat(0); // TODO fix
 
         tx = t1.getX();
         ty = t1.getY();
 
-        t1.setPosition(tx + tf.getValue(), ty);
-
-        l1.set((-90 + tf.getValue()), 0, 210, 0);
+//        t1.setPosition(tx + tf.getValue(), ty);
+//
+//        l1.set((-90 + tf.getValue()), 0, 210, 0);
     }
 
     @Override
     public void update() {
 
         if (isTweenstart()) {
-            tf.setValue(280);
-            setTweenstart(false);
-            manager = new TweenManager();
-            addTweenManager(manager);
-
-            TweenParallelGroup tpg =
-                TweenParallelGroup.create(
-                    Tween.to(tf, 3500, Quint.OUT).target(0)
-                    );
-            manager.add(tpg);
+// TODO fix
+//            tf.setValue(280);
+//            setTweenstart(false);
+//            manager = new TweenManager();
+//            addTweenManager(manager);
+//
+//            TweenParallelGroup tpg =
+//                TweenParallelGroup.create(
+//                    Tween.to(tf, 3500, Quint.OUT).target(0)
+//                    );
+//            manager.add(tpg);
 
         }
-        t1.setPosition(tx + tf.getValue(), ty);
-        l1.set((-90 + tf.getValue()), 0, 210, 0);
+//        t1.setPosition(tx + tf.getValue(), ty);
+//        l1.set((-90 + tf.getValue()), 0, 210, 0);
     }
 
     public boolean isTweenstart() {

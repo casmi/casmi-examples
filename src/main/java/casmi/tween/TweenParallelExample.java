@@ -49,14 +49,14 @@ public class TweenParallelExample extends Applet {
     Rect r2 = new Rect(150, 150);
     Color white = new RGBColor(1.0, 1.0, 1.0, 1.0);
     Color lb;
-    TweenElement te, te2;
+    Tweener te, te2;
     TweenCallback tweencallback;
     String s = "casmi";
     private boolean tmfinish = true;
     Font f = null;
     Text text;
     Line l;
-    private ArrayList<TweenElement> tes;
+    private ArrayList<Tweener> tes;
     TweenParallelGroup tg = new TweenParallelGroup();
 
     TweenCallback tc;
@@ -77,7 +77,7 @@ public class TweenParallelExample extends Applet {
         };
 
         f = new Font("San-Serif");
-        tes = new ArrayList<TweenElement>(5);
+        tes = new ArrayList<Tweener>(5);
 
         f.setSize(45);
         lb = new RGBColor(ColorSet.LIGHT_BLUE, 0.0);
@@ -89,7 +89,7 @@ public class TweenParallelExample extends Applet {
         }
 
         for (int i = 0; i < s.length(); i++) {
-            tes.add(new TweenElement(ttt[i]));
+            tes.add(new Tweener(ttt[i]));
         }
 
         for (int i = 0; i < s.length(); i++) {

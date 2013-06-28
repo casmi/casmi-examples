@@ -43,7 +43,7 @@ public class TweenVertexExample extends Applet {
     Rect r1 = new Rect(500, 200);
     Rect r2 = new Rect(150, 150);
     Color c = new RGBColor(0.1, 0.4, 0.4);
-    TweenElement te, te2;
+    Tweener te, te2;
     private boolean tmfinish = false;
     TweenCallback tc;
 

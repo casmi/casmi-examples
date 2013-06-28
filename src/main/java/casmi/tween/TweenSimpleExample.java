@@ -34,7 +34,7 @@ import casmi.tween.equations.Bounce;
 public class TweenSimpleExample extends Applet {
 
 	Circle circle;
-	TweenElement te;
+	Tweener te;
 
 	@Override
 	public void setup() {
@@ -44,7 +44,7 @@ public class TweenSimpleExample extends Applet {
 		circle.setPosition(400,500);
 		addObject(circle);
 
-		te = new TweenElement(circle);
+		te = new Tweener(circle);
     	addTween(Tween.to(te, TweenType.POSITION, 3000, Bounce.OUT).addDelay(3000).target(200, 100).repeat(-1, 500));
 	}
 

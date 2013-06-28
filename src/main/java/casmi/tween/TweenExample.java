@@ -43,7 +43,7 @@ public class TweenExample extends Applet {
 	Rect r1 = new Rect(500, 200);
 	Rect r2 = new Rect(150, 150);
 	Color c = new HSBColor(0.1, 0.4, 0.4);
-	TweenElement te, te2;
+	Tweener t1, t2;
 
 	@Override
 	public void setup() {
@@ -60,8 +60,8 @@ public class TweenExample extends Applet {
 		addObject(r1);
 		addObject(r2);
 
-		te  = new TweenElement(r1);
-		te2 = new TweenElement(r2);
+		t1  = new Tweener(r1);
+		t2 = new Tweener(r2);
 	}
 
 	@Override
@@ -74,18 +74,18 @@ public class TweenExample extends Applet {
 	public void mouseEvent(MouseEvent e, MouseButton b) {
 		if (e == MouseEvent.PRESSED) {
 			clearTween();
-			te.reset();
-			te2.reset();
+			t1.reset();
+			t2.reset();
 
 			TweenSerialGroup tsg = TweenSerialGroup.create(
-					Tween.to(te, TweenType.POSITION, 2000, Bounce.OUT).target(20, -400),
+					Tween.to(t1, TweenType.POSITION, 2000, Bounce.OUT).target(20, -400),
 					TweenParallelGroup.create(
-									Tween.to(te, TweenType.ALPHA, 2000,	Linear.INOUT).target(0.3),
-									Tween.to(te, TweenType.POSITION, 1000, Circ.OUT).target(500, -400)
+									Tween.to(t1, TweenType.ALPHA, 2000,	Linear.INOUT).target(0.3),
+									Tween.to(t1, TweenType.POSITION, 1000, Circ.OUT).target(500, -400)
 											.addDelay(5000)),
 					TweenParallelGroup.create(
-									Tween.to(te2, TweenType.SCALE_X, 2000, Bounce.OUT).target(1.5),
-									Tween.to(te2, TweenType.ALPHA, 2000, Linear.INOUT).target(0.0)));
+									Tween.to(t2, TweenType.SCALE_X, 2000, Bounce.OUT).target(1.5),
+									Tween.to(t2, TweenType.ALPHA, 2000, Linear.INOUT).target(0.0)));
 			addTween(tsg);
 		}
 	}
@@ -96,5 +96,4 @@ public class TweenExample extends Applet {
 	public static void main(String[] args) {
         AppletRunner.run("casmi.tween.TweenExample", "TweenExample");
     }
-
 }

@@ -29,7 +29,7 @@ import casmi.graphics.element.MouseClickCallback;
 import casmi.graphics.element.Text;
 import casmi.graphics.element.Texture;
 import casmi.tween.Tween;
-import casmi.tween.TweenElement;
+import casmi.tween.Tweener;
 import casmi.tween.TweenParallelGroup;
 import casmi.tween.TweenSerialGroup;
 import casmi.tween.TweenType;
@@ -46,7 +46,7 @@ public class SceneTop extends Scene {
 
     private Texture tex;
     private double rot = 0.0;
-    private ArrayList<TweenElement> tes;
+    private ArrayList<Tweener> tes;
     private TweenParallelGroup tg = new TweenParallelGroup();
 
     private Text[] text = new Text[4];
@@ -67,7 +67,7 @@ public class SceneTop extends Scene {
         text[2] = new Text("Bezier");
         text[3] = new Text("Box");
 
-        tes = new ArrayList<TweenElement>(text.length);
+        tes = new ArrayList<Tweener>(text.length);
 
         mcc = new MouseClickCallback() {
 
@@ -94,7 +94,7 @@ public class SceneTop extends Scene {
             t.setStrokeColor(ColorSet.WHITE_SMOKE);
             t.setStrokeColorAlpha(0);
             t.addMouseEventCallback(mcc);
-            tes.add(new TweenElement(t));
+            tes.add(new Tweener(t));
             this.addObject(t);
             index++;
         }
@@ -103,7 +103,7 @@ public class SceneTop extends Scene {
 
     private void setTextTween() {
         int index = 0;
-        for (TweenElement t : tes) {
+        for (Tweener t : tes) {
             TweenSerialGroup tgtmp = (TweenSerialGroup)TweenSerialGroup.create(
                 TweenParallelGroup.create(
                     Tween.to(t, TweenType.ALPHA_STROKE, 2500, Linear.INOUT).target(1.0f)
@@ -118,7 +118,7 @@ public class SceneTop extends Scene {
     @Override
     public void EnteredSceneCallback() {
         clearTween();
-        for (TweenElement t : tes) {
+        for (Tweener t : tes) {
             t.reset();
         }
         setTextTween();

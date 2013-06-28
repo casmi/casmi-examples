@@ -27,7 +27,7 @@ import casmi.graphics.color.ColorSet;
 import casmi.tween.Tween;
 import casmi.tween.TweenCallback;
 import casmi.tween.TweenCallbackTypes;
-import casmi.tween.TweenElement;
+import casmi.tween.Tweener;
 import casmi.tween.TweenParallelGroup;
 import casmi.tween.TweenSerialGroup;
 import casmi.tween.TweenType;
@@ -45,7 +45,7 @@ import casmi.tween.equations.Linear;
 public class GroupExample extends Applet {
 
     SampleGroup group = new SampleGroup();
-    TweenElement te;
+    Tweener te;
     TweenCallback tc;
 
     @Override
@@ -77,7 +77,7 @@ public class GroupExample extends Applet {
 
         if (e == MouseEvent.PRESSED) {
             te = null;
-            te = new TweenElement(group);
+            te = new Tweener(group);
 
             TweenSerialGroup tsg = TweenSerialGroup.create(
                 Tween.to(te, TweenType.POSITION, 2000, Bounce.OUT).target(getWidth() / 2, getHeight() / 2 - 200).addCompleteCallback(tc),

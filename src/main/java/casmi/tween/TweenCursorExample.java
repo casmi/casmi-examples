@@ -28,9 +28,7 @@ import casmi.graphics.color.ColorSet;
 import casmi.graphics.color.RGBColor;
 import casmi.graphics.element.Ellipse;
 import casmi.tween.equations.Bounce;
-import casmi.tween.equations.Linear;
 import casmi.tween.equations.Quart;
-import casmi.tween.simpletweenables.TweenFloat;
 import casmi.util.Random;
 
 /**
@@ -41,8 +39,10 @@ import casmi.util.Random;
 public class TweenCursorExample extends Applet {
 
     Ellipse el = new Ellipse(40);
-    TweenElement te;
-    TweenFloat tf = new TweenFloat(0.0f);
+    Tweener te;
+
+//    TweenFloat tf = new TweenFloat(0.0f);  // TODO fix
+
     Color c = new RGBColor(ColorSet.ORANGE);
     Color cc = new RGBColor(ColorSet.ORANGE);
 
@@ -51,13 +51,13 @@ public class TweenCursorExample extends Applet {
         setSize(1024, 768);
         el.setFillColor(c);
         el.setPosition(getWidth() / 2, getHeight() / 2);
-        te = new TweenElement(el);
+        te = new Tweener(el);
         addObject(el);
     }
 
     @Override
     public void update() {
-        el.setFillColor(RGBColor.lerpColor(c, cc, tf.getValue()));
+//        el.setFillColor(RGBColor.lerpColor(c, cc, tf.getValue()));  // TODO fix
     }
 
     @Override
@@ -74,11 +74,13 @@ public class TweenCursorExample extends Applet {
             cc.setBlue(rb / 255.0);
             cc.setGreen(rg / 255.0);
             cc.setRed(rr / 255.0);
-            tf.setValue(0.0f);
+
+//            tf.setValue(0.0f); // TODO fix
+
             TweenSerialGroup tg = TweenSerialGroup.create(
                 Tween.to(te, TweenType.SCALE, 500, Bounce.IN).target(sr),
                 TweenParallelGroup.create(
-                    Tween.to(tf, 1000, Linear.INOUT).target(1.0f),
+//                    Tween.to(tf, 1000, Linear.INOUT).target(1.0f), // TODO fix
                     Tween.to(te, TweenType.POSITION, 1000, Quart.INOUT).target(getMouseX(), getMouseY())
                     )
                 );

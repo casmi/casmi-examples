@@ -39,7 +39,7 @@ public class TweenRepeatExample  extends Applet {
     static final URL IMAGE_PATH = Applet.class.getResource("logo.png");
 
     Texture tex = null;
-    TweenElement te;
+    Tweener te;
 
     @Override
     public void setup() {
@@ -48,7 +48,7 @@ public class TweenRepeatExample  extends Applet {
         tex = new Texture(IMAGE_PATH);
         tex.setPosition(200, 500);
         addObject(tex);
-		te = new TweenElement(tex);
+		te = new Tweener(tex);
 		addTween(Tween.to(te, TweenType.POSITION, 3000, Bounce.OUT).targetRelative(45,0).addDelay(1000).repeat(-1, 300));
     }
 

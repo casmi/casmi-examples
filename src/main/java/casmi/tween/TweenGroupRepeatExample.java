@@ -35,7 +35,7 @@ import casmi.tween.equations.Bounce;
 public class TweenGroupRepeatExample extends Applet {
 
 	Rect r1 = new Rect(200, 200);
-	TweenElement te;
+	Tweener te;
 
 	@Override
 	public void setup() {
@@ -44,7 +44,7 @@ public class TweenGroupRepeatExample extends Applet {
 		r1.setFillColor(ColorSet.AQUA);
 		addObject(r1);
 		r1.setPosition(150, 150);
-		te = new TweenElement(r1);
+		te = new Tweener(r1);
 		TweenSerialGroup ts = (TweenSerialGroup) TweenSerialGroup.create(
 					Tween.to(te, TweenType.POSITION, 1000, Bounce.OUT).target(550,150),
 					Tween.to(te, TweenType.POSITION, 1000, Bounce.OUT).target(550,550),

@@ -100,7 +100,7 @@ public class TweenEquationsExample extends Applet {
 
     private int eq = 0;
     private int io = 1;
-    TweenElement te, te2;
+    Tweener te, te2;
 
     private boolean modeChange = false;
     Color pink, blue;
@@ -191,9 +191,9 @@ public class TweenEquationsExample extends Applet {
         }
 
         te2 = null;
-        te2 = new TweenElement(r);
+        te2 = new Tweener(r);
         te = null;
-        te = new TweenElement(el);
+        te = new Tweener(el);
     }
 
     @Override
