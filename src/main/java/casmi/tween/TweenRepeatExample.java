@@ -26,7 +26,8 @@ import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseEvent;
 import casmi.graphics.element.Texture;
-import casmi.tween.equations.Bounce;
+import casmi.matrix.Vector2D;
+import casmi.tween.equations.BounceOut;
 
 /**
  * Example of TweenRepeat.
@@ -36,20 +37,27 @@ import casmi.tween.equations.Bounce;
  */
 public class TweenRepeatExample  extends Applet {
 
-    static final URL IMAGE_PATH = Applet.class.getResource("logo.png");
+    static final URL IMAGE_PATH = TweenRepeatExample.class.getResource("/casmi/logo.png");
 
     Texture tex = null;
-    Tweener te;
+    Tweener t;
 
     @Override
     public void setup() {
         setSize(1024, 768);
 
+        // TODO fix (no display)
+
         tex = new Texture(IMAGE_PATH);
         tex.setPosition(200, 500);
         addObject(tex);
-		te = new Tweener(tex);
-		addTween(Tween.to(te, TweenType.POSITION, 3000, Bounce.OUT).targetRelative(45,0).addDelay(1000).repeat(-1, 300));
+
+		t = new Tweener(tex);
+
+		t.animatePosition(new Vector2D(200 + 45, 500), 3000, BounceOut.class);
+		t.setRepeat(true);
+
+		addTweener(t);
     }
 
 	@Override

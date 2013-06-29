@@ -24,13 +24,12 @@ import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseEvent;
 import casmi.graphics.color.Color;
-import casmi.graphics.color.ColorSet;
 import casmi.graphics.color.HSBColor;
 import casmi.graphics.color.RGBColor;
 import casmi.graphics.element.Rect;
-import casmi.tween.equations.Bounce;
-import casmi.tween.equations.Circ;
-import casmi.tween.equations.Linear;
+import casmi.matrix.Vector2D;
+import casmi.tween.equations.QuadraticInOut;
+import casmi.tween.equations.SinusoidalInOut;
 
 /**
  * Example of Tween.
@@ -40,28 +39,22 @@ import casmi.tween.equations.Linear;
  */
 public class TweenExample extends Applet {
 
-	Rect r1 = new Rect(500, 200);
-	Rect r2 = new Rect(150, 150);
+	Rect r = new Rect(500, 200);
 	Color c = new HSBColor(0.1, 0.4, 0.4);
-	Tweener t1, t2;
+	Tweener t;
 
 	@Override
 	public void setup() {
 		setSize(1024, 768);
 
-		r1.setFillColor(c);
-		r1.setStrokeColor(new RGBColor(0.4, 0.9, 0.4));
-		r1.setStrokeWidth(3);
-
-		r2.setFill(false);
-		r2.setStrokeColor(ColorSet.AQUA);
+		r.setFillColor(c);
+		r.setStrokeColor(new RGBColor(0.4, 0.9, 0.4));
+		r.setStrokeWidth(3);
 
 		setPosition(500, 600);
-		addObject(r1);
-		addObject(r2);
+		addObject(r);
 
-		t1  = new Tweener(r1);
-		t2 = new Tweener(r2);
+		t = new Tweener(r);
 	}
 
 	@Override
@@ -74,19 +67,13 @@ public class TweenExample extends Applet {
 	public void mouseEvent(MouseEvent e, MouseButton b) {
 		if (e == MouseEvent.PRESSED) {
 			clearTween();
-			t1.reset();
-			t2.reset();
+			t.reset();
 
-			TweenSerialGroup tsg = TweenSerialGroup.create(
-					Tween.to(t1, TweenType.POSITION, 2000, Bounce.OUT).target(20, -400),
-					TweenParallelGroup.create(
-									Tween.to(t1, TweenType.ALPHA, 2000,	Linear.INOUT).target(0.3),
-									Tween.to(t1, TweenType.POSITION, 1000, Circ.OUT).target(500, -400)
-											.addDelay(5000)),
-					TweenParallelGroup.create(
-									Tween.to(t2, TweenType.SCALE_X, 2000, Bounce.OUT).target(1.5),
-									Tween.to(t2, TweenType.ALPHA, 2000, Linear.INOUT).target(0.0)));
-			addTween(tsg);
+			t.animatePosition(new Vector2D(20, -400), 2000, QuadraticInOut.class);
+			t.animateStrokeAlpha(0.0, 2000, SinusoidalInOut.class);
+			t.animateRotation(180, 2000, QuadraticInOut.class);
+
+			addTweener(t);
 		}
 	}
 

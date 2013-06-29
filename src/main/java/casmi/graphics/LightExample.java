@@ -29,12 +29,12 @@ import casmi.graphics.color.RGBColor;
 import casmi.graphics.element.Sphere;
 import casmi.graphics.object.Light;
 import casmi.graphics.object.LightMode;
-import casmi.matrix.Vertex;
+import casmi.matrix.Vector3D;
 
 /**
  * Lighting example.
  *
- * @see casmi.graphics.Graphics#ambientLight(float, float, float, Vertex)
+ * @see casmi.graphics.Graphics#ambientLight(float, float, float, Vector3D)
  * @see casmi.graphics.Graphics#directionalLight(int, Color, float, float,
  *      float)
  *
@@ -44,7 +44,7 @@ public class LightExample extends Applet {
 
     Sphere s = new Sphere(70);
     HSBColor hsbColor;
-    Vertex v = new Vertex(100, 100, 100);
+    Vector3D v = new Vector3D(100, 100, 100);
     Light l1, l2;
     int r = 0;
 

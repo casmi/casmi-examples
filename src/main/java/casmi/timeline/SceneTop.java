@@ -28,11 +28,11 @@ import casmi.graphics.element.Element;
 import casmi.graphics.element.MouseClickCallback;
 import casmi.graphics.element.Text;
 import casmi.graphics.element.Texture;
-import casmi.tween.Tween;
 import casmi.tween.Tweener;
-import casmi.tween.TweenParallelGroup;
-import casmi.tween.TweenSerialGroup;
 import casmi.tween.TweenType;
+import casmi.tween.deprecated.Tween;
+import casmi.tween.deprecated.TweenParallelGroup;
+import casmi.tween.deprecated.TweenSerialGroup;
 import casmi.tween.equations.Linear;
 
 /**
@@ -112,7 +112,7 @@ public class SceneTop extends Scene {
             index++;
             tg.append(tgtmp);
         }
-        addTween(tg);
+        addTweener(tg);
     }
 
     @Override

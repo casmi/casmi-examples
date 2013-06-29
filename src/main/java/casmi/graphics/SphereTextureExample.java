@@ -27,7 +27,7 @@ import casmi.graphics.element.Sphere;
 import casmi.graphics.element.Texture;
 import casmi.graphics.object.Camera;
 import casmi.graphics.object.Perspective;
-import casmi.matrix.Vertex;
+import casmi.matrix.Vector3D;
 
 /**
  * @author Y. Ban
@@ -36,7 +36,7 @@ public class SphereTextureExample extends Applet {
 
     Sphere s;
     Texture earth;
-    Vertex v;
+    Vector3D v;
     Perspective perspective;
     Camera camera;
 
@@ -46,7 +46,7 @@ public class SphereTextureExample extends Applet {
     private double tq[] = new double[4];
     private double rt[] = new double[16];
 
-    private Vertex mousepoint;
+    private Vector3D mousepoint;
 
     @Override
     public void setup() {
@@ -55,10 +55,10 @@ public class SphereTextureExample extends Applet {
         s = new Sphere(1);
         s.setStroke(false);
         earth = new Texture(Applet.class.getResource("earthDiffuse.png"));
-        v = new Vertex(0, 0, 10);
+        v = new Vector3D(0, 0, 10);
         rt[0] = rt[5] = rt[10] = rt[15] = 1.0;
 
-        mousepoint  = new Vertex(0, 0);
+        mousepoint  = new Vector3D(0, 0);
         perspective = new Perspective(30.0, (double)getWidth() / (double)getHeight(), 1.0, 100.0);
         camera      = new Camera(2.4, 3.2, 4.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
 

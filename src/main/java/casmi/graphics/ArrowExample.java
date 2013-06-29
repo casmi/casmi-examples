@@ -8,7 +8,7 @@ import casmi.MouseEvent;
 import casmi.graphics.color.ColorSet;
 import casmi.graphics.element.Arrow;
 import casmi.graphics.element.ArrowAlign;
-import casmi.matrix.Vertex;
+import casmi.matrix.Vector3D;
 
 /**
  * Arrow example.
@@ -35,7 +35,7 @@ public class ArrowExample extends Applet{
         arrow.setPosition(getWidth()/2, getHeight()/2);
         addObject(arrow);
 
-		arrow2 = new Arrow(30, new Vertex(200, 150), new Vertex(600, 450));
+		arrow2 = new Arrow(30, new Vector3D(200, 150), new Vector3D(600, 450));
 		arrow2.setFillColor(ColorSet.ORANGE);
 		addObject(arrow2);
 	}
@@ -52,7 +52,7 @@ public class ArrowExample extends Applet{
 	@Override
 	public void mouseEvent(MouseEvent e, MouseButton b) {
 		if(e == MouseEvent.DRAGGED){
-			arrow2.setCorner(arrow2.getStartCorner(),new Vertex(getMouseX(), getMouseY()));
+			arrow2.setCorner(arrow2.getStartCorner(),new Vector3D(getMouseX(), getMouseY()));
 		}
 
 	}

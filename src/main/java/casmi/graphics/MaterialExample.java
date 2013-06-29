@@ -29,7 +29,7 @@ import casmi.graphics.element.Sphere;
 import casmi.graphics.material.Material;
 import casmi.graphics.object.Light;
 import casmi.graphics.object.LightMode;
-import casmi.matrix.Vertex;
+import casmi.matrix.Vector3D;
 
 /**
  * Example of Graphics.
@@ -50,8 +50,8 @@ public class MaterialExample extends Applet {
 
     Color c = new RGBColor(1.0, 1.0, 1.0);
 
-    Vertex v1 = new Vertex(1000, 1000, 1000);
-    Vertex v2 = new Vertex(-10, 0, -10);
+    Vector3D v1 = new Vector3D(1000, 1000, 1000);
+    Vector3D v2 = new Vector3D(-10, 0, -10);
 
     float emerald_ambient[] = {0.0115f, 0.745f, 0.0115f, 1.0f};
     float emerald_diffuse[] = {0.07568f, 0.61424f, 0.07568f, 1.0f};

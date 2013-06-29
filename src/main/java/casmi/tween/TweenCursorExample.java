@@ -27,8 +27,9 @@ import casmi.graphics.color.Color;
 import casmi.graphics.color.ColorSet;
 import casmi.graphics.color.RGBColor;
 import casmi.graphics.element.Ellipse;
-import casmi.tween.equations.Bounce;
-import casmi.tween.equations.Quart;
+import casmi.matrix.Vector2D;
+import casmi.tween.equations.Linear;
+import casmi.tween.equations.QuadraticInOut;
 import casmi.util.Random;
 
 /**
@@ -39,26 +40,19 @@ import casmi.util.Random;
 public class TweenCursorExample extends Applet {
 
     Ellipse el = new Ellipse(40);
-    Tweener te;
-
-//    TweenFloat tf = new TweenFloat(0.0f);  // TODO fix
 
     Color c = new RGBColor(ColorSet.ORANGE);
-    Color cc = new RGBColor(ColorSet.ORANGE);
 
     @Override
     public void setup() {
         setSize(1024, 768);
         el.setFillColor(c);
         el.setPosition(getWidth() / 2, getHeight() / 2);
-        te = new Tweener(el);
         addObject(el);
     }
 
     @Override
-    public void update() {
-//        el.setFillColor(RGBColor.lerpColor(c, cc, tf.getValue()));  // TODO fix
-    }
+    public void update() {}
 
     @Override
     public void exit() {}
@@ -66,25 +60,14 @@ public class TweenCursorExample extends Applet {
     @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {
         if (e == MouseEvent.PRESSED) {
-            c = cc.clone();
-            float sr = Random.random(0.5f, 2.0f);
-            int rr = Random.random(0, 255);
-            int rg = Random.random(0, 255);
-            int rb = Random.random(0, 255);
-            cc.setBlue(rb / 255.0);
-            cc.setGreen(rg / 255.0);
-            cc.setRed(rr / 255.0);
+            float scale = Random.random(0.5f, 2.0f);
 
-//            tf.setValue(0.0f); // TODO fix
+            Tweener t = new Tweener(el);
 
-            TweenSerialGroup tg = TweenSerialGroup.create(
-                Tween.to(te, TweenType.SCALE, 500, Bounce.IN).target(sr),
-                TweenParallelGroup.create(
-//                    Tween.to(tf, 1000, Linear.INOUT).target(1.0f), // TODO fix
-                    Tween.to(te, TweenType.POSITION, 1000, Quart.INOUT).target(getMouseX(), getMouseY())
-                    )
-                );
-            addTween(tg);
+            t.animateScale(scale, 500, Linear.class);
+            t.animatePosition(new Vector2D(getMouseX(), getMouseY()), 1000, QuadraticInOut.class);
+
+            addTweener(t);
         }
     }
 

@@ -24,16 +24,8 @@ import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseEvent;
 import casmi.graphics.color.ColorSet;
-import casmi.tween.Tween;
-import casmi.tween.TweenCallback;
-import casmi.tween.TweenCallbackTypes;
 import casmi.tween.Tweener;
-import casmi.tween.TweenParallelGroup;
-import casmi.tween.TweenSerialGroup;
-import casmi.tween.TweenType;
-import casmi.tween.equations.Bounce;
-import casmi.tween.equations.Circ;
-import casmi.tween.equations.Linear;
+import casmi.tween.TweenerCallback;
 
 /**
  * Group example.
@@ -46,17 +38,17 @@ public class GroupExample extends Applet {
 
     SampleGroup group = new SampleGroup();
     Tweener te;
-    TweenCallback tc;
+    TweenerCallback tc;
 
     @Override
     public void setup() {
         setSize(800, 600);
         setBackGroundColor(ColorSet.GRAY);
 
-        tc = new TweenCallback() {
+        tc = new TweenerCallback() {
 
             @Override
-            public void run(TweenCallbackTypes eventType, Tween tween) {
+            public void run(Tweener tween) {
                 group.setTweenstart(true);
             }
         };
@@ -79,16 +71,16 @@ public class GroupExample extends Applet {
             te = null;
             te = new Tweener(group);
 
-            TweenSerialGroup tsg = TweenSerialGroup.create(
-                Tween.to(te, TweenType.POSITION, 2000, Bounce.OUT).target(getWidth() / 2, getHeight() / 2 - 200).addCompleteCallback(tc),
-                TweenParallelGroup.create(
-                    Tween.to(te, TweenType.ALPHA, 2000, Linear.INOUT).target(50.0f),
-                    Tween.to(te, TweenType.ROTATION_2D, 1000, Circ.OUT).target(-360).addDelay(1000)
-                    ),
-                    Tween.to(te, TweenType.SCALE, 2000, Bounce.OUT).target(1.5f, 1.0f)
-                );
-
-            addTween(tsg);
+            // TODO fix
+//            TweenSerialGroup tsg = TweenSerialGroup.create(
+//                Tween.to(te, TweenType.POSITION, 2000, Bounce.OUT).target(getWidth() / 2, getHeight() / 2 - 200).addCompleteCallback(tc),
+//                TweenParallelGroup.create(
+//                    Tween.to(te, TweenType.ALPHA, 2000, Linear.INOUT).target(50.0f),
+//                    Tween.to(te, TweenType.ROTATION_2D, 1000, Circ.OUT).target(-360).addDelay(1000)
+//                    ),
+//                    Tween.to(te, TweenType.SCALE, 2000, Bounce.OUT).target(1.5f, 1.0f)
+//                );
+//            addTweener(tsg);
         }
     }
 

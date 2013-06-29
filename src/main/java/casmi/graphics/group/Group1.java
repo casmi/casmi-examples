@@ -24,8 +24,8 @@ import casmi.graphics.element.Rect;
 import casmi.graphics.element.Triangle;
 import casmi.graphics.font.Font;
 import casmi.graphics.font.FontStyle;
+import casmi.tween.TweenerManager;
 import casmi.tween.Tweener;
-import casmi.tween.TweenManager;
 
 /**
  * @author Y. Ban
@@ -39,7 +39,7 @@ public class Group1 extends Group {
 
     Tweener te;
 
-    TweenManager manager = new TweenManager();
+    TweenerManager manager = new TweenerManager();
 
     boolean    tweenstart;
 //    TweenFloat tf; // TODO fix
