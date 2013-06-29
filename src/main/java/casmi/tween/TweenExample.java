@@ -66,7 +66,7 @@ public class TweenExample extends Applet {
 	@Override
 	public void mouseEvent(MouseEvent e, MouseButton b) {
 		if (e == MouseEvent.PRESSED) {
-			clearTween();
+			clearTweeners();
 			t.reset();
 
 			t.animatePosition(new Vector2D(20, -400), 2000, QuadraticInOut.class);
