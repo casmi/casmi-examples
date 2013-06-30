@@ -18,10 +18,11 @@
 
 package casmi;
 
+import casmi.callback.MouseOverCallback;
+import casmi.callback.MouseOverEventType;
 import casmi.graphics.color.GrayColor;
 import casmi.graphics.element.Circle;
 import casmi.graphics.element.Element;
-import casmi.graphics.element.MouseOverCallback;
 
 /**
  * Cursor example.
@@ -43,8 +44,8 @@ public class CursorExample extends Applet {
 		circle.addMouseEventCallback(new MouseOverCallback() {
 
             @Override
-            public void run(MouseOverTypes eventtype, Element element) {
-                switch (eventtype) {
+            public void run(MouseOverEventType eventType, Element element) {
+                switch (eventType) {
                 case ENTERED:
                 case EXISTED:
                     setCursor(CursorMode.HAND);

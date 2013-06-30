@@ -23,10 +23,11 @@ import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseEvent;
+import casmi.callback.MouseOverCallback;
+import casmi.callback.MouseOverEventType;
 import casmi.graphics.color.ColorSet;
 import casmi.graphics.element.Element;
 import casmi.graphics.element.Ellipse;
-import casmi.graphics.element.MouseOverCallback;
 import casmi.graphics.element.Rect;
 import casmi.graphics.element.Triangle;
 import casmi.graphics.group.Group;
@@ -86,9 +87,8 @@ public class RemoveExample extends Applet {
 		r2.addMouseEventCallback(new MouseOverCallback() {
 
 			@Override
-			public void run(MouseOverTypes eventtype, Element element) {
-				if(eventtype == MouseOverTypes.ENTERED)
-					element.remove();
+			public void run(MouseOverEventType eventType, Element element) {
+				if(eventType == MouseOverEventType.ENTERED) element.remove();
 			}
 		});
 

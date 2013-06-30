@@ -31,30 +31,52 @@ import casmi.CursorMode;
 import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseEvent;
+import casmi.callback.MouseClickCallback;
+import casmi.callback.MouseClickEventType;
+import casmi.callback.MouseOverCallback;
+import casmi.callback.MouseOverEventType;
 import casmi.graphics.color.Color;
 import casmi.graphics.color.ColorSet;
 import casmi.graphics.color.RGBColor;
 import casmi.graphics.element.Element;
 import casmi.graphics.element.Ellipse;
 import casmi.graphics.element.Line;
-import casmi.graphics.element.MouseClickCallback;
-import casmi.graphics.element.MouseOverCallback;
 import casmi.graphics.element.Rect;
 import casmi.graphics.element.Text;
 import casmi.graphics.element.TextAlign;
 import casmi.graphics.font.Font;
-import casmi.tween.deprecated.Tween;
-import casmi.tween.equations.Back;
-import casmi.tween.equations.Bounce;
-import casmi.tween.equations.Circ;
-import casmi.tween.equations.Cubic;
-import casmi.tween.equations.Elastic;
-import casmi.tween.equations.Exponential;
+import casmi.matrix.Vector2D;
+import casmi.tween.equations.BackIn;
+import casmi.tween.equations.BackInOut;
+import casmi.tween.equations.BackOut;
+import casmi.tween.equations.BounceIn;
+import casmi.tween.equations.BounceInOut;
+import casmi.tween.equations.BounceOut;
+import casmi.tween.equations.CircularIn;
+import casmi.tween.equations.CircularInOut;
+import casmi.tween.equations.CircularOut;
+import casmi.tween.equations.CubicIn;
+import casmi.tween.equations.CubicInOut;
+import casmi.tween.equations.CubicOut;
+import casmi.tween.equations.ElasticIn;
+import casmi.tween.equations.ElasticInOut;
+import casmi.tween.equations.ElasticOut;
+import casmi.tween.equations.ExponentialIn;
+import casmi.tween.equations.ExponentialInOut;
+import casmi.tween.equations.ExponentialOut;
 import casmi.tween.equations.Linear;
-import casmi.tween.equations.Quadratic;
-import casmi.tween.equations.Quartic;
-import casmi.tween.equations.Quintic;
-import casmi.tween.equations.Sinusoidal;
+import casmi.tween.equations.QuadraticIn;
+import casmi.tween.equations.QuadraticInOut;
+import casmi.tween.equations.QuadraticOut;
+import casmi.tween.equations.QuarticIn;
+import casmi.tween.equations.QuarticInOut;
+import casmi.tween.equations.QuarticOut;
+import casmi.tween.equations.QuinticIn;
+import casmi.tween.equations.QuinticInOut;
+import casmi.tween.equations.QuinticOut;
+import casmi.tween.equations.SinusoidalIn;
+import casmi.tween.equations.SinusoidalInOut;
+import casmi.tween.equations.SinusoidalOut;
 
 /**
  * Example of Tween.
@@ -64,17 +86,18 @@ import casmi.tween.equations.Sinusoidal;
  */
 public class TweenEquationsExample extends Applet {
 
-    class EqRect {
+    class EquationRect extends Rect {
+        private int index;
 
-        int index;
-        Rect rect;
-
-        public EqRect(int index) {
+        public EquationRect(int index) {
+            super(850, 625 - index * 50, 150, 40);
             this.index = index;
-            rect = new Rect(850, 625 - index * 50, 150, 40);
-            rect.setStroke(false);
-            Color c = new RGBColor(ColorSet.BLACK, 0.001);
-            rect.setFillColor(c);
+            this.setStroke(false);
+            this.setFillColor(new RGBColor(ColorSet.BLACK, 0.001));
+        }
+
+        public int getIndex() {
+            return index;
         }
     }
 
@@ -92,54 +115,59 @@ public class TweenEquationsExample extends Applet {
         "Sine"
     };
 
-    Line l1 = new Line(100, 200, 600, 200);
-    Line l2 = new Line(100, 550, 600, 550);
-    Rect r = new Rect(150, 50);
-    Ellipse el = new Ellipse(20);
-    Font f, f2;
-    Text inText, outText;
+    private Line l1 = new Line(100, 200, 600, 200);
+    private Line l2 = new Line(100, 550, 600, 550);
+    private Rect r = new Rect(150, 50);
+    private Ellipse el = new Ellipse(20);
+    private Font f, f2;
+    private Text inText, outText;
 
-    private int eq = 0;
-    private int io = 1;
-    Tweener te, te2;
+    private int equationNumber = 0;
+    private int mode = 1;
+
+    private Tweener t1, t2;
 
     private boolean modeChange = false;
-    Color pink, blue;
-    int start = 0;
-
-    List<EqRect> eqRectList = new ArrayList<EqRect>();
+    private Color pink, blue;
+    private List<EquationRect> eqRectList = new ArrayList<EquationRect>();
 
     @Override
     public void setup() {
-        pink = new RGBColor(ColorSet.LIGHT_PINK);
-        blue = new RGBColor(ColorSet.LIGHT_BLUE);
         setSize(1024, 768);
+
+        pink = new RGBColor(ColorSet.LIGHT_PINK);
+        pink.setAlpha(0.4);
+
+        blue = new RGBColor(ColorSet.LIGHT_BLUE);
+
         l1.setStrokeColor(ColorSet.AQUAMARINE);
         l2.setStrokeColor(ColorSet.AQUAMARINE);
         el.setFillColor(ColorSet.ORANGE);
 
         f = new Font("San-Serif");
-        f2 = new Font("San-Serif");
         f.setSize(40);
+
+        f2 = new Font("San-Serif");
         f2.setSize(25);
 
         inText = new Text("IN", f2, 100, 550 + 5);
-        pink.setAlpha(0.4);
         inText.setStrokeColor(pink);
         inText.getSceneStrokeColor().setAlpha(0.4);
+
         outText = new Text("OUT", f2, 100, 200 + 5);
         outText.setStrokeColor(blue);
+
         r.setFill(false);
         r.setStrokeColor(ColorSet.LIGHT_BLUE);
+        r.setPosition(850, 625);
+
+        el.setPosition(350, 550);
 
         addObject(inText);
         addObject(outText);
         addObject(l1);
         addObject(l2);
-        el.setPosition(350, 550);
         addObject(el);
-
-        r.setPosition(850, 625);
         addObject(r);
 
         int index = 0;
@@ -153,36 +181,37 @@ public class TweenEquationsExample extends Applet {
         }
 
         for (int i = 0; i < 11; i++) {
-            EqRect eq = new EqRect(i);
+            EquationRect eq = new EquationRect(i);
             eqRectList.add(eq);
         }
 
         index = 0;
-        for (final EqRect eqRect : eqRectList) {
-            addObject(eqRect.rect);
+        for (final EquationRect eqRect : eqRectList) {
+            addObject(eqRect);
 
-            eqRect.rect.addMouseEventCallback(new MouseClickCallback() {
+            eqRect.addMouseEventCallback(new MouseClickCallback() {
 
                 @Override
-                public void run(MouseClickTypes eventtype, Element element) {
-                    if (eventtype == MouseClickTypes.CLICKED) {
+                public void run(MouseClickEventType eventType, Element element) {
+                    if (eventType == MouseClickEventType.CLICKED) {
                         modeChange = true;
-                        eq = eqRect.index;
-                        start = 1;
+                        equationNumber = eqRect.getIndex();
                     }
                 }
             });
 
-            eqRect.rect.addMouseEventCallback(new MouseOverCallback() {
+            eqRect.addMouseEventCallback(new MouseOverCallback() {
 
                 @Override
-                public void run(MouseOverTypes eventtype, Element element) {
-                    switch (eventtype) {
+                public void run(MouseOverEventType eventType, Element element) {
+                    switch (eventType) {
                     case ENTERED:
                         setCursor(CursorMode.HAND);
                         break;
                     case EXITED:
                         setCursor(CursorMode.DEFAULT);
+                        break;
+                    default:
                         break;
                     }
                 }
@@ -191,10 +220,11 @@ public class TweenEquationsExample extends Applet {
             index++;
         }
 
-        te2 = null;
-        te2 = new Tweener(r);
-        te = null;
-        te = new Tweener(el);
+        t1 = new Tweener(el);
+        t2 = new Tweener(r);
+
+        addTweener(t1);
+        addTweener(t2);
     }
 
     @Override
@@ -202,24 +232,25 @@ public class TweenEquationsExample extends Applet {
         if (modeChange) {
             modeChange = false;
 
-            Tween changeTween = Tween.to(te2, TweenType.POSITION, 1000,
-                Cubic.INOUT).target(r.getX(), eqRectList.get(eq).rect.getY());
-            addTweener(changeTween);
-            if (io == 0) {
+            t2.clear();
+            t2.animatePosition(new Vector2D(r.getX(), eqRectList.get(equationNumber).getY()), 1000, CubicInOut.class);
+            t2.start();
+
+            if (mode == 0) {
                 r.setStrokeColor(ColorSet.LIGHT_PINK);
                 pink.setAlpha(1.0);
                 blue.setAlpha(0.4);
                 inText.setStrokeColor(pink);
                 outText.setStrokeColor(blue);
             }
-            if (io == 1) {
+            if (mode == 1) {
                 r.setStrokeColor(ColorSet.LIGHT_BLUE);
                 pink.setAlpha(0.4);
                 blue.setAlpha(1.0);
                 inText.setStrokeColor(pink);
                 outText.setStrokeColor(blue);
             }
-            if (io == 2) {
+            if (mode == 2) {
                 r.setStrokeColor(ColorSet.LIGHT_GREEN);
                 pink.setAlpha(1.0);
                 blue.setAlpha(1.0);
@@ -235,190 +266,119 @@ public class TweenEquationsExample extends Applet {
     @Override
     public void mouseEvent(MouseEvent e, MouseButton b) {
         if (e == MouseEvent.PRESSED) {
-            if (start == 0) {
-                clearTween();
-                el.setPosition(350, 550);
-                te.reset();
-                if (io == 0) {
-                    switch (eq) {
-                    case 0:
-                        addTweener(Tween.to(te,
-                            TweenType.POSITION, 2000, Back.IN).target(
-                            el.getX(), 200));
-                        break;
-                    case 1:
-                        addTweener(Tween.to(te,
-                            TweenType.POSITION, 2000, Bounce.IN).target(
-                            el.getX(), 200));
-                        break;
-                    case 2:
-                        addTweener(Tween.to(te,
-                            TweenType.POSITION, 2000, Circ.IN).target(
-                            el.getX(), 200));
-                        break;
-                    case 3:
-                        addTweener(Tween.to(te,
-                            TweenType.POSITION, 2000, Cubic.IN).target(
-                            el.getX(), 200));
-                        break;
-                    case 4:
-                        addTweener(Tween.to(te,
-                            TweenType.POSITION, 2000, Elastic.IN).target(
-                            el.getX(), 200));
-                        break;
-                    case 5:
-                        addTweener(Tween.to(te,
-                            TweenType.POSITION, 2000, Exponential.IN).target(
-                            el.getX(), 200));
-                        break;
-                    case 6:
-                        addTweener(Tween.to(te,
-                            TweenType.POSITION, 2000, Linear.INOUT).target(
-                            el.getX(), 200));
-                        break;
-                    case 7:
-                        addTweener(Tween.to(te,
-                            TweenType.POSITION, 2000, Quadratic.IN).target(
-                            el.getX(), 200));
-                        break;
-                    case 8:
-                        addTweener(Tween.to(te,
-                            TweenType.POSITION, 2000, Quartic.IN).target(
-                            el.getX(), 200));
-                        break;
-                    case 9:
-                        addTweener(Tween.to(te,
-                            TweenType.POSITION, 2000, Quintic.IN).target(
-                            el.getX(), 200));
-                        break;
-                    case 10:
-                        addTweener(Tween.to(te,
-                            TweenType.POSITION, 2000, Sinusoidal.IN).target(
-                            el.getX(), 200));
-                        break;
-                    }
+            el.setPosition(350, 550);
+            t1.reset();
+            if (mode == 0) {
+                switch (equationNumber) {
+                case 0:
+                    t1.animatePosition(new Vector2D(el.getX(), 200), 2000, BackIn.class);
+                    break;
+                case 1:
+                    t1.animatePosition(new Vector2D(el.getX(), 200), 2000, BounceIn.class);
+                    break;
+                case 2:
+                    t1.animatePosition(new Vector2D(el.getX(), 200), 2000, CircularIn.class);
+                    break;
+                case 3:
+                    t1.animatePosition(new Vector2D(el.getX(), 200), 2000, CubicIn.class);
+                    break;
+                case 4:
+                    t1.animatePosition(new Vector2D(el.getX(), 200), 2000, ElasticIn.class);
+                    break;
+                case 5:
+                    t1.animatePosition(new Vector2D(el.getX(), 200), 2000, ExponentialIn.class);
+                    break;
+                case 6:
+                    t1.animatePosition(new Vector2D(el.getX(), 200), 2000, Linear.class);
+                    break;
+                case 7:
+                    t1.animatePosition(new Vector2D(el.getX(), 200), 2000, QuadraticIn.class);
+                    break;
+                case 8:
+                    t1.animatePosition(new Vector2D(el.getX(), 200), 2000, QuarticIn.class);
+                    break;
+                case 9:
+                    t1.animatePosition(new Vector2D(el.getX(), 200), 2000, QuinticIn.class);
+                    break;
+                case 10:
+                    t1.animatePosition(new Vector2D(el.getX(), 200), 2000, SinusoidalIn.class);
+                    break;
                 }
-                if (io == 1) {
-                    switch (eq) {
-                    case 0:
-                        addTweener(Tween.to(te,
-                            TweenType.POSITION, 2000, Back.OUT).target(
-                            el.getX(), 200));
-                        break;
-                    case 1:
-                        addTweener(Tween.to(te,
-                            TweenType.POSITION, 2000, Bounce.OUT).target(
-                            el.getX(), 200));
-                        break;
-                    case 2:
-                        addTweener(Tween.to(te,
-                            TweenType.POSITION, 2000, Circ.OUT).target(
-                            el.getX(), 200));
-                        break;
-                    case 3:
-                        addTweener(Tween.to(te,
-                            TweenType.POSITION, 2000, Cubic.OUT).target(
-                            el.getX(), 200));
-                        break;
-                    case 4:
-                        addTweener(Tween.to(te,
-                            TweenType.POSITION, 2000, Elastic.OUT).target(
-                            el.getX(), 200));
-                        break;
-                    case 5:
-                        addTweener(Tween.to(te,
-                            TweenType.POSITION, 2000, Exponential.OUT).target(
-                            el.getX(), 200));
-                        break;
-                    case 6:
-                        addTweener(Tween.to(te,
-                            TweenType.POSITION, 2000, Linear.INOUT).target(
-                            el.getX(), 200));
-                        break;
-                    case 7:
-                        addTweener(Tween.to(te,
-                            TweenType.POSITION, 2000, Quadratic.OUT).target(
-                            el.getX(), 200));
-                        break;
-                    case 8:
-                        addTweener(Tween.to(te,
-                            TweenType.POSITION, 2000, Quartic.OUT).target(
-                            el.getX(), 200));
-                        break;
-                    case 9:
-                        addTweener(Tween.to(te,
-                            TweenType.POSITION, 2000, Quintic.OUT).target(
-                            el.getX(), 200));
-                        break;
-                    case 10:
-                        addTweener(Tween.to(te,
-                            TweenType.POSITION, 2000, Sinusoidal.OUT).target(
-                            el.getX(), 200));
-                        break;
-                    }
+            } else if (mode == 1) {
+                switch (equationNumber) {
+                case 0:
+                    t1.animatePosition(new Vector2D(el.getX(), 200), 2000, BackOut.class);
+                    break;
+                case 1:
+                    t1.animatePosition(new Vector2D(el.getX(), 200), 2000, BounceOut.class);
+                    break;
+                case 2:
+                    t1.animatePosition(new Vector2D(el.getX(), 200), 2000, CircularOut.class);
+                    break;
+                case 3:
+                    t1.animatePosition(new Vector2D(el.getX(), 200), 2000, CubicOut.class);
+                    break;
+                case 4:
+                    t1.animatePosition(new Vector2D(el.getX(), 200), 2000, ElasticOut.class);
+                    break;
+                case 5:
+                    t1.animatePosition(new Vector2D(el.getX(), 200), 2000, ExponentialOut.class);
+                    break;
+                case 6:
+                    t1.animatePosition(new Vector2D(el.getX(), 200), 2000, Linear.class);
+                    break;
+                case 7:
+                    t1.animatePosition(new Vector2D(el.getX(), 200), 2000, QuadraticOut.class);
+                    break;
+                case 8:
+                    t1.animatePosition(new Vector2D(el.getX(), 200), 2000, QuarticOut.class);
+                    break;
+                case 9:
+                    t1.animatePosition(new Vector2D(el.getX(), 200), 2000, QuinticOut.class);
+                    break;
+                case 10:
+                    t1.animatePosition(new Vector2D(el.getX(), 200), 2000, SinusoidalOut.class);
+                    break;
                 }
-                if (io == 2) {
-                    switch (eq) {
-                    case 0:
-                        addTweener(Tween.to(te,
-                            TweenType.POSITION, 2000, Back.INOUT).target(
-                            el.getX(), 200));
-                        break;
-                    case 1:
-                        addTweener(Tween.to(te,
-                            TweenType.POSITION, 2000, Bounce.INOUT).target(
-                            el.getX(), 200));
-                        break;
-                    case 2:
-                        addTweener(Tween.to(te,
-                            TweenType.POSITION, 2000, Circ.INOUT).target(
-                            el.getX(), 200));
-                        break;
-                    case 3:
-                        addTweener(Tween.to(te,
-                            TweenType.POSITION, 2000, Cubic.INOUT).target(
-                            el.getX(), 200));
-                        break;
-                    case 4:
-                        addTweener(Tween.to(te,
-                            TweenType.POSITION, 2000, Elastic.INOUT).target(
-                            el.getX(), 200));
-                        break;
-                    case 5:
-                        addTweener(Tween.to(te,
-                            TweenType.POSITION, 2000, Exponential.INOUT).target(
-                            el.getX(), 200));
-                        break;
-                    case 6:
-                        addTweener(Tween.to(te,
-                            TweenType.POSITION, 2000, Linear.INOUT).target(
-                            el.getX(), 200));
-                        break;
-                    case 7:
-                        addTweener(Tween.to(te,
-                            TweenType.POSITION, 2000, Quadratic.INOUT).target(
-                            el.getX(), 200));
-                        break;
-                    case 8:
-                        addTweener(Tween.to(te,
-                            TweenType.POSITION, 2000, Quartic.INOUT).target(
-                            el.getX(), 200));
-                        break;
-                    case 9:
-                        addTweener(Tween.to(te,
-                            TweenType.POSITION, 2000, Quintic.INOUT).target(
-                            el.getX(), 200));
-                        break;
-                    case 10:
-                        addTweener(Tween.to(te,
-                            TweenType.POSITION, 2000, Sinusoidal.INOUT).target(
-                            el.getX(), 200));
-                        break;
-                    }
-                }
-            } else {
-                start = 0;
             }
+            if (mode == 2) {
+                switch (equationNumber) {
+                case 0:
+                    t1.animatePosition(new Vector2D(el.getX(), 200), 2000, BackInOut.class);
+                    break;
+                case 1:
+                    t1.animatePosition(new Vector2D(el.getX(), 200), 2000, BounceInOut.class);
+                    break;
+                case 2:
+                    t1.animatePosition(new Vector2D(el.getX(), 200), 2000, CircularInOut.class);
+                    break;
+                case 3:
+                    t1.animatePosition(new Vector2D(el.getX(), 200), 2000, CubicInOut.class);
+                    break;
+                case 4:
+                    t1.animatePosition(new Vector2D(el.getX(), 200), 2000, ElasticInOut.class);
+                    break;
+                case 5:
+                    t1.animatePosition(new Vector2D(el.getX(), 200), 2000, ExponentialInOut.class);
+                    break;
+                case 6:
+                    t1.animatePosition(new Vector2D(el.getX(), 200), 2000, Linear.class);
+                    break;
+                case 7:
+                    t1.animatePosition(new Vector2D(el.getX(), 200), 2000, QuadraticInOut.class);
+                    break;
+                case 8:
+                    t1.animatePosition(new Vector2D(el.getX(), 200), 2000, QuarticInOut.class);
+                    break;
+                case 9:
+                    t1.animatePosition(new Vector2D(el.getX(), 200), 2000, QuinticInOut.class);
+                    break;
+                case 10:
+                    t1.animatePosition(new Vector2D(el.getX(), 200), 2000, SinusoidalInOut.class);
+                    break;
+                }
+            }
+            t1.start();
         }
     }
 
@@ -427,16 +387,18 @@ public class TweenEquationsExample extends Applet {
         switch (e) {
         case PRESSED:
             if (getKeyCode() == 37) {
-                io--;
-                if (io < 0)
-                    io = 0;
+                mode--;
+                if (mode < 0)
+                    mode = 0;
                 modeChange = true;
             } else if (getKeyCode() == 39) {
-                io++;
-                if (io > 2)
-                    io = 2;
+                mode++;
+                if (mode > 2)
+                    mode = 2;
                 modeChange = true;
             }
+            break;
+        default:
             break;
         }
     }

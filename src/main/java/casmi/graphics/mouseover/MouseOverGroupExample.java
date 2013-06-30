@@ -24,10 +24,11 @@ import casmi.CursorMode;
 import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseEvent;
+import casmi.callback.MouseOverCallback;
+import casmi.callback.MouseOverEventType;
 import casmi.graphics.color.ColorSet;
 import casmi.graphics.element.Circle;
 import casmi.graphics.element.Element;
-import casmi.graphics.element.MouseOverCallback;
 import casmi.graphics.element.Rect;
 import casmi.graphics.element.Triangle;
 import casmi.graphics.group.Group;
@@ -79,8 +80,8 @@ public class MouseOverGroupExample extends Applet {
             mouseoverrect = new MouseOverCallback() {
 
                 @Override
-                public void run(MouseOverTypes eventtype, Element element) {
-                    switch (eventtype) {
+                public void run(MouseOverEventType eventType, Element element) {
+                    switch (eventType) {
                     case ENTERED:
                         if (element == r1)
                             setCursor(CursorMode.HAND);
@@ -90,6 +91,8 @@ public class MouseOverGroupExample extends Applet {
                         break;
                     case EXITED:
                         setCursor(CursorMode.DEFAULT);
+                        break;
+                    default:
                         break;
                     }
                 }
@@ -120,8 +123,8 @@ public class MouseOverGroupExample extends Applet {
         circle.addMouseEventCallback(new MouseOverCallback() {
 
             @Override
-            public void run(MouseOverTypes eventtype, Element element) {
-                switch (eventtype) {
+            public void run(MouseOverEventType eventType, Element element) {
+                switch (eventType) {
                 case ENTERED:
                     setCursor(CursorMode.CROSS);
                     element.setFillColor(ColorSet.WHEAT);
@@ -129,6 +132,8 @@ public class MouseOverGroupExample extends Applet {
                 case EXITED:
                     setCursor(CursorMode.DEFAULT);
                     element.setFillColor(ColorSet.DARK_VIOLET);
+                    break;
+                default:
                     break;
                 }
             }
@@ -150,14 +155,15 @@ public class MouseOverGroupExample extends Applet {
         triangleGroup2.addMouseEventCallback(new MouseOverCallback() {
 
             @Override
-            public void run(MouseOverTypes eventtype, Element element) {
-                System.out.println("hogehoge");
-                switch (eventtype) {
+            public void run(MouseOverEventType eventType, Element element) {
+                switch (eventType) {
                 case ENTERED:
                     circle.setScaleX(1.5);
                     break;
                 case EXITED:
                     circle.setScaleX(1.0);
+                    break;
+                default:
                     break;
                 }
             }

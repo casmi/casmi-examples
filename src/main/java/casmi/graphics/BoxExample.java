@@ -25,8 +25,6 @@ import casmi.MouseButton;
 import casmi.MouseEvent;
 import casmi.graphics.color.RGBColor;
 import casmi.graphics.element.Box;
-import casmi.graphics.element.Element;
-import casmi.graphics.element.MouseOverCallback;
 import casmi.graphics.object.Camera;
 import casmi.graphics.object.Perspective;
 
@@ -63,14 +61,6 @@ public class BoxExample extends Applet {
 
         p = new Perspective(30.0, (double)getWidth() / (double)getHeight(), 1.0, 100.0);
         c = new Camera(3.0, 4.0, 5.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
-
-        b1.addMouseEventCallback(new MouseOverCallback() {
-
-            @Override
-            public void run(MouseOverTypes eventtype, Element element) {
-                System.out.println("hit!!");
-            }
-        });
 
         setPerspective(p);
         setCamera(c);

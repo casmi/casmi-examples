@@ -34,7 +34,7 @@ import casmi.matrix.Vector3D;
 /**
  * Lighting example.
  *
- * @see casmi.graphics.Graphics#ambientLight(float, float, float, Vector3D)
+ * @see casmi.graphics.Graphics#setAmbientLight(float, float, float, Vector3D)
  * @see casmi.graphics.Graphics#directionalLight(int, Color, float, float,
  *      float)
  *

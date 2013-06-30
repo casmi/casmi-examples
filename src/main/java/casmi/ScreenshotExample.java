@@ -17,12 +17,14 @@
  */
 package casmi;
 
+import casmi.callback.MouseClickCallback;
+import casmi.callback.MouseClickEventType;
+import casmi.callback.MouseOverCallback;
+import casmi.callback.MouseOverEventType;
 import casmi.graphics.color.ColorSet;
 import casmi.graphics.element.Bezier;
 import casmi.graphics.element.Circle;
 import casmi.graphics.element.Element;
-import casmi.graphics.element.MouseClickCallback;
-import casmi.graphics.element.MouseOverCallback;
 import casmi.graphics.element.Rect;
 import casmi.graphics.element.Text;
 import casmi.graphics.element.TextAlign;
@@ -44,8 +46,8 @@ public class ScreenshotExample extends Applet {
 
     class HighlightCallback implements MouseOverCallback {
         @Override
-        public void run(MouseOverTypes eventtype, Element element) {
-            switch (eventtype) {
+        public void run(MouseOverEventType eventType, Element element) {
+            switch (eventType) {
             case ENTERED:
             case EXISTED:
                 if (element instanceof Text)
@@ -65,8 +67,8 @@ public class ScreenshotExample extends Applet {
 
     class ClickCallback implements MouseClickCallback {
         @Override
-        public void run(MouseClickTypes eventtype, Element element) {
-            if (eventtype == MouseClickTypes.CLICKED) {
+        public void run(MouseClickEventType eventtype, Element element) {
+            if (eventtype == MouseClickEventType.CLICKED) {
                 if (element == icon) screenshot();
                 else if (element == textJPG) changeMode(Mode.JPG);
                 else if (element == textPNG) changeMode(Mode.PNG);

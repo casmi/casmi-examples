@@ -24,12 +24,14 @@ import casmi.CursorMode;
 import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseEvent;
+import casmi.callback.MouseClickCallback;
+import casmi.callback.MouseClickEventType;
+import casmi.callback.MouseOverCallback;
+import casmi.callback.MouseOverEventType;
 import casmi.graphics.color.ColorSet;
 import casmi.graphics.element.Arc;
 import casmi.graphics.element.Element;
 import casmi.graphics.element.Ellipse;
-import casmi.graphics.element.MouseClickCallback;
-import casmi.graphics.element.MouseOverCallback;
 import casmi.graphics.element.Quad;
 import casmi.graphics.element.Rect;
 import casmi.graphics.element.RoundRect;
@@ -59,8 +61,8 @@ public class MouseOverExample extends Applet {
         mouseOverCB = new MouseOverCallback() {
 
         	@Override
-        	public void run(MouseOverTypes eventtype, Element element) {
-        		switch (eventtype) {
+        	public void run(MouseOverEventType eventType, Element element) {
+        		switch (eventType) {
         		case ENTERED:
         			if (element == rect)
         				setCursor(CursorMode.HAND);
@@ -87,7 +89,7 @@ public class MouseOverExample extends Applet {
         mouseClickCB = new MouseClickCallback() {
 
 			@Override
-			public void run(MouseClickTypes eventtype, Element element) {
+			public void run(MouseClickEventType eventtype, Element element) {
 				switch(eventtype){
 				case DRAGGED:
 					element.setPosition(element.getX() + getMouseX() - getPrevMouseX(),

@@ -26,11 +26,12 @@ import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseEvent;
+import casmi.callback.MouseOverCallback;
+import casmi.callback.MouseOverEventType;
 import casmi.graphics.color.Color;
 import casmi.graphics.color.ColorSet;
 import casmi.graphics.color.RGBColor;
 import casmi.graphics.element.Element;
-import casmi.graphics.element.MouseOverCallback;
 import casmi.graphics.element.RoundRect;
 import casmi.graphics.element.Text;
 import casmi.graphics.element.TextAlign;
@@ -93,8 +94,8 @@ public class MouseOverColorSetExample extends Applet {
             cr.roundRect.addMouseEventCallback(new MouseOverCallback() {
 
                 @Override
-                public void run(MouseOverTypes eventtype, Element element) {
-                    switch (eventtype) {
+                public void run(MouseOverEventType eventType, Element element) {
+                    switch (eventType) {
                     case ENTERED:
                     case EXISTED:
                     {
