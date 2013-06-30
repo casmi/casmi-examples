@@ -24,9 +24,9 @@ import casmi.Applet;
 import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
-import casmi.MouseEvent;
+import casmi.MouseStatus;
+import casmi.graphics.canvas.Canvas;
 import casmi.graphics.element.Texture;
-import casmi.graphics.group.Group;
 
 /**
  * Example of Graphics.
@@ -37,16 +37,16 @@ public class TextureExample extends Applet {
 
     static final URL IMAGE_PATH = Applet.class.getResource("logo.png");
     Texture tex;
-    TexObject texo;
+    TextureCanvas t;
     double rot = 0.0;
 
-    class TexObject extends Group {
+    class TextureCanvas extends Canvas {
 
         private URL IMAGE_PATH = Applet.class.getResource("logo.png");
         private Texture tex;
         private double rot = 0.0;
 
-        public TexObject() {
+        public TextureCanvas() {
         	tex = new Texture(IMAGE_PATH);
             tex.setPosition(200, 500);
             tex.setWidth(tex.getWidth() / 1.2);
@@ -55,39 +55,29 @@ public class TextureExample extends Applet {
             add(tex);
         }
 
-		@Override
 		public void update() {
 	        rot += 2.0;
 	        tex.setRotation(rot, 0.0, 1.0, 0.0);
-
 		}
     }
 
     @Override
     public void setup() {
         setSize(1024, 768);
-        System.out.println(IMAGE_PATH);
-        texo = new TexObject();
-        addObject(texo);
-     //   tex = new Texture(IMAGE_PATH);
-     //   tex.setPosition(200, 500);
-      //  tex.setWidth(tex.getWidth() / 1.2);
-      //  tex.setRotation(rot, 0.0, 1.0, 0.0);
-
-       // addObject(tex);
+        t = new TextureCanvas();
+        addCanvas(t);
     }
 
     @Override
     public void update() {
-      //  rot += 2.0;
-     //   tex.setRotation(rot, 0.0, 1.0, 0.0);
+        t.update();
     }
 
     @Override
     public void exit() {}
 
     @Override
-    public void mouseEvent(MouseEvent e, MouseButton b) {}
+    public void mouseEvent(MouseStatus e, MouseButton b) {}
 
     @Override
     public void keyEvent(KeyEvent e) {}
@@ -95,5 +85,4 @@ public class TextureExample extends Applet {
     public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.TextureExample", "Texture Example");
     }
-
 }

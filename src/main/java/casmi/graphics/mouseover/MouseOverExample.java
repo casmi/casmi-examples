@@ -23,7 +23,7 @@ import casmi.AppletRunner;
 import casmi.CursorMode;
 import casmi.KeyEvent;
 import casmi.MouseButton;
-import casmi.MouseEvent;
+import casmi.MouseStatus;
 import casmi.callback.MouseClickCallback;
 import casmi.callback.MouseClickEventType;
 import casmi.callback.MouseOverCallback;
@@ -157,7 +157,7 @@ public class MouseOverExample extends Applet {
     public void exit() {}
 
 	@Override
-	public void mouseEvent(MouseEvent e, MouseButton b) {}
+	public void mouseEvent(MouseStatus e, MouseButton b) {}
 
 	@Override
 	public void keyEvent(KeyEvent e) {}

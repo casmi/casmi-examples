@@ -22,7 +22,7 @@ import casmi.Applet;
 import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
-import casmi.MouseEvent;
+import casmi.MouseStatus;
 import casmi.graphics.color.Color;
 import casmi.graphics.color.ColorSet;
 import casmi.graphics.color.RGBColor;
@@ -58,8 +58,8 @@ public class TweenCursorExample extends Applet {
     public void exit() {}
 
     @Override
-    public void mouseEvent(MouseEvent e, MouseButton b) {
-        if (e == MouseEvent.PRESSED) {
+    public void mouseEvent(MouseStatus e, MouseButton b) {
+        if (e == MouseStatus.PRESSED) {
             float scale = Random.random(0.5f, 2.0f);
 
             Tweener t = new Tweener(el);

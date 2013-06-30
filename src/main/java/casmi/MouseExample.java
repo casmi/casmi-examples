@@ -50,7 +50,7 @@ public class MouseExample extends Applet {
     public void exit() {}
 
     @Override
-    public void mouseEvent(MouseEvent e, MouseButton b) {
+    public void mouseEvent(MouseStatus e, MouseButton b) {
         boolean mouseFlag = false;
 
         switch (e) {

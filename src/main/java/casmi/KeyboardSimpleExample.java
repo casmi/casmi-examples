@@ -47,9 +47,9 @@ public class KeyboardSimpleExample extends Applet {
     public void exit() {}
 
     @Override
-    public void mouseEvent(MouseEvent e, MouseButton b) {
+    public void mouseEvent(MouseStatus e, MouseButton b) {
 
-        if (e == MouseEvent.PRESSED && b == MouseButton.RIGHT)
+        if (e == MouseStatus.PRESSED && b == MouseButton.RIGHT)
             clearObject();
     }
 

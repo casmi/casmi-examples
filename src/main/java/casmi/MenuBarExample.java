@@ -1,5 +1,6 @@
 package casmi;
 
+import casmi.callback.MenuItemSelectCallback;
 import casmi.graphics.color.ColorSet;
 import casmi.graphics.element.Text;
 import casmi.graphics.element.TextAlign;
@@ -56,7 +57,7 @@ public class MenuBarExample extends Applet {
     public void exit() {}
 
     @Override
-    public void mouseEvent(MouseEvent e, MouseButton b) {}
+    public void mouseEvent(MouseStatus e, MouseButton b) {}
 
     @Override
     public void keyEvent(KeyEvent e) {}

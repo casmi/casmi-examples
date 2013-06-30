@@ -22,10 +22,10 @@ import casmi.Applet;
 import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
-import casmi.MouseEvent;
+import casmi.MouseStatus;
+import casmi.graphics.canvas.Canvas;
 import casmi.graphics.color.ColorSet;
 import casmi.graphics.element.Text;
-import casmi.graphics.object.GraphicsObject;
 
 /**
  * Font example.
@@ -40,7 +40,7 @@ import casmi.graphics.object.GraphicsObject;
  */
 public class FontExample extends Applet {
 
-    GraphicsObject go = new GraphicsObject();
+    Canvas canvas = new Canvas();
     double bottom = 0;
 
     @Override
@@ -57,14 +57,14 @@ public class FontExample extends Applet {
             Text text = new Text(fontname, font, 5, y);
             text.setStrokeColor(ColorSet.WHITE);
 
-            go.add(text);
+            canvas.add(text);
 
             y -= 20;
         }
 
         bottom = y;
 
-        addObject(go);
+        addCanvas(canvas);
     }
 
     @Override
@@ -74,9 +74,9 @@ public class FontExample extends Applet {
     public void exit() {}
 
     @Override
-	public void mouseEvent(MouseEvent e, MouseButton b) {
-        if (e == MouseEvent.WHEEL_ROTATED) {
-            double newY = go.getY() + getMouseWheelRotation();
+	public void mouseEvent(MouseStatus e, MouseButton b) {
+        if (e == MouseStatus.WHEEL_ROTATED) {
+            double newY = canvas.getY() + getMouseWheelRotation();
 
             if (newY < 0) {
                 newY = 0;
@@ -84,7 +84,7 @@ public class FontExample extends Applet {
                 newY = - bottom;
             }
 
-            go.setY(newY);
+            canvas.setY(newY);
         }
     }
 
@@ -92,7 +92,7 @@ public class FontExample extends Applet {
 	public void keyEvent(KeyEvent e) {
 	    if (e == KeyEvent.PRESSED) {
 	        int keyCode = getKeyCode();
-	        double newY = go.getY();
+	        double newY = canvas.getY();
 
 	        if (keyCode == java.awt.event.KeyEvent.VK_UP) {
 	            newY -= 20;
@@ -108,7 +108,7 @@ public class FontExample extends Applet {
                 newY = - bottom;
             }
 
-	        go.setY(newY);
+	        canvas.setY(newY);
 	    }
 	}
 

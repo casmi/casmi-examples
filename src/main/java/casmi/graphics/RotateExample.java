@@ -22,10 +22,9 @@ import casmi.Applet;
 import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
-import casmi.MouseEvent;
+import casmi.MouseStatus;
 import casmi.graphics.color.HSBColor;
 import casmi.graphics.element.Bezier;
-import casmi.util.SystemUtil;
 
 /**
  * Example of rotation.
@@ -49,7 +48,7 @@ public class RotateExample extends Applet {
         b1.setStrokeColor(c);
         b1.setStrokeWidth(1);
 
-        setPosition(getWidth() / 2.0, 100.0);
+        b1.setPosition(getWidth() / 2.0, 100.0);
 
         for (int i = 0; i < 37; i++) {
         	Bezier b = (Bezier) b1.clone();
@@ -74,11 +73,7 @@ public class RotateExample extends Applet {
     }
 
     @Override
-    public void mouseEvent(MouseEvent e, MouseButton b) {
-        if (e == MouseEvent.PRESSED) {
-            capture("rsrc" + SystemUtil.FILE_SEPARATOR + "save.png", false);
-        }
-    }
+    public void mouseEvent(MouseStatus e, MouseButton b) {}
 
     @Override
     public void keyEvent(KeyEvent e) {}

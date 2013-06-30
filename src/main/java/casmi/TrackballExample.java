@@ -18,11 +18,11 @@
 
 package casmi;
 
+import casmi.graphics.canvas.Canvas;
 import casmi.graphics.color.ColorSet;
 import casmi.graphics.element.Box;
 import casmi.graphics.element.Line;
 import casmi.graphics.object.Camera;
-import casmi.graphics.object.GraphicsObject;
 import casmi.graphics.object.Perspective;
 
 /**
@@ -32,7 +32,7 @@ import casmi.graphics.object.Perspective;
  */
 public class TrackballExample extends Applet {
 
-    GraphicsObject group;
+    Canvas canvas;
     Line[] lines = new Line[3];
     Box box;
 
@@ -47,7 +47,7 @@ public class TrackballExample extends Applet {
     public void setup() {
         setSize(800, 600);
 
-        group = new GraphicsObject();
+        canvas = new Canvas();
 
         lines[0] = new Line(0.0, 0.0, 0.0,
                             120.0, 0.0, 0.0);
@@ -58,18 +58,18 @@ public class TrackballExample extends Applet {
         lines[2] = new Line(0.0, 0.0, 0.0,
                             0.0, 0.0, 120.0);
         lines[2].setStrokeColor(ColorSet.BLUE);
-        group.add(lines[0]);
-        group.add(lines[1]);
-        group.add(lines[2]);
+        canvas.add(lines[0]);
+        canvas.add(lines[1]);
+        canvas.add(lines[2]);
 
         box = new Box(1.0);
         box.setStrokeColor(ColorSet.GRAY);
         box.setFillColor(ColorSet.WHITE);
-        group.add(box);
+        canvas.add(box);
 
        // group.setPosition(getWidth() / 2.0, getHeight() / 2.0);
 
-        addObject(group);
+        addCanvas(canvas);
 
         p = new Perspective(30.0, (double)getWidth() / (double)getHeight(), 1.0, 100.0);
         c = new Camera(3.0, 4.0, 5.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
@@ -88,13 +88,13 @@ public class TrackballExample extends Applet {
     public void exit() {}
 
     @Override
-    public void mouseEvent(MouseEvent e, MouseButton b) {
-        if (e == MouseEvent.PRESSED) {
+    public void mouseEvent(MouseStatus e, MouseButton b) {
+        if (e == MouseStatus.PRESSED) {
             prvMouseX = getMouseX();
             prvMouseY = getMouseY();
         }
 
-        if (e == MouseEvent.DRAGGED && b == MouseButton.LEFT) {
+        if (e == MouseStatus.DRAGGED && b == MouseButton.LEFT) {
             int mouseX = getMouseX();
             int mouseY = getMouseY();
 
@@ -102,7 +102,7 @@ public class TrackballExample extends Applet {
             trackball.update(mouseX, mouseY, prvMouseX, prvMouseY);
 
             // Rotate an object with Trackball.
-            trackball.rotate(group);
+            trackball.rotate(canvas);
 
             prvMouseX = mouseX;
             prvMouseY = mouseY;

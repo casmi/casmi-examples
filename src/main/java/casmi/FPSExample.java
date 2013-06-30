@@ -77,8 +77,8 @@ public class FPSExample extends Applet {
     public void exit() {}
 
     @Override
-    public void mouseEvent(MouseEvent e, MouseButton b) {
-        if (e == MouseEvent.CLICKED) {
+    public void mouseEvent(MouseStatus e, MouseButton b) {
+        if (e == MouseStatus.CLICKED) {
             switch (fps) {
             case 30:
                 setFPS(15.0);

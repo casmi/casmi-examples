@@ -22,15 +22,15 @@ import casmi.Applet;
 import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
-import casmi.MouseEvent;
+import casmi.MouseStatus;
 import casmi.callback.MouseOverCallback;
 import casmi.callback.MouseOverEventType;
+import casmi.graphics.canvas.Canvas;
 import casmi.graphics.color.ColorSet;
 import casmi.graphics.element.Element;
 import casmi.graphics.element.Ellipse;
 import casmi.graphics.element.Rect;
 import casmi.graphics.element.Triangle;
-import casmi.graphics.group.Group;
 
 /**
  * Object removal example.
@@ -39,7 +39,7 @@ import casmi.graphics.group.Group;
  */
 public class RemoveExample extends Applet {
 
-    class TriangleGroup extends Group {
+    class TriangleGroup extends Canvas {
 
         Triangle t1, t2;
 
@@ -53,9 +53,6 @@ public class RemoveExample extends Applet {
             this.add(t1);
             this.add(t2);
         }
-
-        @Override
-        public void update() {}
     }
 
 	TriangleGroup tg1, tg2;
@@ -92,8 +89,9 @@ public class RemoveExample extends Applet {
 			}
 		});
 
-		addObject(tg1);
-		addObject(tg2);
+		addCanvas(tg1);
+		addCanvas(tg2);
+
 		addObject(el);
 		addObject(r2);
 		addObject(r1);
@@ -106,14 +104,14 @@ public class RemoveExample extends Applet {
     public void exit() {}
 
 	@Override
-	public void mouseEvent(MouseEvent e, MouseButton b) {}
+	public void mouseEvent(MouseStatus e, MouseButton b) {}
 
 	@Override
 	public void keyEvent(KeyEvent e) {
 		if (e == KeyEvent.PRESSED) {
 			switch (getKey()) {
 			case 't':
-				tg1.remove();
+//				tg1.remove(); // TODO fix
 				break;
 			case 'e':
 				el.remove();

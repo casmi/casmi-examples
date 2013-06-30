@@ -111,7 +111,7 @@ public class KeyboardExample extends Applet {
     }
 
     @Override
-    public void mouseEvent(MouseEvent e, MouseButton b) {}
+    public void mouseEvent(MouseStatus e, MouseButton b) {}
 
     public static void main(String[] args) {
         AppletRunner.run("casmi.KeyboardExample", "Keyboard Example");

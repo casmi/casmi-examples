@@ -23,7 +23,7 @@ import casmi.AppletRunner;
 import casmi.CursorMode;
 import casmi.KeyEvent;
 import casmi.MouseButton;
-import casmi.MouseEvent;
+import casmi.MouseStatus;
 import casmi.callback.MouseOverCallback;
 import casmi.callback.MouseOverEventType;
 import casmi.graphics.color.ColorSet;
@@ -76,7 +76,7 @@ public class MouseOverTextExample extends Applet {
     public void exit() {}
 
     @Override
-    public void mouseEvent(MouseEvent e, MouseButton b) {}
+    public void mouseEvent(MouseStatus e, MouseButton b) {}
 
     @Override
     public void keyEvent(KeyEvent e) {}

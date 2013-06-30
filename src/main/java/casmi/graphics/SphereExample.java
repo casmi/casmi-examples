@@ -22,7 +22,7 @@ import casmi.Applet;
 import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
-import casmi.MouseEvent;
+import casmi.MouseStatus;
 import casmi.graphics.color.RGBColor;
 import casmi.graphics.element.Sphere;
 
@@ -46,7 +46,7 @@ public class SphereExample extends Applet {
         s.setStrokeColor(new RGBColor(0.4, 0.4, 0.8));
         s.setStrokeWidth(4);
 
-        setPosition(512.0, 430.0, 100.0);
+        s.setPosition(512.0, 430.0, 100.0);
 
         addObject(s);
     }
@@ -61,7 +61,7 @@ public class SphereExample extends Applet {
     public void exit() {}
 
     @Override
-    public void mouseEvent(MouseEvent e, MouseButton b) {}
+    public void mouseEvent(MouseStatus e, MouseButton b) {}
 
     @Override
     public void keyEvent(KeyEvent e) {}

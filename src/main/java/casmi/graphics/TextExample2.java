@@ -22,13 +22,13 @@ import casmi.Applet;
 import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
-import casmi.MouseEvent;
+import casmi.MouseStatus;
+import casmi.graphics.canvas.Canvas;
 import casmi.graphics.color.ColorSet;
 import casmi.graphics.element.Line;
 import casmi.graphics.element.Text;
 import casmi.graphics.element.TextAlign;
 import casmi.graphics.font.Font;
-import casmi.graphics.object.GraphicsObject;
 
 /**
  * Example of casmi Font
@@ -41,7 +41,7 @@ public class TextExample2 extends Applet {
     Font f = null;
     Line l;
     Text t, t2, t3;
-    GraphicsObject group;
+    Canvas canvas;
 
     @Override
     public void setup() {
@@ -75,13 +75,14 @@ public class TextExample2 extends Applet {
         l.setStrokeColor(ColorSet.LIGHT_BLUE);
         // t.setRotation(30);
         // l.setRotation(30);
-        group = new GraphicsObject();
-        group.add(t);
-        group.add(l);
-        group.setRotation(30);
+        canvas = new Canvas();
+        canvas.add(t);
+        canvas.add(l);
+//        canvas.setRotation(30);
+
         addObject(t2);
         addObject(t3);
-        addObject(group);
+        addCanvas(canvas);
     }
 
     @Override
@@ -91,7 +92,7 @@ public class TextExample2 extends Applet {
     public void exit() {}
 
     @Override
-    public void mouseEvent(MouseEvent e, MouseButton b) {}
+    public void mouseEvent(MouseStatus e, MouseButton b) {}
 
     @Override
     public void keyEvent(KeyEvent e) {}

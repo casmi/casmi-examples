@@ -25,7 +25,8 @@ import casmi.Applet;
 import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
-import casmi.MouseEvent;
+import casmi.MouseStatus;
+import casmi.graphics.canvas.Canvas;
 import casmi.graphics.element.RoundRect;
 
 /**
@@ -42,6 +43,9 @@ public class ColorSetExample extends Applet {
     @Override
     public void setup() {
         setSize(1024, 768);
+
+        Canvas canvas = new Canvas();
+
         final float w = 65.0f;
         final float h = 65.0f;
 
@@ -57,9 +61,10 @@ public class ColorSetExample extends Applet {
             index++;
         }
 
-        setPosition(100, 70);
+        canvas.setPosition(100, 70);
+
         for (RoundRect rr : rrList) {
-            addObject(rr);
+            canvas.add(rr);
         }
     }
 
@@ -70,7 +75,7 @@ public class ColorSetExample extends Applet {
     public void exit() {}
 
     @Override
-    public void mouseEvent(MouseEvent e, MouseButton b) {}
+    public void mouseEvent(MouseStatus e, MouseButton b) {}
 
     @Override
     public void keyEvent(KeyEvent e) {}

@@ -22,7 +22,7 @@ import casmi.Applet;
 import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
-import casmi.MouseEvent;
+import casmi.MouseStatus;
 import casmi.graphics.element.Sphere;
 import casmi.graphics.element.Texture;
 import casmi.graphics.object.Camera;
@@ -191,7 +191,7 @@ public class SphereTextureExample extends Applet {
     }
 
     @Override
-    public void mouseEvent(MouseEvent e, MouseButton b) {}
+    public void mouseEvent(MouseStatus e, MouseButton b) {}
 
     @Override
     public void keyEvent(KeyEvent e) {}

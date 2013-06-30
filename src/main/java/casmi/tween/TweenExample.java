@@ -22,7 +22,7 @@ import casmi.Applet;
 import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
-import casmi.MouseEvent;
+import casmi.MouseStatus;
 import casmi.graphics.color.Color;
 import casmi.graphics.color.HSBColor;
 import casmi.graphics.color.RGBColor;
@@ -51,7 +51,7 @@ public class TweenExample extends Applet {
 		r.setStrokeColor(new RGBColor(0.4, 0.9, 0.4));
 		r.setStrokeWidth(3);
 
-		setPosition(500, 600);
+		r.setPosition(500, 600);
 		addObject(r);
 
 		t = new Tweener(r);
@@ -64,12 +64,12 @@ public class TweenExample extends Applet {
     public void exit() {}
 
 	@Override
-	public void mouseEvent(MouseEvent e, MouseButton b) {
-		if (e == MouseEvent.PRESSED) {
+	public void mouseEvent(MouseStatus e, MouseButton b) {
+		if (e == MouseStatus.PRESSED) {
 			clearTweeners();
 			t.reset();
 
-			t.animatePosition(new Vector2D(20, -400), 2000, QuadraticInOut.class);
+			t.animatePosition(new Vector2D(500, 200), 2000, QuadraticInOut.class);
 			t.animateStrokeAlpha(0.0, 2000, SinusoidalInOut.class);
 			t.animateRotation(180, 2000, QuadraticInOut.class);
 

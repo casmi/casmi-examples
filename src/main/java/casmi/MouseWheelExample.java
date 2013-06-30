@@ -50,8 +50,8 @@ public class MouseWheelExample extends Applet {
     public void exit() {}
 
     @Override
-    public void mouseEvent(MouseEvent e, MouseButton b) {
-        if (e == MouseEvent.WHEEL_ROTATED) {
+    public void mouseEvent(MouseStatus e, MouseButton b) {
+        if (e == MouseStatus.WHEEL_ROTATED) {
             double wrot = getMouseWheelRotation();
             rect.setY(rect.getY() + wrot);
         }

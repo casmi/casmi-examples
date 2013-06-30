@@ -22,7 +22,7 @@ import casmi.Applet;
 import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
-import casmi.MouseEvent;
+import casmi.MouseStatus;
 import casmi.graphics.element.Quad;
 import casmi.graphics.element.Texture;
 import casmi.graphics.element.TextureRotationMode;
@@ -58,8 +58,8 @@ public class QuadTextureExample extends Applet {
     public void exit() {}
 
     @Override
-    public void mouseEvent(MouseEvent e, MouseButton b) {
-        if (e == MouseEvent.PRESSED) {
+    public void mouseEvent(MouseStatus e, MouseButton b) {
+        if (e == MouseStatus.PRESSED) {
             tex.rotation(TextureRotationMode.CLOCKWIZE);
         }
     }

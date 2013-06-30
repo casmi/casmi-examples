@@ -20,14 +20,14 @@ package casmi.graphics.gradation;
 
 import casmi.Applet;
 import casmi.AppletRunner;
+import casmi.GradationMode2D;
 import casmi.KeyEvent;
 import casmi.MouseButton;
-import casmi.MouseEvent;
+import casmi.MouseStatus;
 import casmi.graphics.color.Color;
 import casmi.graphics.color.ColorSet;
 import casmi.graphics.color.RGBColor;
 import casmi.graphics.element.Circle;
-import casmi.graphics.element.GradationMode2D;
 import casmi.graphics.element.Quad;
 import casmi.graphics.element.Rect;
 import casmi.graphics.element.Triangle;
@@ -35,7 +35,7 @@ import casmi.graphics.element.Triangle;
 /**
  * Gradation example.
  *
- * @see casmi.graphics.element.GradationMode2D
+ * @see casmi.GradationMode2D
  *
  * @author Y.Ban
  */
@@ -94,7 +94,7 @@ public class GradationExample extends Applet {
     public void exit() {}
 
     @Override
-    public void mouseEvent(MouseEvent e, MouseButton b) {}
+    public void mouseEvent(MouseStatus e, MouseButton b) {}
 
     @Override
     public void keyEvent(KeyEvent e) {}
