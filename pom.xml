@@ -31,9 +31,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>${project.groupId}</groupId>
+            <groupId>com.github.casmi</groupId>
             <artifactId>casmi</artifactId>
-            <version>${project.version}</version>
+            <version>0.4.0</version>
         </dependency>
     </dependencies>
 
