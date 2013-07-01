@@ -1,7 +1,7 @@
 /*
  *   casmi examples
  *   http://casmi.github.com/
- *   Copyright (C) 2011-2012, Xcoo, Inc.
+ *   Copyright (C) 2011, Xcoo, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,60 +16,58 @@
  * limitations under the License.
  */
 
-package casmi.tween;
+package casmi.graphics.element;
 
 import casmi.Applet;
 import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseStatus;
-import casmi.graphics.element.Rect;
 import casmi.image.Texture;
-import casmi.matrix.Vector2D;
-import casmi.tween.equations.BounceOut;
 
 /**
- * Example of TweenRepeat.
+ * Example of Graphics.
  *
- * @author Y. Ban
+ * @author Y.Ban
  *
  */
-public class TweenRepeatExample  extends Applet {
-    Rect r = new Rect(256, 64);
-    Tweener t;
+public class QuadTextureExample extends Applet {
+
+    Texture tex = null;
+    Quad q1 = new Quad(500, 300,
+                       400, 500,
+                       600, 500,
+                       700, 300);
 
     @Override
     public void setup() {
         setSize(1024, 768);
 
-        Texture tex = new Texture(getClass().getResource("/casmi/logo.png"));
-        r.setTexture(tex);
-        r.setPosition(200, 500);
+        tex = new Texture(getClass().getResource("/casmi/logo.png"));
+        q1.setStroke(false);
+        q1.setTexture(tex);
 
-        addObject(r);
-
-		t = new Tweener(r);
-
-		t.animatePosition(new Vector2D(200 + 300, 500), 3000, BounceOut.class);
-		t.setRepeat(true);
-
-		addTweener(t);
+        addObject(q1);
     }
 
-	@Override
-	public void update() {}
+    @Override
+    public void update() {}
 
     @Override
     public void exit() {}
 
-	@Override
-	public void mouseEvent(MouseStatus e, MouseButton b) {}
+    @Override
+    public void mouseEvent(MouseStatus e, MouseButton b) {
+        if (e == MouseStatus.PRESSED) {
+            tex.rotation(TextureRotationMode.CLOCKWIZE);
+        }
+    }
 
-	@Override
-	public void keyEvent(KeyEvent e) {}
+    @Override
+    public void keyEvent(KeyEvent e) {}
 
-	public static void main(String[] args) {
-		AppletRunner.run("casmi.tween.TweenRepeatExample", "TweenRepeatExample");
-	}
+    public static void main(String[] args) {
+        AppletRunner.run("casmi.graphics.element.QuadTextureExample", "QuadTextureExample");
+    }
 
 }

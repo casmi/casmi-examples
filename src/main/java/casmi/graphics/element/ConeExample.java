@@ -16,44 +16,52 @@
  * limitations under the License.
  */
 
-package casmi.graphics;
+package casmi.graphics.element;
 
 import casmi.Applet;
 import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseStatus;
-import casmi.graphics.color.ColorSet;
+import casmi.graphics.color.RGBColor;
 
 /**
- * Example that changes background color.
+ * Cone example.
+ *
+ * @see casmi.graphics.element.Cone
  *
  * @author Y. Ban
- *
- * @see casmi.Applet#setBackGroundColor(casmi.graphics.color.Color)
  */
-public class BackgroundColorExample extends Applet {
+public class ConeExample extends Applet {
 
-	@Override
-	public void setup() {
-		setSize(800,600);
-		setBackGroundColor(ColorSet.LIGHT_GREEN);
-	}
+    Cone cone = new Cone(300, 300);
 
-	@Override
-	public void update() {}
+    @Override
+    public void setup() {
+        setSize(800, 600);
 
-	@Override
+        cone.setFill(false);
+        cone.setStrokeColor(new RGBColor(0.4, 0.4, 0.8));
+        cone.setStrokeWidth(4);
+        cone.setPosition(400, 230, 100);
+
+        addObject(cone);
+    }
+
+    @Override
+    public void update() {}
+
+    @Override
     public void exit() {}
 
-	@Override
-	public void mouseEvent(MouseStatus e, MouseButton b) {}
+    @Override
+    public void mouseEvent(MouseStatus e, MouseButton b) {}
 
-	@Override
-	public void keyEvent(KeyEvent e) {}
+    @Override
+    public void keyEvent(KeyEvent e) {}
 
     public static void main(String[] args) {
-        AppletRunner.run("casmi.graphics.BackgroundColorExample", "BackGroundColor Example");
+        AppletRunner.run("casmi.graphics.element.ConeExample", "Cone Example");
     }
 
 }

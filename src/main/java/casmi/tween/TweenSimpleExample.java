@@ -47,7 +47,6 @@ public class TweenSimpleExample extends Applet {
 
 		t = new Tweener(circle);
 		t.animatePosition(new Vector2D(200, 100), 3000, BounceOut.class);
-		t.setRepeat(true);
 
     	addTweener(t);
 	}

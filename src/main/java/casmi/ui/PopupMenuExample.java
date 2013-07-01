@@ -27,6 +27,7 @@ import casmi.graphics.color.Color;
 import casmi.graphics.color.ColorSet;
 import casmi.graphics.color.RGBColor;
 
+// TODO fix
 /**
  * @author S. Yoshida
  *
@@ -79,6 +80,6 @@ public class PopupMenuExample extends Applet {
 	public void keyEvent(KeyEvent e) {}
 
 	public static void main(String[] args) {
-		AppletRunner.run("casmi.PopupMenuExample", "PopupMenuExample");
+		AppletRunner.run("casmi.ui.PopupMenuExample", "PopupMenuExample");
 	}
 }

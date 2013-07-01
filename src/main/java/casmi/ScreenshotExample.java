@@ -41,7 +41,7 @@ import casmi.util.SystemUtil;
 public class ScreenshotExample extends Applet {
 
     enum Mode {
-        JPG, PNG, BMP, GIF, PDF
+        JPG, PNG, BMP, GIF
     }
 
     class HighlightCallback implements MouseOverCallback {
@@ -52,14 +52,10 @@ public class ScreenshotExample extends Applet {
             case EXISTED:
                 if (element instanceof Text)
                     element.setStrokeColor(ColorSet.WHITE);
-                else
-                    element.setFillColor(ColorSet.WHITE);
                 break;
             case EXITED:
                 if (element instanceof Text)
                     element.setStrokeColor(ColorSet.GRAY);
-                else
-                    element.setFillColor(ColorSet.GRAY);
                 break;
             }
         }
@@ -74,7 +70,6 @@ public class ScreenshotExample extends Applet {
                 else if (element == textPNG) changeMode(Mode.PNG);
                 else if (element == textBMP) changeMode(Mode.BMP);
                 else if (element == textGIF) changeMode(Mode.GIF);
-                else if (element == textPDF) changeMode(Mode.PDF);
             }
         }
     }
@@ -84,13 +79,14 @@ public class ScreenshotExample extends Applet {
     Circle  circle  = new Circle(200, 200, 80);
     Rect    rect    = new Rect(600, 450, 200, 80);
     Bezier  bezier  = new Bezier(0, 400, 300, 600, 500, 0, 800, 200);
-    Texture iconTexture = new Texture(getClass().getResource("camera_icon.png").getPath());
+
+    Texture iconTexture = new Texture(getClass().getResource("/casmi/camera_icon.png").getPath());
     Rect    icon = new Rect(50, 50);
+
     Text    textJPG = new Text("JPG", 200, 20);
     Text    textPNG = new Text("PNG", 300, 20);
     Text    textBMP = new Text("BMP", 400, 20);
     Text    textGIF = new Text("GIF", 500, 20);
-    Text    textPDF = new Text("PDF", 600, 20);
 
     Mode mode = Mode.JPG;
     HighlightCallback highlightCallback = new HighlightCallback();
@@ -98,8 +94,6 @@ public class ScreenshotExample extends Applet {
 
     @Override
     public void setup() {
-        icon.setTexture(iconTexture);
-
         setSize(800, 600);
 
         circle.setFillColor(ColorSet.RED);
@@ -112,8 +106,8 @@ public class ScreenshotExample extends Applet {
         bezier.setStrokeColor(ColorSet.YELLOW);
         addObject(bezier);
 
+        icon.setTexture(iconTexture);
         icon.setPosition(400, 570);
-        icon.setFillColor(ColorSet.GRAY);
         icon.addMouseEventCallback(highlightCallback);
         icon.addMouseEventCallback(clickCallback);
         addObject(icon);
@@ -141,12 +135,6 @@ public class ScreenshotExample extends Applet {
         textGIF.addMouseEventCallback(highlightCallback);
         textGIF.addMouseEventCallback(clickCallback);
         addObject(textGIF);
-
-        textPDF.setStrokeColor(ColorSet.GRAY);
-        textPDF.setAlign(TextAlign.CENTER);
-        textPDF.addMouseEventCallback(highlightCallback);
-        textPDF.addMouseEventCallback(clickCallback);
-        addObject(textPDF);
     }
 
     @Override
@@ -163,9 +151,6 @@ public class ScreenshotExample extends Applet {
             break;
         case GIF:
             textGIF.setStrokeColor(ColorSet.AQUA);
-            break;
-        case PDF:
-            textPDF.setStrokeColor(ColorSet.AQUA);
             break;
         }
     }
@@ -186,7 +171,6 @@ public class ScreenshotExample extends Applet {
         textPNG.setStrokeColor(ColorSet.GRAY);
         textBMP.setStrokeColor(ColorSet.GRAY);
         textGIF.setStrokeColor(ColorSet.GRAY);
-        textPDF.setStrokeColor(ColorSet.GRAY);
 
         switch (mode) {
         case JPG:
@@ -200,9 +184,6 @@ public class ScreenshotExample extends Applet {
             break;
         case GIF:
             textGIF.setStrokeColor(ColorSet.AQUA);
-            break;
-        case PDF:
-            textPDF.setStrokeColor(ColorSet.AQUA);
             break;
         }
     }
@@ -221,9 +202,6 @@ public class ScreenshotExample extends Applet {
             break;
         case GIF:
             file += ".gif";
-            break;
-        case PDF:
-            file += ".pdf";
             break;
         }
         capture(file);

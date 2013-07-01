@@ -1,7 +1,7 @@
 /*
  *   casmi examples
  *   http://casmi.github.com/
- *   Copyright (C) 2011-2012, Xcoo, Inc.
+ *   Copyright (C) 2011, Xcoo, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,48 +16,40 @@
  * limitations under the License.
  */
 
-package casmi.tween;
+package casmi.graphics.element;
 
 import casmi.Applet;
 import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseStatus;
-import casmi.graphics.element.Rect;
-import casmi.image.Texture;
-import casmi.matrix.Vector2D;
-import casmi.tween.equations.BounceOut;
+import casmi.graphics.color.ColorSet;
+import casmi.graphics.color.RGBColor;
 
 /**
- * Example of TweenRepeat.
+ * Circle example.
  *
- * @author Y. Ban
+ * @see casmi.graphics.element.Circle
  *
+ * @author Y.Ban
  */
-public class TweenRepeatExample  extends Applet {
-    Rect r = new Rect(256, 64);
-    Tweener t;
+public class CircleExample extends Applet {
+
+    Circle circle = new Circle(80);
 
     @Override
     public void setup() {
-        setSize(1024, 768);
+        setSize(800, 600);
 
-        Texture tex = new Texture(getClass().getResource("/casmi/logo.png"));
-        r.setTexture(tex);
-        r.setPosition(200, 500);
-
-        addObject(r);
-
-		t = new Tweener(r);
-
-		t.animatePosition(new Vector2D(200 + 300, 500), 3000, BounceOut.class);
-		t.setRepeat(true);
-
-		addTweener(t);
+        circle.setFillColor(new RGBColor(0.3, 0.7, 0.3));
+        circle.setStrokeColor(ColorSet.LIGHT_CORAL);
+        circle.setStrokeWidth(3);
+        circle.setPosition(400,300);
+        addObject(circle);
     }
 
-	@Override
-	public void update() {}
+    @Override
+    public void update() {}
 
     @Override
     public void exit() {}
@@ -69,7 +61,7 @@ public class TweenRepeatExample  extends Applet {
 	public void keyEvent(KeyEvent e) {}
 
 	public static void main(String[] args) {
-		AppletRunner.run("casmi.tween.TweenRepeatExample", "TweenRepeatExample");
-	}
+        AppletRunner.run("casmi.graphics.element.CircleExample", "Circle Example");
+    }
 
 }

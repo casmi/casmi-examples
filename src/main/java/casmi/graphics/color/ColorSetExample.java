@@ -26,46 +26,103 @@ import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseStatus;
-import casmi.graphics.canvas.Canvas;
+import casmi.callback.MouseOverCallback;
+import casmi.callback.MouseOverEventType;
+import casmi.graphics.element.Element;
 import casmi.graphics.element.RoundRect;
+import casmi.graphics.element.Text;
+import casmi.graphics.element.TextAlign;
+import casmi.graphics.font.Font;
+import casmi.graphics.font.FontStyle;
 
 /**
- * Example of ColorSet.
+ * Example of MouseOver.
  *
- * @author K. Nishimura
+ * @author Takashi AOKI <federkasten@me.com>
+ * @author Kunihiro NISHIMURA
+ * @author Y. Ban
  *
- * @see casmi.graphics.color.ColorSet
  */
 public class ColorSetExample extends Applet {
 
     List<RoundRect> rrList = new ArrayList<RoundRect>();
+    List<ColorRoundrect> crList = new ArrayList<ColorRoundrect>();
+    Font f;
+    Text text;
+    int index;
+
+    class ColorRoundrect {
+
+        String colorName;
+        RoundRect roundRect;
+        ColorSet colorSet;
+        int index;
+
+        ColorRoundrect(ColorSet colorSet) {
+            this.colorSet = colorSet;
+            roundRect = new RoundRect(6, 0, 0, 52, 52);
+            colorName = colorSet.toString();
+            roundRect.setFillColor(colorSet);
+            roundRect.setStrokeColor(ColorSet.WHITE);
+            roundRect.setStrokeWidth(2.0);
+            roundRect.setStroke(false);
+        }
+    }
 
     @Override
     public void setup() {
         setSize(1024, 768);
-
-        Canvas canvas = new Canvas();
-
         final float w = 65.0f;
         final float h = 65.0f;
 
         int numRows = 14;
-        int index = 0;
+        index = 0;
 
-        for (ColorSet colorSet : ColorSet.values()) {
-            RoundRect rr = new RoundRect(6, 0, 0, 52, 52);
-            rr.setFillColor(colorSet);
-            rr.setStroke(false);
-            rr.setPosition(w * (index % numRows), h * (index / numRows));
-            rrList.add(rr);
+        for (ColorSet set : ColorSet.values()) {
+            ColorRoundrect cr = new ColorRoundrect(set);
+            crList.add(cr);
+        }
+        f = new Font("San-Serif", FontStyle.BOLD_ITALIC, 43);
+        text = new Text("", f);
+        text.setAlign(TextAlign.CENTER);
+        text.setStrokeColor(ColorSet.WHITE);
+        text.setPosition(770, 710);
+
+        index = 0;
+        for (final ColorRoundrect cr : crList) {
+            cr.roundRect.addMouseEventCallback(new MouseOverCallback() {
+
+                @Override
+                public void run(MouseOverEventType eventType, Element element) {
+                    switch (eventType) {
+                    case ENTERED:
+                    case EXISTED:
+                    {
+                        element.setStroke(true);
+                        text.setText(cr.colorName);
+                        Color c = new RGBColor(cr.colorSet);
+                        if (0.1 < c.getRed() || 0.1 < c.getBlue() || 0.1 < c.getGreen()) {
+                            text.setStrokeColor(cr.colorSet);
+                        } else {
+                            text.setStrokeColor(ColorSet.WHITE);
+                        }
+                        break;
+                    }
+                    case EXITED:
+                        element.setStroke(false);
+                        text.setText("");
+                        break;
+                    default:
+                        break;
+                    }
+                }
+            });
+            cr.roundRect.setPosition(w * (index % numRows) + 100, h * (index / numRows) + 70);
+            cr.index = index;
+            addObject(cr.roundRect);
             index++;
         }
-
-        canvas.setPosition(100, 70);
-
-        for (RoundRect rr : rrList) {
-            canvas.add(rr);
-        }
+        addObject(text);
     }
 
     @Override
@@ -81,7 +138,7 @@ public class ColorSetExample extends Applet {
     public void keyEvent(KeyEvent e) {}
 
     public static void main(String[] args) {
-        AppletRunner.run("casmi.graphics.color.ColorSetExample", "ColorSet Example");
+        AppletRunner.run("casmi.graphics.color.ColorSetExample", "ColorSetExample");
     }
 
 }

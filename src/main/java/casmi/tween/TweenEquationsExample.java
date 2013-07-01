@@ -78,6 +78,7 @@ import casmi.tween.equations.SinusoidalIn;
 import casmi.tween.equations.SinusoidalInOut;
 import casmi.tween.equations.SinusoidalOut;
 
+// TODO fix
 /**
  * Example of Tween.
  *
