@@ -27,9 +27,9 @@ import casmi.MouseButton;
 import casmi.MouseStatus;
 import casmi.graphics.color.RGBColor;
 import casmi.graphics.element.Box;
-import casmi.graphics.element.Texture;
 import casmi.graphics.object.Camera;
 import casmi.graphics.object.Perspective;
+import casmi.image.Texture;
 
 /**
  * Example of Graphics.

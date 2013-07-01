@@ -24,8 +24,8 @@ import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseStatus;
 import casmi.graphics.element.Quad;
-import casmi.graphics.element.Texture;
 import casmi.graphics.element.TextureRotationMode;
+import casmi.image.Texture;
 
 /**
  * Example of Graphics.
@@ -35,16 +35,17 @@ import casmi.graphics.element.TextureRotationMode;
  */
 public class QuadTextureExample extends Applet {
 
-    static final String IMAGE_PATH = Applet.class.getResource("logo.png").getPath();
-
     Texture tex = null;
-    Quad q1 = new Quad(500, 300, 400, 500, 600, 500, 700, 300);
+    Quad q1 = new Quad(500, 300,
+                       400, 500,
+                       600, 500,
+                       700, 300);
 
     @Override
     public void setup() {
         setSize(1024, 768);
 
-        tex = new Texture(IMAGE_PATH);
+        tex = new Texture(getClass().getResource("/casmi/logo.png"));
         q1.setStroke(false);
         q1.setTexture(tex);
 

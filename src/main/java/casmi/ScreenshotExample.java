@@ -28,7 +28,7 @@ import casmi.graphics.element.Element;
 import casmi.graphics.element.Rect;
 import casmi.graphics.element.Text;
 import casmi.graphics.element.TextAlign;
-import casmi.graphics.element.Texture;
+import casmi.image.Texture;
 import casmi.util.SystemUtil;
 
 /**
@@ -84,7 +84,8 @@ public class ScreenshotExample extends Applet {
     Circle  circle  = new Circle(200, 200, 80);
     Rect    rect    = new Rect(600, 450, 200, 80);
     Bezier  bezier  = new Bezier(0, 400, 300, 600, 500, 0, 800, 200);
-    Texture icon    = new Texture(ScreenshotExample.class.getResource("camera_icon.png").getPath());
+    Texture iconTexture = new Texture(getClass().getResource("camera_icon.png").getPath());
+    Rect    icon = new Rect(50, 50);
     Text    textJPG = new Text("JPG", 200, 20);
     Text    textPNG = new Text("PNG", 300, 20);
     Text    textBMP = new Text("BMP", 400, 20);
@@ -97,6 +98,8 @@ public class ScreenshotExample extends Applet {
 
     @Override
     public void setup() {
+        icon.setTexture(iconTexture);
+
         setSize(800, 600);
 
         circle.setFillColor(ColorSet.RED);
@@ -109,7 +112,7 @@ public class ScreenshotExample extends Applet {
         bezier.setStrokeColor(ColorSet.YELLOW);
         addObject(bezier);
 
-        icon.set(400, 570, 50, 50);
+        icon.setPosition(400, 570);
         icon.setFillColor(ColorSet.GRAY);
         icon.addMouseEventCallback(highlightCallback);
         icon.addMouseEventCallback(clickCallback);

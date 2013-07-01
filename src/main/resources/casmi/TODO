@@ -1,3 +1,0 @@
-reassign resource packages
-modified to use getClass().getResource(filename)
-

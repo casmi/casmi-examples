@@ -24,9 +24,9 @@ import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseStatus;
 import casmi.graphics.element.Sphere;
-import casmi.graphics.element.Texture;
 import casmi.graphics.object.Camera;
 import casmi.graphics.object.Perspective;
+import casmi.image.Texture;
 import casmi.matrix.Vector3D;
 
 /**

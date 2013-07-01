@@ -18,14 +18,14 @@
 
 package casmi.tween;
 
-import java.net.URL;
-
 import casmi.Applet;
 import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseStatus;
-import casmi.graphics.element.Texture;
+import casmi.graphics.element.Rect;
+import casmi.graphics.element.TextureFlipMode;
+import casmi.image.Texture;
 import casmi.matrix.Vector2D;
 import casmi.tween.equations.BounceOut;
 
@@ -36,25 +36,23 @@ import casmi.tween.equations.BounceOut;
  *
  */
 public class TweenRepeatExample  extends Applet {
-
-    static final URL IMAGE_PATH = TweenRepeatExample.class.getResource("/casmi/logo.png");
-
-    Texture tex = null;
+    Rect r = new Rect(256, 64);
     Tweener t;
 
     @Override
     public void setup() {
         setSize(1024, 768);
 
-        // TODO fix (no display)
+        Texture tex = new Texture(getClass().getResource("/casmi/logo.png"));
+        tex.flip(TextureFlipMode.VERTICAL);
+        r.setTexture(tex);
+        r.setPosition(200, 500);
 
-        tex = new Texture(IMAGE_PATH);
-        tex.setPosition(200, 500);
-        addObject(tex);
+        addObject(r);
 
-		t = new Tweener(tex);
+		t = new Tweener(r);
 
-		t.animatePosition(new Vector2D(200 + 45, 500), 3000, BounceOut.class);
+		t.animatePosition(new Vector2D(200 + 300, 500), 3000, BounceOut.class);
 		t.setRepeat(true);
 
 		addTweener(t);
