@@ -39,12 +39,12 @@ import casmi.image.Texture;
 public class BoxTextureExample extends Applet {
 
 	private static final String[] imageNames = {
-	    "/casmi/sai4.png",
-	    "/casmi/sai2.png",
-	    "/casmi/sai3.png",
-	    "/casmi/sai5.png",
-	    "/casmi/sai1.png",
-	    "/casmi/sai6.png"
+	    "/casmi/dice4.png",
+	    "/casmi/dice2.png",
+	    "/casmi/dice3.png",
+	    "/casmi/dice5.png",
+	    "/casmi/dice1.png",
+	    "/casmi/dice6.png"
 	};
 
 	private static URL[] imageURLs = new URL[6];

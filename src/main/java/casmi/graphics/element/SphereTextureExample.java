@@ -42,7 +42,7 @@ public class SphereTextureExample extends Applet {
         s = new Sphere(1);
         s.setStroke(false);
 
-        Texture earth = new Texture(Applet.class.getResource("/casmi/earthDiffuse.png"));
+        Texture earth = new Texture(Applet.class.getResource("/casmi/earth.png"));
         s.setTexture(earth);
 
         Perspective perspective = new Perspective(30.0, (double)getWidth() / (double)getHeight(), 1.0, 100.0);
