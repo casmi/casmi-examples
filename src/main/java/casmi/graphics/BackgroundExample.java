@@ -32,7 +32,7 @@ import casmi.graphics.color.ColorSet;
  *
  * @see casmi.Applet#setBackGroundColor(casmi.graphics.color.Color)
  */
-public class BackgroundColorExample extends Applet {
+public class BackgroundExample extends Applet {
 
 	@Override
 	public void setup() {
@@ -53,7 +53,7 @@ public class BackgroundColorExample extends Applet {
 	public void keyEvent(KeyEvent e) {}
 
     public static void main(String[] args) {
-        AppletRunner.run("casmi.graphics.BackgroundColorExample", "BackGroundColor Example");
+        AppletRunner.run("casmi.graphics.BackgroundExample", "BackGroundColor Example");
     }
 
 }
