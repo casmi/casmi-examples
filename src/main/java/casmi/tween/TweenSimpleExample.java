@@ -25,7 +25,7 @@ import casmi.MouseButton;
 import casmi.MouseStatus;
 import casmi.graphics.element.Circle;
 import casmi.matrix.Vector2D;
-import casmi.tween.equations.BounceOut;
+import casmi.tween.equations.ElasticOut;
 
 /**
  * Simple tween example.
@@ -46,7 +46,7 @@ public class TweenSimpleExample extends Applet {
 		addObject(circle);
 
 		t = new Tweener(circle);
-		t.animatePosition(new Vector2D(200, 100), 3000, BounceOut.class);
+		t.animatePosition(new Vector2D(200, 100), 5000, ElasticOut.class);
 
     	addTweener(t);
 	}

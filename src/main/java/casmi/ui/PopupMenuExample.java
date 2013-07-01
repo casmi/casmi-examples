@@ -27,7 +27,6 @@ import casmi.graphics.color.Color;
 import casmi.graphics.color.ColorSet;
 import casmi.graphics.color.RGBColor;
 
-// TODO fix
 /**
  * @author S. Yoshida
  *

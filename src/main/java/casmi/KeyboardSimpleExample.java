@@ -25,8 +25,6 @@ import casmi.util.Random;
 
 /**
  * Simple keyboard example.
- * <p>
- * Press any key and show.
  *
  * @author Y. Ban
  */

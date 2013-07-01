@@ -35,6 +35,7 @@ import casmi.graphics.color.RGBColor;
 public class ConeExample extends Applet {
 
     Cone cone = new Cone(300, 300);
+    double rot = 0.0;
 
     @Override
     public void setup() {
@@ -49,7 +50,10 @@ public class ConeExample extends Applet {
     }
 
     @Override
-    public void update() {}
+    public void update() {
+        cone.setRotation(rot, 0.3, 0.3, 0.3);
+        rot += 1.0;
+    }
 
     @Override
     public void exit() {}

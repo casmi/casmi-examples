@@ -67,15 +67,15 @@ public class TrackballExample extends Applet {
         box.setFillColor(ColorSet.WHITE);
         canvas.add(box);
 
-       // group.setPosition(getWidth() / 2.0, getHeight() / 2.0);
+        // group.setPosition(getWidth() / 2.0, getHeight() / 2.0);
 
         addCanvas(canvas);
 
         p = new Perspective(30.0, (double)getWidth() / (double)getHeight(), 1.0, 100.0);
         c = new Camera(3.0, 4.0, 5.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
 
-        setPerspective(p);
-        setCamera(c);
+        canvas.setProjection(p);
+        canvas.setCamera(c);
 
         // Create Trackball object.
         trackball = new Trackball(this);

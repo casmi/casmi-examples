@@ -62,37 +62,40 @@ public class MaterialExample extends Applet {
         setSize(800, 600);
 
         s1.setStroke(false);
-        m1.shininess(3);
-        m1.ambient(2);
-        m1.diffuse((float)(0.5), (float)(0.5), (float)(0.9));
-        m1.specular((float)(30 / 255.0));
+        m1.setShininess(3);
+        m1.setAmbient(2);
+        m1.setDiffuse((float)(0.5), (float)(0.5), (float)(0.9));
+        m1.setSpecular((float)(30 / 255.0));
         s1.setMaterial(m1);
 
         s2.setStroke(false);
-        m2.shininess(emerald_shininess);
-        m2.ambient(emerald_ambient);
-        m2.diffuse(emerald_diffuse);
-        m2.specular(emerald_specular);
+        m2.setShininess(emerald_shininess);
+        m2.setAmbient(emerald_ambient);
+        m2.setDiffuse(emerald_diffuse);
+        m2.setSpecular(emerald_specular);
         s2.setMaterial(m2);
 
         s3.setStroke(false);
-        m3.shininess(100f);
-        m3.ambient((float)(250 / 255.0));
-        m3.diffuse((float)(0.9), (float)(0.6), (float)(0.6));
-        m3.specular((float)(200 / 255.0));
+        m3.setShininess(100f);
+        m3.setAmbient((float)(250 / 255.0));
+        m3.setDiffuse((float)(0.9), (float)(0.6), (float)(0.6));
+        m3.setSpecular((float)(200 / 255.0));
         s3.setMaterial(m3);
 
         s1.setPosition(150, 300, 100);
         s2.setPosition(400, 300, 100);
         s3.setPosition(650, 300, 100);
+
         addObject(s1);
         addObject(s2);
         addObject(s3);
-        addLight(l);
+
         l.setAngle(30);
         l.setPosition(v2);
         l.setDirection(1, 0, 1);
         l.setColor(c);
+
+        addLight(l);
     }
 
     @Override

@@ -50,37 +50,7 @@ public class MouseExample extends Applet {
     public void exit() {}
 
     @Override
-    public void mouseEvent(MouseStatus e, MouseButton b) {
-        boolean mouseFlag = false;
-
-        switch (e) {
-        case CLICKED:
-            System.out.println("Clicked!!");
-            mouseFlag = true;
-            break;
-        case PRESSED:
-            System.out.println("Pressed!!");
-            mouseFlag = true;
-            break;
-        case RELEASED:
-            System.out.println("Released!!");
-            mouseFlag = true;
-            break;
-        case DOUBLE_CLICKED:
-        	System.out.println("Double_Clicked!!");
-        	mouseFlag = true;
-        }
-
-        if (mouseFlag) {
-            switch (b) {
-            case LEFT:
-                System.out.println(": Left");
-                break;
-            case RIGHT:
-                System.out.println(": Right");
-                break;
-            }
-        }
+    public void mouseEvent(MouseStatus status, MouseButton b) {
     }
 
     @Override

@@ -23,16 +23,14 @@ import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseStatus;
-import casmi.callback.MouseOverCallback;
-import casmi.callback.MouseOverEventType;
+import casmi.callback.MouseClickCallback;
+import casmi.callback.MouseClickEventType;
 import casmi.graphics.canvas.Canvas;
 import casmi.graphics.color.ColorSet;
 import casmi.graphics.element.Element;
-import casmi.graphics.element.Ellipse;
 import casmi.graphics.element.Rect;
 import casmi.graphics.element.Triangle;
 
-// TODO fix
 /**
  * Object removal example.
  *
@@ -40,60 +38,58 @@ import casmi.graphics.element.Triangle;
  */
 public class RemoveExample extends Applet {
 
-    class TriangleGroup extends Canvas {
+    Canvas canvas;
+    Triangle t1, t2;
+    Rect r1, r2;
 
-        Triangle t1, t2;
+	class RemoveElementCallback implements MouseClickCallback {
+	    @Override
+	    public void run(MouseClickEventType eventType, Element element) {
+	        if(eventType == MouseClickEventType.CLICKED) {
+	            removeObject(element);
+	        }
+	    }
+	}
 
-        public TriangleGroup() {
-            t1 = new Triangle(100, 100, 200, 100, 150, 150);
-            t2 = new Triangle(10, 10, 30, 10, 20, 20);
-            t1.setStroke(false);
-            t1.setFillColor(ColorSet.CYAN);
-            t2.setStroke(false);
-            t2.setFillColor(ColorSet.FIREBRICK);
-            this.add(t1);
-            this.add(t2);
+	class RemoveCanvasCallback implements MouseClickCallback {
+        @Override
+        public void run(MouseClickEventType eventType, Element element) {
+            if(eventType == MouseClickEventType.CLICKED) {
+                removeCanvas(canvas);
+            }
         }
     }
 
-	TriangleGroup tg1, tg2;
-	Ellipse       el;
-	Rect          r1, r2;
-
 	@Override
 	public void setup() {
-		setSize(800,600);
+		setSize(800, 600);
 
-		tg1 = new TriangleGroup();
-		tg1.setPosition(300,300);
+		canvas = new Canvas();
 
-		tg2 = new TriangleGroup();
-		tg2.setPosition(600,400);
+        t1 = new Triangle(100, 100, 200, 100, 150, 150);
+        t1.setStroke(false);
+        t1.setFillColor(ColorSet.CYAN);
+        t1.addMouseEventCallback(new RemoveCanvasCallback());
+        canvas.add(t1);
 
-		el = new Ellipse(10);
-		el.setPosition(200, 100);
-		el.setFillColor(ColorSet.DARK_RED);
+        t2 = new Triangle(10, 10, 30, 10, 20, 20);
+        t2.setStroke(false);
+        t2.setFillColor(ColorSet.FIREBRICK);
+        t2.addMouseEventCallback(new RemoveCanvasCallback());
+        canvas.add(t2);
+
+        addCanvas(canvas);
 
 		r1 = new Rect(100, 100);
 		r1.setPosition(700,200);
 		r1.setFillColor(ColorSet.ALICE_BLUE);
+		r1.addMouseEventCallback(new RemoveElementCallback());
 
 		r2 = new Rect(200, 120);
 		r2.setPosition(200,500);
 		r2.setFillColor(ColorSet.CHOCOLATE);
+		r2.addMouseEventCallback(new RemoveElementCallback());
 
-		r2.addMouseEventCallback(new MouseOverCallback() {
-
-			@Override
-			public void run(MouseOverEventType eventType, Element element) {
-				if(eventType == MouseOverEventType.ENTERED) element.remove();
-			}
-		});
-
-		addCanvas(tg1);
-		addCanvas(tg2);
-
-		addObject(el);
 		addObject(r2);
 		addObject(r1);
 	}
@@ -108,23 +104,9 @@ public class RemoveExample extends Applet {
 	public void mouseEvent(MouseStatus e, MouseButton b) {}
 
 	@Override
-	public void keyEvent(KeyEvent e) {
-		if (e == KeyEvent.PRESSED) {
-			switch (getKey()) {
-			case 't':
-//				tg1.remove(); // TODO fix
-				break;
-			case 'e':
-				el.remove();
-				break;
-			case 'r':
-				r1.remove();
-				break;
-			}
-		}
-	}
+	public void keyEvent(KeyEvent e) {}
 
 	public static void main(String[] args) {
-        AppletRunner.run("casmi.graphics.object.RemoveExample", "RemoveExample");
+        AppletRunner.run("casmi.graphics.RemoveExample", "RemoveExample");
     }
 }

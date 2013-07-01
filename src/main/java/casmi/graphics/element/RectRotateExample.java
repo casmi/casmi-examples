@@ -23,7 +23,6 @@ import casmi.AppletRunner;
 import casmi.KeyEvent;
 import casmi.MouseButton;
 import casmi.MouseStatus;
-import casmi.util.SystemUtil;
 
 /**
  * Example for rotating Rect.
@@ -55,11 +54,7 @@ public class RectRotateExample extends Applet {
     public void exit() {}
 
     @Override
-    public void mouseEvent(MouseStatus e, MouseButton b) {
-        if (e == MouseStatus.PRESSED) {
-            capture("rsrc" + SystemUtil.FILE_SEPARATOR + "rectrotate.png", true);
-        }
-    }
+    public void mouseEvent(MouseStatus e, MouseButton b) {}
 
     @Override
     public void keyEvent(KeyEvent e) {}
