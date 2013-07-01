@@ -78,7 +78,6 @@ import casmi.tween.equations.SinusoidalIn;
 import casmi.tween.equations.SinusoidalInOut;
 import casmi.tween.equations.SinusoidalOut;
 
-// TODO fix
 /**
  * Example of Tween.
  *
@@ -105,20 +104,20 @@ public class TweenEquationsExample extends Applet {
     static final String[] EQ_NAME = {
         "Back",
         "Bounce",
-        "Circ",
+        "Circular",
         "Cubic",
         "Elastic",
-        "Expo",
+        "Exponential",
         "Linear",
-        "Quad",
-        "Quart",
-        "Quint",
-        "Sine"
+        "Quadratic",
+        "Quartic",
+        "Quintic",
+        "Sinusoidal"
     };
 
     private Line l1 = new Line(100, 200, 600, 200);
     private Line l2 = new Line(100, 550, 600, 550);
-    private Rect r = new Rect(150, 50);
+    private Rect equationSelector = new Rect(250, 50);
     private Ellipse el = new Ellipse(20);
     private Font f, f2;
     private Text inText, outText;
@@ -126,9 +125,8 @@ public class TweenEquationsExample extends Applet {
     private int equationNumber = 0;
     private int mode = 1;
 
-    private Tweener t1, t2;
+    private Tweener t1, changeEquationAnimation;
 
-    private boolean modeChange = false;
     private Color pink, blue;
     private List<EquationRect> eqRectList = new ArrayList<EquationRect>();
 
@@ -158,9 +156,9 @@ public class TweenEquationsExample extends Applet {
         outText = new Text("OUT", f2, 100, 200 + 5);
         outText.setStrokeColor(blue);
 
-        r.setFill(false);
-        r.setStrokeColor(ColorSet.LIGHT_BLUE);
-        r.setPosition(850, 625);
+        equationSelector.setFill(false);
+        equationSelector.setStrokeColor(ColorSet.LIGHT_BLUE);
+        equationSelector.setPosition(850, 625);
 
         el.setPosition(350, 550);
 
@@ -169,7 +167,7 @@ public class TweenEquationsExample extends Applet {
         addObject(l1);
         addObject(l2);
         addObject(el);
-        addObject(r);
+        addObject(equationSelector);
 
         int index = 0;
         for (String name : EQ_NAME) {
@@ -194,9 +192,14 @@ public class TweenEquationsExample extends Applet {
 
                 @Override
                 public void run(MouseClickEventType eventType, Element element) {
+                    EquationRect r = (EquationRect) element;
+
                     if (eventType == MouseClickEventType.CLICKED) {
-                        modeChange = true;
-                        equationNumber = eqRect.getIndex();
+                        equationNumber = r.getIndex();
+
+                        changeEquationAnimation.clear();
+                        changeEquationAnimation.animatePosition(new Vector2D(equationSelector.getX(), eqRectList.get(equationNumber).getY()), 1000, CubicInOut.class);
+                        changeEquationAnimation.start();
                     }
                 }
             });
@@ -222,52 +225,21 @@ public class TweenEquationsExample extends Applet {
         }
 
         t1 = new Tweener(el);
-        t2 = new Tweener(r);
+        changeEquationAnimation = new Tweener(equationSelector);
 
         addTweener(t1);
-        addTweener(t2);
+        addTweener(changeEquationAnimation);
     }
 
     @Override
-    public void update() {
-        if (modeChange) {
-            modeChange = false;
-
-            t2.clear();
-            t2.animatePosition(new Vector2D(r.getX(), eqRectList.get(equationNumber).getY()), 1000, CubicInOut.class);
-            t2.start();
-
-            if (mode == 0) {
-                r.setStrokeColor(ColorSet.LIGHT_PINK);
-                pink.setAlpha(1.0);
-                blue.setAlpha(0.4);
-                inText.setStrokeColor(pink);
-                outText.setStrokeColor(blue);
-            }
-            if (mode == 1) {
-                r.setStrokeColor(ColorSet.LIGHT_BLUE);
-                pink.setAlpha(0.4);
-                blue.setAlpha(1.0);
-                inText.setStrokeColor(pink);
-                outText.setStrokeColor(blue);
-            }
-            if (mode == 2) {
-                r.setStrokeColor(ColorSet.LIGHT_GREEN);
-                pink.setAlpha(1.0);
-                blue.setAlpha(1.0);
-                inText.setStrokeColor(pink);
-                outText.setStrokeColor(blue);
-            }
-        }
-    }
+    public void update() {}
 
     @Override
     public void exit() {}
 
     @Override
     public void mouseEvent(MouseStatus e, MouseButton b) {
-        if (e == MouseStatus.PRESSED) {
-            el.setPosition(350, 550);
+        if (e == MouseStatus.CLICKED && getMouseX() < 700) {
             t1.reset();
             if (mode == 0) {
                 switch (equationNumber) {
@@ -389,18 +361,34 @@ public class TweenEquationsExample extends Applet {
         case PRESSED:
             if (getKeyCode() == 37) {
                 mode--;
-                if (mode < 0)
-                    mode = 0;
-                modeChange = true;
+                if (mode < 0) mode = 0;
             } else if (getKeyCode() == 39) {
                 mode++;
-                if (mode > 2)
-                    mode = 2;
-                modeChange = true;
+                if (mode > 2) mode = 2;
             }
             break;
         default:
             break;
+        }
+
+        if (mode == 0) {
+            equationSelector.setStrokeColor(ColorSet.LIGHT_PINK);
+            pink.setAlpha(1.0);
+            blue.setAlpha(0.4);
+            inText.setStrokeColor(pink);
+            outText.setStrokeColor(blue);
+        } else if (mode == 1) {
+            equationSelector.setStrokeColor(ColorSet.LIGHT_BLUE);
+            pink.setAlpha(0.4);
+            blue.setAlpha(1.0);
+            inText.setStrokeColor(pink);
+            outText.setStrokeColor(blue);
+        } else if (mode == 2) {
+            equationSelector.setStrokeColor(ColorSet.LIGHT_GREEN);
+            pink.setAlpha(1.0);
+            blue.setAlpha(1.0);
+            inText.setStrokeColor(pink);
+            outText.setStrokeColor(blue);
         }
     }
 

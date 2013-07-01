@@ -54,6 +54,7 @@ public class TweenRepeatExample  extends Applet {
 		t.setRepeat(true);
 
 		addTweener(t);
+		t.start();
     }
 
 	@Override

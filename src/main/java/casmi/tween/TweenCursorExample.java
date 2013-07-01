@@ -42,6 +42,7 @@ public class TweenCursorExample extends Applet {
     Ellipse el = new Ellipse(40);
 
     Color c = new RGBColor(ColorSet.ORANGE);
+    Tweener t;
 
     @Override
     public void setup() {
@@ -49,6 +50,10 @@ public class TweenCursorExample extends Applet {
         el.setFillColor(c);
         el.setPosition(getWidth() / 2, getHeight() / 2);
         addObject(el);
+
+        t = new Tweener(el);
+        addTweener(t);
+        t.start();
     }
 
     @Override
@@ -59,15 +64,15 @@ public class TweenCursorExample extends Applet {
 
     @Override
     public void mouseEvent(MouseStatus e, MouseButton b) {
-        if (e == MouseStatus.PRESSED) {
+        if (e == MouseStatus.CLICKED) {
             float scale = Random.random(0.5f, 2.0f);
 
-            Tweener t = new Tweener(el);
+            t.clear();
 
             t.animateScale(scale, 500, Linear.class);
             t.animatePosition(new Vector2D(getMouseX(), getMouseY()), 1000, QuadraticInOut.class);
 
-            addTweener(t);
+            t.start();
         }
     }
 

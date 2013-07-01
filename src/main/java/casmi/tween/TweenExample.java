@@ -55,6 +55,12 @@ public class TweenExample extends Applet {
 		addObject(r);
 
 		t = new Tweener(r);
+        t.animatePosition(new Vector2D(500, 200), 2000, QuadraticInOut.class);
+        t.animateStrokeAlpha(0.0, 2000, SinusoidalInOut.class);
+        t.animateRotation(180, 2000, QuadraticInOut.class);
+
+        addTweener(t);
+//        t.start();
 	}
 
 	@Override
@@ -65,14 +71,9 @@ public class TweenExample extends Applet {
 
 	@Override
 	public void mouseEvent(MouseStatus e, MouseButton b) {
-		if (e == MouseStatus.PRESSED) {
-			t.reset();
-
-			t.animatePosition(new Vector2D(500, 200), 2000, QuadraticInOut.class);
-			t.animateStrokeAlpha(0.0, 2000, SinusoidalInOut.class);
-			t.animateRotation(180, 2000, QuadraticInOut.class);
-
-			addTweener(t);
+		if (e == MouseStatus.CLICKED) {
+		    t.reset();
+		    t.start();
 		}
 	}
 
