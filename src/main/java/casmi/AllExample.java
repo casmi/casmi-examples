@@ -115,7 +115,7 @@ public class AllExample extends JFrame {
     };
 
     JTree tree;
-    JFrame currentApplication;
+    AppletFrame currentApplication;
 
     public AllExample() {
         super();
@@ -160,9 +160,7 @@ public class AllExample extends JFrame {
 
                 for (String[] s : EXAMPLES) {
                     if (title.equals(s[1])) {
-                        AppletRunner.run(s[0], s[1]);
-                        AppletRunner.frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-                        currentApplication = AppletRunner.frame;
+                        currentApplication = AppletRunner.run(s[0], s[1]);
                         break;
                     }
                 }
