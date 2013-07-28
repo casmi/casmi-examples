@@ -21,8 +21,10 @@ package casmi.graphics.font;
 import casmi.Applet;
 import casmi.AppletRunner;
 import casmi.KeyEvent;
+import casmi.Keyboard;
+import casmi.Mouse;
 import casmi.MouseButton;
-import casmi.MouseStatus;
+import casmi.MouseEvent;
 import casmi.graphics.canvas.Canvas;
 import casmi.graphics.color.ColorSet;
 import casmi.graphics.element.Text;
@@ -74,9 +76,9 @@ public class FontExample extends Applet {
     public void exit() {}
 
     @Override
-	public void mouseEvent(MouseStatus e, MouseButton b) {
-        if (e == MouseStatus.WHEEL_ROTATED) {
-            double newY = canvas.getY() + getMouseWheelRotation();
+	public void mouseEvent(MouseEvent event, MouseButton button, Mouse mouse) {
+        if (event == MouseEvent.WHEEL_ROTATED) {
+            double newY = canvas.getY() + mouse.getWheelRotation();
 
             if (newY < 0) {
                 newY = 0;
@@ -89,9 +91,9 @@ public class FontExample extends Applet {
     }
 
 	@Override
-	public void keyEvent(KeyEvent e) {
-	    if (e == KeyEvent.PRESSED) {
-	        int keyCode = getKeyCode();
+	public void keyEvent(KeyEvent event, Keyboard keyboard) {
+	    if (event == KeyEvent.PRESSED) {
+	        int keyCode = keyboard.getKeyCode();
 	        double newY = canvas.getY();
 
 	        if (keyCode == java.awt.event.KeyEvent.VK_UP) {

@@ -45,19 +45,19 @@ public class KeyboardSimpleExample extends Applet {
     public void exit() {}
 
     @Override
-    public void mouseEvent(MouseStatus e, MouseButton b) {
-
-        if (e == MouseStatus.PRESSED && b == MouseButton.RIGHT)
+    public void mouseEvent(MouseEvent event, MouseButton button, Mouse mouse) {
+        if (event == MouseEvent.PRESSED && button == MouseButton.RIGHT) {
             clearObject();
+        }
     }
 
     @Override
-    public void keyEvent(KeyEvent e) {
-        if (e == KeyEvent.PRESSED) {
+    public void keyEvent(KeyEvent event, Keyboard keyboard) {
+        if (event == KeyEvent.PRESSED) {
             String s = "";
             f = new Font("Times New Roman");
             f.setSize(Random.random(10, 40));
-            s += getKey();
+            s += keyboard.getCharacter();
             t = new Text(s, f);
             HSBColor c = new HSBColor(0.7, 0.8, 0.8);
             c.setHue(Random.random(0, 255) / 255.0);

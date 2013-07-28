@@ -21,8 +21,10 @@ package casmi.tween;
 import casmi.Applet;
 import casmi.AppletRunner;
 import casmi.KeyEvent;
+import casmi.Keyboard;
+import casmi.Mouse;
 import casmi.MouseButton;
-import casmi.MouseStatus;
+import casmi.MouseEvent;
 import casmi.graphics.color.Color;
 import casmi.graphics.color.ColorSet;
 import casmi.graphics.color.RGBColor;
@@ -63,21 +65,21 @@ public class TweenCursorExample extends Applet {
     public void exit() {}
 
     @Override
-    public void mouseEvent(MouseStatus e, MouseButton b) {
-        if (e == MouseStatus.CLICKED) {
+    public void mouseEvent(MouseEvent event, MouseButton button, Mouse mouse) {
+        if (event == MouseEvent.CLICKED) {
             float scale = Random.random(0.5f, 2.0f);
 
             t.clear();
 
             t.animateScale(scale, 500, Linear.class);
-            t.animatePosition(new Vector2D(getMouseX(), getMouseY()), 1000, QuadraticInOut.class);
+            t.animatePosition(new Vector2D(mouse.getX(), mouse.getY()), 1000, QuadraticInOut.class);
 
             t.start();
         }
     }
 
     @Override
-    public void keyEvent(KeyEvent e) {}
+    public void keyEvent(KeyEvent event, Keyboard keyboard) {}
 
     public static void main(String[] args) {
         AppletRunner.run("casmi.tween.TweenCursorExample", "TweenCursorExample");

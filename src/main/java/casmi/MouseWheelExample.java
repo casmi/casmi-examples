@@ -50,15 +50,15 @@ public class MouseWheelExample extends Applet {
     public void exit() {}
 
     @Override
-    public void mouseEvent(MouseStatus e, MouseButton b) {
-        if (e == MouseStatus.WHEEL_ROTATED) {
-            double wrot = getMouseWheelRotation();
+    public void mouseEvent(MouseEvent event, MouseButton button, Mouse mouse) {
+        if (event == MouseEvent.WHEEL_ROTATED) {
+            double wrot = mouse.getWheelRotation();
             rect.setY(rect.getY() + wrot);
         }
     }
 
     @Override
-    public void keyEvent(KeyEvent e) {}
+    public void keyEvent(KeyEvent event, Keyboard keyboard) {}
 
     public static void main(String[] args) {
         AppletRunner.run("casmi.MouseWheelExample", "MouseWheelExample");

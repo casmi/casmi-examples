@@ -21,8 +21,10 @@ package casmi.graphics.element;
 import casmi.Applet;
 import casmi.AppletRunner;
 import casmi.KeyEvent;
+import casmi.Keyboard;
+import casmi.Mouse;
 import casmi.MouseButton;
-import casmi.MouseStatus;
+import casmi.MouseEvent;
 import casmi.graphics.object.Camera;
 import casmi.graphics.object.Perspective;
 import casmi.image.Texture;
@@ -45,11 +47,11 @@ public class SphereTextureExample extends Applet {
         Texture earth = new Texture(Applet.class.getResource("/casmi/earth.png"));
         s.setTexture(earth);
 
-        Perspective perspective = new Perspective(30.0, (double)getWidth() / (double)getHeight(), 1.0, 100.0);
-        Camera camera = new Camera(2.4, 3.2, 4.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
+        Perspective p = new Perspective(30.0, (double)getWidth() / (double)getHeight(), 1.0, 100.0);
+        Camera c = new Camera(2.4, 3.2, 4.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
 
-        setPerspective(perspective);
-        setCamera(camera);
+        setProjection(p);
+        setCamera(c);
 
         addObject(s);
     }
@@ -64,10 +66,10 @@ public class SphereTextureExample extends Applet {
     public void exit() {}
 
     @Override
-    public void mouseEvent(MouseStatus e, MouseButton b) {}
+    public void mouseEvent(MouseEvent event, MouseButton button, Mouse mouse) {}
 
     @Override
-    public void keyEvent(KeyEvent e) {}
+    public void keyEvent(KeyEvent event, Keyboard keyboard) {}
 
     public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.element.SphereTextureExample", "SphereTextureExample");

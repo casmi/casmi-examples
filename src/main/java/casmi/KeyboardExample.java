@@ -93,13 +93,16 @@ public class KeyboardExample extends Applet {
     public void exit() {}
 
     @Override
-    public void keyEvent(KeyEvent e) {
-    	if (e == KeyEvent.PRESSED) {
-            if (44 <= getKeyCode() || getKeyCode() == 32) {
-                content += getKey();
-            } else if (getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+    public void keyEvent(KeyEvent event, Keyboard keyboard) {
+        int key = keyboard.getKeyCode();
+        int chr = keyboard.getCharacter();
+
+    	if (event == KeyEvent.PRESSED) {
+            if (44 <= key || key == 32) {
+                content += chr;
+            } else if (key == java.awt.event.KeyEvent.VK_ENTER) {
                 content += "\n";
-            } else if (getKeyCode() == 8&&content.length()>0) {
+            } else if (key == 8 && content.length()>0) {
                 content = content.substring(0, content.length() - 1);
             }
             text.setText(content);
@@ -111,7 +114,7 @@ public class KeyboardExample extends Applet {
     }
 
     @Override
-    public void mouseEvent(MouseStatus e, MouseButton b) {}
+    public void mouseEvent(MouseEvent event, MouseButton button, Mouse mouse) {}
 
     public static void main(String[] args) {
         AppletRunner.run("casmi.KeyboardExample", "Keyboard Example");

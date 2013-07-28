@@ -21,8 +21,10 @@ package casmi.graphics.material;
 import casmi.Applet;
 import casmi.AppletRunner;
 import casmi.KeyEvent;
+import casmi.Keyboard;
+import casmi.Mouse;
 import casmi.MouseButton;
-import casmi.MouseStatus;
+import casmi.MouseEvent;
 import casmi.graphics.color.Color;
 import casmi.graphics.color.RGBColor;
 import casmi.graphics.element.Sphere;
@@ -105,10 +107,10 @@ public class MaterialExample extends Applet {
     public void exit() {}
 
     @Override
-    public void mouseEvent(MouseStatus e, MouseButton b) {}
+    public void mouseEvent(MouseEvent event, MouseButton button, Mouse mouse) {}
 
     @Override
-    public void keyEvent(KeyEvent e) {}
+    public void keyEvent(KeyEvent event, Keyboard keyboard) {}
 
     public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.material.MaterialExample", "MaterialExample");

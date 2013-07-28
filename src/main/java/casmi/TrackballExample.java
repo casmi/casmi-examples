@@ -38,7 +38,7 @@ public class TrackballExample extends Applet {
 
     Trackball trackball;
 
-    int prvMouseX = 0, prvMouseY = 0;
+    int prevX = 0, prevY = 0;
 
     Perspective p;
     Camera c;
@@ -88,32 +88,31 @@ public class TrackballExample extends Applet {
     public void exit() {}
 
     @Override
-    public void mouseEvent(MouseStatus e, MouseButton b) {
-        if (e == MouseStatus.PRESSED) {
-            prvMouseX = getMouseX();
-            prvMouseY = getMouseY();
+    public void mouseEvent(MouseEvent event, MouseButton button, Mouse mouse) {
+        if (event == MouseEvent.PRESSED) {
+            prevX = mouse.getX();
+            prevY = mouse.getY();
         }
 
-        if (e == MouseStatus.DRAGGED && b == MouseButton.LEFT) {
-            int mouseX = getMouseX();
-            int mouseY = getMouseY();
+        if (event == MouseEvent.DRAGGED && button == MouseButton.LEFT) {
+            int mouseX = mouse.getX();
+            int mouseY = mouse.getY();
 
             // Update Trackball.
-            trackball.update(mouseX, mouseY, prvMouseX, prvMouseY);
+            trackball.update(mouseX, mouseY, prevX, prevY);
 
             // Rotate an object with Trackball.
             trackball.rotate(canvas);
 
-            prvMouseX = mouseX;
-            prvMouseY = mouseY;
+            prevX = mouseX;
+            prevY = mouseY;
         }
     }
 
     @Override
-    public void keyEvent(KeyEvent e) {}
+    public void keyEvent(KeyEvent event, Keyboard keyboard) {}
 
     public static void main(String[] args) {
         AppletRunner.run("casmi.TrackballExample", "TrackballExample");
     }
-
 }

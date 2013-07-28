@@ -67,8 +67,8 @@ public class FullScreenExample extends Applet {
     public void exit() {}
 
     @Override
-    public void mouseEvent(MouseStatus e, MouseButton b) {
-        if (e == MouseStatus.PRESSED) {
+    public void mouseEvent(MouseEvent event, MouseButton button, Mouse mouse) {
+        if (event == MouseEvent.PRESSED) {
             setFullScreen(!isFullScreen());
             text.setX(getWidth()  / 2);
             text.setY(getHeight() / 2);
@@ -76,11 +76,11 @@ public class FullScreenExample extends Applet {
     }
 
     @Override
-    public void keyEvent(KeyEvent e) {
-        if (e == KeyEvent.PRESSED) {
-            if (getKeyCode() == 27) {
+    public void keyEvent(KeyEvent event, Keyboard keyboard) {
+        if (event == KeyEvent.PRESSED) {
+            if (keyboard.getKeyCode() == 27) {
                 System.exit(0);
-            } else if (getKey() == 'f') {
+            } else if (keyboard.getCharacter() == 'f') {
                 setFullScreen(!isFullScreen());
                 text.setX(getWidth()  / 2);
                 text.setY(getHeight() / 2);

@@ -156,13 +156,13 @@ public class ScreenshotExample extends Applet {
     }
 
     @Override
+    public void mouseEvent(MouseEvent event, MouseButton button, Mouse mouse) {}
+
+    @Override
+    public void keyEvent(KeyEvent event, Keyboard keyboard) {}
+
+    @Override
     public void exit() {}
-
-    @Override
-    public void mouseEvent(MouseStatus e, MouseButton b) {}
-
-    @Override
-    public void keyEvent(KeyEvent e) {}
 
     private void changeMode(Mode mode) {
         this.mode = mode;
@@ -211,5 +211,4 @@ public class ScreenshotExample extends Applet {
     public static void main(String[] args) {
         AppletRunner.run("casmi.ScreenshotExample", "Screenshot Example");
     }
-
 }

@@ -43,21 +43,20 @@ public class MouseExample extends Applet {
 
     @Override
     public void update() {
-        t.set(100, 300, getMouseX(), getMouseY(), 700, 300);
     }
 
     @Override
     public void exit() {}
 
     @Override
-    public void mouseEvent(MouseStatus status, MouseButton b) {
+    public void mouseEvent(MouseEvent event, MouseButton button, Mouse mouse) {
+        t.set(100, 300, mouse.getX(), mouse.getY(), 700, 300);
     }
 
     @Override
-    public void keyEvent(KeyEvent e) {}
+    public void keyEvent(KeyEvent event, Keyboard keyboard) {}
 
     public static void main(String[] args) {
         AppletRunner.run("casmi.MouseExample", "Mouse Example");
     }
-
 }

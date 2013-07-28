@@ -77,8 +77,8 @@ public class FPSExample extends Applet {
     public void exit() {}
 
     @Override
-    public void mouseEvent(MouseStatus e, MouseButton b) {
-        if (e == MouseStatus.CLICKED) {
+    public void mouseEvent(MouseEvent event, MouseButton button, Mouse mouse) {
+        if (event == MouseEvent.CLICKED) {
             switch (fps) {
             case 30:
                 setFPS(15.0);
@@ -105,7 +105,7 @@ public class FPSExample extends Applet {
     }
 
     @Override
-    public void keyEvent(KeyEvent e) {}
+    public void keyEvent(KeyEvent event, Keyboard keyboard) {}
 
     public static void main(String[] args) {
 		AppletRunner.run("casmi.FPSExample", "FPS Example");

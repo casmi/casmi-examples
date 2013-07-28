@@ -67,10 +67,10 @@ public class CursorExample extends Applet {
     public void exit() {}
 
 	@Override
-    public void mouseEvent(MouseStatus e, MouseButton b) {}
+    public void mouseEvent(MouseEvent event, MouseButton button, Mouse mouse) {}
 
     @Override
-    public void keyEvent(KeyEvent e) {}
+    public void keyEvent(KeyEvent event, Keyboard keyboard) {}
 
 	public static void main(String[] args) {
 		AppletRunner.run("casmi.CursorExample", "CursorExample");

@@ -29,8 +29,10 @@ import casmi.Applet;
 import casmi.AppletRunner;
 import casmi.CursorMode;
 import casmi.KeyEvent;
+import casmi.Keyboard;
+import casmi.Mouse;
 import casmi.MouseButton;
-import casmi.MouseStatus;
+import casmi.MouseEvent;
 import casmi.callback.MouseClickCallback;
 import casmi.callback.MouseClickEventType;
 import casmi.callback.MouseOverCallback;
@@ -238,8 +240,8 @@ public class TweenEquationsExample extends Applet {
     public void exit() {}
 
     @Override
-    public void mouseEvent(MouseStatus e, MouseButton b) {
-        if (e == MouseStatus.CLICKED && getMouseX() < 700) {
+    public void mouseEvent(MouseEvent event, MouseButton button, Mouse mouse) {
+        if (event == MouseEvent.CLICKED && mouse.getX() < 700) {
             t1.reset();
             if (mode == 0) {
                 switch (equationNumber) {
@@ -356,13 +358,14 @@ public class TweenEquationsExample extends Applet {
     }
 
     @Override
-    public void keyEvent(KeyEvent e) {
-        switch (e) {
+    public void keyEvent(KeyEvent event, Keyboard keyboard) {
+        switch (event) {
         case PRESSED:
-            if (getKeyCode() == 37) {
+            if (keyboard.getKeyCode() == 37) {
                 mode--;
                 if (mode < 0) mode = 0;
-            } else if (getKeyCode() == 39) {
+            } else if (keyboard.getKeyCode() == 39) {
+
                 mode++;
                 if (mode > 2) mode = 2;
             }

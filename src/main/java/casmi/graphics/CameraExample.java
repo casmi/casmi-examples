@@ -21,12 +21,15 @@ package casmi.graphics;
 import casmi.Applet;
 import casmi.AppletRunner;
 import casmi.KeyEvent;
+import casmi.Keyboard;
+import casmi.Mouse;
 import casmi.MouseButton;
-import casmi.MouseStatus;
+import casmi.MouseEvent;
 import casmi.graphics.color.ColorSet;
 import casmi.graphics.element.Line;
 import casmi.graphics.element.Sphere;
 import casmi.graphics.object.Camera;
+import casmi.graphics.object.Perspective;
 
 /**
  * Camera example.
@@ -64,7 +67,7 @@ public class CameraExample extends Applet {
 		sphere.setFill(false);
 		addObject(sphere);
 
-		setPerspective(30.0, (double)getWidth() / (double)getHeight(), 1.0, 100.0);
+		setProjection(new Perspective(30.0, (double)getWidth() / (double)getHeight(), 1.0, 100.0));
 
 		Camera camera = new Camera(2.4, 3.2, 4.0,  // eye
 		                           0.0, 0.0, 0.0,  // center
@@ -79,10 +82,10 @@ public class CameraExample extends Applet {
     public void exit() {}
 
 	@Override
-	public void mouseEvent(MouseStatus e, MouseButton b) {}
+	public void mouseEvent(MouseEvent event, MouseButton button, Mouse mouse) {}
 
 	@Override
-	public void keyEvent(KeyEvent e) {}
+	public void keyEvent(KeyEvent event, Keyboard keyboard) {}
 
 	public static void main(String[] args) {
         AppletRunner.run( "casmi.graphics.CameraExample", "CameraExample");

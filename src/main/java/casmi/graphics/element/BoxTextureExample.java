@@ -23,8 +23,10 @@ import java.net.URL;
 import casmi.Applet;
 import casmi.AppletRunner;
 import casmi.KeyEvent;
+import casmi.Keyboard;
+import casmi.Mouse;
 import casmi.MouseButton;
-import casmi.MouseStatus;
+import casmi.MouseEvent;
 import casmi.graphics.color.RGBColor;
 import casmi.graphics.object.Camera;
 import casmi.graphics.object.Perspective;
@@ -76,7 +78,7 @@ public class BoxTextureExample extends Applet {
 				            1.00, 500);
 		c = new Camera(3.0, 4.0, 5.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
 
-		setPerspective(p);
+		setProjection(p);
 		setCamera(c);
 
 		for (int i = 0; i < textures.length; i++) {
@@ -97,10 +99,10 @@ public class BoxTextureExample extends Applet {
     public void exit() {}
 
 	@Override
-	public void mouseEvent(MouseStatus e, MouseButton b) {}
+	public void mouseEvent(MouseEvent event, MouseButton button, Mouse mouse) {}
 
 	@Override
-	public void keyEvent(KeyEvent e) {}
+	public void keyEvent(KeyEvent event, Keyboard keyboard) {}
 
 	public static void main(String[] args) {
         AppletRunner.run("casmi.graphics.element.BoxTextureExample", "BoxTextureExample");

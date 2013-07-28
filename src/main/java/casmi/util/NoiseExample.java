@@ -21,8 +21,10 @@ package casmi.util;
 import casmi.Applet;
 import casmi.AppletRunner;
 import casmi.KeyEvent;
+import casmi.Keyboard;
+import casmi.Mouse;
 import casmi.MouseButton;
-import casmi.MouseStatus;
+import casmi.MouseEvent;
 import casmi.graphics.color.RGBColor;
 import casmi.graphics.element.Line;
 
@@ -51,13 +53,14 @@ public class NoiseExample extends Applet {
 
 	@Override
 	public void update() {
+	    Mouse m = getMouse();
 		for (int x = 0; x < getWidth(); x++) {
-			noiseValue = Noise.noise((getMouseX() + x) * noiseScale,
-									getMouseY() * noiseScale);
+			noiseValue = Noise.noise((m.getX() + x) * noiseScale,
+									  m.getY() * noiseScale);
 
 			c.setGray(noiseValue);
 			lines[x].setStrokeColor(c);
-			lines[x].set(x, getMouseY() + noiseValue * 80, x, getHeight());
+			lines[x].set(x, m.getY() + noiseValue * 80, x, getHeight());
 		}
 	}
 
@@ -65,10 +68,10 @@ public class NoiseExample extends Applet {
     public void exit() {}
 
 	@Override
-    public void mouseEvent(MouseStatus e, MouseButton b) {}
+    public void mouseEvent(MouseEvent event, MouseButton button, Mouse mouse) {}
 
     @Override
-    public void keyEvent(KeyEvent e) {}
+    public void keyEvent(KeyEvent event, Keyboard keyboard) {}
 
 	public static void main(String[] args) {
 		AppletRunner.run("casmi.util.NoiseExample", "Noise Example");

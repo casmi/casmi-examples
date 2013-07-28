@@ -6,6 +6,10 @@ import casmi.graphics.element.Text;
 import casmi.graphics.element.TextAlign;
 
 
+/**
+ * @author takashi
+ *
+ */
 public class MenuBarExample extends Applet {
 
     Text text = new Text("Select MenuBar");
@@ -28,7 +32,7 @@ public class MenuBarExample extends Applet {
         text.setStrokeColor(ColorSet.WHITE);
         addObject(text);
 
-        MenuBar menuBar = getMenuBar();
+        MenuBar menuBar = new MenuBar();
 
         Menu menu1 = new Menu("File");
 
@@ -48,6 +52,8 @@ public class MenuBarExample extends Applet {
 
         menuBar.addMenu(new Menu("Edit"));
         menuBar.addMenu(new Menu("Source"));
+
+        setMenuBar(menuBar);
     }
 
     @Override
@@ -57,10 +63,10 @@ public class MenuBarExample extends Applet {
     public void exit() {}
 
     @Override
-    public void mouseEvent(MouseStatus e, MouseButton b) {}
+    public void mouseEvent(MouseEvent event, MouseButton button, Mouse mouse) {}
 
     @Override
-    public void keyEvent(KeyEvent e) {}
+    public void keyEvent(KeyEvent event, Keyboard keyboard) {}
 
     public static void main(String[] args) {
         AppletRunner.run("casmi.MenuBarExample", "MenuBarExample");
