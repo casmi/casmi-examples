@@ -47,12 +47,38 @@ public class PopupMenuExample extends Applet {
 
 		color = DEFAULT_COLOR;
 
-		menu = getPopupMenu();
-		menu.addMenuItem("clear", "clearColor");
+		menu = new PopupMenu();
+		menu.addMenuItem("clear", new PopupMenuActionListener() {
+            @Override
+            public void performed() {
+                clearColor();
+            }
+        });
+
 		menu.addSeparator();
-		menu.addMenuItem("red",   "changeColor", new RGBColor(ColorSet.RED));
-		menu.addMenuItem("green", "changeColor", new RGBColor(ColorSet.GREEN));
-		menu.addMenuItem("blue",  "changeColor", new RGBColor(ColorSet.BLUE));
+
+		menu.addMenuItem("red", new PopupMenuActionListener() {
+
+            @Override
+            public void performed() {
+                changeColor(new RGBColor(ColorSet.RED));
+            }
+        });
+
+		menu.addMenuItem("green", new PopupMenuActionListener() {
+
+            @Override
+            public void performed() {
+                changeColor(new RGBColor(ColorSet.GREEN));
+            }
+        });
+		menu.addMenuItem("blue",  new PopupMenuActionListener() {
+
+            @Override
+            public void performed() {
+                changeColor(new RGBColor(ColorSet.BLUE));
+            }
+        });
 	}
 
 	public void clearColor() {
@@ -73,8 +99,8 @@ public class PopupMenuExample extends Applet {
 
 	@Override
 	public void mouseEvent(MouseEvent event, MouseButton button, Mouse mouse) {
-		if (button.equals(MouseButton.RIGHT)) {
-			menu.show();
+		if (button.equals(MouseButton.RIGHT) && event == MouseEvent.CLICKED) {
+			menu.show(this);
 		}
 	}
 
