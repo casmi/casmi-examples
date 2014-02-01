@@ -45,6 +45,9 @@ public class SystemTrayMenuExample extends Applet {
         });
 
         tray.show();
+        
+        setIcon(this.getClass().getResource("/casmi/icon.png"));
+        tray.setIcon(this.getClass().getResource("/casmi/icon.png"));
     }
 
     @Override
