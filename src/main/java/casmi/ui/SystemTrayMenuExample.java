@@ -15,16 +15,16 @@ public class SystemTrayMenuExample extends Applet {
 
 	private URL getTrayIcon() {
 		String osName = System.getProperty("os.name");
-		
+
 		if (osName.startsWith("Windows")) {
 			return this.getClass().getResource("/casmi/tray_icon_win.png");
-		} else if (osName == "Mac"){
+		} else if (osName == "Mac OS X"){
 			return this.getClass().getResource("/casmi/tray_icon_mac.png");
 		} else {
 			return this.getClass().getResource("/casmi/tray_icon.png");
 		}
 	}
-	
+
     @Override
     public void setup() {
         SystemTrayMenu tray = new SystemTrayMenu(getTrayIcon(), "System Tray Example");
@@ -43,7 +43,7 @@ public class SystemTrayMenuExample extends Applet {
                 System.exit(0);
             }
         });
-        
+
         tray.show();
     }
 
