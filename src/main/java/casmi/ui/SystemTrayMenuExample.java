@@ -1,5 +1,7 @@
 package casmi.ui;
 
+import java.net.URL;
+
 import casmi.Applet;
 import casmi.AppletRunner;
 import casmi.KeyEvent;
@@ -11,9 +13,21 @@ import casmi.MouseEvent;
 
 public class SystemTrayMenuExample extends Applet {
 
+	private URL getTrayIcon() {
+		String osName = System.getProperty("os.name");
+		
+		if (osName.startsWith("Windows")) {
+			return this.getClass().getResource("/casmi/tray_icon_win.png");
+		} else if (osName == "Mac"){
+			return this.getClass().getResource("/casmi/tray_icon_mac.png");
+		} else {
+			return this.getClass().getResource("/casmi/tray_icon.png");
+		}
+	}
+	
     @Override
     public void setup() {
-        SystemTrayMenu tray = new SystemTrayMenu(this.getClass().getResource("/casmi/tray_icon.png"), "System Tray Example");
+        SystemTrayMenu tray = new SystemTrayMenu(getTrayIcon(), "System Tray Example");
         tray.addMenuItem("Hello", new SystemTrayMenuActionListener() {
             @Override
             public void performed() {
@@ -29,6 +43,8 @@ public class SystemTrayMenuExample extends Applet {
                 System.exit(0);
             }
         });
+        
+        tray.show();
     }
 
     @Override
